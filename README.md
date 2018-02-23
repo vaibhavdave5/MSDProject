@@ -2,7 +2,7 @@
 
 > "Borrowed thoughts, like borrowed money, only show the poverty of the
 > borrower." 
-> - **Lady Marguerite Blessington**
+> -- **Lady Marguerite Blessington**
 
 This Plagiarism Detector is designed to take work from multiple submissions and detect cases of plagiarism. It can be used be both the Professor as well as the TAs. 
 
