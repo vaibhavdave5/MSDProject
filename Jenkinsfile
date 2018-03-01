@@ -10,14 +10,14 @@ pipeline {
        stage('Build') {
            steps {
                echo "Building"
-               sh 'mvn compile'
-               sh 'mvn package'
+               sh 'mvn -f ./plagiarismDetector compile'
+               sh 'mvn -f ./plagiarismDetector package'
            }
        }
        stage('Test'){
            steps {
                echo "Testing"
-               sh 'mvn test'
+               sh 'mvn -f ./plagiarismDetector test'
            }
        }
        
