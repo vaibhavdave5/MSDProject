@@ -3,6 +3,11 @@ package writer;
 import java.io.*;
 import java.util.logging.Logger;
 
+/**
+ * A Writer is used for writing to a file and logging output
+ * @author Vaibhav Dave
+ *
+ */
 public class Writer {
 	private static BufferedWriter write;
 	private static Logger logger = Logger.getLogger("ErrorLog");

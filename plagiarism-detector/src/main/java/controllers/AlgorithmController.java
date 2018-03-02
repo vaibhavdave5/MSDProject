@@ -24,6 +24,11 @@ import parser.CParser;
 
 import java.util.*;
 
+/**
+ * The main controller of the application that can tell if two files are similar
+ * @author Vaibhav Dave
+ *
+ */
 public class AlgorithmController implements IAlgorithmController {
 
 	private File fileToBeParsed;
@@ -77,6 +82,10 @@ public class AlgorithmController implements IAlgorithmController {
 		return algo.computeSimilarity(nodeList1, nodeList2);
 	}
 
+	/**
+	 * Driver function
+	 * @param args not used currently
+	 */
 	public static void main(String[] args) {
 		IAlgorithmController start = new AlgorithmController();
 		String file1path = "C:"+File.separator+"Javalib"+File.separator+"Test"+File.separator+"sample.c";
@@ -85,8 +94,10 @@ public class AlgorithmController implements IAlgorithmController {
 		File file2 = new File(file2path);
 		
 		start.setFiles(file1, file2);
+		double ans = start.getAns();
+		
 		Logger logger = Logger.getLogger("logger");
-		logger.log(Level.FINE, start.getAns()+"");
+		logger.log(Level.FINE, String.valueOf(ans));
 
 	}
 }
