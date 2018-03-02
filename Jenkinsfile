@@ -10,22 +10,22 @@ pipeline {
        stage('Build') {
            steps {
                echo "Building"
-               sh 'mvn -f ./plagiarismDetector compile'
-               sh 'mvn -f ./plagiarismDetector package'
+               sh 'mvn -f ./plagiarism-detector compile'
+               sh 'mvn -f ./plagiarism-detector package'
            }
        }
        stage('Test'){
            steps {
                echo "Testing"
-               sh 'mvn -f ./plagiarismDetector test'
+               sh 'mvn -f ./plagiarism-detector test'
            }
        }
        
        stage('SonarQube') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                        sh 'mvn -f ./plagiarismDetector clean install'
-                        sh 'mvn -f ./plagiarismDetector sonar:sonar'
+                        sh 'mvn -f ./plagiarism-detector clean install'
+                        sh 'mvn -f ./plagiarism-detector sonar:sonar'
                 }
             }
         }
