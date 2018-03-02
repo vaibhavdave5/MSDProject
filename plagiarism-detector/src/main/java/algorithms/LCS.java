@@ -7,26 +7,20 @@ public class LCS implements algorithms.Algorithm {
 
 	@Override
 	public double computeSimilarity(List<Node> list1, List<Node> list2) {
-		int lcs = computeLCS(list1, list2);
-		return (1.0 * 2 * 1.0 * lcs) / (1.0 * list1.size() + 1.0 * list2.size());
+		return 2 * computeLCS(list1, list2) / (list1.size() + list2.size());
 	}
 
-	private int computeLCS(List<Node> list1, List<Node> list2) {
+	private double computeLCS(List<Node> list1, List<Node> list2) {
+		int size1 = list1.size();
+		int size2 = list2.size();
+		int[][] map = new int[size1 + 1][size2 + 1];
 
-		int m = list1.size();
-		int n = list2.size();
-		int[][] l = new int[m + 1][n + 1];
+		for (int i = 1; i <= size1; i++) 
+			for (int j = 1; j <= size2; j++)
+				map[i][j] = (i == 0 || j == 0) ? 0 :
+					(list1.get(i - 1).equals(list2.get(j - 1))) ? (map[i - 1][j - 1] + 1) :
+						Math.max(map[i - 1][j], map[i][j - 1]);
 
-		for (int i = 1; i <= list1.size(); i++) {
-			for (int j = 1; j <= list2.size(); j++) {
-				if (i == 0 || j == 0)
-					l[i][j] = 0;
-				else if (list1.get(i - 1).equals(list2.get(j - 1))) {
-					l[i][j] = l[i - 1][j - 1] + 1;
-				} else
-					l[i][j] = Math.max(l[i - 1][j], l[i][j - 1]);
-			}
-		}
-		return l[m][n];
+		return (double)map[size1][size2];
 	}
 }
