@@ -16,7 +16,11 @@ import algorithms.AbstractAlgorithmFactory;
 import algorithms.Algorithm;
 import algorithms.AlgorithmFactory;
 import algorithms.AlgorithmTypes;
-import parser.*;
+import parser.Node;
+import parser.ASTNodeListener;
+import parser.CBaseListener;
+import parser.CLexer;
+import parser.CParser;
 
 import java.util.*;
 

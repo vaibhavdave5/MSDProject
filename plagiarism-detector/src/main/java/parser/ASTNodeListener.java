@@ -1,15 +1,18 @@
 package parser;
-import java.util.*;
+
+import java.util.List;
+
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 public class ASTNodeListener extends CBaseListener {
-		
-	public ASTNodeListener(List<Node> list) {
-		this.list=list;
-	}
+
 	
+	public ASTNodeListener(List<Node> list) {
+		this.list = list;
+	}
+
 	@Override
 	public void enterPrimaryExpression(CParser.PrimaryExpressionContext ctx) {
 		addWhereRequired(ctx);

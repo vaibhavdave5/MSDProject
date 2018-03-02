@@ -1,7 +1,8 @@
 package algorithms;
 
 import java.util.List;
-import parser.*;
+
+import parser.Node;
 
 public class LCS implements algorithms.Algorithm {
 
