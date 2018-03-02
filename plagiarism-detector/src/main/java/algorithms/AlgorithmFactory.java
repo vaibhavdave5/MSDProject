@@ -14,7 +14,6 @@ public class AlgorithmFactory implements AbstractAlgorithmFactory {
 	 */
 	@Override
 	public Algorithm getAlgorithm(AlgorithmTypes type) {
-		//TODO: dynamic dispatch
 		return type.equals(AlgorithmTypes.LCS) ? 
 				new LCS() :
 				new NW();

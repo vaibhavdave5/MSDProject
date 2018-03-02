@@ -4,7 +4,7 @@ import java.util.List;
 import parser.Node;
 
 /**
- * This class demostrates the implementation of Neeman Walsh algorithm
+ * This class demonstrates the implementation of Neeman-Walsh algorithm
  * @author Vaibhav Dave
  * @since 02/28/2018
  */
@@ -16,8 +16,10 @@ public class NW implements Algorithm {
 	private int[][] s;
 
 	/**
-	 * @param take two list of nodes made by the ast
-	 * @return return similarity between them
+	 * Compute the similarity between two Node lists
+	 * @param list1 a list of Nodes
+	 * @param list2 another list of Nodes
+	 * @return a number representing the similarity between two nodes
 	 */
 	@Override
 	public double computeSimilarity(List<Node> list1, List<Node> list2) {
