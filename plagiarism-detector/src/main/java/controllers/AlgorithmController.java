@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -83,6 +85,8 @@ public class AlgorithmController implements IAlgorithmController {
 		File file2 = new File(file2path);
 		
 		start.setFiles(file1, file2);
-		
+		Logger logger = Logger.getLogger("logger");
+		logger.log(Level.FINE, start.getAns()+"");
+
 	}
 }
