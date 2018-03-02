@@ -1,7 +1,7 @@
 package algorithms;
 
 import java.util.List;
-import parser.Node;
+import parser.*;
 
 /**
  * This class demostrates the implementation of Neeman Walsh algorithm
