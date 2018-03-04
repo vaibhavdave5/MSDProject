@@ -19,8 +19,8 @@ public class AlgorithmControllerTest {
 	public void test(){
 		controllers.AlgorithmController ac = new controllers.AlgorithmController();
 
-		String path1 = "sample.c";
-		String path2 = "sample2.c";
+		String path1 = "sample3.c";
+		String path2 = "sample4.c";
 		File file1 = new File(path1);
 		File file2 = new File(path2);
 
@@ -40,8 +40,8 @@ public class AlgorithmControllerTest {
 	public void test2(){
 		controllers.AlgorithmController ac = new controllers.AlgorithmController();
 
-		String path1 = "sample.c";
-		String path2 = "sample2.c";
+		String path1 = "sample3.c";
+		String path2 = "sample4.c";
 		File file1 = new File(path1);
 		File file2 = new File(path2);
 

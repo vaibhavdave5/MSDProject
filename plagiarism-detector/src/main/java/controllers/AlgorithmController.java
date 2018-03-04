@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -89,24 +87,6 @@ public class AlgorithmController implements IAlgorithmController {
 		return algo.computeSimilarity(nodeList1, nodeList2);
 	}
 
-	/**
-	 * Driver function
-	 * @param args not used currently
-	 * @throws IOException 
-	 */
-	public static void main(String[] args) throws IOException {
-		IAlgorithmController start = new AlgorithmController();
-		String file1path = "sample.c";
-		String file2path = "sample2.c";
-		File file1 = new File(file1path);
-		File file2 = new File(file2path);
-		
-		start.setFiles(file1, file2);
-		double ans = start.getAns(Enums.AlgorithmType.LCS);
-		
-		
-		Logger logger = Logger.getLogger("logger");
-		String strAns = Double.toString(ans);
-		logger.log(Level.FINE, strAns);
-	}
+	
+
 }
