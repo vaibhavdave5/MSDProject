@@ -31,7 +31,8 @@ public class AlgorithmControllerTest {
 		assertTrue(ans >= 0 && ans <= 1);
 	}
 
-	// 
+	// Testing the large files 
+
 	@Test
 	public void test2(){
 		controllers.AlgorithmController ac = new controllers.AlgorithmController();
@@ -46,7 +47,7 @@ public class AlgorithmControllerTest {
 		try {
 			ans = ac.getAns(Enums.AlgorithmType.NW);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		assertTrue(ans >= 0 && ans <= 1);
