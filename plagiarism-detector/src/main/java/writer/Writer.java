@@ -5,35 +5,38 @@ import java.util.logging.Logger;
 
 /**
  * A Writer is used for writing to a file and logging output
- * @author Vaibhav Dave
+ * @author Vaibhav Dave, Shail Shah
  *
  */
 public class Writer {
-	private static BufferedWriter write;
+	private static BufferedWriter bufferedWriter;
 	private static Logger logger = Logger.getLogger("ErrorLog");
 
-	private Writer() {
-	}
+	private Writer() {}
 
 	public static BufferedWriter getWriter() {
-		if (write == null) {
+		if (bufferedWriter == null) {
 			try {
-				write = new BufferedWriter(new FileWriter("Report.txt"));
+				bufferedWriter = new BufferedWriter(new FileWriter("Report.txt"));
 			} catch (IOException e) {
 				logger.log(null, "Runtime Error", e);
 			}
 		}
-		return write;
+		return bufferedWriter;
+	}
+	
+	public void write(String str) throws IOException {
+		bufferedWriter.write(str);
 	}
 
 	public static void closeWriter() {
-		if (write != null) {
+		if (bufferedWriter != null) {
 			try {
-				write.close();
+				bufferedWriter.close();
 			} catch (IOException e) {
 				logger.log(null, "Runtime Error", e);
 			}
-			write = null;
+			bufferedWriter = null;
 		}
 	}
 

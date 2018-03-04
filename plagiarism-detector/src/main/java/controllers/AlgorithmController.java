@@ -7,7 +7,6 @@ import java.util.LinkedList;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import algorithms.Algorithm;
@@ -17,7 +16,6 @@ import parser.Node;
 import parser.ASTNodeListener;
 
 import parser.CLexer;
-import parser.CListener;
 import parser.CParser;
 
 import java.util.*;
