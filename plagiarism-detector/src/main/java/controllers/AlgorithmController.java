@@ -10,7 +10,6 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
-import algorithms.IAlgorithmFactory;
 import algorithms.Algorithm;
 import algorithms.AlgorithmFactory;
 import algorithms.Enums;
@@ -30,8 +29,8 @@ import java.util.*;
  */
 public class AlgorithmController implements IAlgorithmController {
 
-	private File fileToBeParsed;
-	private File fileToBeParsed2;
+	private File file1;
+	private File file2;
 
 	/**
 	 * Sets files for comparing 
@@ -40,8 +39,8 @@ public class AlgorithmController implements IAlgorithmController {
 	 */
 	@Override
 	public void setFiles(File file1, File file2) {
-		this.fileToBeParsed = file1;
-		this.fileToBeParsed2 = file2;
+		this.file1 = file1;
+		this.file2 = file2;
 	}
 
 	/**
@@ -52,41 +51,18 @@ public class AlgorithmController implements IAlgorithmController {
 	@Override
 	public double getAns(Enums.AlgorithmType algorithmType) throws IOException {
 		List<Node> nodeList1 = new LinkedList<>();
-		FileInputStream fis;
-		CLexer lexer;
-		fis = new FileInputStream(fileToBeParsed);
-		lexer = new CLexer(CharStreams.fromStream(fis));
-
-		CommonTokenStream tokens = new CommonTokenStream(lexer);
-		CParser parser = new CParser(tokens);
-		ParserRuleContext tree = parser.compilationUnit();
-		ParseTreeWalker walker = new ParseTreeWalker();
-		CListener extractor = new ASTNodeListener(nodeList1);
-		walker.walk(extractor, tree);
-
-		CLexer lexer2 = null;
 		List<Node> nodeList2 = new LinkedList<>();
-		FileInputStream fis2;
-			try {
-				fis2 = new FileInputStream(fileToBeParsed2);
-				lexer2 = new CLexer(CharStreams.fromStream(fis2));
-			} catch (IOException e) {
-				//doNothing
-			}
-			
-		CommonTokenStream tokens2 = new CommonTokenStream(lexer2);
-		CParser parser2 = new CParser(tokens2);
-		ParserRuleContext tree2 = parser2.compilationUnit();
-		ParseTreeWalker walker2 = new ParseTreeWalker();
-		CListener extractor2 = new ASTNodeListener(nodeList2);
-		walker2.walk(extractor2, tree2);
+				
+		CLexer lexer1 = new CLexer(CharStreams.fromStream(new FileInputStream(file1)));
+		CLexer lexer2 = new CLexer(CharStreams.fromStream(new FileInputStream(file2)));
+	
+		CParser parser1 = new CParser(new CommonTokenStream(lexer1));
+		CParser parser2 = new CParser(new CommonTokenStream(lexer2));
+				
+		new ParseTreeWalker().walk(new ASTNodeListener(nodeList1), parser1.compilationUnit());
+		new ParseTreeWalker().walk(new ASTNodeListener(nodeList2), parser2.compilationUnit());
 
-		IAlgorithmFactory factory = new AlgorithmFactory();
-		Algorithm algo = factory.getAlgorithm(algorithmType);
-
+		Algorithm algo = new AlgorithmFactory().getAlgorithm(algorithmType);
 		return algo.computeSimilarity(nodeList1, nodeList2);
 	}
-
-	
-
 }

@@ -15,24 +15,22 @@ public class LCSAlgorithm implements Algorithm {
 	/**
 	 * Compute the similarity between two Node lists
 	 * 
-	 * @param list1
-	 *            a list of Nodes
-	 * @param list2
-	 *            another list of Nodes
+	 * @param list1  a list of Nodes
+	 * @param list2 another list of Nodes
 	 * @return a number representing the similarity between two nodes
 	 */
 	@Override
 	public double computeSimilarity(List<Node> list1, List<Node> list2) {
-		return 2 * computeLCS(list1, list2) / (list1.size() + list2.size());
+		int totalSize = list1.size() + list2.size();
+		if(totalSize == 0) throw new IllegalArgumentException("Both lists are empty.");
+		return 2 * computeLCS(list1, list2) / totalSize;
 	}
 
 	/**
 	 * Compute the LCS for two given Node lists
 	 * 
-	 * @param list1
-	 *            a list of Nodes
-	 * @param list2
-	 *            another list of Nodes
+	 * @param list1 a list of Nodes
+	 * @param list2 another list of Nodes
 	 * @return a number representing the similarity between two nodes
 	 */
 	private double computeLCS(List<Node> list1, List<Node> list2) {

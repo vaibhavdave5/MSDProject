@@ -10,11 +10,18 @@ import org.junit.Test;
 
 import algorithms.Enums;
 
+/**
+ * Tests AlgorithmController to see if the similarity is computed as expected.  
+ * @author shail
+ *
+ */
 public class AlgorithmControllerTest {
 	
 	Logger logger = Logger.getLogger(this.getClass().toString());
 	
-	// Testing the simple small files 
+	/**
+	 *  Tests the simple small files 
+	 */
 	@Test
 	public void test(){
 		controllers.AlgorithmController ac = new controllers.AlgorithmController();
@@ -34,8 +41,10 @@ public class AlgorithmControllerTest {
 		assertTrue(ans >= 0 && ans <= 1);
 	}
 
-	// Testing the large files 
-
+	
+	/**
+	 * Tests larger files
+	 */
 	@Test
 	public void test2(){
 		controllers.AlgorithmController ac = new controllers.AlgorithmController();
@@ -54,6 +63,20 @@ public class AlgorithmControllerTest {
 		}
 		assertTrue(ans >= 0 && ans <= 1);
 	}
-
+	
+	/**
+	 * Should throw IOException if path is invalid
+	 * @throws IOException
+	 */
+	@Test(expected = IOException.class)
+	public void testIOException() throws IOException {
+		controllers.AlgorithmController ac = new controllers.AlgorithmController();
+		
+	    String path1 = "NonExistant.c";
+	    String path2 = "sample.c";
+	    
+	    ac.setFiles(new File(path1), new File(path2));
+	    ac.getAns(Enums.AlgorithmType.LCS);
+	}
 	
 }
