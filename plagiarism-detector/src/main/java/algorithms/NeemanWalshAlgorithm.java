@@ -9,7 +9,7 @@ import parser.Node;
  * @since 02/28/2018
  */
 
-public class NW implements Algorithm {
+public class NeemanWalshAlgorithm implements Algorithm {
 
 	private int[][] track;
 	private int[][] c;

@@ -6,11 +6,11 @@ import parser.Node;
 
 
 /**
- * An instance of LCS is able to comput the similarity between two Node Lists
+ * An instance of LCS is able to compute the similarity between two Node Lists
  * @author Vaibhav Dave, Shail Shah
  *
  */
-public class LCS implements algorithms.Algorithm {
+public class LCSAlgorithm implements Algorithm {
 
 	/**
 	 * Compute the similarity between two Node lists
@@ -24,7 +24,7 @@ public class LCS implements algorithms.Algorithm {
 	}
 
 	/**
-	 * Helper for computeSimilarity
+	 * Compute the LCS for two given Node lists
 	 * @param list1 a list of Nodes
 	 * @param list2 another list of Nodes
 	 * @return a number representing the similarity between two nodes
@@ -36,9 +36,12 @@ public class LCS implements algorithms.Algorithm {
 
 		for (int i = 1; i <= size1; i++) 
 			for (int j = 1; j <= size2; j++)
-				map[i][j] = (i == 0 || j == 0) ? 0 :
-					(list1.get(i - 1).equals(list2.get(j - 1))) ? (map[i - 1][j - 1] + 1) :
-						Math.max(map[i - 1][j], map[i][j - 1]);
+				if(i == 0 || j == 0)
+					map[i][j] = 0;
+				else if(list1.get(i - 1).equals(list2.get(j - 1)))
+					map[i][j] = map[i - 1][j - 1] + 1;
+				else 
+					map[i][j] = Math.max(map[i - 1][j], map[i][j - 1]);
 
 		return (double)map[size1][size2];
 	}

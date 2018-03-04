@@ -12,10 +12,10 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
-import algorithms.AbstractAlgorithmFactory;
+import algorithms.IAlgorithmFactory;
 import algorithms.Algorithm;
 import algorithms.AlgorithmFactory;
-import algorithms.AlgorithmTypes;
+import algorithms.Enums;
 import parser.Node;
 import parser.ASTNodeListener;
 import parser.CBaseListener;
@@ -26,7 +26,7 @@ import java.util.*;
 
 /**
  * The main controller of the application that can tell if two files are similar
- * @author Vaibhav Dave
+ * @author Vaibhav Dave, Shail Shah
  *
  */
 public class AlgorithmController implements IAlgorithmController {
@@ -34,12 +34,21 @@ public class AlgorithmController implements IAlgorithmController {
 	private File fileToBeParsed;
 	private File fileToBeParsed2;
 
+	/**
+	 * Sets files for comparing 
+	 * @param file1 the first file
+	 * @param file2 the second file
+	 */
 	@Override
 	public void setFiles(File file1, File file2) {
 		this.fileToBeParsed = file1;
 		this.fileToBeParsed2 = file2;
 	}
 
+	/**
+	 * Compute the similarity between the set files
+	 * @return a number that denotes the degree of similarity
+	 */
 	@Override
 	public double getAns() {
 		List<Node> nodeList1 = new LinkedList<>();
@@ -76,8 +85,8 @@ public class AlgorithmController implements IAlgorithmController {
 		CBaseListener extractor2 = new ASTNodeListener(nodeList2);
 		walker2.walk(extractor2, tree2);
 
-		AbstractAlgorithmFactory factory = new AlgorithmFactory();
-		Algorithm algo = factory.getAlgorithm(AlgorithmTypes.NW);
+		IAlgorithmFactory factory = new AlgorithmFactory();
+		Algorithm algo = factory.getAlgorithm(Enums.AlgorithmType.NW);
 
 		return algo.computeSimilarity(nodeList1, nodeList2);
 	}
@@ -96,8 +105,10 @@ public class AlgorithmController implements IAlgorithmController {
 		start.setFiles(file1, file2);
 		double ans = start.getAns();
 		
+		
 		Logger logger = Logger.getLogger("logger");
-		logger.log(Level.FINE, String.valueOf(ans));
+		String strAns = "" + ans;
+		logger.log(Level.FINE, strAns);
 
 	}
 }

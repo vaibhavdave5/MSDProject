@@ -7,7 +7,6 @@ import java.io.File;
  * @author Vaibhav Dave
  *
  */
-public c
 public interface IAlgorithmController {
 		/**
 		 * Initialize two files to be compared 
