@@ -1,7 +1,5 @@
 package algorithms;
 
-import static org.junit.Assert.*;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,5 +23,6 @@ public class LCSAlgorithmTest {
 		
 		Algorithm lcs = new LCSAlgorithm();
 		lcs.computeSimilarity(list1, list2);
+		
 	}
 }

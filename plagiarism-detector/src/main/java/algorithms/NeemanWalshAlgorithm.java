@@ -22,8 +22,13 @@ public class NeemanWalshAlgorithm implements Algorithm {
 	 * @return a number representing the similarity between two nodes
 	 */
 	@Override
-	public double computeSimilarity(List<Node> list1, List<Node> list2) {
+	public double computeSimilarity(List<Node> list1, List<Node> list2) throws IllegalArgumentException  {
+		if(list1.isEmpty()|| list2.isEmpty()){
+			throw new IllegalArgumentException();
+		}
+		
 		int x = fetchOpticalAlignment(list1, list2);
+		
 		return 2.0 * x / (list1.size() + list2.size());
 	}
 
