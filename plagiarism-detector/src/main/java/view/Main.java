@@ -8,8 +8,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+/**
+ * Entry point of application  
+ * @author Samanjate
+ * @since 01-03-2018
+ *
+ */
 
-
+@SuppressWarnings("restriction")
 public class Main extends Application {
 	
 	private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
