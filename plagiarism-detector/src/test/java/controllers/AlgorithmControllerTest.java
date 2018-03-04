@@ -3,12 +3,16 @@ package controllers;
 import static org.junit.Assert.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.junit.Test;
 
 import algorithms.Enums;
 
 public class AlgorithmControllerTest {
+	
+	Logger logger = Logger.getLogger(this.getClass().toString());
 	
 	// Testing the simple small files 
 	@Test
@@ -25,8 +29,7 @@ public class AlgorithmControllerTest {
 		try {
 			ans = ac.getAns(Enums.AlgorithmType.LCS);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage());
 		}
 		assertTrue(ans >= 0 && ans <= 1);
 	}
@@ -47,8 +50,7 @@ public class AlgorithmControllerTest {
 		try {
 			ans = ac.getAns(Enums.AlgorithmType.NW);
 		} catch (IOException e) {
-			
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage());
 		}
 		assertTrue(ans >= 0 && ans <= 1);
 	}

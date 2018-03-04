@@ -24,7 +24,7 @@ public class NeemanWalshAlgorithm implements Algorithm {
 	@Override
 	public double computeSimilarity(List<Node> list1, List<Node> list2) {
 		int x = fetchOpticalAlignment(list1, list2);
-		return (2.0 * x / (list1.size() + list2.size()));
+		return 2.0 * x / (list1.size() + list2.size());
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class NeemanWalshAlgorithm implements Algorithm {
 	 * @return length of the common nodes after optical alignment.
 	 */
 	private int fetchOpticalAlignment(List<Node> list1, List<Node> list2) {
-		int counter = 0;
+		int counter;
 		int m = list1.size();
 		int n = list2.size();
 		s = initializeSubstitutionMatrix(list1, list2);

@@ -18,8 +18,9 @@ import algorithms.AlgorithmFactory;
 import algorithms.Enums;
 import parser.Node;
 import parser.ASTNodeListener;
-import parser.CBaseListener;
+
 import parser.CLexer;
+import parser.CListener;
 import parser.CParser;
 
 import java.util.*;
@@ -53,8 +54,8 @@ public class AlgorithmController implements IAlgorithmController {
 	@Override
 	public double getAns(Enums.AlgorithmType algorithmType) throws IOException {
 		List<Node> nodeList1 = new LinkedList<>();
-		FileInputStream fis = null;
-		CLexer lexer = null;
+		FileInputStream fis;
+		CLexer lexer;
 		fis = new FileInputStream(fileToBeParsed);
 		lexer = new CLexer(CharStreams.fromStream(fis));
 
@@ -62,7 +63,7 @@ public class AlgorithmController implements IAlgorithmController {
 		CParser parser = new CParser(tokens);
 		ParserRuleContext tree = parser.compilationUnit();
 		ParseTreeWalker walker = new ParseTreeWalker();
-		CBaseListener extractor = new ASTNodeListener(nodeList1);
+		CListener extractor = new ASTNodeListener(nodeList1);
 		walker.walk(extractor, tree);
 
 		CLexer lexer2 = null;
@@ -79,7 +80,7 @@ public class AlgorithmController implements IAlgorithmController {
 		CParser parser2 = new CParser(tokens2);
 		ParserRuleContext tree2 = parser2.compilationUnit();
 		ParseTreeWalker walker2 = new ParseTreeWalker();
-		CBaseListener extractor2 = new ASTNodeListener(nodeList2);
+		CListener extractor2 = new ASTNodeListener(nodeList2);
 		walker2.walk(extractor2, tree2);
 
 		IAlgorithmFactory factory = new AlgorithmFactory();
@@ -105,8 +106,7 @@ public class AlgorithmController implements IAlgorithmController {
 		
 		
 		Logger logger = Logger.getLogger("logger");
-		String strAns = "" + ans;
+		String strAns = Double.toString(ans);
 		logger.log(Level.FINE, strAns);
-		System.out.println(strAns);
 	}
 }

@@ -6,6 +6,7 @@ package algorithms;
  * @author shail
  *
  */
+@FunctionalInterface
 public interface IAlgorithmFactory {
 	/**
 	 * Create an instance of an Algorithm

@@ -8,10 +8,11 @@ package algorithms;
 public class Enums {
 	/**
 	 * AlgorithmTypes represents different algorithms
-	 * @author shail
+	 * @author Shail And Vaibhav
+	 * 
 	 *
 	 */
-	public static enum AlgorithmType {
+	public enum AlgorithmType {
 		LCS,							// Longest Common Subsequence Algorithm
 		NW								// Neeman-Walsh Algorithm
 	}

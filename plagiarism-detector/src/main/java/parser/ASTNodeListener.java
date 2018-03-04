@@ -6,9 +6,9 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-public class ASTNodeListener extends CBaseListener {
+public class ASTNodeListener implements CListener {
 
-	
+	List<Node> list;
 	public ASTNodeListener(List<Node> list) {
 		this.list = list;
 	}
@@ -27,7 +27,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitPrimaryExpression(CParser.PrimaryExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -51,7 +51,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitGenericSelection(CParser.GenericSelectionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitGenericAssocList(CParser.GenericAssocListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitGenericAssociation(CParser.GenericAssociationContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitArgumentExpressionList(CParser.ArgumentExpressionListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -171,7 +171,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitUnaryExpression(CParser.UnaryExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -195,7 +195,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitUnaryOperator(CParser.UnaryOperatorContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -219,7 +219,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitCastExpression(CParser.CastExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -243,7 +243,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitMultiplicativeExpression(CParser.MultiplicativeExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -267,7 +267,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitAdditiveExpression(CParser.AdditiveExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -291,7 +291,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitShiftExpression(CParser.ShiftExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -315,7 +315,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitRelationalExpression(CParser.RelationalExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -339,7 +339,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitEqualityExpression(CParser.EqualityExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -363,7 +363,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitAndExpression(CParser.AndExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -387,7 +387,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitExclusiveOrExpression(CParser.ExclusiveOrExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -411,7 +411,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitInclusiveOrExpression(CParser.InclusiveOrExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -435,7 +435,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitLogicalAndExpression(CParser.LogicalAndExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -459,7 +459,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitLogicalOrExpression(CParser.LogicalOrExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -483,7 +483,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitConditionalExpression(CParser.ConditionalExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -507,7 +507,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitAssignmentExpression(CParser.AssignmentExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -531,7 +531,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitAssignmentOperator(CParser.AssignmentOperatorContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -555,7 +555,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitExpression(CParser.ExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -579,7 +579,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitConstantExpression(CParser.ConstantExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -603,7 +603,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitDeclaration(CParser.DeclarationContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -627,7 +627,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitDeclarationSpecifiers(CParser.DeclarationSpecifiersContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -651,7 +651,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitDeclarationSpecifiers2(CParser.DeclarationSpecifiers2Context ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -675,7 +675,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitDeclarationSpecifier(CParser.DeclarationSpecifierContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -687,7 +687,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void enterInitDeclaratorList(CParser.InitDeclaratorListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -699,7 +699,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitInitDeclaratorList(CParser.InitDeclaratorListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -723,7 +723,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitInitDeclarator(CParser.InitDeclaratorContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -747,7 +747,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitStorageClassSpecifier(CParser.StorageClassSpecifierContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -759,7 +759,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void enterTypeSpecifier(CParser.TypeSpecifierContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -771,7 +771,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitTypeSpecifier(CParser.TypeSpecifierContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -795,7 +795,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitStructOrUnionSpecifier(CParser.StructOrUnionSpecifierContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -819,7 +819,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitStructOrUnion(CParser.StructOrUnionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -843,7 +843,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitStructDeclarationList(CParser.StructDeclarationListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -867,7 +867,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitStructDeclaration(CParser.StructDeclarationContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -891,7 +891,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitSpecifierQualifierList(CParser.SpecifierQualifierListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -903,7 +903,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void enterStructDeclaratorList(CParser.StructDeclaratorListContext ctx) {
-	        addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -915,7 +915,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitStructDeclaratorList(CParser.StructDeclaratorListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -939,7 +939,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitStructDeclarator(CParser.StructDeclaratorContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -963,7 +963,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitEnumSpecifier(CParser.EnumSpecifierContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -987,7 +987,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitEnumeratorList(CParser.EnumeratorListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1011,7 +1011,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitEnumerator(CParser.EnumeratorContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1035,7 +1035,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitEnumerationConstant(CParser.EnumerationConstantContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1059,7 +1059,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitAtomicTypeSpecifier(CParser.AtomicTypeSpecifierContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1083,7 +1083,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitTypeQualifier(CParser.TypeQualifierContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1107,7 +1107,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitFunctionSpecifier(CParser.FunctionSpecifierContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1119,7 +1119,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void enterAlignmentSpecifier(CParser.AlignmentSpecifierContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1131,7 +1131,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitAlignmentSpecifier(CParser.AlignmentSpecifierContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1155,7 +1155,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitDeclarator(CParser.DeclaratorContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1179,7 +1179,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitDirectDeclarator(CParser.DirectDeclaratorContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1191,7 +1191,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void enterGccDeclaratorExtension(CParser.GccDeclaratorExtensionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1203,7 +1203,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitGccDeclaratorExtension(CParser.GccDeclaratorExtensionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1215,7 +1215,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void enterGccAttributeSpecifier(CParser.GccAttributeSpecifierContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1227,7 +1227,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitGccAttributeSpecifier(CParser.GccAttributeSpecifierContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1239,7 +1239,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void enterGccAttributeList(CParser.GccAttributeListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1251,7 +1251,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitGccAttributeList(CParser.GccAttributeListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1275,7 +1275,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitGccAttribute(CParser.GccAttributeContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1287,7 +1287,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void enterNestedParenthesesBlock(CParser.NestedParenthesesBlockContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1299,7 +1299,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitNestedParenthesesBlock(CParser.NestedParenthesesBlockContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1311,7 +1311,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void enterPointer(CParser.PointerContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1323,7 +1323,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitPointer(CParser.PointerContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1335,7 +1335,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void enterTypeQualifierList(CParser.TypeQualifierListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1347,7 +1347,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitTypeQualifierList(CParser.TypeQualifierListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1371,7 +1371,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitParameterTypeList(CParser.ParameterTypeListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1395,7 +1395,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitParameterList(CParser.ParameterListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1419,7 +1419,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitParameterDeclaration(CParser.ParameterDeclarationContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1443,7 +1443,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitIdentifierList(CParser.IdentifierListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1467,7 +1467,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitTypeName(CParser.TypeNameContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1491,7 +1491,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitAbstractDeclarator(CParser.AbstractDeclaratorContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1515,7 +1515,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitDirectAbstractDeclarator(CParser.DirectAbstractDeclaratorContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1539,7 +1539,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitTypedefName(CParser.TypedefNameContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1563,7 +1563,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitInitializer(CParser.InitializerContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1587,7 +1587,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitInitializerList(CParser.InitializerListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1599,7 +1599,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void enterDesignation(CParser.DesignationContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1611,7 +1611,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitDesignation(CParser.DesignationContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1623,7 +1623,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void enterDesignatorList(CParser.DesignatorListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1635,7 +1635,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitDesignatorList(CParser.DesignatorListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1647,7 +1647,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void enterDesignator(CParser.DesignatorContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1659,7 +1659,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitDesignator(CParser.DesignatorContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1683,7 +1683,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitStaticAssertDeclaration(CParser.StaticAssertDeclarationContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1707,7 +1707,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitStatement(CParser.StatementContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1731,7 +1731,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitLabeledStatement(CParser.LabeledStatementContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1755,7 +1755,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitCompoundStatement(CParser.CompoundStatementContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1767,7 +1767,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void enterBlockItemList(CParser.BlockItemListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1779,7 +1779,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitBlockItemList(CParser.BlockItemListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1803,7 +1803,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitBlockItem(CParser.BlockItemContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1827,7 +1827,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitExpressionStatement(CParser.ExpressionStatementContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1851,7 +1851,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitSelectionStatement(CParser.SelectionStatementContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1875,7 +1875,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitIterationStatement(CParser.IterationStatementContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1899,7 +1899,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitForCondition(CParser.ForConditionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1923,7 +1923,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitForDeclaration(CParser.ForDeclarationContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1947,7 +1947,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitForExpression(CParser.ForExpressionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1971,7 +1971,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitJumpStatement(CParser.JumpStatementContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -1983,9 +1983,8 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void enterCompilationUnit(CParser.CompilationUnitContext ctx) {
-		//doNothing
+		// doNothing
 	}
-	
 
 	/**
 	 * {@inheritDoc}
@@ -1996,7 +1995,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitCompilationUnit(CParser.CompilationUnitContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -2008,7 +2007,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void enterTranslationUnit(CParser.TranslationUnitContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -2020,7 +2019,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitTranslationUnit(CParser.TranslationUnitContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -2044,7 +2043,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitExternalDeclaration(CParser.ExternalDeclarationContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -2068,7 +2067,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitFunctionDefinition(CParser.FunctionDefinitionContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -2092,7 +2091,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void exitDeclarationList(CParser.DeclarationListContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -2104,7 +2103,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void enterEveryRule(ParserRuleContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -2115,9 +2114,9 @@ public class ASTNodeListener extends CBaseListener {
 	 * </p>
 	 */
 	@Override
-	
+
 	public void exitEveryRule(ParserRuleContext ctx) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -2129,7 +2128,7 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void visitTerminal(TerminalNode node) {
-		//doNothing
+		// doNothing
 	}
 
 	/**
@@ -2141,7 +2140,45 @@ public class ASTNodeListener extends CBaseListener {
 	 */
 	@Override
 	public void visitErrorNode(ErrorNode node) {
-		//doNothing
+		// doNothing
+	}
+
+	protected void addWhereRequired(ParserRuleContext ctx) {
+		Node n = new Node();
+		n.setClassName(ctx.getClass().toString());
+		n.setHash(calculate(ctx.toStringTree()));
+		list.add(n);
+	}
+
+	protected static int calculate(String s) {
+		String[] s1 = s.split(" ");
+		int sum = 0;
+		for (String str : s1) {
+			if (isInteger(str)) {
+				sum = (sum % Integer.MAX_VALUE + Integer.parseInt(str) % Integer.MAX_VALUE) % Integer.MAX_VALUE;
+			}
+		}
+		return sum;
+	}
+
+	protected static boolean isInteger(String s) {
+		return isInteger(s, 10);
+	}
+
+	protected static boolean isInteger(String s, int radix) {
+		if (s.isEmpty())
+			return false;
+		for (int i = 0; i < s.length(); i++) {
+			if (i == 0 && s.charAt(i) == '-') {
+				if (s.length() == 1)
+					return false;
+				else
+					continue;
+			}
+			if (Character.digit(s.charAt(i), radix) < 0)
+				return false;
+		}
+		return true;
 	}
 
 }

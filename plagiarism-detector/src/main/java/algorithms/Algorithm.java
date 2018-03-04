@@ -8,6 +8,7 @@ import parser.Node;
  * @author Vaibhav Dave, Shail Shah
  *
  */
+@FunctionalInterface
 public interface Algorithm {
 	/**
 	 * Compute the similarity between two Node lists
