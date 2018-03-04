@@ -48,18 +48,15 @@ public class AlgorithmController implements IAlgorithmController {
 	/**
 	 * Compute the similarity between the set files
 	 * @return a number that denotes the degree of similarity
+	 * @throws IOException 
 	 */
 	@Override
-	public double getAns() {
+	public double getAns(Enums.AlgorithmType algorithmType) throws IOException {
 		List<Node> nodeList1 = new LinkedList<>();
 		FileInputStream fis = null;
 		CLexer lexer = null;
-		try {
-			fis = new FileInputStream(fileToBeParsed);
-			lexer = new CLexer(CharStreams.fromStream(fis));
-		} catch (IOException e) {
-			//doNothing
-		}
+		fis = new FileInputStream(fileToBeParsed);
+		lexer = new CLexer(CharStreams.fromStream(fis));
 
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		CParser parser = new CParser(tokens);
@@ -86,7 +83,7 @@ public class AlgorithmController implements IAlgorithmController {
 		walker2.walk(extractor2, tree2);
 
 		IAlgorithmFactory factory = new AlgorithmFactory();
-		Algorithm algo = factory.getAlgorithm(Enums.AlgorithmType.NW);
+		Algorithm algo = factory.getAlgorithm(algorithmType);
 
 		return algo.computeSimilarity(nodeList1, nodeList2);
 	}
@@ -94,16 +91,17 @@ public class AlgorithmController implements IAlgorithmController {
 	/**
 	 * Driver function
 	 * @param args not used currently
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		IAlgorithmController start = new AlgorithmController();
-		String file1path = "C:"+File.separator+"Javalib"+File.separator+"Test"+File.separator+"sample.c";
-		String file2path = "C:"+File.separator+"Javalib"+File.separator+"Test"+File.separator+"sample2.c";
+		String file1path = "sample.c";
+		String file2path = "sample2.c";
 		File file1 = new File(file1path);
 		File file2 = new File(file2path);
 		
 		start.setFiles(file1, file2);
-		double ans = start.getAns();
+		double ans = start.getAns(Enums.AlgorithmType.LCS);
 		
 		
 		Logger logger = Logger.getLogger("logger");

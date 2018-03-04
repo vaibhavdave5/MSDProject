@@ -1,6 +1,9 @@
 package controllers;
 
 import java.io.File;
+import java.io.IOException;
+
+import algorithms.Enums;
 
 /**
  * The main controller of the application that can tell if two files are similar
@@ -19,5 +22,5 @@ public interface IAlgorithmController {
 	     * Get the similarity between the two files 
 	     * @return a number representing the similarity between two files
 	     */
-	    double getAns();	
+	    double getAns(Enums.AlgorithmType algorithmType) throws IOException;	
 }
