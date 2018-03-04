@@ -1,0 +1,5 @@
+projectKey=org.sonarqube:plagiarism-detector
+serverUrl=http://localhost:9000
+dashboardUrl=http://localhost:9000/dashboard/index/org.sonarqube:plagiarism-detector
+ceTaskId=AWHySBsKjndKzReVJP6y
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AWHySBsKjndKzReVJP6y
