@@ -107,6 +107,6 @@ public class AlgorithmController implements IAlgorithmController {
 		Logger logger = Logger.getLogger("logger");
 		String strAns = "" + ans;
 		logger.log(Level.FINE, strAns);
-
+		System.out.println(strAns);
 	}
 }
