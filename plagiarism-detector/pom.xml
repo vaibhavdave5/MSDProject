@@ -53,7 +53,7 @@
 	<repositories>
     <repository>
       <id>local</id>
-      <url>${basedir}/3rd-party</url>
+      <url>${basedir}/3rd-party/jfxrt.jar</url>
     </repository>
   </repositories>
 </project>
