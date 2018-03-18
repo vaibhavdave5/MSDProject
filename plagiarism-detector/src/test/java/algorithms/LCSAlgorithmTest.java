@@ -21,7 +21,7 @@ public class LCSAlgorithmTest {
 		List<Node> list1 = new LinkedList<>();
 		List<Node> list2 = new LinkedList<>();
 		
-		Algorithm lcs = new LCSAlgorithm();
+		AlgorithmStrategy lcs = new LCSAlgorithm();
 		lcs.computeSimilarity(list1, list2);
 		
 	}

@@ -1,6 +1,5 @@
 package algorithms;
 
-import static org.junit.Assert.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -19,7 +18,7 @@ public class NeemanWalshAlgorithmTest {
 		List<Node> list1 = new LinkedList<>();
 		List<Node> list2 = new LinkedList<>();
 		
-		Algorithm nw = new AlgorithmFactory().getAlgorithm(Enums.AlgorithmType.NW);
+		AlgorithmStrategy nw = new NeemanWalshAlgorithm();
 		System.out.println(nw.computeSimilarity(list1, list2));		
 	}
 

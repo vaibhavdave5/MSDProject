@@ -3,8 +3,7 @@ package controllers;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
-
-import algorithms.Enums.AlgorithmType;
+import algorithms.LCSAlgorithm;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -33,7 +32,7 @@ public class MainController {
 	private static final Logger LOGGER = Logger.getLogger(MainController.class.getName());
 	private String errorMessage = "An Error Occured!";
 	
-	/**
+	/** 
 	 * This method handles the event when the setting button on the main page is pressed.
 	 */
 	public void openSettings() {
@@ -59,13 +58,12 @@ public class MainController {
 	 */
 	public void computeSimilarity() {
 		if(fileOne != null && fileTwo != null) {
-			IAlgorithmController algo = new AlgorithmController();
-			algo.setFiles(fileOne, fileTwo);
+			AlgorithmController algo = new AlgorithmController(fileOne, fileTwo);			
 			try {
 				ScreenController screenController = ScreenController.getInstance();
 				if(screenController != null) {
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("/Summary.fxml"));
-					loader.setController(new SummaryController(algo.getAns(AlgorithmType.LCS)));
+					loader.setController(new SummaryController(algo.getAns(new LCSAlgorithm())));
 					screenController.addScreen("summary", loader.load());
 					screenController.activate("summary");
 				} else {

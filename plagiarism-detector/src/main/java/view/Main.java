@@ -15,7 +15,6 @@ import javafx.stage.Stage;
  *
  */
 
-@SuppressWarnings("restriction")
 public class Main extends Application {
 	
 	private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
