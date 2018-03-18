@@ -37,7 +37,13 @@
 
 
 	<dependencies>
-		
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>javaFX</artifactId>
+			<version>2.2</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/jfxrt.jar</systemPath>
+		</dependency>
 		<dependency>
 			<groupId>org.antlr</groupId>
 			<artifactId>antlr4-runtime</artifactId>
