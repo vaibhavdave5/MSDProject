@@ -25,6 +25,7 @@ pipeline {
        stage('SonarQube') {
             steps {
                 withSonarQubeEnv('SonarQube') {
+                        sh 'mvn -f ./plagiarism-detector install:install-file -Dfile=jfxrt.jar -DgroupId=com.oracle -DartifactId=javaFX -Dversion=2.2 -Dpackaging=jar'
                         sh 'mvn -f ./plagiarism-detector clean install'
                         sh 'mvn -f ./plagiarism-detector sonar:sonar'
                 }
@@ -38,7 +39,7 @@ pipeline {
                retry(5) {
                   script {
                     def qg = waitForQualityGate()
-                    if (qg.status == 'OK') {
+                    if (qg.status != 'OK') {
                   error "Pipeline aborted due to quality gate failure: ${qg.status}"
               }
             }
