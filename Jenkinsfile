@@ -24,7 +24,7 @@ pipeline {
        stage('SonarQube') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                        sh 'mvn -f ./plagiarism-detector -o clean install'
+                        sh 'mvn -f ./plagiarism-detector clean install'
                         sh 'mvn -f ./plagiarism-detector sonar:sonar'
                 }
             }
