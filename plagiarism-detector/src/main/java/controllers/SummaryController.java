@@ -40,7 +40,7 @@ public class SummaryController {
 	 * This method initializes the content on the Summary page of the application
 	 * 
 	 * Note: This is hard-coded and will be addressed in the next sprint.
-	 */
+	 */ 
 	@FXML protected void initialize() {
 		if(similarity == null || similarity < 0 || similarity > 100) {
 			return;
