@@ -10,7 +10,6 @@ pipeline {
        stage('Build') {
            steps {
                echo "Building"
-               sh 'mvn -f ./plagiarism-detector install:install-file -Dfile=jfxrt.jar -DgroupId=com.oracle -DartifactId=javaFX -Dversion=2.2 -Dpackaging=jar'
                sh 'mvn -f ./plagiarism-detector compile'
                sh 'mvn -f ./plagiarism-detector package'
            }
@@ -25,7 +24,6 @@ pipeline {
        stage('SonarQube') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                        sh 'mvn -f ./plagiarism-detector install:install-file -Dfile=jfxrt.jar -DgroupId=com.oracle -DartifactId=javaFX -Dversion=2.2 -Dpackaging=jar'
                         sh 'mvn -f ./plagiarism-detector clean install'
                         sh 'mvn -f ./plagiarism-detector sonar:sonar'
                 }
