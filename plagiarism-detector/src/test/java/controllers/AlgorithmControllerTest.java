@@ -2,8 +2,6 @@ package controllers;
 
 import static org.junit.Assert.*;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.logging.Logger;
 import org.junit.Test;
 import algorithms.LCSAlgorithm;
@@ -45,7 +43,7 @@ public class AlgorithmControllerTest {
 		File file1 = new File(path1);
 		File file2 = new File(path2);
 
-		controllers.AlgorithmController ac = new controllers.AlgorithmController(file1, file2);
+		AlgorithmController ac = new AlgorithmController(file1, file2);
 		double ans = -1;
 		ans = ac.getAns(new NeemanWalshAlgorithm());
 		assertTrue(ans >= 0 && ans <= 1);
