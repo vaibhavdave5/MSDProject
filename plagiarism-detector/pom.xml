@@ -41,7 +41,6 @@
 			<groupId>com.oracle</groupId>
 			<artifactId>javaFX</artifactId>
 			<version>2.2</version>
-			<type>pom.lastUpdated</type>
 		</dependency>
 		<dependency>
 			<groupId>org.antlr</groupId>
@@ -57,9 +56,9 @@
 	</dependencies>
 	
 	<repositories>
-	    <repository>
-	      <id>local</id>
-	      <url>${basedir}/jfxrt.jar</url>
-	    </repository>
+    <repository>
+      <id>local</id>
+      <url>${basedir}/jfxrt.jar</url>
+    </repository>
   </repositories>
 </project>
