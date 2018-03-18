@@ -2,7 +2,6 @@ package controllers;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import parser.Node;
@@ -39,11 +38,9 @@ public class AlgorithmController {
 				
 		CLexer lexer1=null;
 		CLexer lexer2=null;
-		try {
+		try { 
 			lexer1 = new CLexer(CharStreams.fromStream(new FileInputStream(file1)));
 			lexer2 = new CLexer(CharStreams.fromStream(new FileInputStream(file2)));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
