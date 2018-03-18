@@ -17,8 +17,8 @@
 		<sonar.exclusions>
 			**/C*.java,
 			***/C*.java,
-			**/pom.xml,
-			***/pom.xml
+			/pom.xml,
+			*/pom.xml
 		</sonar.exclusions>
 	</properties>
 
