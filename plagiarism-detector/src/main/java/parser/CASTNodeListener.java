@@ -6,10 +6,10 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-public class ASTNodeListener implements CListener {
+public class CASTNodeListener implements CListener {
 
 	List<Node> list;
-	public ASTNodeListener(List<Node> list) {
+	public CASTNodeListener(List<Node> list) {
 		this.list = list;
 	}
 
