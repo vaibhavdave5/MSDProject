@@ -4,14 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="ap" maxHeight="407.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="407.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+<AnchorPane maxHeight="407.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="407.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
    <children>
-      <Button layoutX="231.0" layoutY="319.0" mnemonicParsing="false" onAction="#computeSimilarity" prefHeight="17.0" prefWidth="130.0" text="View Summary" />
-      <Label fx:id="upload" alignment="CENTER" contentDisplay="CENTER" layoutX="210.0" layoutY="239.0" prefHeight="44.0" prefWidth="188.0" />
-      <Button layoutX="175.0" layoutY="151.0" mnemonicParsing="false" onAction="#openFile1" text="Choose .c file 1" />
-      <Button layoutX="304.0" layoutY="151.0" mnemonicParsing="false" onAction="#openFile2" text="Choose .c file 2" />
-      <Label fx:id="file1" contentDisplay="CENTER" layoutX="197.0" layoutY="107.0" prefHeight="27.0" prefWidth="69.0" />
-      <Label fx:id="file2" layoutX="326.0" layoutY="107.0" prefHeight="27.0" prefWidth="69.0" />
-      <Button fx:id="settings" layoutX="517.0" layoutY="14.0" mnemonicParsing="false" onAction="#openSettings" text="Settings" />
+      <Button layoutX="231.0" layoutY="319.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="130.0" text="View Summary" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="210.0" layoutY="239.0" prefHeight="44.0" prefWidth="188.0" />
+      <Button layoutX="175.0" layoutY="151.0" mnemonicParsing="false" text="Choose .c file 1" />
+      <Button layoutX="304.0" layoutY="151.0" mnemonicParsing="false" text="Choose .c file 2" />
+      <Label contentDisplay="CENTER" layoutX="197.0" layoutY="107.0" prefHeight="27.0" prefWidth="69.0" />
+      <Label layoutX="326.0" layoutY="107.0" prefHeight="27.0" prefWidth="69.0" />
+      <Button layoutX="517.0" layoutY="14.0" mnemonicParsing="false" text="Settings" />
    </children>
 </AnchorPane>

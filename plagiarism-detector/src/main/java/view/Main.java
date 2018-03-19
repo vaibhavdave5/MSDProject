@@ -2,7 +2,6 @@ package view;
 	
 import java.util.logging.Logger;
 
-import controllers.ScreenController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,7 +25,6 @@ public class Main extends Application {
 			Parent root = FXMLLoader.load(getClass().getResource("/Start.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
-			ScreenController.setInstance(scene);
 			primaryStage.show();
 		} catch(Exception e) {
 			LOGGER.info(errorMessage);
