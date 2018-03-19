@@ -22,8 +22,8 @@ public class AlgorithmControllerTest {
 	 */
 	@Test
 	public void test() {
-		String path1 = "sample3.c";
-		String path2 = "sample4.c";
+		String path1 = "sample.c";
+		String path2 = "sample2.c";
 		File file1 = new File(path1);
 		File file2 = new File(path2);
 
@@ -38,8 +38,8 @@ public class AlgorithmControllerTest {
 	 */
 	@Test
 	public void test2() {
-		String path1 = "sample3.c";
-		String path2 = "sample4.c";
+		String path1 = "sample.c";
+		String path2 = "sample2.c";
 		File file1 = new File(path1);
 		File file2 = new File(path2);
 
