@@ -15,7 +15,10 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<sonar.exclusions>
-			${project.basedir}/src/main/java/parser
+			**/C*.java,
+			***/C*.java,
+			***/ASTNodeListener*.java,
+			***/ASTNodeListener*.java
 		</sonar.exclusions>
 		<sonar.junit.reportPaths>
 			${project.basedir}/target/surefire-reports
