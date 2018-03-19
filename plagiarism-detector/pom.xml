@@ -38,6 +38,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>javaFX</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<dependency>
 			<groupId>org.antlr</groupId>
 			<artifactId>antlr4-runtime</artifactId>
 			<version>4.7.1</version>
@@ -53,7 +58,7 @@
 	<repositories>
     <repository>
       <id>local</id>
-      <url>${basedir}</url>
+      <url>${basedir}/3rd-party</url>
     </repository>
   </repositories>
 </project>
