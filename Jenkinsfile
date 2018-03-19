@@ -28,6 +28,7 @@ pipeline {
                         sh 'mvn -f ./plagiarism-detector install:install-file -Dfile=jfxrt.jar -DgroupId=com.oracle -DartifactId=javaFX -Dversion=2.2 -Dpackaging=jar'
                         sh 'mvn -f ./plagiarism-detector clean install'
                         sh 'mvn -f ./plagiarism-detector sonar:sonar'
+                        
                 }
             }
         }
