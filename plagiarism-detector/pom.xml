@@ -17,8 +17,8 @@
 		<sonar.exclusions>
 			**/C*.java,
 			***/C*.java,
-			/pom.xml,
-			*/pom.xml
+			**/ASTNodeListener.java,
+			***/ASTNodeListener.java
 		</sonar.exclusions>
 		<sonar.junit.reportPaths>
 			${project.basedir}/target/surefire-reports
