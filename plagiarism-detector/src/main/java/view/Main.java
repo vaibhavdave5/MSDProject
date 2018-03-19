@@ -26,6 +26,7 @@ public class Main extends Application {
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			primaryStage.close();
 		} catch(Exception e) {
 			LOGGER.info(errorMessage);
 		}

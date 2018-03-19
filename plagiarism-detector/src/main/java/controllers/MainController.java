@@ -7,6 +7,5 @@ package controllers;
  *
  */
 public class MainController {
-	// Empty class
-
+	//Empty class
 }
