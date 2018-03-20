@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import org.junit.Test;
 import algorithms.LCSAlgorithm;
 import algorithms.NeemanWalshAlgorithm;
+import driver.Student;
 
 /**
  * Tests AlgorithmController to see if the similarity is computed as expected.
@@ -22,14 +23,15 @@ public class AlgorithmControllerTest {
 	 */
 	@Test
 	public void test() {
-		String path1 = "sample.c";
-		String path2 = "sample2.c";
+		String path1 = "sample3.c";
+		String path2 = "sample4.c";
 		File file1 = new File(path1);
 		File file2 = new File(path2);
 
 		AlgorithmController ac = new AlgorithmController(file1, file2);
 		double ans = -1;
 		ans = ac.getAns(new LCSAlgorithm());
+		System.out.println(ans);
 		assertTrue(ans >= 0 && ans <= 1);
 	}
 
@@ -38,16 +40,38 @@ public class AlgorithmControllerTest {
 	 */
 	@Test
 	public void test2() {
-		String path1 = "sample.c";
-		String path2 = "sample2.c";
+		String path1 = "sample3.c";
+		String path2 = "sample4.c";
 		File file1 = new File(path1);
 		File file2 = new File(path2);
 
 		AlgorithmController ac = new AlgorithmController(file1, file2);
 		double ans = -1;
 		ans = ac.getAns(new NeemanWalshAlgorithm());
+		System.out.println(ans);
 		assertTrue(ans >= 0 && ans <= 1);
 	}
+	
+	@Test
+    public void testGetters() {
+        Student s = new Student(101, "John", "s.s@husky.neu.edu");
+        assertEquals(101, s.getId());
+        assertEquals("John", s.getName());
+        assertEquals("s.s@husky.neu.edu", s.getEmail());
+    }
+    
+    @Test
+    public void testSetters() {
+        Student s = new Student(101, "Sam", "s.s@husky.neu.edu");
+        s.setId(102);
+        assertEquals(102, s.getId());
+        
+        s.setName("John");
+        assertEquals("John", s.getName());
+        
+        s.setEmail("j.j@husky.neu.edu");
+        assertEquals("j.j@husky.neu.edu", s.getEmail());
+    }
 
 	/**
 	 * Should throw IOException if path is invalid
