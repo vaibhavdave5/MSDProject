@@ -1,12 +1,12 @@
 package parser;
 
 public class Node {
-	private String className;
+	private int ruleNumber;
 	private int hash;
 
 	@Override
 	public int hashCode() {
-		return className.hashCode();
+		return hash;
 	}
 
 	@Override
@@ -15,7 +15,7 @@ public class Node {
 			return false;
 		} else if (!(o instanceof Node)) {
 			return false;
-		} else if (((Node) o).className.equals(this.className) && (((Node) o).hash == this.hash)) {
+		} else if () {
 			return true;
 		}
 
