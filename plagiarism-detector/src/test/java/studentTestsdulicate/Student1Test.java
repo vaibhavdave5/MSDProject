@@ -1,14 +1,13 @@
-package driver;
+package studentTestsdulicate;
 
 import static org.junit.Assert.*;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import driver.Student;
 
-public class StudentTests {
-	
+public class Student1Test {
+
 	@Test
 	public void testGetters() {
 		Student s = new Student(101, "Sam", "s.s@husky.neu.edu");
@@ -29,5 +28,6 @@ public class StudentTests {
 		s.setEmail("j.j@husky.neu.edu");
 		assertEquals("j.j@husky.neu.edu", s.getEmail());
 	}
+
 
 }
