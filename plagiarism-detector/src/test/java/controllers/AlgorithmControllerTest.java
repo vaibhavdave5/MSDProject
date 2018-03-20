@@ -23,14 +23,15 @@ public class AlgorithmControllerTest {
 	 */
 	@Test
 	public void test() {
-		String path1 = "sample.c";
-		String path2 = "sample2.c";
+		String path1 = "sample3.c";
+		String path2 = "sample4.c";
 		File file1 = new File(path1);
 		File file2 = new File(path2);
 
 		AlgorithmController ac = new AlgorithmController(file1, file2);
 		double ans = -1;
 		ans = ac.getAns(new LCSAlgorithm());
+		System.out.println(ans);
 		assertTrue(ans >= 0 && ans <= 1);
 	}
 
@@ -39,14 +40,15 @@ public class AlgorithmControllerTest {
 	 */
 	@Test
 	public void test2() {
-		String path1 = "sample.c";
-		String path2 = "sample2.c";
+		String path1 = "sample3.c";
+		String path2 = "sample4.c";
 		File file1 = new File(path1);
 		File file2 = new File(path2);
 
 		AlgorithmController ac = new AlgorithmController(file1, file2);
 		double ans = -1;
 		ans = ac.getAns(new NeemanWalshAlgorithm());
+		System.out.println(ans);
 		assertTrue(ans >= 0 && ans <= 1);
 	}
 

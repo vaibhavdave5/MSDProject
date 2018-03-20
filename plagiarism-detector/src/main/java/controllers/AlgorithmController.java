@@ -51,7 +51,7 @@ public class AlgorithmController {
 				
 		new ParseTreeWalker().walk(new CASTNodeListener(nodeList1), parser1.compilationUnit());
 		new ParseTreeWalker().walk(new CASTNodeListener(nodeList2), parser2.compilationUnit());
-		
+		System.out.println("Parsing done");
 		
 		return new AlgorithmContext(strategy).executeStrategy(nodeList1, nodeList2);
 	}
