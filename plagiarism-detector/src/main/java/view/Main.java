@@ -14,7 +14,6 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		// Empty method
-		gj
 	}
 	
 	public static void main(String[] args) {
