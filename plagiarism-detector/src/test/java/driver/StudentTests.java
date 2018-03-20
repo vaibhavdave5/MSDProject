@@ -1,22 +1,17 @@
-package algorithms;
+package driver;
 
 import static org.junit.Assert.*;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import controllers.Student;
+import driver.Student;
 
 public class StudentTests {
-
-	private static Student s;
-	@BeforeClass
-	public static void getStudentInstance() {
-		s = new Student(101, "Sam", "s.s@husky.neu.edu");
-	}
 	
 	@Test
 	public void testGetters() {
+		Student s = new Student(101, "Sam", "s.s@husky.neu.edu");
 		assertEquals(101, s.getId());
 		assertEquals("Sam", s.getName());
 		assertEquals("s.s@husky.neu.edu", s.getEmail());
@@ -24,6 +19,7 @@ public class StudentTests {
 	
 	@Test
 	public void testSetters() {
+		Student s = new Student(101, "Sam", "s.s@husky.neu.edu");
 		s.setId(102);
 		assertEquals(102, s.getId());
 		
