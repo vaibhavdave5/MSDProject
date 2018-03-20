@@ -1,4 +1,4 @@
-package driver;
+package controllers;
 
 public class Student {
 	private String name;

@@ -5,8 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import driver.Student;
-
 public class StudentTests {
 
 	private static Student s;
