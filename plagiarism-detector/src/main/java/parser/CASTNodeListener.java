@@ -6,9 +6,10 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
+
 public class CASTNodeListener implements CListener {
 
-	List<Node> list;
+	private List<Node> list;	
 	public CASTNodeListener(List<Node> list) {
 		this.list = list;
 	}
@@ -27,7 +28,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitPrimaryExpression(CParser.PrimaryExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -39,7 +40,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterGenericSelection(CParser.GenericSelectionContext ctx) {
-	//	addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -51,7 +52,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitGenericSelection(CParser.GenericSelectionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -63,7 +64,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterGenericAssocList(CParser.GenericAssocListContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -75,7 +76,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitGenericAssocList(CParser.GenericAssocListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -87,7 +88,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterGenericAssociation(CParser.GenericAssociationContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -99,7 +100,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitGenericAssociation(CParser.GenericAssociationContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -123,7 +124,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitPostfixExpression(CParser.PostfixExpressionContext ctx) {
-		
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -147,7 +148,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitArgumentExpressionList(CParser.ArgumentExpressionListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -171,7 +172,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitUnaryExpression(CParser.UnaryExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -183,7 +184,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterUnaryOperator(CParser.UnaryOperatorContext ctx) {
-		
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -195,7 +196,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitUnaryOperator(CParser.UnaryOperatorContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -219,7 +220,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitCastExpression(CParser.CastExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -243,7 +244,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitMultiplicativeExpression(CParser.MultiplicativeExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -267,7 +268,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitAdditiveExpression(CParser.AdditiveExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -291,7 +292,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitShiftExpression(CParser.ShiftExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -315,7 +316,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitRelationalExpression(CParser.RelationalExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -339,7 +340,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitEqualityExpression(CParser.EqualityExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -363,7 +364,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitAndExpression(CParser.AndExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -387,7 +388,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitExclusiveOrExpression(CParser.ExclusiveOrExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -411,7 +412,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitInclusiveOrExpression(CParser.InclusiveOrExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -435,7 +436,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitLogicalAndExpression(CParser.LogicalAndExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -459,7 +460,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitLogicalOrExpression(CParser.LogicalOrExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -483,7 +484,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitConditionalExpression(CParser.ConditionalExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -507,7 +508,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitAssignmentExpression(CParser.AssignmentExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -519,7 +520,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterAssignmentOperator(CParser.AssignmentOperatorContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -531,7 +532,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitAssignmentOperator(CParser.AssignmentOperatorContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -543,7 +544,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterExpression(CParser.ExpressionContext ctx) {
-	//	addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -555,7 +556,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitExpression(CParser.ExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -579,7 +580,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitConstantExpression(CParser.ConstantExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -603,7 +604,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitDeclaration(CParser.DeclarationContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -615,7 +616,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterDeclarationSpecifiers(CParser.DeclarationSpecifiersContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -627,7 +628,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitDeclarationSpecifiers(CParser.DeclarationSpecifiersContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -639,7 +640,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterDeclarationSpecifiers2(CParser.DeclarationSpecifiers2Context ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -651,7 +652,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitDeclarationSpecifiers2(CParser.DeclarationSpecifiers2Context ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -663,7 +664,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterDeclarationSpecifier(CParser.DeclarationSpecifierContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -675,7 +676,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitDeclarationSpecifier(CParser.DeclarationSpecifierContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -687,7 +688,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterInitDeclaratorList(CParser.InitDeclaratorListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -699,7 +700,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitInitDeclaratorList(CParser.InitDeclaratorListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -711,7 +712,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterInitDeclarator(CParser.InitDeclaratorContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -723,7 +724,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitInitDeclarator(CParser.InitDeclaratorContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -735,7 +736,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterStorageClassSpecifier(CParser.StorageClassSpecifierContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -747,7 +748,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitStorageClassSpecifier(CParser.StorageClassSpecifierContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -759,7 +760,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterTypeSpecifier(CParser.TypeSpecifierContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -771,7 +772,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitTypeSpecifier(CParser.TypeSpecifierContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -795,7 +796,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitStructOrUnionSpecifier(CParser.StructOrUnionSpecifierContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -819,7 +820,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitStructOrUnion(CParser.StructOrUnionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -831,7 +832,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterStructDeclarationList(CParser.StructDeclarationListContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -843,7 +844,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitStructDeclarationList(CParser.StructDeclarationListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -855,7 +856,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterStructDeclaration(CParser.StructDeclarationContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -867,7 +868,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitStructDeclaration(CParser.StructDeclarationContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -879,7 +880,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterSpecifierQualifierList(CParser.SpecifierQualifierListContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -891,7 +892,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitSpecifierQualifierList(CParser.SpecifierQualifierListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -903,7 +904,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterStructDeclaratorList(CParser.StructDeclaratorListContext ctx) {
-		//addWhereRequired(ctx);
+	        addWhereRequired(ctx);
 	}
 
 	/**
@@ -915,7 +916,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitStructDeclaratorList(CParser.StructDeclaratorListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -939,7 +940,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitStructDeclarator(CParser.StructDeclaratorContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -951,7 +952,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterEnumSpecifier(CParser.EnumSpecifierContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -963,7 +964,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitEnumSpecifier(CParser.EnumSpecifierContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -975,7 +976,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterEnumeratorList(CParser.EnumeratorListContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -987,7 +988,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitEnumeratorList(CParser.EnumeratorListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1011,7 +1012,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitEnumerator(CParser.EnumeratorContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1035,7 +1036,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitEnumerationConstant(CParser.EnumerationConstantContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1059,7 +1060,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitAtomicTypeSpecifier(CParser.AtomicTypeSpecifierContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1083,7 +1084,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitTypeQualifier(CParser.TypeQualifierContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1107,7 +1108,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitFunctionSpecifier(CParser.FunctionSpecifierContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1119,7 +1120,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterAlignmentSpecifier(CParser.AlignmentSpecifierContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1131,7 +1132,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitAlignmentSpecifier(CParser.AlignmentSpecifierContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1155,7 +1156,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitDeclarator(CParser.DeclaratorContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1167,7 +1168,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterDirectDeclarator(CParser.DirectDeclaratorContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -1179,7 +1180,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitDirectDeclarator(CParser.DirectDeclaratorContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1191,7 +1192,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterGccDeclaratorExtension(CParser.GccDeclaratorExtensionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1203,7 +1204,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitGccDeclaratorExtension(CParser.GccDeclaratorExtensionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1215,7 +1216,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterGccAttributeSpecifier(CParser.GccAttributeSpecifierContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1227,7 +1228,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitGccAttributeSpecifier(CParser.GccAttributeSpecifierContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1239,7 +1240,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterGccAttributeList(CParser.GccAttributeListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1251,7 +1252,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitGccAttributeList(CParser.GccAttributeListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1263,7 +1264,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterGccAttribute(CParser.GccAttributeContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -1275,7 +1276,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitGccAttribute(CParser.GccAttributeContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1287,7 +1288,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterNestedParenthesesBlock(CParser.NestedParenthesesBlockContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1299,7 +1300,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitNestedParenthesesBlock(CParser.NestedParenthesesBlockContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1311,7 +1312,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterPointer(CParser.PointerContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1323,7 +1324,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitPointer(CParser.PointerContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1335,7 +1336,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterTypeQualifierList(CParser.TypeQualifierListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1347,7 +1348,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitTypeQualifierList(CParser.TypeQualifierListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1359,7 +1360,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterParameterTypeList(CParser.ParameterTypeListContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -1371,7 +1372,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitParameterTypeList(CParser.ParameterTypeListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1395,7 +1396,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitParameterList(CParser.ParameterListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1419,7 +1420,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitParameterDeclaration(CParser.ParameterDeclarationContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1431,7 +1432,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterIdentifierList(CParser.IdentifierListContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -1443,7 +1444,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitIdentifierList(CParser.IdentifierListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1467,7 +1468,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitTypeName(CParser.TypeNameContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1479,7 +1480,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterAbstractDeclarator(CParser.AbstractDeclaratorContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -1491,7 +1492,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitAbstractDeclarator(CParser.AbstractDeclaratorContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1503,7 +1504,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterDirectAbstractDeclarator(CParser.DirectAbstractDeclaratorContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -1515,7 +1516,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitDirectAbstractDeclarator(CParser.DirectAbstractDeclaratorContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1539,7 +1540,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitTypedefName(CParser.TypedefNameContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1551,7 +1552,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterInitializer(CParser.InitializerContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -1563,7 +1564,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitInitializer(CParser.InitializerContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1575,7 +1576,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterInitializerList(CParser.InitializerListContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -1587,7 +1588,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitInitializerList(CParser.InitializerListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1599,7 +1600,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterDesignation(CParser.DesignationContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1611,7 +1612,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitDesignation(CParser.DesignationContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1623,7 +1624,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterDesignatorList(CParser.DesignatorListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1635,7 +1636,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitDesignatorList(CParser.DesignatorListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1647,7 +1648,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterDesignator(CParser.DesignatorContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1659,7 +1660,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitDesignator(CParser.DesignatorContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1671,7 +1672,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterStaticAssertDeclaration(CParser.StaticAssertDeclarationContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -1683,7 +1684,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitStaticAssertDeclaration(CParser.StaticAssertDeclarationContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1707,7 +1708,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitStatement(CParser.StatementContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1719,7 +1720,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterLabeledStatement(CParser.LabeledStatementContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -1731,7 +1732,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitLabeledStatement(CParser.LabeledStatementContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1755,7 +1756,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitCompoundStatement(CParser.CompoundStatementContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1767,7 +1768,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterBlockItemList(CParser.BlockItemListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1779,7 +1780,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitBlockItemList(CParser.BlockItemListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1803,7 +1804,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitBlockItem(CParser.BlockItemContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1827,7 +1828,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitExpressionStatement(CParser.ExpressionStatementContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1851,7 +1852,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitSelectionStatement(CParser.SelectionStatementContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1875,7 +1876,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitIterationStatement(CParser.IterationStatementContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1899,7 +1900,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitForCondition(CParser.ForConditionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1923,7 +1924,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitForDeclaration(CParser.ForDeclarationContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1947,7 +1948,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitForExpression(CParser.ForExpressionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1971,7 +1972,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitJumpStatement(CParser.JumpStatementContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -1983,8 +1984,9 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterCompilationUnit(CParser.CompilationUnitContext ctx) {
-		// doNothing
+		//doNothing
 	}
+	
 
 	/**
 	 * {@inheritDoc}
@@ -1995,7 +1997,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitCompilationUnit(CParser.CompilationUnitContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -2007,7 +2009,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterTranslationUnit(CParser.TranslationUnitContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -2019,7 +2021,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitTranslationUnit(CParser.TranslationUnitContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -2031,7 +2033,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterExternalDeclaration(CParser.ExternalDeclarationContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -2043,7 +2045,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitExternalDeclaration(CParser.ExternalDeclarationContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -2067,7 +2069,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitFunctionDefinition(CParser.FunctionDefinitionContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -2079,7 +2081,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterDeclarationList(CParser.DeclarationListContext ctx) {
-		//addWhereRequired(ctx);
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -2091,7 +2093,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void exitDeclarationList(CParser.DeclarationListContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -2103,7 +2105,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterEveryRule(ParserRuleContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -2114,9 +2116,9 @@ public class CASTNodeListener implements CListener {
 	 * </p>
 	 */
 	@Override
-
+	
 	public void exitEveryRule(ParserRuleContext ctx) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -2128,7 +2130,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void visitTerminal(TerminalNode node) {
-		// doNothing
+		//doNothing
 	}
 
 	/**
@@ -2140,44 +2142,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void visitErrorNode(ErrorNode node) {
-		// doNothing
-	}
-
-	protected void addWhereRequired(ParserRuleContext ctx) {
-		Node n = new Node(ctx.getRuleIndex());
-		n.setHash(calculate(ctx.toStringTree()));
-		list.add(n);
-	}
- 
-	protected static int calculate(String s) {
-		String[] s1 = s.split(" ");
-		int sum = 0;
-		for (String str : s1) {
-			if (isInteger(str)) {
-				sum = (sum % Integer.MAX_VALUE + Integer.parseInt(str) % Integer.MAX_VALUE) % Integer.MAX_VALUE;
-			}
-		}
-		return sum;
-	}
-
-	protected static boolean isInteger(String s) {
-		return isInteger(s, 10);
-	}
-
-	protected static boolean isInteger(String s, int radix) {
-		if (s.isEmpty())
-			return false;
-		for (int i = 0; i < s.length(); i++) {
-			if (i == 0 && s.charAt(i) == '-') {
-				if (s.length() == 1)
-					return false; 
-				else
-					continue;
-			}
-			if (Character.digit(s.charAt(i), radix) < 0)
-				return false;
-		}
-		return true;
+		//doNothing
 	}
 
 }

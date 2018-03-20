@@ -34,8 +34,8 @@ public class AlgorithmController {
 	}
 
 	public double getAns(AlgorithmStrategy strategy) {
-		List<Node> nodeList1 = new LinkedList<>();
-		List<Node> nodeList2 = new LinkedList<>();
+		List<Node> nodeList1 = new ArrayList<>();
+		List<Node> nodeList2 = new ArrayList<>();
 				
 		CLexer lexer1=null;
 		CLexer lexer2=null;

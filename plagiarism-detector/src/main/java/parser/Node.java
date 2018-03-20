@@ -1,17 +1,12 @@
 package parser;
 
 public class Node {
-	private int ruleNumber;
+	private String className;
 	private int hash;
-	private Object object;
-
-	public Node(int ruleNumber) {
-		this.ruleNumber = ruleNumber; 
-	}
 
 	@Override
 	public int hashCode() {
-		return object.hashCode();
+		return className.hashCode();
 	}
 
 	@Override
@@ -20,19 +15,19 @@ public class Node {
 			return false;
 		} else if (!(o instanceof Node)) {
 			return false;
-		} else if (this.ruleNumber==((Node)o).getRuleNumber()) {
+		} else if (((Node) o).className.equals(this.className) && (((Node) o).hash == this.hash)) {
 			return true;
 		}
 
 		return false;
 	}
 
+	public void setClassName(String str) {
+		className = str;
+	}
+
 	public void setHash(int val) {
 		hash = val;
-	}
-	
-	public int getRuleNumber(){
-		return ruleNumber;
 	}
 
 }

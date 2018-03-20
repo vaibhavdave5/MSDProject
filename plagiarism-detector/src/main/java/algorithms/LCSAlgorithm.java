@@ -45,6 +45,6 @@ public class LCSAlgorithm implements AlgorithmStrategy{
 				else
 					map[i][j] = Math.max(map[i - 1][j], map[i][j - 1]);
 
-		return (double) map[size1][size2];
+		return (double) map[size1][size2]; 
 	}
 }
