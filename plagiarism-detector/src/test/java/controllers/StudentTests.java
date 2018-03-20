@@ -1,9 +1,11 @@
-package driver;
+package controllers;
 
 import static org.junit.Assert.*;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import driver.Student;
 
 public class StudentTests {
 
