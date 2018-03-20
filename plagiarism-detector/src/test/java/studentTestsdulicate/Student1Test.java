@@ -10,9 +10,9 @@ public class Student1Test {
 
 	@Test
 	public void testGetters() {
-		Student s = new Student(101, "Sam", "s.s@husky.neu.edu");
+		Student s = new Student(101, "John", "s.s@husky.neu.edu");
 		assertEquals(101, s.getId());
-		assertEquals("Sam", s.getName());
+		assertEquals("John", s.getName());
 		assertEquals("s.s@husky.neu.edu", s.getEmail());
 	}
 	
