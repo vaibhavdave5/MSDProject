@@ -11,7 +11,7 @@
       <Button layoutX="606.0" layoutY="512.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="148.0" text="View Summary" />
       <Label alignment="CENTER" layoutX="177.0" layoutY="418.0" prefHeight="40.0" prefWidth="169.0" text="Folder Name" />
       <TextField fx:id="filterVal" layoutX="374.0" layoutY="425.0" />
-      <Button layoutX="56.0" layoutY="62.0" mnemonicParsing="false" onAction="#browseDirectory" prefHeight="40.0" prefWidth="108.0" text="Open" />
+      <Button fx:id="dir" layoutX="56.0" layoutY="62.0" mnemonicParsing="false" onAction="#browseDirectory" prefHeight="40.0" prefWidth="108.0" text="Open" />
       <Label fx:id="dirName" layoutX="386.0" layoutY="22.0" prefHeight="40.0" prefWidth="368.0" />
       <ListView fx:id="dirContent" layoutX="386.0" layoutY="82.0" prefHeight="300.0" prefWidth="368.0" />
    </children>
