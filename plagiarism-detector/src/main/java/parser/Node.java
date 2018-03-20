@@ -3,10 +3,11 @@ package parser;
 public class Node {
 	private int ruleNumber;
 	private int hash;
-
+	private Object object;
+	
 	@Override
 	public int hashCode() {
-		return hash;
+		return ;
 	}
 
 	@Override
