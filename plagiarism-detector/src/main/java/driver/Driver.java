@@ -1,7 +1,10 @@
 package driver;
 
-import java.io.File;
-import java.util.logging.Logger;
+import java.io.*;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 public class Driver {
 	private static Driver instance = new Driver();
@@ -13,12 +16,39 @@ public class Driver {
 		else return instance;
 	}
 	
-	private File[] files = null;
-	private Logger logger = Logger.getLogger(this.getClass().toString());
+	private List<String> repoPaths;
+	private String hwDir;
+	private static Map<Integer, Student> studentMap;
+//	
+	public void setRepoPaths(List<String> repoPaths) {
+		this.repoPaths = repoPaths;
+	}
 	
-	public void setFiles(File... files) {
-		this.files = files;
+	public void setHWDir(String hwDir) {
+		this.hwDir = hwDir;
+	}
+	
+	public void extractFiles() throws IOException {
+		for(String repoPath: this.repoPaths) {
+			int id = Integer.parseInt(repoPath.substring(-3));
+			String hwPath = this.repoPaths + "/"+ this.hwDir;
+			FileReader file = new FileReader(hwPath);
+			
+		}
 	}
 	
 	
+	void getStudentData() {
+		final String xlsPath = "./studentData.xlsx";
+		ExcelReader er = new ExcelReader();
+		try {
+			studentMap = er.getStudentMap(xlsPath);
+		} 
+		catch (InvalidFormatException e) {
+			e.printStackTrace();
+		} 
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

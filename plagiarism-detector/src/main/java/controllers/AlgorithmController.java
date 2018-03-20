@@ -28,6 +28,7 @@ public class AlgorithmController {
 	private File file1 = null;
 	private File file2 = null;
 	private Logger logger = Logger.getLogger(this.getClass().toString());
+	
 	public AlgorithmController(File file1, File file2) {
 		this.file1 = file1;
 		this.file2 = file2;
