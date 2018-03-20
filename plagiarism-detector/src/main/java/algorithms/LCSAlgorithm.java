@@ -10,7 +10,7 @@ import parser.Node;
  * @author Vaibhav Dave, Shail Shah
  *
  */
-public class LCSAlgorithm implements Algorithm {
+public class LCSAlgorithm implements AlgorithmStrategy{
 
 	/**
 	 * Compute the similarity between two Node lists

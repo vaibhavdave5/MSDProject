@@ -9,7 +9,7 @@ import parser.Node;
  * @since 02/28/2018
  */
 
-public class NeemanWalshAlgorithm implements Algorithm {
+public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 
 	private int[][] track;
 	private int[][] c;
@@ -22,7 +22,7 @@ public class NeemanWalshAlgorithm implements Algorithm {
 	 * @return a number representing the similarity between two nodes
 	 */
 	@Override
-	public double computeSimilarity(List<Node> list1, List<Node> list2) throws IllegalArgumentException  {
+	public double computeSimilarity(List<Node> list1, List<Node> list2) {
 		if(list1.isEmpty()|| list2.isEmpty()){
 			throw new IllegalArgumentException();
 		}
