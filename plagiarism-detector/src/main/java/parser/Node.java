@@ -4,10 +4,14 @@ public class Node {
 	private int ruleNumber;
 	private int hash;
 	private Object object;
-	
+
+	Node() {
+		object = new Object();
+	}
+
 	@Override
 	public int hashCode() {
-		return ;
+		return object.hashCode();
 	}
 
 	@Override
