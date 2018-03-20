@@ -2,10 +2,14 @@ package controllers;
 
 import static org.junit.Assert.*;
 import java.io.File;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 import org.junit.Test;
 import algorithms.LCSAlgorithm;
 import algorithms.NeemanWalshAlgorithm;
+import driver.Driver;
 import driver.Student;
 
 /**
@@ -53,6 +57,8 @@ public class AlgorithmControllerTest {
 		assertTrue(ans >= 0 && ans <= 1);
 	}
 	
+	// Student Tests
+	/////////////////////////////////////////////////////////////////////////////
 	@Test
     public void testGetters() {
         Student s = new Student(101, "John", "s.s@husky.neu.edu");
@@ -73,7 +79,31 @@ public class AlgorithmControllerTest {
         s.setEmail("j.j@husky.neu.edu");
         assertEquals("j.j@husky.neu.edu", s.getEmail());
     }
+    //////////////////////////////////////////////////////////////////////////////
+    
+    // Driver Tests
+    //////////////////////////////////////////////////////////////////////////////
+    @Test
+	public void testDriver() {
+		Driver driver = Driver.getInstance();
+		List<String> repoPaths = new ArrayList<>();
+		repoPaths.add("C:/student-110");
+		repoPaths.add("C:/student-111");
+		driver.setRepoPaths(repoPaths);
+		driver.setHWDir("HW3");
+		URL url = getClass().getResource("../driver/studentData.xlsx");
+		System.out.println(url);
+		driver.getStudentData(url.getPath());
+	}
+	
+	@Test
+	public void testgetStudentDataInvalidXLSXPath() {
+		Driver driver = Driver.getInstance();
+		driver.getStudentData("invalid_path_to_test_IOException");
+	}
 
+	//////////////////////////////////////////////////////////////////////////////
+	
 	/**
 	 * Should throw IOException if path is invalid
 	 * 

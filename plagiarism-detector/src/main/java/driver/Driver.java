@@ -12,8 +12,7 @@ public class Driver {
 	private Driver() {}
 	
 	public static Driver getInstance() {
-		if(instance == null) return new Driver();
-		else return instance;
+		return instance;
 	}
 	
 	private List<String> repoPaths;
@@ -28,18 +27,8 @@ public class Driver {
 		this.hwDir = hwDir;
 	}
 	
-	public void extractFiles() throws IOException {
-		for(String repoPath: this.repoPaths) {
-			int id = Integer.parseInt(repoPath.substring(-3));
-			String hwPath = this.repoPaths + "/"+ this.hwDir;
-			FileReader file = new FileReader(hwPath);
-			
-		}
-	}
-	
-	
-	void getStudentData() {
-		final String xlsPath = "./studentData.xlsx";
+	public void getStudentData(String xlsPath) {
+//		final String xlsPath = "C:/MSD/team-107/plagiarism-detector/src/main/java/driver/studentData.xlsx";
 		ExcelReader er = new ExcelReader();
 		try {
 			studentMap = er.getStudentMap(xlsPath);
