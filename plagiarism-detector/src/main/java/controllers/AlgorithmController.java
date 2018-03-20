@@ -50,9 +50,9 @@ public class AlgorithmController {
 		CParser parser1 = new CParser(new CommonTokenStream(lexer1));
 		CParser parser2 = new CParser(new CommonTokenStream(lexer2));
 				
-		new ParseTreeWalker().walk(new ASTNodeListener(nodeList1), parser1.compilationUnit());
-		new ParseTreeWalker().walk(new ASTNodeListener(nodeList2), parser2.compilationUnit());
-		
+		new ParseTreeWalker().walk(new CASTNodeListener(nodeList1), parser1.compilationUnit());
+		new ParseTreeWalker().walk(new CASTNodeListener(nodeList2), parser2.compilationUnit());
+		System.out.println("Parsing done");
 		
 		return new AlgorithmContext(strategy).executeStrategy(nodeList1, nodeList2);
 	}
