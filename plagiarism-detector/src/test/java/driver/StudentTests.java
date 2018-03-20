@@ -26,4 +26,5 @@ public class StudentTests {
         s.setEmail("j.j@husky.neu.edu");
         assertEquals("j.j@husky.neu.edu", s.getEmail());
     }
+
 }
