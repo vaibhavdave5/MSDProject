@@ -2148,6 +2148,8 @@ public class CASTNodeListener implements CListener {
 		n.setClassName(ctx.getClass().toString());
 		n.setHash(calculate(ctx.toStringTree()));
 		list.add(n);
+		System.out.println(ctx.start.getStartIndex());
+		System.out.println(ctx.getStop().getStopIndex());
 	}
 
 	protected static int calculate(String s) {
