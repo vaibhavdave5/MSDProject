@@ -1,9 +1,11 @@
-package controllers;
+package algorithms;
 
 import static org.junit.Assert.*;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import controllers.Student;
 
 public class StudentTests {
 
