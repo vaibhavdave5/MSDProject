@@ -5,8 +5,8 @@ public class Node {
 	private int hash;
 	private Object object;
 
-	Node() {
-		object = new Object();
+	public Node(int ruleNumber) {
+		this.ruleNumber = ruleNumber; 
 	}
 
 	@Override
@@ -20,19 +20,19 @@ public class Node {
 			return false;
 		} else if (!(o instanceof Node)) {
 			return false;
-		} else if () {
+		} else if (this.ruleNumber==((Node)o).getRuleNumber()) {
 			return true;
 		}
 
 		return false;
 	}
 
-	public void setClassName(String str) {
-		className = str;
-	}
-
 	public void setHash(int val) {
 		hash = val;
+	}
+	
+	public int getRuleNumber(){
+		return ruleNumber;
 	}
 
 }
