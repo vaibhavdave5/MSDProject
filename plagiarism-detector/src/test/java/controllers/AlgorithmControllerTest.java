@@ -91,7 +91,7 @@ public class AlgorithmControllerTest {
 		repoPaths.add("C:/student-111");
 		driver.setRepoPaths(repoPaths);
 		driver.setHWDir("HW3");
-		URL url = getClass().getResource("../driver/studentData.xlsx");
+		URL url = getClass().getResource("studentData.xlsx");
 		System.out.println(url);
 		driver.getStudentData(url.getPath());
 	}
