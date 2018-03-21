@@ -2,7 +2,9 @@ package controllers;
 
 import static org.junit.Assert.*;
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -92,9 +94,15 @@ public class AlgorithmControllerTest {
 		driver.setRepoPaths(repoPaths);
 		driver.setHWDir("HW3");
 		System.out.println(System.getProperty("java.class.path"));
-		URL url = getClass().getResource("studentData.xlsx");
-		System.out.println(url);
-		driver.getStudentData(url.getPath());
+		String path;
+		try {
+			path = URLDecoder.decode(getClass().getResource("studentData.xlsx").getPath(), "UTF-8");
+			System.out.println(path);
+			driver.getStudentData(path);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 //	@Test
