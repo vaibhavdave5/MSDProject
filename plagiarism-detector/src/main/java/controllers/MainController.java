@@ -59,5 +59,6 @@ public class MainController {
 		summary.getStyleClass().add("danger");
 		logo.getStyleClass().add("logo");
 		search.setPromptText("Search...");
+		
 	}
 }
