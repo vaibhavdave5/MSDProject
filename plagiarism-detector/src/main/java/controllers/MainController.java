@@ -4,9 +4,11 @@ import java.io.File;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TreeView;
+import javafx.scene.control.cell.CheckBoxTreeCell;
 import javafx.stage.DirectoryChooser;
 
 /**
@@ -18,23 +20,21 @@ import javafx.stage.DirectoryChooser;
  */
 public class MainController {
 	
-	
-	@FXML private Label dirName;
-	@FXML private ListView<String> dirContent;
-	@FXML private TextField filterVal;
-	
-	
+	@FXML private TreeView<String> dirContent;
+	@FXML private TextField search;
 	@FXML private Button dir;
+	@FXML private Button summary;
+	@FXML private Label logo;
 	
 	@FXML protected void initialize() {
-		dir.getStyleClass().add("success");
+		applyStyle();
 	}
 	
 	public void browseDirectory() {
 		try {
 			File directory = selectDirectory();
-			setDirectoryLabel(directory);
-			populateView(directory);
+			dirContent.setRoot(populateView(directory));
+			dirContent.setShowRoot(true);
 		} catch(Exception e) { }
 	}
 	
@@ -42,18 +42,22 @@ public class MainController {
 		return new DirectoryChooser().showDialog(null);
 	}
 	
-	private void setDirectoryLabel(File directory) {
-		if(directory == null) {
-			dirName.setText("No Directory selected");
-		} else {
-			dirName.setText(directory.getAbsolutePath());
-		}
-	}
+	public CheckBoxTreeItem<String> populateView(File directory) {
+		dirContent.setCellFactory(CheckBoxTreeCell.<String>forTreeView());
+		CheckBoxTreeItem<String> root = new CheckBoxTreeItem<>(directory.getName());
+        for(File f : directory.listFiles()) {
+            if(f.isDirectory()) {
+            		root.getChildren().add(new CheckBoxTreeItem<String>(f.getName()));
+                root.getChildren().add(populateView(f));
+            }
+        }
+        return root;
+    }
 	
-	private void populateView(File directory) {
-		dirContent.getItems().clear();
-		for(File file : directory.listFiles()) {
-			dirContent.getItems().add(file.getName());
-		}
+	private void applyStyle() {
+		dir.getStyleClass().add("primary");
+		summary.getStyleClass().add("danger");
+		logo.getStyleClass().add("logo");
+		search.setPromptText("Search...");
 	}
 }
