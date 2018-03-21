@@ -67,7 +67,8 @@ public class LCSAlgorithm implements AlgorithmStrategy {
 
 		// Start from the right-most-bottom-most corner and
 		// one by one store characters in lcs[]
-		int i = list1.size(), j = list2.size();
+		int i = list1.size()
+		int j = list2.size();
 		while (i > 0 && j > 0) {
 			// If current character in X[] and Y are same, then
 			// current character is part of LCS

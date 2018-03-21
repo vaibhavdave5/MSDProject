@@ -13,7 +13,6 @@ import parser.Node;
 
 public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 
-	private Node[] answer;
 	private int[][] track;
 	private int[][] c;
 	private int[][] s;
