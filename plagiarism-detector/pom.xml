@@ -45,6 +45,7 @@
 			</plugins>
 		</pluginManagement>
 		<resources>
+<<<<<<< HEAD
 	      <resource>
 	        <directory>src/main/resources/view</directory>
 	        <includes>
@@ -53,6 +54,15 @@
 	        </includes>
 	      </resource>
 	    </resources>
+=======
+			<resource>
+				<directory>src/main/resources/view</directory>
+				<includes>
+					<include>**/*.fxml</include>
+				</includes>
+			</resource>
+		</resources>
+>>>>>>> b421d99d92e7aac1549a61f7ac83d5e276aa9870
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -65,11 +75,28 @@
 		</plugins>
 	</build>
 	<dependencies>
+		<dependency> 
+			<groupId>com.oracle</groupId> 
+			<artifactId>javaFX</artifactId> 
+			<version>2.2</version> 
+		</dependency> 
 		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>javaFX</artifactId>
-			<version>2.2</version>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
 		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.antlr</groupId>
 			<artifactId>antlr4-runtime</artifactId>
@@ -83,16 +110,22 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
 		<dependency>
-		    <groupId>org.apache.poi</groupId>
-		    <artifactId>poi</artifactId>
-		    <version>3.17</version>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.17</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
 		<dependency>
-		    <groupId>org.apache.poi</groupId>
-		    <artifactId>poi-ooxml</artifactId>
-		    <version>3.17</version>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.17</version>
+		</dependency>
+		
+		<dependency>
+		  	<groupId>commons-io</groupId>
+		  	<artifactId>commons-io</artifactId>
+		  	<version>2.6</version>
 		</dependency>
 		
 		<dependency>

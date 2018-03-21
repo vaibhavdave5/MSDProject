@@ -11,6 +11,6 @@ public interface AlgorithmStrategy {
 	 * @param list2 another list of Nodes
 	 * @return a number representing the similarity between two nodes
 	 */
-	public double computeSimilarity(List<Node> list1, List<Node> list2);
+	public Result computeSimilarity(List<Node> list1, List<Node> list2);
 
 }

@@ -21,7 +21,6 @@ import javafx.stage.DirectoryChooser;
 public class MainController {
 	
 	@FXML private TreeView<String> dirContent;
-	@FXML private TextField search;
 	@FXML private Button dir;
 	@FXML private Button summary;
 	@FXML private Label logo;
@@ -58,7 +57,6 @@ public class MainController {
 		dir.getStyleClass().add("primary");
 		summary.getStyleClass().add("danger");
 		logo.getStyleClass().add("logo");
-		search.setPromptText("Search...");
 		
 	}
 }

@@ -2144,9 +2144,7 @@ public class CASTNodeListener implements CListener {
 	}
 
 	protected void addWhereRequired(ParserRuleContext ctx) {
-		Node n = new Node();
-		n.setClassName(ctx.getClass().toString());
-		n.setHash(calculate(ctx.toStringTree()));
+		Node n = new Node(ctx.getStart().getLine(),ctx.getStop().getLine(),calculate(ctx.toStringTree()),ctx.getClass().toString());
 		list.add(n);
 	}
  
@@ -2156,8 +2154,8 @@ public class CASTNodeListener implements CListener {
 		for (String str : s1) {
 			if (isInteger(str)) {
 				sum = (sum % Integer.MAX_VALUE + Integer.parseInt(str) % Integer.MAX_VALUE) % Integer.MAX_VALUE;
-			}
-		}
+	 		}
+		} 
 		return sum;
 	}
 
