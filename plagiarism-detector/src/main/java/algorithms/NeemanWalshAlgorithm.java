@@ -20,10 +20,8 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 	/**
 	 * Compute the similarity between two Node lists
 	 * 
-	 * @param list1
-	 *            a list of Nodes
-	 * @param list2
-	 *            another list of Nodes
+	 * @param list1 a list of Nodes
+	 * @param list2 another list of Nodes
 	 * @return a number representing the similarity between two nodes
 	 */
 	@Override

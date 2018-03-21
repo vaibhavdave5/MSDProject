@@ -2144,9 +2144,7 @@ public class CASTNodeListener implements CListener {
 	}
 
 	protected void addWhereRequired(ParserRuleContext ctx) {
-		Node n = new Node(ctx.getStart().getLine(),ctx.getStop().getLine());
-		n.setClassName(ctx.getClass().toString());
-		n.setHash(calculate(ctx.toStringTree()));
+		Node n = new Node(ctx.getStart().getLine(),ctx.getStop().getLine(),calculate(ctx.toStringTree()),ctx.getClass().toString());
 		list.add(n);
 	}
  

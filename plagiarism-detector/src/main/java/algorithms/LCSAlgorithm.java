@@ -12,16 +12,13 @@ import parser.Node;
 public class LCSAlgorithm implements AlgorithmStrategy {
 	private int[][] map;
 
-	public LCSAlgorithm() {
-	}
+	public LCSAlgorithm() {}
 
 	/**
 	 * Compute the similarity between two Node lists
 	 * 
-	 * @param list1
-	 *            a list of Nodes
-	 * @param list2
-	 *            another list of Nodes
+	 * @param list1 a list of Nodes
+	 * @param list2 another list of Nodes
 	 * @return a number representing the similarity between two nodes
 	 */
 	@Override
@@ -36,10 +33,8 @@ public class LCSAlgorithm implements AlgorithmStrategy {
 	/**
 	 * Compute the LCS for two given Node lists
 	 * 
-	 * @param list1
-	 *            a list of Nodes
-	 * @param list2
-	 *            another list of Nodes
+	 * @param list1 a list of Nodes
+	 * @param list2 another list of Nodes
 	 * @return a number representing the similarity between two nodes
 	 */
 	private int computeLCS(List<Node> list1, List<Node> list2) {
@@ -57,33 +52,26 @@ public class LCSAlgorithm implements AlgorithmStrategy {
 		return map[size1][size2];
 	}
 
+	/**
+	 * Backtrack the result of the lcs and find out the actual 
+	 * Longest common subsequence
+	 * @param list1
+	 * @param list2
+	 * @return Node[] of lcs
+ 	 */
 	public Node[] getCommonNodes(List<Node> list1, List<Node> list2) {
-		// Following code is used to print LCS
 		int index = computeLCS(list1, list2);
-		
-		// Create a character array to store the lcs string
 		Node[] lcs = new Node[index + 1];
 		lcs[index] = null; // Set the terminating character
-
-		// Start from the right-most-bottom-most corner and
-		// one by one store characters in lcs[]
 		int i = list1.size();
 		int j = list2.size();
 		while (i > 0 && j > 0) {
-			// If current character in X[] and Y are same, then
-			// current character is part of LCS
 			if (list1.get(i - 1).equals(list2.get(i - 1))) {
-				// Put current character in result
 				lcs[index - 1] = list1.get(i - 1);
-
-				// reduce values of i, j and index
 				i--;
 				j--;
 				index--;
 			}
-
-			// If not same, then find the larger of two and
-			// go in the direction of larger value
 			else if (map[i - 1][j] > map[i][j - 1])
 				i--;
 			else

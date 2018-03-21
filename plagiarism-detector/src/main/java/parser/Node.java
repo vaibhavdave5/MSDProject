@@ -6,15 +6,16 @@ public class Node {
 	private int startLine;
 	private int endline;
 	
-	public Node(int start, int end){
+	public Node(int start, int end, int hash, String className){
 		this.startLine = start;
 		this.endline = end;
+		this.hash = hash;
+		this.className = className;
 	}
-	
-	
+		
 	@Override
 	public int hashCode() {
-		return className.hashCode();
+		return className.length(); 
 	}
 
 	@Override
@@ -28,14 +29,6 @@ public class Node {
 		}
 
 		return false;
-	}
-
-	public void setClassName(String str) {
-		className = str;
-	}
-
-	public void setHash(int val) {
-		hash = val;
 	}
 
 	public int getHash() {
