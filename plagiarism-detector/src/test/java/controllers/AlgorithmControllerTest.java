@@ -102,8 +102,8 @@ public class AlgorithmControllerTest {
     public void testgetCodeFiles() {
     	Driver driver = Driver.getInstance();
 		List<String> repoPaths = new ArrayList<>();
-		repoPaths.add("C:/test-repos/student-110");
-		repoPaths.add("C:/test-repos/student-111");
+		repoPaths.add("/test-repos/student-110");
+		repoPaths.add("/test-repos/student-111");
 		driver.setRepoPaths(repoPaths);
 		driver.setHWDir("HW3");
 		driver.getCodeFiles();
