@@ -43,7 +43,7 @@ public class Driver {
 	}
 	
 	public String constructPath(String repoPath) {
-		return repoPath + "/" + this.hwDir;
+		return repoPath + File.separator + this.hwDir;
 	}
 	
 	public void getCodeFiles() {
