@@ -57,12 +57,5 @@ public class AlgorithmControllerTest {
 	 * 
 	 * @throws IOException
 	 */
-//	@Test(expected = FileNotFoundException.class)
-//	public void testIOException() throws IOException {
-//		String path1 = "NonExistant.c";
-//		String path2 = "sample.c";
-//		controllers.AlgorithmController ac = new controllers.AlgorithmController(new File(path1), new File(path2));
-//		ac.getAns(new LCSAlgorithm());
-//	}
 
 }

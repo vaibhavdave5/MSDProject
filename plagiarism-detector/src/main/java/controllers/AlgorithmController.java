@@ -30,7 +30,7 @@ public class AlgorithmController {
 	private Logger logger = Logger.getLogger(this.getClass().toString());
 	public AlgorithmController(File file1, File file2) {
 		this.file1 = file1;
-		this.file2 = file2;
+		this.file2 = file2; 
 	}
 
 	public double getAns(AlgorithmStrategy strategy) {
@@ -53,7 +53,7 @@ public class AlgorithmController {
 		new ParseTreeWalker().walk(new CASTNodeListener(nodeList2), parser2.compilationUnit());
 		System.out.println("Parsing done");
 		
-		return new AlgorithmContext(strategy).executeStrategy(nodeList1, nodeList2);
+		return new AlgorithmContext(strategy).executeStrategy(nodeList1, nodeList2).getPercentage();
 	}
 
 	
