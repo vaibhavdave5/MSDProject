@@ -118,26 +118,27 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 		int g = -1;
 		for (int i = 1; i <= m; i++) {
 			for (int j = 1; j <= n; j++) {
-				if (i == 0 && j == 0) {
-					c[i][j] = 0;
-				} else if (i == 0) {
-					c[i][j] = g * j;
-				} else if (j == 0) {
-					c[i][j] = g * i;
-				} else {
-					c = setC(c, i, j, g);
-				}
+
+				c = setC(c, i, j, g);
+
 			}
 		}
 	}
 
 	/**
 	 * 
-	 * @param c
-	 * @param i
-	 * @param j
-	 * @param g
-	 * @return
+	 * This function is an intermediate to setting the array of Comparison array
+	 * in the algorithm
+	 * 
+	 * @param comparison
+	 *            array[][]
+	 * @param int
+	 *            i
+	 * @param int
+	 *            j
+	 * @param int
+	 *            g
+	 * @return updated array
 	 */
 	private int[][] setC(int[][] c, int i, int j, int g) {
 		int scorediag = c[i - 1][j - 1] + s[i][j];
@@ -154,6 +155,13 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 		return c;
 	}
 
+	/**
+	 * Converts the List of Nodes to node array
+	 * 
+	 * @param List
+	 *            of Nodes
+	 * @return Array of Nodes
+	 */
 	private Node[] convertListToArray(List<Node> nodes) {
 		Node[] ans = new Node[nodes.size()];
 

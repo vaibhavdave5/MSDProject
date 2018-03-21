@@ -1,8 +1,6 @@
 package algorithms;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import parser.Node;
 
 /**
@@ -73,7 +71,7 @@ public class LCSAlgorithm implements AlgorithmStrategy {
 		while (i > 0 && j > 0) {
 			// If current character in X[] and Y are same, then
 			// current character is part of LCS
-			if (list1.get(i - 1) == list2.get(i - 1)) {
+			if (list1.get(i - 1).equals(list2.get(i - 1))) {
 				// Put current character in result
 				lcs[index - 1] = list1.get(i - 1);
 
