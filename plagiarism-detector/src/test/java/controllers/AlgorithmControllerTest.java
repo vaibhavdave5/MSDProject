@@ -6,8 +6,8 @@ import java.util.logging.Logger;
 import org.junit.Test;
 import algorithms.LCSAlgorithm;
 import algorithms.NeemanWalshAlgorithm;
-import driver.Student;
-import parser.Node;
+import java.util.Set;
+import algorithms.SimilaritySnippet;
 
 /**
  * Tests AlgorithmController to see if the similarity is computed as expected.
@@ -15,6 +15,7 @@ import parser.Node;
  * @author Vaibhav Dave, Shail
  *
  */
+
 public class AlgorithmControllerTest {
 
 	Logger logger = Logger.getLogger(this.getClass().toString());
@@ -53,81 +54,21 @@ public class AlgorithmControllerTest {
 		assertTrue(ans >= 0 && ans <= 1);
 	}
 	
+	/**
+	 * Tests larger files
+	 */
 	@Test
-    public void testGetters() {
-        Student s = new Student(101, "John", "s.s@husky.neu.edu");
-        assertEquals(101, s.getId());
-        assertEquals("John", s.getName());
-        assertEquals("s.s@husky.neu.edu", s.getEmail());
-    }
-    
-    @Test
-    public void testSetters() {
-        Student s = new Student(101, "Sam", "s.s@husky.neu.edu");
-        s.setId(102);
-        assertEquals(102, s.getId());
-        
-        s.setName("John");
-        assertEquals("John", s.getName());
-        
-        s.setEmail("j.j@husky.neu.edu");
-        assertEquals("j.j@husky.neu.edu", s.getEmail());
-    }
+	public void test3() {
+		String path1 = "sample3.c";
+		String path2 = "sample4.c";
+		File file1 = new File(path1);
+		File file2 = new File(path2);
 
-	/**
-	 * Should throw IOException if path is invalid
-	 * 
-	 * @throws IOException
-	 */
-
-	/**
-	 * Checking if the equals method works correctly
-	 */
-	@Test
-	public void Nodetest() {
-		Node node = new Node(1, 40, 3, "Hello");
-		Node node2 = new Node(1, 50, 3, "Hi" );
-		assertFalse(node.equals(node2));
+		AlgorithmController ac = new AlgorithmController(file1, file2);
+		Set<SimilaritySnippet> set = ac.getResult(new LCSAlgorithm()).getSnippets();
+		for(SimilaritySnippet s : set){
+			System.out.println(s.getStart()+" "+s.getEnd());
+		}
 	}
-	
-	/**
-	 * Checks if equals work correctly with nulls
-	 */
-	@Test
-	public void Nodetest2() {
-		Node node = new Node(1, 40, 3, "Hello");
-		Node node2 = null;
-		assertFalse(node.equals(node2));
-	}
-	
-	/**
-	 * Checks if equals work correctly
-	 */
-	@Test
-	public void Nodetest3() {
-		Node node = new Node(1, 40, 3, "Hello");
-		Object node2 = new Object();
-		assertFalse(node.equals(node2));
-	}
-	
-	/**
-	 * Checks if equals work correctly for same objects
-	 */
-	@Test
-	public void Nodetest4() {
-		Node node = new Node(1, 40, 3, "Hello");
-		Node node2 = new Node(1, 40, 3, "Hello");
-		assertTrue(node.equals(node2));
-	}
-	
-	/**
-	 * Checks if equals objects have the same hashcode
-	 */
-	@Test
-	public void Nodetest5() {
-		Node node = new Node(1, 40, 3, "Hello");
-		Node node2 = new Node(1, 40, 3, "Hello");
-		assertTrue(node.hashCode()==node2.hashCode());
-	}
-	
+		
 }
