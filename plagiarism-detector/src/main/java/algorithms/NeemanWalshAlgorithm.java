@@ -118,7 +118,7 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 
 				c = setC(c, i, j, g);
 
-			}
+			} 
 		}
 	}
 
@@ -127,14 +127,10 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 	 * This function is an intermediate to setting the array of Comparison array
 	 * in the algorithm
 	 * 
-	 * @param comparison
-	 *            array[][]
-	 * @param int
-	 *            i
-	 * @param int
-	 *            j
-	 * @param int
-	 *            g
+	 * @param comparison array[][]
+	 * @param int i
+	 * @param int j
+	 * @param int g
 	 * @return updated array
 	 */
 	private int[][] setC(int[][] c, int i, int j, int g) {
