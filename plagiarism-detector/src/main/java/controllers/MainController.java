@@ -3,6 +3,7 @@ package controllers;
 import java.io.File;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -17,9 +18,17 @@ import javafx.stage.DirectoryChooser;
  */
 public class MainController {
 	
+	
 	@FXML private Label dirName;
 	@FXML private ListView<String> dirContent;
 	@FXML private TextField filterVal;
+	
+	
+	@FXML private Button dir;
+	
+	@FXML protected void initialize() {
+		dir.getStyleClass().add("success");
+	}
 	
 	public void browseDirectory() {
 		try {
