@@ -93,16 +93,8 @@ public class AlgorithmControllerTest {
 		repoPaths.add("C:/student-111");
 		driver.setRepoPaths(repoPaths);
 		driver.setHWDir("HW3");
-		System.out.println(System.getProperty("java.class.path"));
-		String path;
-		try {
-			path = URLDecoder.decode(getClass().getResource("/studentData.xlsx").getPath(), "UTF-8");
-			System.out.println(path);
-			driver.getStudentData(path);
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		URL url = this.getClass().getResource("/studentData.xlsx");
+		driver.getStudentData(url.getPath());
 	}
 	
 //	@Test
