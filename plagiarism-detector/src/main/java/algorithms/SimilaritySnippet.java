@@ -1,11 +1,10 @@
 package algorithms;
 
-
 public class SimilaritySnippet implements Comparable<SimilaritySnippet> {
 	private int start;
 	private int end;
-	
-	public SimilaritySnippet(int start, int end){
+
+	public SimilaritySnippet(int start, int end) {
 		this.start = start;
 		this.end = end;
 	}
@@ -20,25 +19,23 @@ public class SimilaritySnippet implements Comparable<SimilaritySnippet> {
 
 	@Override
 	public int compareTo(SimilaritySnippet o) {
-		return this.start-o.getStart();
+		return this.start - o.getStart();
 	}
 
 	@Override
 	public boolean equals(Object o) {
 		if (o == null) {
 			return false;
-		}
-
-		else if (!(o instanceof SimilaritySnippet)) {
+		}else if (!(o instanceof SimilaritySnippet)) {
 			return false;
+		} else {
+			return (this.start <= ((SimilaritySnippet) o).getStart() && this.end >= ((SimilaritySnippet) o).getStart());
 		}
-
-		return (this.start <= ((SimilaritySnippet) o).getStart() && this.end >= ((SimilaritySnippet) o).getStart());
 	}
 
 	@Override
-	public int hashCode(){
+	public int hashCode() {
 		return this.start;
 	}
-	
+
 }

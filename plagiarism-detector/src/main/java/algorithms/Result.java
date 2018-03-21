@@ -45,7 +45,7 @@ public class Result {
 	private Set<SimilaritySnippet> generateSnippet(){
 		Set<SimilaritySnippet> set = new TreeSet<>();
 		for(Node n: commonNodes){
-			if(!(n==null))
+			if(n!=null)
 			set.add(new SimilaritySnippet(n.getStart(),n.getEnd()));
 		}
 		return set;

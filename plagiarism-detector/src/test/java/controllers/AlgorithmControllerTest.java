@@ -2,23 +2,16 @@ package controllers;
 
 import static org.junit.Assert.*;
 import java.io.File;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import org.junit.Test;
 import algorithms.LCSAlgorithm;
 import algorithms.NeemanWalshAlgorithm;
-<<<<<<< HEAD
-import java.util.Set;
-import algorithms.SimilaritySnippet;
-=======
 import driver.Driver;
 import driver.Student;
 import parser.Node;
->>>>>>> 06cc16cc929d62af5bb12024dd5c2b6557fade50
 
 /**
  * Tests AlgorithmController to see if the similarity is computed as expected.
@@ -65,10 +58,6 @@ public class AlgorithmControllerTest {
 		System.out.println(ans);
 		assertTrue(ans >= 0 && ans <= 1);
 	}
-<<<<<<< HEAD
-	
-=======
-
 	// Student Tests
 	/////////////////////////////////////////////////////////////////////////////
 	@Test
