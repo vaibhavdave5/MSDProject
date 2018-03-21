@@ -16,6 +16,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import algorithms.AlgorithmContext;
 import algorithms.AlgorithmStrategy;
+import algorithms.Result;
 
 /**
  * The main controller of the application that can tell if two files are similar
@@ -31,12 +32,17 @@ public class AlgorithmController {
 	
 	public AlgorithmController(File file1, File file2) {
 		this.file1 = file1;
-		this.file2 = file2;
+		this.file2 = file2; 
 	}
 
-	public double getAns(AlgorithmStrategy strategy) {
-		List<Node> nodeList1 = new LinkedList<>();
-		List<Node> nodeList2 = new LinkedList<>();
+	/**
+	 * Gets the results from the type of algorithm passed in the strategy
+	 * @param strategy
+	 * @return Result
+	 */
+	public Result getResult(AlgorithmStrategy strategy) {
+		List<Node> nodeList1 = new ArrayList<>();
+		List<Node> nodeList2 = new ArrayList<>();
 				
 		CLexer lexer1=null;
 		CLexer lexer2=null;
@@ -52,10 +58,17 @@ public class AlgorithmController {
 				
 		new ParseTreeWalker().walk(new CASTNodeListener(nodeList1), parser1.compilationUnit());
 		new ParseTreeWalker().walk(new CASTNodeListener(nodeList2), parser2.compilationUnit());
-		System.out.println("Parsing done");
 		
 		return new AlgorithmContext(strategy).executeStrategy(nodeList1, nodeList2);
 	}
 
+	/**
+	 * Gets the result and returns the answer in percentage
+	 * @param strategy
+	 * @return double : Percentage
+	 */
+	public double getAns(AlgorithmStrategy strategy){
+		return getResult(strategy).getPercentage();
+	}
 	
 }

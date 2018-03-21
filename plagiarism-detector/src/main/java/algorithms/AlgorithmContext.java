@@ -11,7 +11,7 @@ public class AlgorithmContext {
 		this.strategy=strategy;
 	}
 	
-	public double executeStrategy(List<Node> list1, List<Node> list2){
+	public Result executeStrategy(List<Node> list1, List<Node> list2){
 		return strategy.computeSimilarity(list1, list2);
 	}
 
