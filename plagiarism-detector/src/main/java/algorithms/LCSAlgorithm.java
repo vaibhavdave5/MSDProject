@@ -6,7 +6,8 @@ import parser.Node;
 /**
  * An instance of LCS is able to compute the similarity between two Node Lists
  * 
- * @author Vaibhav Dave, Shail Shah
+ * @author Vaibhav Dave
+ * @author Shail Shah
  *
  */
 public class LCSAlgorithm implements AlgorithmStrategy {
@@ -54,9 +55,9 @@ public class LCSAlgorithm implements AlgorithmStrategy {
 
 	/**
 	 * Backtrack the result of the lcs and find out the actual 
-	 * Longest common subsequence
-	 * @param list1
-	 * @param list2
+	 * longest common subsequence
+	 * @param list1 a list of nodes
+	 * @param list2 another list of nodes
 	 * @return Node[] of lcs
  	 */
 	public Node[] getCommonNodes(List<Node> list1, List<Node> list2) {

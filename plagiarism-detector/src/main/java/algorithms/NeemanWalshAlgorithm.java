@@ -5,7 +5,8 @@ import java.util.List;
 import parser.Node;
 
 /**
- * This class demonstrates the implementation of Neeman-Walsh algorithm
+ * An object of NeemanWalshAlgorithm is able to compute the similarity
+ * between two Node lists, using the Neeman-Walsh Similarity Algorithm.
  * 
  * @author Vaibhav Dave
  * @since 02/28/2018
@@ -36,10 +37,8 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 
 	/**
 	 * 
-	 * @param list1
-	 *            first list of nodes
-	 * @param list2
-	 *            first list of nodes
+	 * @param list1 a list of nodes
+	 * @param list2 another list of nodes
 	 * @return length of the common nodes after optical alignment.
 	 */
 	private Node[] fetchOpticalAlignment(List<Node> list1, List<Node> list2) {
@@ -49,7 +48,7 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 		s = initializeSubstitutionMatrix(list1, list2);
 		track = new int[m + 1][n + 1];
 		c = new int[m + 1][n + 1];
-		computation(list1, list2);
+		populateC(list1, list2);
 		ans = counterDiagonal(list1, list2, track);
 
 		return ans;
@@ -57,10 +56,8 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 
 	/**
 	 * 
-	 * @param list1
-	 *            first list of nodes
-	 * @param list2
-	 *            first list of nodes
+	 * @param list1 a list of Nodes
+	 * @param list2 another list of Nodes
 	 * @return length of the common nodes after optical alignment.
 	 * 
 	 */
@@ -105,68 +102,41 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 	}
 
 	/**
-	 * 
-	 * @param list1
-	 * @param list2
+	 * Populate the c[]
+	 * @param list1 a list of Nodes
+	 * @param list2 another list of Nodes
 	 */
-	private void computation(List<Node> list1, List<Node> list2) {
+	private void populateC(List<Node> list1, List<Node> list2) {
 		int m = list1.size();
 		int n = list2.size();
-		int g = -1;
-		for (int i = 1; i <= m; i++) {
-			for (int j = 1; j <= n; j++) {
-
-				c = setC(c, i, j, g);
-
-			}
-		}
+		for (int i = 1; i <= m; i++)
+			for (int j = 1; j <= n; j++)
+				setC(i, j);
 	}
 
 	/**
-	 * 
-	 * This function is an intermediate to setting the array of Comparison array
-	 * in the algorithm
-	 * 
-	 * @param comparison
-	 *            array[][]
-	 * @param int
-	 *            i
-	 * @param int
-	 *            j
-	 * @param int
-	 *            g
-	 * @return updated array
+	 * Compute and set the correct value of c[i][j] and track[i][j]
+	 * @param i the row's index
+	 * @param j the column's index
 	 */
-	private int[][] setC(int[][] c, int i, int j, int g) {
+	private void setC(int i, int j) {
 		int scorediag = c[i - 1][j - 1] + s[i][j];
-		int scoreup = c[i - 1][j] + g;
-		int scoreleft = c[i][j - 1] + g;
+		int scoreup = c[i - 1][j] - 1;
+		int scoreleft = c[i][j - 1] - 1;
+
 		c[i][j] = Math.max(Math.max(scorediag, scoreup), scoreleft);
-		if (c[i][j] == scorediag) {
-			track[i][j] = 1;
-		} else if (c[i][j] == scoreleft) {
-			track[i][j] = 2;
-		} else {
-			track[i][j] = 3;
-		}
-		return c;
+
+		track[i][j] = (c[i][j] == scorediag) ? 1 :
+				(c[i][j] == scoreleft) ? 2 : 3;
 	}
 
 	/**
-	 * Converts the List of Nodes to node array
-	 * 
-	 * @param List
-	 *            of Nodes
-	 * @return Array of Nodes
+	 * Convert a list of Nodes to an array of Nodes
+	 * @param nodes a list of Nodes
+	 * @return and array of Nodes
 	 */
 	private Node[] convertListToArray(List<Node> nodes) {
-		Node[] ans = new Node[nodes.size()];
-
-		for (int i = 0; i < ans.length; i++) {
-			ans[i] = nodes.get(i);
-		}
-
-		return ans;
+		return nodes.stream().toArray(Node[]::new);
 	}
 
 }
