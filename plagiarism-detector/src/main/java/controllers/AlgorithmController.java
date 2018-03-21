@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.File;
+import org.apache.log4j.Logger;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -8,8 +9,6 @@ import parser.Node;
 import parser.*;
 import java.util.*;
 import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
@@ -28,7 +27,7 @@ public class AlgorithmController {
 
 	private File file1 = null;
 	private File file2 = null;
-	private Logger logger = Logger.getLogger(this.getClass().toString());
+	private static Logger logger = Logger.getLogger(AlgorithmController.class);
 	
 	public AlgorithmController(File file1, File file2) {
 		this.file1 = file1;
@@ -50,7 +49,7 @@ public class AlgorithmController {
 			lexer1 = new CLexer(CharStreams.fromStream(new FileInputStream(file1)));
 			lexer2 = new CLexer(CharStreams.fromStream(new FileInputStream(file2)));
 		} catch (IOException e) {
-			logger.log(Level.SEVERE, e.toString());
+			logger.error(e.toString());
 		} 
 	
 		CParser parser1 = new CParser(new CommonTokenStream(lexer1));

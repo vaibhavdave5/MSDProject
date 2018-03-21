@@ -2,9 +2,7 @@ package controllers;
 
 import static org.junit.Assert.*;
 import java.io.File;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -21,6 +19,7 @@ import parser.Node;
  * @author Vaibhav Dave, Shail
  *
  */
+
 public class AlgorithmControllerTest {
 
 	Logger logger = Logger.getLogger(this.getClass().toString());
@@ -59,7 +58,6 @@ public class AlgorithmControllerTest {
 		System.out.println(ans);
 		assertTrue(ans >= 0 && ans <= 1);
 	}
-
 	// Student Tests
 	/////////////////////////////////////////////////////////////////////////////
 	@Test
@@ -165,10 +163,6 @@ public class AlgorithmControllerTest {
 		assertTrue(node.equals(node2));
 	}
 
-	/**
-	 * Checks if equals objects have the same hashcode
-	 */
-	@Test
 	public void Nodetest5() {
 		Node node = new Node(1, 40, 3, "Hello");
 		Node node2 = new Node(1, 40, 3, "Hello");

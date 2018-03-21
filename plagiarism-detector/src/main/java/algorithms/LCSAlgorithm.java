@@ -12,8 +12,7 @@ import parser.Node;
 public class LCSAlgorithm implements AlgorithmStrategy {
 	private int[][] map;
 
-	public LCSAlgorithm() {}
-
+	
 	/**
 	 * Compute the similarity between two Node lists
 	 * 
