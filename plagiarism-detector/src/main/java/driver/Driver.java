@@ -27,8 +27,7 @@ public class Driver {
 		this.hwDir = hwDir;
 	}
 	
-	public void getStudentData(String xlsPath) {
-//		final String xlsPath = "C:/MSD/team-107/plagiarism-detector/src/main/java/driver/studentData.xlsx";
+	public static void getStudentData(String xlsPath) {
 		ExcelReader er = new ExcelReader();
 		try {
 			studentMap = er.getStudentMap(xlsPath);
