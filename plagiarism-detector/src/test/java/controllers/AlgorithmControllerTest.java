@@ -96,7 +96,7 @@ public class AlgorithmControllerTest {
 		System.out.println(System.getProperty("java.class.path"));
 		String path;
 		try {
-			path = URLDecoder.decode(getClass().getResource("studentData.xlsx").getPath(), "UTF-8");
+			path = URLDecoder.decode(getClass().getResource("/studentData.xlsx").getPath(), "UTF-8");
 			System.out.println(path);
 			driver.getStudentData(path);
 		} catch (UnsupportedEncodingException e) {
