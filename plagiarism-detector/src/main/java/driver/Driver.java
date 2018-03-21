@@ -10,6 +10,9 @@ import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
+import algorithms.LCSAlgorithm;
+import controllers.AlgorithmController;
+
 /**
  * 
  * @author darshan.panse
@@ -32,6 +35,7 @@ public class Driver {
 	private List<String> repoPaths;
 	private String hwDir;
 	private static Map<Integer, Student> studentMap;
+	private Map<Integer, Collection<File>> studentHWMap;
 
 	/**
 	 * Setter for repoPaths.
@@ -81,17 +85,35 @@ public class Driver {
 		int studentId = 0;
 		for(String repoPath: this.repoPaths) {
 			LOGGER.log(Level.INFO, repoPath);
-			path = constructPath(repoPath);
 			
 			studentId = Integer.parseInt(repoPath.substring(repoPath.length() - 3));
 			
+			path = constructPath(repoPath);
 			File dir = new File(path);
 			String[] extensions = {"c"};
 			Collection<File> listOfFiles = FileUtils.listFiles(dir, extensions, true);
 			
-			LOGGER.log(Level.INFO, "{0}", studentId);
-			for(File file: listOfFiles) {
-				LOGGER.log(Level.INFO, file.getAbsolutePath());
+			this.studentHWMap.put(studentId, listOfFiles);
+		}
+	}
+	
+	public void checkForPlagiarism(List<String> repoPaths, String hwDir) {
+		this.setRepoPaths(repoPaths);
+		this.setHWDir(hwDir);
+		this.getCodeFiles();
+		
+		for(Map.Entry<Integer, Collection<File>> entry1 : this.studentHWMap.entrySet()) {
+			for(Map.Entry<Integer, Collection<File>> entry2: this.studentHWMap.entrySet()) {
+				if(!entry1.equals(entry2) && entry1.getKey() < entry2.getKey()) {
+					Collection<File> fileList1 = entry1.getValue();
+					Collection<File> fileList2 = entry2.getValue();
+					for(File file1: fileList1) {
+						for(File file2: fileList2) {
+							AlgorithmController ac = new AlgorithmController(file1, file2);
+							ac.getAns(new LCSAlgorithm());
+						}
+					}
+				}
 			}
 		}
 	}
