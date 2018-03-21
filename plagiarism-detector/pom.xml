@@ -93,6 +93,12 @@
 		    <artifactId>poi-ooxml</artifactId>
 		    <version>3.17</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.7-SNAPSHOT</version>
+</dependency>
 	</dependencies>
 
 	<profiles>

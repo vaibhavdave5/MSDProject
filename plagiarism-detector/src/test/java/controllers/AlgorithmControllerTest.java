@@ -90,14 +90,25 @@ public class AlgorithmControllerTest {
 	public void testDriver() {
 		Driver driver = Driver.getInstance();
 		List<String> repoPaths = new ArrayList<>();
-		repoPaths.add("C:/student-110");
-		repoPaths.add("C:/student-111");
+		repoPaths.add("C:/test-repos/student-110");
+		repoPaths.add("C:/test-repos/student-111");
 		driver.setRepoPaths(repoPaths);
 		driver.setHWDir("HW3");
 		URL url = this.getClass().getResource("/studentData.xlsx");
 		Driver.getStudentData(url.getPath());
 	}
 	
+    @Test
+    public void testgetCodeFiles() {
+    	Driver driver = Driver.getInstance();
+		List<String> repoPaths = new ArrayList<>();
+		repoPaths.add("C:/test-repos/student-110");
+		repoPaths.add("C:/test-repos/student-111");
+		driver.setRepoPaths(repoPaths);
+		driver.setHWDir("HW3");
+		driver.getCodeFiles();
+    }
+    
 //	@Test
 //	public void testgetStudentDataInvalidXLSXPath() {
 //		Driver driver = Driver.getInstance();
