@@ -16,13 +16,13 @@
          <children>
             <Pane layoutX="16.0" layoutY="68.0" prefHeight="464.0" prefWidth="768.0">
                <children>
-                  <TextFlow id="studentACode" accessibleText="jvuerjuv" layoutX="381.0" layoutY="13.0" prefHeight="439.0" prefWidth="378.0" />
-                  <TextFlow id="StudentBCode" layoutX="10.0" layoutY="14.0" prefHeight="438.0" prefWidth="357.0" />
+                  <TextFlow fx:id="studentACode" accessibleText="jvuerjuv" layoutX="381.0" layoutY="13.0" prefHeight="439.0" prefWidth="378.0" />
+                  <TextFlow fx:id="studentBCode" layoutX="10.0" layoutY="14.0" prefHeight="438.0" prefWidth="357.0" />
                </children>
             </Pane>
-            <Button id="reportButton" layoutX="348.0" layoutY="549.0" mnemonicParsing="false" text="Generate Report" />
-            <Label id="StudentAName" layoutX="163.0" layoutY="37.0" text="Student A" />
-            <Label id="StudentBName" layoutX="530.0" layoutY="37.0" text="Student B" />
+            <Button fx:id="reportButton" layoutX="348.0" layoutY="549.0" mnemonicParsing="false" text="Generate Report" />
+            <Label fx:id="studentAName" layoutX="163.0" layoutY="37.0" text="Student A" />
+            <Label fx:id="studentBName" layoutX="530.0" layoutY="37.0" text="Student B" />
          </children></AnchorPane>
    </center>
 </BorderPane>
