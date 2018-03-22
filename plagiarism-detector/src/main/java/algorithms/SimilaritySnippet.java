@@ -1,5 +1,7 @@
 package algorithms;
 
+//TODO: Add JavaDoc
+//TODO: Check equals() method
 public class SimilaritySnippet implements Comparable<SimilaritySnippet> {
 	private int start;
 	private int end;
@@ -24,13 +26,9 @@ public class SimilaritySnippet implements Comparable<SimilaritySnippet> {
 
 	@Override
 	public boolean equals(Object o) {
-		if (o == null) {
-			return false;
-		}else if (!(o instanceof SimilaritySnippet)) {
-			return false;
-		} else {
-			return (this.start <= ((SimilaritySnippet) o).getStart() && this.end >= ((SimilaritySnippet) o).getStart());
-		}
+		return (o instanceof SimilaritySnippet)
+					&& this.start <= ((SimilaritySnippet) o).getStart()
+					&& this.end >= ((SimilaritySnippet) o).getStart();
 	}
 
 	@Override
