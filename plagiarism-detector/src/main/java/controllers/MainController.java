@@ -1,17 +1,28 @@
 package controllers;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.logging.Logger;
-import algorithms.LCSAlgorithm;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import controllers.popups.PopupMessage;
+import driver.Driver;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.scene.Cursor;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.FileChooser;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
+import javafx.scene.control.cell.CheckBoxTreeCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.TransferMode;
+import javafx.stage.DirectoryChooser;
 
 /**
  * This Controller is responsible to load the main page of the application.
@@ -21,86 +32,183 @@ import javafx.stage.Stage;
  */
 public class MainController {
 	
-	@FXML private Label upload;
-	@FXML private Label file1;
-	@FXML private Label file2;
-	@FXML private AnchorPane ap;
+	// Controller injectors
+	@FXML private TreeView<String> dirContent;
+	@FXML private TreeItem<String> root;
+	@FXML private Button summary;
+	@FXML private Label logo;
+	@FXML private Label chooseDir;
+	@FXML private ImageView folder;
+	@FXML private TextField hw;
 	
-	private File fileOne;
-	private File fileTwo;
+	private Image emptyFolder;
+	private Image filledFolder;
 	
-	private static final Logger LOGGER = Logger.getLogger(MainController.class.getName());
-	private String errorMessage = "An Error Occured!";
+	private static Logger logger = Logger.getLogger(MainController.class);
 	
-	/** 
-	 * This method handles the event when the setting button on the main page is pressed.
+	public MainController() {
+		emptyFolder = new Image(getClass()
+				.getResource("/images/folder.png")
+				.toExternalForm());
+		filledFolder = new Image(getClass()
+				.getResource("/images/folder-filled.png")
+				.toExternalForm());
+	}
+	
+	/**
+	 * This method runs on page load and initializes all components of the Start.fxml page
 	 */
-	public void openSettings() {
-		final Stage dialog = new Stage();
-        dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.initOwner(ap.getScene().getWindow());
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Settings.fxml"));
-		loader.setController(new SettingsController());
-        Scene dialogScene;
+	@FXML protected void initialize() {
+		applyStyle();
+		folder.setImage(emptyFolder);
+		hw.setPromptText("Search e.g. HW1...");
+	}
+	
+	/**
+	 * This method applies the CSS properties to the controls of the Start page.
+	 */
+	private void applyStyle() {
+		summary.getStyleClass().add("primary");
+		logo.getStyleClass().add("logo");
+		chooseDir.getStyleClass().add("drag-folder");
+	}
+	
+	/**
+	 * This method handles the event when the open button is clicked on the Start page.
+	 * It open the browse dialog box where users can choose a valid directory only.
+	 */
+	@FXML public void browseDirectory() {
 		try {
-			dialogScene = new Scene(loader.load(), 300, 200);
-			dialog.setScene(dialogScene);
-	        dialog.show();
-		} catch (IOException e) {
-			LOGGER.info(errorMessage);
-		}
-	}
-	
-	/**
-	 * This method runs the algorithm on the two .C files uploaded.
-	 * 
-	 * Note: The method only runs LCS for now and will be more flexible in the next sprint.
-	 */
-	public void computeSimilarity() {
-		if(fileOne != null && fileTwo != null) {
-			AlgorithmController algo = new AlgorithmController(fileOne, fileTwo);			
-			try {
-				ScreenController screenController = ScreenController.getInstance();
-				if(screenController != null) {
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("/Summary.fxml"));
-					loader.setController(new SummaryController(algo.getAns(new LCSAlgorithm())));
-					screenController.addScreen("summary", loader.load());
-					screenController.activate("summary");
-				} else {
-					upload.setText("Application Error!");
-				}
-			} catch(IOException e) {
-				upload.setText("Error Occured!");
+			File directory = selectDirectory();
+			if(directory != null && directory.isDirectory()) {
+				hideImage();
+				dirContent.setRoot(populateView(directory));
+				dirContent.setShowRoot(true);
 			}
-		} else {
-			upload.setText("Please Upload both files!");
+		} catch(Exception e) { 
+			logger.error(e.toString());
 		}
 	}
 	
 	/**
-	 * This method uploads the first C file
+	 * This method is responsible to open the browse directory dialog box
+	 * @return the directory chooser dialog box
 	 */
-	public void openFile1() {
-		final FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showOpenDialog(null);
-        if (file != null) {
-        		fileOne = file;
-        		file1.setText(file.getName());
+	private File selectDirectory() {
+		return new DirectoryChooser().showDialog(null);
+	}
+	
+	/**
+	 * This method runs the algorithm
+	 */
+	@FXML public void runAlgorithm() {
+		List<String> allPaths =  getListOfPaths();
+		if(hw.getText() == null || allPaths.isEmpty()) {
+			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
+					"Error", 
+					"An error occurred", 
+					"Make sure to select a directory and enter homework number");
+		} else {
+			Driver.getInstance().checkForPlagiarism(allPaths, hw.getText());
+		}
+	}
+	
+	/**
+	 * This is a helper method to extract all selected items in the TreeView
+	 */
+	private List<String> getListOfPaths() {
+		return new ArrayList<>();
+	}
+	
+	/**
+	 * This method populates the TreeView of the Start page
+	 * 
+	 * @param directory a directory as the File object
+	 * @return a tree view of the directory structure
+	 */
+	public CheckBoxTreeItem<String> populateView(File directory) {
+		dirContent.setCellFactory(CheckBoxTreeCell.<String>forTreeView());
+		SaveFileObject<String> root  
+				= new SaveFileObject<>(directory.getName(), directory);
+		root.setIndependent(true);
+        for(File file : directory.listFiles()) {
+            if(file.isDirectory()) {
+                root.getChildren().add(populateView(file));
+            }
         }
-        
+        return root;
     }
 	
 	/**
-	 * This method uploads the second C file
+	 * This method acknowledges if the dragged file is acceptable in the application
+	 * 
+	 * @param event
 	 */
-	public void openFile2() {
-		final FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showOpenDialog(null);
-        if (file != null) {
-        		fileTwo = file;
-        		file2.setText(file.getName());
-        }
-        
-    }
-
+	@FXML public void handleDragOver(DragEvent event) {
+		if(event.getDragboard().hasFiles()) {
+			folder.setImage(filledFolder);
+			event.acceptTransferModes(TransferMode.ANY);
+		}
+	}
+	
+	/**
+	 * This method accepts only only directory in the application, which will be 
+	 * the first selected directory by the user that is dragged into the application.
+	 * 
+	 * @param event
+	 */
+	@FXML public void handleDrop(DragEvent event) {
+		folder.setImage(emptyFolder);
+		List<File> files = event.getDragboard().getFiles();
+		if(!files.isEmpty() && files.get(0).isDirectory()) {
+			hideImage();
+			dirContent.setRoot(populateView(files.get(0)));
+			dirContent.setShowRoot(true);
+		}
+	}
+	
+	/**
+	 * A method to handle the mouse enter event on the ImageView of the page
+	 */
+	@FXML public void onMouseEntered() {
+		folder.setCursor(Cursor.HAND);
+		folder.setImage(filledFolder);
+	}
+	
+	/**
+	 * A method to handle the mouse exit event on the ImageView of the page
+	 */
+	@FXML public void onMouseExited() {
+		folder.setImage(emptyFolder);
+	}
+	
+	/**
+	 * This method hides the image and label in the Tree View
+	 */
+	private void hideImage() {
+		folder.setVisible(false);
+		chooseDir.setVisible(false);
+	}
+	
+	/**
+	 * The purpose of this class is to differentiate between the internal value and 
+	 * the displayed value of the checkbox of the tree
+	 * 
+	 * @author Samanjate Sood
+	 *
+	 * @param <String>
+	 */
+	private class SaveFileObject<T> extends CheckBoxTreeItem<T> {
+		
+		public SaveFileObject(T value, File file) {
+			super(value);
+			this.file = file;
+		}
+		
+		public File getFile() {
+			return file;
+		}
+		 
+		private File file;
+	}
 }
