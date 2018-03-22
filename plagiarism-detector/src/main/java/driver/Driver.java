@@ -97,6 +97,11 @@ public class Driver {
 		}
 	}
 	
+	/**
+	 * Employs a comparison strategy and compares all files of all students.
+	 * @param repoPaths List<String>
+	 * @param hwDir String
+	 */
 	public void checkForPlagiarism(List<String> repoPaths, String hwDir) {
 		this.setRepoPaths(repoPaths);
 		this.setHWDir(hwDir);
@@ -104,13 +109,23 @@ public class Driver {
 		
 		for(Map.Entry<Integer, Collection<File>> entry1 : this.studentHWMap.entrySet()) {
 			for(Map.Entry<Integer, Collection<File>> entry2: this.studentHWMap.entrySet()) {
-				if(!entry1.equals(entry2) && entry1.getKey() < entry2.getKey()) {
+				if(entry1.getKey() < entry2.getKey()) {
 					Collection<File> fileList1 = entry1.getValue();
 					Collection<File> fileList2 = entry2.getValue();
 					for(File file1: fileList1) {
 						for(File file2: fileList2) {
 							AlgorithmController ac = new AlgorithmController(file1, file2);
-							ac.getAns(new LCSAlgorithm());
+							double similarityScore = ac.getAns(new LCSAlgorithm()); 
+							if(similarityScore >= 50) {
+								// send student pair to red list
+								StudentPair sp = new StudentPair(entry1.getKey(), entry2.getKey(), similarityScore);
+								
+							} else if(similarityScore >= 30 && similarityScore < 50) {
+								// send student pair to yellow list
+								StudentPair sp = new StudentPair(entry1.getKey(), entry2.getKey(), similarityScore);
+							} else {
+								// do nothing
+							}
 						}
 					}
 				}
