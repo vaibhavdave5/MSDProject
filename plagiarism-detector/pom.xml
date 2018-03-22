@@ -16,7 +16,8 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<sonar.exclusions>
 			**/C*.java,
-			***/C*.java
+			***/C*.java,
+			**/MainController.java
 		</sonar.exclusions>
 		<sonar.junit.reportPaths>
 			${project.basedir}/target/surefire-reports
@@ -45,24 +46,15 @@
 			</plugins>
 		</pluginManagement>
 		<resources>
-<<<<<<< HEAD
 	      <resource>
 	        <directory>src/main/resources/view</directory>
 	        <includes>
 	          <include>**/*.fxml</include>
 	          <include>**/*.css</include>
+	          <include>**/*.png</include>
 	        </includes>
 	      </resource>
 	    </resources>
-=======
-			<resource>
-				<directory>src/main/resources/view</directory>
-				<includes>
-					<include>**/*.fxml</include>
-				</includes>
-			</resource>
-		</resources>
->>>>>>> b421d99d92e7aac1549a61f7ac83d5e276aa9870
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -85,18 +77,6 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
 		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-		</dependency>
-
 		<dependency>
 			<groupId>org.antlr</groupId>
 			<artifactId>antlr4-runtime</artifactId>
@@ -121,24 +101,16 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.17</version>
 		</dependency>
-		
+		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+		<dependency>
+		    <groupId>log4j</groupId>
+		    <artifactId>log4j</artifactId>
+		    <version>1.2.16</version>
+		</dependency>
 		<dependency>
 		  	<groupId>commons-io</groupId>
 		  	<artifactId>commons-io</artifactId>
 		  	<version>2.6</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.testfx</groupId>
-		    <artifactId>testfx-junit</artifactId>
-		    <version>4.0.12-alpha</version>
-		    <scope>test</scope>
-		</dependency>
-		<dependency>
-		    <groupId>org.testfx</groupId>
-		    <artifactId>openjfx-monocle</artifactId>
-		    <version>8u76-b04</version> 
-		    <scope>test</scope>
 		</dependency>
 	</dependencies>
 

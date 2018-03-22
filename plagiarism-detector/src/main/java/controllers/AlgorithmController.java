@@ -1,26 +1,29 @@
 package controllers;
 
 import java.io.File;
-import org.apache.log4j.Logger;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import parser.Node;
-import parser.*;
-import java.util.*;
-import java.util.logging.Level;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import org.apache.log4j.Logger;
 
 import algorithms.AlgorithmContext;
 import algorithms.AlgorithmStrategy;
 import algorithms.Result;
+import parser.CASTNodeListener;
+import parser.CLexer;
+import parser.CParser;
+import parser.Node;
 
 /**
  * The main controller of the application that can tell if two files are similar
  * 
- * @author Vaibhav Dave, Shail Shah
+ * @author Vaibhav Dave
+ * @author Shail Shah
  *
  */
 public class AlgorithmController {
