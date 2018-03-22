@@ -100,13 +100,29 @@ public class AlgorithmControllerTest {
 	public void testgetCodeFiles() {
 		Driver driver = Driver.getInstance();
 		List<String> repoPaths = new ArrayList<>();
+		
 		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test" + File.separator
 				+ "java" + File.separator + "controllers" + File.separator + "test-repos" + File.separator;
+		
 		repoPaths.add(basePath + "student-110");
 		repoPaths.add(basePath + "student-111");
 		driver.setRepoPaths(repoPaths);
 		driver.setHWDir("HW3");
 		driver.getCodeFiles();
+	}
+	
+	@Test
+	public void testCheckForPlagiarism() {
+		Driver driver = Driver.getInstance();
+		List<String> repoPaths = new ArrayList<>();
+		
+		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test" + File.separator
+				+ "java" + File.separator + "controllers" + File.separator + "test-repos" + File.separator;
+		
+		repoPaths.add(basePath + "student-110");
+		repoPaths.add(basePath + "student-111");
+		String hwDir = "HW3";
+		driver.checkForPlagiarism(repoPaths, hwDir);
 	}
 
 	// @Test
