@@ -1,13 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE log4j:configuration SYSTEM 
-          "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
-<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
-					 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-					 xsi:schemaLocation="http://jakarta.apache.org/log4j/
-http://jakarta.apache.org/log4j/ ">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="true"
+					 xmlns:log4j='http://jakarta.apache.org/log4j/'>
 
-	<!-- Log to email -->
-	<appender name="mailAppender" class="org.apache.log4j.net.SMTPAppender">
+	<appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				   value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="fileAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="append" value="true" />
+		<param name="maxFileSize" value="10KB" />
+		<param name="maxBackupIndex" value="5" />
+		<param name="file" value="logs/integrity.log" />
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				   value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="emailAppender" class="org.apache.log4j.net.SMTPAppender">
 		<param name="BufferSize" value="512"/>
 		<param name="SMTPProtocol" value="smtps"/>
 		<param name="SMTPHost" value="smtp.gmail.com"/>
@@ -29,30 +44,16 @@ http://jakarta.apache.org/log4j/ ">
 	</appender>
 
 
-	<!-- Log to file -->
-	<appender name="file" class="org.apache.log4j.RollingFileAppender">
-		<param name="File" value="C:\testbin\logger.log"/>
-		<param name="MaxBackupIndex" value="10"/>
-		<param name="MaxFileSize" value="5MB"/>
-		<param name="Threshold" value="DEBUG"/>
-		<layout class="org.apache.log4j.PatternLayout ">
-			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"/>
-		</layout>
-	</appender>
-
-
-	<!-- Log to console -->
-	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
-		<param name="Target" value="System.out"/>
-		<layout class="org.apache.log4j.PatternLayout ">
-			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%-5p] %c{1} Line %L: %m%n"/>
-		</layout>
-	</appender>
-
 	<root>
-		<level value="INFO"/>
-		<appender-ref ref="mailAppender"/>
-	</root>
+		<level value="INFO" />
+		<appender-ref ref="consoleAppender" />
 
+		<level value="INFO" />
+		<appender-ref ref="fileAppender" />
+
+		//TODO: Fix Email logging
+		<!--<level value="ERROR"/>-->
+		<!--<appender-ref ref="emailAppender"/>-->
+	</root>
 
 </log4j:configuration>
