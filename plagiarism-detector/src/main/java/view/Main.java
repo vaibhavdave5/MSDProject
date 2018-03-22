@@ -1,5 +1,8 @@
 package view;
 	
+import org.apache.log4j.Logger;
+
+import controllers.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +18,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
+	private static Logger logger = Logger.getLogger(MainController.class);
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -25,7 +30,7 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
-			e.printStackTrace();
+			logger.error(e.toString());
 		}
 	}
 
