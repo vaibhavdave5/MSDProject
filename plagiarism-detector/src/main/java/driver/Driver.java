@@ -100,21 +100,21 @@ public class Driver {
 	}
 	
 	/**
-	 * This method calculates the average similarity score between all the HW files of
+	 * This method returns the max similarity score between all the HW files of
 	 * two students.
 	 * @param similarityScoreList List<Double>
-	 * @return avgSimilarityScore Double
+	 * @return maxSimilarityScore Double
 	 */
-	public double avgSimilarityScore(List<Double> similarityScoreList) {
-		double avgSimilarityScore = 0.0;
+	public double maxSimilarityScore(List<Double> similarityScoreList) {
+		double maxSimilarityScore = 0.0;
 		  if(!similarityScoreList.isEmpty()) {
-		    for (Double score : similarityScoreList) {
+		    for(Double score : similarityScoreList) {
 		    	LOGGER.log(Level.INFO, "Score: {0}", score);
-		    	avgSimilarityScore += score;
+		    	if(score > maxSimilarityScore) maxSimilarityScore = score;
 		    }
-		    return avgSimilarityScore / similarityScoreList.size();
+		    return maxSimilarityScore;
 		  }
-		  return avgSimilarityScore;
+		  return maxSimilarityScore;
 	}
 	
 	
@@ -132,20 +132,19 @@ public class Driver {
 				LOGGER.log(Level.INFO, "File2: {0}", file2.getAbsolutePath());
 				AlgorithmController ac = new AlgorithmController(file1, file2);
 				similarityScoreList.add(ac.getAns(new LCSAlgorithm()));
-//				similarityScoreList.add(ac.getAns(new NeemanWalshAlgorithm()));
 			}
 		}
 		
-		double avgScore = this.avgSimilarityScore(similarityScoreList);
-		LOGGER.log(Level.INFO, "Avg Score: {0}", avgScore);
-		if(avgScore >= 0.5) {
+		double maxScore = this.maxSimilarityScore(similarityScoreList);
+		LOGGER.log(Level.INFO, "Avg Score: {0}", maxScore);
+		if(maxScore >= 0.5) {
 			// send student pair to red list
-			sp.setSimilarityScore(avgScore);
+			sp.setSimilarityScore(maxScore);
 			this.summary.setRed(sp);
 			isSafe = false;
-		} else if(avgScore >= 0.3 && avgScore < 0.5) {
+		} else if(maxScore >= 0.3 && maxScore < 0.5) {
 			// send student pair to yellow list
-			sp.setSimilarityScore(avgScore);
+			sp.setSimilarityScore(maxScore);
 			this.summary.setYellow(sp);
 			isSafe = false;
 		} else {
@@ -189,10 +188,12 @@ public class Driver {
 	 * @param hwDir String
 	 */
 	public void checkForPlagiarism(List<String> repoPaths, String hwDir) {
-		this.setRepoPaths(repoPaths);
-		this.setHWDir(hwDir);
-		this.getCodeFiles();
-		this.generateSummary();
+		if(repoPaths != null || !repoPaths.isEmpty() || hwDir != null || hwDir != "") {
+			this.setRepoPaths(repoPaths);
+			this.setHWDir(hwDir);
+			this.getCodeFiles();
+			this.generateSummary();
+		}
 	}
 	
 	/**
