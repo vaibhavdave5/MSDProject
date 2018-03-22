@@ -1,10 +1,12 @@
 package controllers;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import driver.Driver;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
@@ -89,6 +91,20 @@ public class MainController {
 	 */
 	private File selectDirectory() {
 		return new DirectoryChooser().showDialog(null);
+	}
+	
+	/**
+	 * This method runs the algorithm
+	 */
+	@FXML public void runAlgorithm() {
+		Driver.getInstance().checkForPlagiarism(getListOfPaths(), hw.getText());
+	}
+	
+	/**
+	 * This is a helper method to extract all selected items in the TreeView
+	 */
+	private List<String> getListOfPaths() {
+		return new ArrayList<>();
 	}
 	
 	/**
