@@ -10,6 +10,7 @@ import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.CheckBoxTreeCell;
 import javafx.scene.image.Image;
@@ -32,6 +33,7 @@ public class MainController {
 	@FXML private Label logo;
 	@FXML private Label chooseDir;
 	@FXML private ImageView folder;
+	@FXML private TextField hw;
 	
 	private Image emptyFolder;
 	private Image filledFolder;
@@ -98,7 +100,7 @@ public class MainController {
 	public CheckBoxTreeItem<String> populateView(File directory) {
 		dirContent.setCellFactory(CheckBoxTreeCell.<String>forTreeView());
 		SaveDisplayValue<String> root  
-				= new SaveDisplayValue<>(directory.getName(), directory.getAbsolutePath());
+				= new SaveDisplayValue<>(directory.getName(), directory);
 		root.setIndependent(true);
         for(File file : directory.listFiles()) {
             if(file.isDirectory()) {
@@ -151,6 +153,9 @@ public class MainController {
 		folder.setImage(emptyFolder);
 	}
 	
+	/**
+	 * This method hides the image and label in the Tree View
+	 */
 	private void hideImage() {
 		folder.setVisible(false);
 		chooseDir.setVisible(false);
@@ -166,15 +171,15 @@ public class MainController {
 	 */
 	private class SaveDisplayValue<T> extends CheckBoxTreeItem<T> {
 		
-		public SaveDisplayValue(T value, T internalValue) {
+		public SaveDisplayValue(T value, File file) {
 			super(value);
-			this.internalValue = internalValue;
+			this.file = file;
 		}
 		
-		public T getDisplayValue() {
-			return internalValue;
+		public File getFile() {
+			return file;
 		}
 		 
-		private T internalValue;
+		private File file;
 	}
 }
