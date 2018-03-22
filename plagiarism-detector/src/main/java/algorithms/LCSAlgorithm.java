@@ -43,9 +43,9 @@ public class LCSAlgorithm implements AlgorithmStrategy {
 		int index = map[i][j];
 		Node[] lcs = new Node[index + 1];
 		lcs[index] = null; 						// Set the terminating character
-
 		while (i > 0 && j > 0) {
-			if (list1.get(i - 1).equals(list2.get(i - 1))) {
+			
+			if (list1.get(i - 1).equals(list2.get(j - 1))) {
 				lcs[index - 1] = list1.get(i - 1);
 				i--;
 				j--;
