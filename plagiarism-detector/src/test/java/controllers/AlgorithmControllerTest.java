@@ -129,19 +129,18 @@ public class AlgorithmControllerTest {
 		repoPaths.add(basePath + "student-111");
 		String hwDir = "HW3";
 		driver.checkForPlagiarism(repoPaths, hwDir);
-	}
-
+	} 
+ 
 	/**
 	 * Testing the snippet generator
 	 */
 	@Test
 	public void testSnippets() {
-		String path1 = "C:" + File.separator + "Study" + File.separator + "MSD" + File.separator + "Team Repo"
-				+ File.separator + "team-107" + File.separator + "plagiarism-detector" + File.separator + "target"
+		 
+		String path1 = System.getProperty("user.dir") + File.separator + "target"
 				+ File.separator + "test-classes" + File.separator + "controllers" + File.separator + "test-repos"
 				+ File.separator + "student-110" + File.separator + "HW3" + File.separator + "sample2.c";
-		String path2 = "C:" + File.separator + "Study" + File.separator + "MSD" + File.separator + "Team Repo"
-				+ File.separator + "team-107" + File.separator + "plagiarism-detector" + File.separator + "target"
+		String path2 = System.getProperty("user.dir") + File.separator + "target"
 				+ File.separator + "test-classes" + File.separator + "controllers" + File.separator + "test-repos"
 				+ File.separator + "student-111" + File.separator + "HW3" + File.separator + "sample.c";
 		;
