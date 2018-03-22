@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -34,7 +35,6 @@ public class MainController {
 	
 	// Controller injectors
 	@FXML private TreeView<String> dirContent;
-	@FXML private TreeItem<String> root;
 	@FXML private Button summary;
 	@FXML private Label logo;
 	@FXML private Label chooseDir;
@@ -43,6 +43,7 @@ public class MainController {
 	
 	private Image emptyFolder;
 	private Image filledFolder;
+	private SaveFileObject<String> root;
 	
 	private static Logger logger = Logger.getLogger(MainController.class);
 	
@@ -102,8 +103,12 @@ public class MainController {
 	 * This method runs the algorithm
 	 */
 	@FXML public void runAlgorithm() {
-		List<String> allPaths =  getListOfPaths();
-		if(hw.getText() == null || allPaths.isEmpty()) {
+		List<String> allPaths =  new ArrayList<>();
+		getListOfPaths(allPaths, root);
+		if(hw.getText() == null 
+				|| allPaths.isEmpty() 
+				|| root == null 
+				|| "".equals(hw.getText())) {
 			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
 					"Error", 
 					"An error occurred", 
@@ -116,8 +121,17 @@ public class MainController {
 	/**
 	 * This is a helper method to extract all selected items in the TreeView
 	 */
-	private List<String> getListOfPaths() {
-		return new ArrayList<>();
+	private void getListOfPaths(List<String> allPaths, TreeItem<String> rootDir) {
+		if(rootDir == null) {
+			return;
+		}
+		if(((SaveFileObject<String>) rootDir).isSelected()) {
+			allPaths.add(((SaveFileObject<String>)rootDir).getFile().getAbsolutePath());
+		}
+		Iterator<TreeItem<String>> it = rootDir.getChildren().iterator();
+		while(it.hasNext()) {
+			getListOfPaths(allPaths, it.next());
+		}
 	}
 	
 	/**
@@ -128,15 +142,16 @@ public class MainController {
 	 */
 	public CheckBoxTreeItem<String> populateView(File directory) {
 		dirContent.setCellFactory(CheckBoxTreeCell.<String>forTreeView());
-		SaveFileObject<String> root  
+		SaveFileObject<String> rootDirectory  
 				= new SaveFileObject<>(directory.getName(), directory);
-		root.setIndependent(true);
+		rootDirectory.setIndependent(true);
         for(File file : directory.listFiles()) {
             if(file.isDirectory()) {
-                root.getChildren().add(populateView(file));
+                rootDirectory.getChildren().add(populateView(file));
             }
         }
-        return root;
+        root = rootDirectory;
+        return rootDirectory;
     }
 	
 	/**
