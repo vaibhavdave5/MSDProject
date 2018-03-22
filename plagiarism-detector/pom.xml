@@ -15,10 +15,11 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<sonar.exclusions>
-			**/C*.java,
-			***/C*.java,
-			**/MainController.java
+			**/C*.java
 		</sonar.exclusions>
+		<sonar.coverage.exclusions>
+			**/MainController.java
+    		</sonar.coverage.exclusions>
 		<sonar.junit.reportPaths>
 			${project.basedir}/target/surefire-reports
 		</sonar.junit.reportPaths>
