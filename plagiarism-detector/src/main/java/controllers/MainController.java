@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.Label;
@@ -32,16 +33,26 @@ public class MainController {
 	@FXML private Label chooseDir;
 	@FXML private ImageView folder;
 	
+	private Image emptyFolder;
+	private Image filledFolder;
+	
 	private static Logger logger = Logger.getLogger(MainController.class);
+	
+	public MainController() {
+		emptyFolder = new Image(getClass()
+				.getResource("/images/folder.png")
+				.toExternalForm());
+		filledFolder = new Image(getClass()
+				.getResource("/images/folder-filled.png")
+				.toExternalForm());
+	}
 	
 	/**
 	 * This method runs on page load and initializes all components of the Start.fxml page
 	 */
 	@FXML protected void initialize() {
 		applyStyle();
-		folder.setImage(new Image(getClass()
-									.getResource("/images/folder.png")
-									.toExternalForm()));
+		folder.setImage(emptyFolder);
 	}
 	
 	/**
@@ -60,10 +71,11 @@ public class MainController {
 	@FXML public void browseDirectory() {
 		try {
 			File directory = selectDirectory();
-			folder.setImage(null);
-			chooseDir.setText(null);
-			dirContent.setRoot(populateView(directory));
-			dirContent.setShowRoot(true);
+			if(directory != null && directory.isDirectory()) {
+				hideImage();
+				dirContent.setRoot(populateView(directory));
+				dirContent.setShowRoot(true);
+			}
 		} catch(Exception e) { 
 			logger.error(e.toString());
 		}
@@ -103,6 +115,7 @@ public class MainController {
 	 */
 	@FXML public void handleDragOver(DragEvent event) {
 		if(event.getDragboard().hasFiles()) {
+			folder.setImage(filledFolder);
 			event.acceptTransferModes(TransferMode.ANY);
 		}
 	}
@@ -114,13 +127,33 @@ public class MainController {
 	 * @param event
 	 */
 	@FXML public void handleDrop(DragEvent event) {
+		folder.setImage(emptyFolder);
 		List<File> files = event.getDragboard().getFiles();
 		if(!files.isEmpty() && files.get(0).isDirectory()) {
-			folder.setImage(null);
-			chooseDir.setText(null);
+			hideImage();
 			dirContent.setRoot(populateView(files.get(0)));
 			dirContent.setShowRoot(true);
 		}
+	}
+	
+	/**
+	 * A method to handle the mouse enter event on the ImageView of the page
+	 */
+	@FXML public void onMouseEntered() {
+		folder.setCursor(Cursor.HAND);
+		folder.setImage(filledFolder);
+	}
+	
+	/**
+	 * A method to handle the mouse exit event on the ImageView of the page
+	 */
+	@FXML public void onMouseExited() {
+		folder.setImage(emptyFolder);
+	}
+	
+	private void hideImage() {
+		folder.setVisible(false);
+		chooseDir.setVisible(false);
 	}
 	
 	/**
