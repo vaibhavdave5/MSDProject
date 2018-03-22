@@ -9,14 +9,11 @@ import parser.Node;
  * between two Node lists, using the Neeman-Walsh Similarity Algorithm.
  * 
  * @author Vaibhav Dave
+ * @author Shail Shah
  * @since 02/28/2018
  */
 
 public class NeemanWalshAlgorithm implements AlgorithmStrategy {
-
-	private int[][] track;
-	private int[][] c;
-	private int[][] s;
 
 	/**
 	 * Compute the similarity between two Node lists
@@ -27,116 +24,121 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 	 */
 	@Override
 	public Result computeSimilarity(List<Node> list1, List<Node> list2) {
-		if (list1.isEmpty() || list2.isEmpty()) {
+		if (list1.isEmpty() || list2.isEmpty())
 			throw new IllegalArgumentException();
-		}
 
-		Node[] ans = fetchOpticalAlignment(list1, list2);
-		return new Result(2.0 * ans.length / (list1.size() + list2.size()), ans);
+		Node[] commonNodesArray = getCommonNodesArray(list1, list2);
+		double similarityScore = 2.0 * commonNodesArray.length / (list1.size() + list2.size());
+
+		return new Result(similarityScore, commonNodesArray);
 	}
 
 	/**
 	 * 
 	 * @param list1 a list of nodes
 	 * @param list2 another list of nodes
-	 * @return length of the common nodes after optical alignment.
+	 * @return a list of common nodes
 	 */
-	private Node[] fetchOpticalAlignment(List<Node> list1, List<Node> list2) {
-		Node[] ans;
-		int m = list1.size();
-		int n = list2.size();
-		s = initializeSubstitutionMatrix(list1, list2);
-		track = new int[m + 1][n + 1];
-		c = new int[m + 1][n + 1];
-		populateC(list1, list2);
-		ans = counterDiagonal(list1, list2, track);
-
-		return ans;
+	private Node[] getCommonNodesArray(List<Node> list1, List<Node> list2) {
+		return getCommonNodesList(list1, list2)
+				.stream()
+				.toArray(Node[]::new);
 	}
+
+	private List<Node> getCommonNodesList(List<Node> list1, List<Node> list2) {
+		List<Node> commonNodes = new ArrayList<>();
+		//TODO: Rename c[][], substitutionMatrix[][], and trackMatrix[][] with better names
+		int[][] trackMatrix = getTrackMatrix(list1, list2);
+
+
+		int i = list1.size();
+		int j = list2.size();
+		while(i!= 0 && j !=0) {
+			switch(trackMatrix[i][j]) {
+				case 1:
+					i--;
+					j--;
+					commonNodes.add(list1.get(i));
+					break;
+
+				case 2:
+					j--;
+					break;
+
+				case 3:
+					i--;
+					break;
+
+				default:
+					throw new IllegalStateException("trackMatrix not initialized correctly.");
+			}
+		}
+
+		return commonNodes;
+	}
+
+	/**
+	 * Populate the c array
+	 * @param list1 a list of Nodes
+	 * @param list2 another list of Nodes
+	 */
+	private int[][] getTrackMatrix(List<Node> list1, List<Node> list2) {
+		int size1 = list1.size();
+		int size2 = list2.size();
+		int[][] substitutionMatrix = initializeSubstitutionMatrix(list1, list2);
+		int[][] c = new int[size1 + 1][size2 + 1];
+		int[][] trackMatrix = new int[size1 + 1][size2 + 1];
+
+		for (int i = 1; i <= size1; i++)
+			for (int j = 1; j <= size2; j++)
+				setTrackMatrix(substitutionMatrix, c, trackMatrix, i, j);
+
+		return trackMatrix;
+	}
+
 
 	/**
 	 * 
 	 * @param list1 a list of Nodes
 	 * @param list2 another list of Nodes
-	 * @return length of the common nodes after optical alignment.
+	 * @return an initialized substitution matrix
 	 * 
 	 */
 	private int[][] initializeSubstitutionMatrix(List<Node> list1, List<Node> list2) {
-		int m = list1.size();
-		int n = list2.size();
-		int[][] temp = new int[m + 1][n + 1];
-		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < n; j++) {
-				temp[i][j] = list1.get(i).equals(list2.get(j)) ? 1 : -1;
-			}
-		}
-		return temp;
+		int size1 = list1.size();
+		int size2 = list2.size();
+		int[][] substitutionMatrix = new int[size1 + 1][size2 + 1];
+
+		for (int i = 0; i < size1; i++)
+			for (int j = 0; j < size2; j++)
+				substitutionMatrix[i][j]
+						= list1.get(i).equals(list2.get(j)) ? 1 : -1;
+
+		return substitutionMatrix;
 	}
 
 	/**
-	 * 
-	 * @param list1
-	 * @param list2
-	 * @param track
-	 * @return
+	 * Set the ith row and jth column of the trackMatrix
+	 * @param substitutionMatrix the substitution matrix
+	 * @param c the c matrix
+	 * @param trackMatrix the trackMatrix
+	 * @param i the row number
+	 * @param j the column number
 	 */
-	private Node[] counterDiagonal(List<Node> list1, List<Node> list2, int[][] track) {
-		int m = list1.size();
-		int n = list2.size();
-		List<Node> list = new ArrayList<>();
-		int i = m;
-		int j = n;
+	private void setTrackMatrix(int[][] substitutionMatrix, int[][] c,
+								int[][] trackMatrix, int i, int j) {
 
-		while (i != 0 && j != 0) {
-			if (track[i][j] == 1) {
-				i--;
-				j--;
-				list.add(list1.get(i));
-			} else if (track[i][j] == 2) {
-				j--;
-			} else {
-				i--;
-			}
-		}
-		return convertListToArray(list);
-	}
-
-	/**
-	 * Populate the c[]
-	 * @param list1 a list of Nodes
-	 * @param list2 another list of Nodes
-	 */
-	private void populateC(List<Node> list1, List<Node> list2) {
-		int m = list1.size();
-		int n = list2.size();
-		for (int i = 1; i <= m; i++)
-			for (int j = 1; j <= n; j++)
-				setC(i, j);
-	}
-
-	/**
-	 * Compute and set the correct value of c[i][j] and track[i][j]
-	 * @param i the row's index
-	 * @param j the column's index
-	 */
-	private void setC(int i, int j) {
-		int scorediag = c[i - 1][j - 1] + s[i][j];
+		int scoreDiagonal = c[i - 1][j - 1] + substitutionMatrix[i][j];
 		int scoreup = c[i - 1][j] - 1;
 		int scoreleft = c[i][j - 1] - 1;
 
-		c[i][j] = Math.max(Math.max(scorediag, scoreup), scoreleft);
+		c[i][j] = Math.max(Math.max(scoreDiagonal, scoreup), scoreleft);
 
-		track[i][j] = (c[i][j] == scorediag) ? 1 :
-				(c[i][j] == scoreleft) ? 2 : 3;
+		if(c[i][j] == scoreDiagonal)
+			trackMatrix[i][j] = 1;
+		else if(c[i][j] == scoreleft)
+			trackMatrix[i][j] = 2;
+		else
+			trackMatrix[i][j] = 3;
 	}
-
-	/**
-	 * Convert a list of Nodes to an array of Nodes
-	 * @param nodes a list of Nodes
-	 * @return and array of Nodes
-	 */
-	private Node[] convertListToArray(List<Node> nodes) {
-		return nodes.stream().toArray(Node[]::new);
-	}
-
 }

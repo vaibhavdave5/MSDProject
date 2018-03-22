@@ -21,6 +21,13 @@ public class AlgorithmContext {
 		this.strategy=strategy;
 	}
 
+	/**
+	 * Execute this object's strategy to compute the similarity
+	 * @param list1 a list of nodes
+	 * @param list2 another list of nodes
+	 * @return a Result object which encapsulates the similarities between
+	 * the two list of nodes
+	 */
 	public Result executeStrategy(List<Node> list1, List<Node> list2){
 		return strategy.computeSimilarity(list1, list2);
 	}

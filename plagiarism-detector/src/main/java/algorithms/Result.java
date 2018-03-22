@@ -1,5 +1,8 @@
 package algorithms;
 
+import java.util.Set;
+import java.util.TreeSet;
+
 import parser.Node;
 
 /**
@@ -14,6 +17,7 @@ import parser.Node;
 public class Result {
 	private double percentage;
 	private Node[] commonNodes;
+	private Set<SimilaritySnippet> snippet;
 
 	/**
 	 * Constructor for making a new Result object
@@ -23,6 +27,7 @@ public class Result {
 	public Result(double percentage, Node[] common){
 		this.percentage = percentage;
 		this.commonNodes = common;
+		this.snippet = this.generateSnippet();
 	}
 	
 	/**
@@ -38,5 +43,21 @@ public class Result {
 	 */
 	public Node[] getCommonNodes(){
 		return this.commonNodes;
+	}
+
+	/**
+	 * @return a set of SimilaritySnippets
+	 */
+	public Set<SimilaritySnippet> getSnippets(){
+		return snippet;
+	}
+	
+	private Set<SimilaritySnippet> generateSnippet(){
+		Set<SimilaritySnippet> set = new TreeSet<>();
+		for(Node n: commonNodes){
+			if(n!=null)
+			set.add(new SimilaritySnippet(n.getStart(),n.getEnd()));
+		}
+		return set;
 	}
 }
