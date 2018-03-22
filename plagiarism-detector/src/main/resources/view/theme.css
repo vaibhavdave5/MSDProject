@@ -944,3 +944,7 @@ VBox > .split-menu-button.last > .arrow-button {
    	-fx-font-size: 16;
    	-fx-font-family: "Comic Sans MS";
 }
+.menu-color 
+{
+	-fx-background-color: #F8F8F8;
+}
