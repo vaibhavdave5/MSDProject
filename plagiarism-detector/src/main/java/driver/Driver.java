@@ -131,8 +131,8 @@ public class Driver {
 				LOGGER.log(Level.INFO, "File1: {0}", file1.getAbsolutePath());
 				LOGGER.log(Level.INFO, "File2: {0}", file2.getAbsolutePath());
 				AlgorithmController ac = new AlgorithmController(file1, file2);
-//				similarityScoreList.add(ac.getAns(new LCSAlgorithm()));
-				similarityScoreList.add(ac.getAns(new NeemanWalshAlgorithm()));
+				similarityScoreList.add(ac.getAns(new LCSAlgorithm()));
+//				similarityScoreList.add(ac.getAns(new NeemanWalshAlgorithm()));
 			}
 		}
 		

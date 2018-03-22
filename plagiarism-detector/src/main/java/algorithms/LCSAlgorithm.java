@@ -38,12 +38,11 @@ public class LCSAlgorithm implements AlgorithmStrategy {
 	public Node[] getCommonNodes(List<Node> list1, List<Node> list2) {
 		int[][] map = getMap(list1, list2);
 
-		int i = list1.size();
-		int j = list2.size();
+		int i = list1.size()-1;
+		int j = list2.size()-1;
 		int index = map[i][j];
 		Node[] lcs = new Node[index + 1];
 		lcs[index] = null; 						// Set the terminating character
-
 		while (i > 0 && j > 0) {
 			if (list1.get(i - 1).equals(list2.get(i - 1))) {
 				lcs[index - 1] = list1.get(i - 1);
