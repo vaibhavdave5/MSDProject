@@ -3,6 +3,7 @@ package driver;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -12,6 +13,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 import algorithms.LCSAlgorithm;
+import algorithms.NeemanWalshAlgorithm;
 import controllers.AlgorithmController;
 
 /**
@@ -36,7 +38,7 @@ public class Driver {
 	private List<String> repoPaths;
 	private String hwDir;
 	private static Map<Integer, Student> studentMap;
-	private Map<Integer, Collection<File>> studentHWMap;
+	private Map<Integer, Collection<File>> studentHWMap = new HashMap<>();
 	private Summary summary;
 
 	/**
@@ -84,10 +86,8 @@ public class Driver {
 	 */
 	public void getCodeFiles() {
 		String path = null;
-		int studentId = 0;
+		Integer studentId = 0;
 		for(String repoPath: this.repoPaths) {
-			LOGGER.log(Level.INFO, repoPath);
-			
 			studentId = Integer.parseInt(repoPath.substring(repoPath.length() - 3));
 			
 			path = constructPath(repoPath);
@@ -106,9 +106,10 @@ public class Driver {
 	 * @return avgSimilarityScore Double
 	 */
 	public double avgSimilarityScore(List<Double> similarityScoreList) {
-		double avgSimilarityScore = new Double(0.0);
+		double avgSimilarityScore = 0.0;
 		  if(!similarityScoreList.isEmpty()) {
 		    for (Double score : similarityScoreList) {
+		    	LOGGER.log(Level.INFO, "Score: {0}", score);
 		    	avgSimilarityScore += score;
 		    }
 		    return avgSimilarityScore / similarityScoreList.size();
@@ -127,24 +128,30 @@ public class Driver {
 		List<Double> similarityScoreList = new ArrayList<>();
 		for(File file1: fileList1) {
 			for(File file2: fileList2) {
+				LOGGER.log(Level.INFO, "File1: {0}", file1.getAbsolutePath());
+				LOGGER.log(Level.INFO, "File2: {0}", file2.getAbsolutePath());
 				AlgorithmController ac = new AlgorithmController(file1, file2);
-				similarityScoreList.add(ac.getAns(new LCSAlgorithm()));
-				double avgScore = this.avgSimilarityScore(similarityScoreList);
-				if(avgScore >= 50) {
-					// send student pair to red list
-					sp.setSimilarityScore(avgScore);
-					this.summary.setRed(sp);
-					isSafe = false;
-				} else if(avgScore >= 30 && avgScore < 50) {
-					// send student pair to yellow list
-					sp.setSimilarityScore(avgScore);
-					this.summary.setYellow(sp);
-					isSafe = false;
-				} else {
-					// do nothing
-				}
+//				similarityScoreList.add(ac.getAns(new LCSAlgorithm()));
+				similarityScoreList.add(ac.getAns(new NeemanWalshAlgorithm()));
 			}
 		}
+		
+		double avgScore = this.avgSimilarityScore(similarityScoreList);
+		LOGGER.log(Level.INFO, "Avg Score: {0}", avgScore);
+		if(avgScore >= 0.5) {
+			// send student pair to red list
+			sp.setSimilarityScore(avgScore);
+			this.summary.setRed(sp);
+			isSafe = false;
+		} else if(avgScore >= 0.3 && avgScore < 0.5) {
+			// send student pair to yellow list
+			sp.setSimilarityScore(avgScore);
+			this.summary.setYellow(sp);
+			isSafe = false;
+		} else {
+			// do nothing
+		}
+		
 		return isSafe;
 	}
 	
@@ -186,7 +193,6 @@ public class Driver {
 		this.setHWDir(hwDir);
 		this.getCodeFiles();
 		this.generateSummary();
-		
 	}
 	
 	/**

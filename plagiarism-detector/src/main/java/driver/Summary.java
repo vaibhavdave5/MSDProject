@@ -1,5 +1,6 @@
 package driver;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -12,9 +13,9 @@ import java.util.Set;
  * 
  */
 public class Summary {
-	private Set<StudentPair> red;
-	private Set<StudentPair> yellow;
-	private Set<Integer> green;
+	private Set<StudentPair> red = new HashSet<>();
+	private Set<StudentPair> yellow = new HashSet<>();
+	private Set<Integer> green = new HashSet<>();
 
 	public Set<StudentPair> getRed() {
 		return red;
