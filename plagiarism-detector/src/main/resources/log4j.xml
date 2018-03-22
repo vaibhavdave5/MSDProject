@@ -48,7 +48,7 @@
 
 		<level value="DEBUG" />
 		<appender-ref ref="fileAppender" />
-		
+
 		<level value="ERROR" />
 		<appender-ref ref="mailAppender" />
 	</root>
