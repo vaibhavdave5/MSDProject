@@ -1,5 +1,6 @@
 package algorithms;
 
+import java.util.ArrayList;
 import java.util.List;
 import parser.Node;
 
@@ -11,6 +12,8 @@ import parser.Node;
  *
  */
 public class LCSAlgorithm implements AlgorithmStrategy {
+	private List<SimilaritySnippet> snippets = new ArrayList<>();
+
 	/**
 	 * Compute the similarity between two Node lists
 	 * 
@@ -24,40 +27,37 @@ public class LCSAlgorithm implements AlgorithmStrategy {
 		if (totalSize == 0)
 			throw new IllegalArgumentException("Both lists are empty.");
 
-		Node[] commonNodes = getCommonNodes(list1, list2);
-		return new Result(((2.0 * commonNodes.length) / totalSize), commonNodes);
+		setCommonNodes(list1, list2);
+		return new Result(((2.0 * snippets.size()) / totalSize), snippets);
 	}
 
 	/**
-	 * Backtrack the result of the lcs and find out the actual
-	 * longest common subsequence
-	 * @param list1 a list of nodes
+	 * Backtrack the result of the lcs and find out the actual longest common
+	 * subsequence
+	 * 
+	 * @param list a list of nodes
 	 * @param list2 another list of nodes
 	 * @return Node[] of lcs
 	 */
-	public Node[] getCommonNodes(List<Node> list1, List<Node> list2) {
+	public void setCommonNodes(List<Node> list1, List<Node> list2) {
 		int[][] map = getMap(list1, list2);
 
 		int i = list1.size();
 		int j = list2.size();
 		int index = map[i][j];
-		Node[] lcs = new Node[index + 1];
-		lcs[index] = null; 						// Set the terminating character
 		while (i > 0 && j > 0) {
-			
+
 			if (list1.get(i - 1).equals(list2.get(j - 1))) {
-				lcs[index - 1] = list1.get(i - 1);
+				snippets.add(new SimilaritySnippet(list1.get(i-1), list2.get(j-1)));
 				i--;
 				j--;
 				index--;
-			}
-			else if (map[i - 1][j] > map[i][j - 1])
+			} else if (map[i - 1][j] > map[i][j - 1])
 				i--;
 			else
 				j--;
 		}
 
-		return lcs;
 	}
 
 	/**
