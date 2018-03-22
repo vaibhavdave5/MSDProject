@@ -85,8 +85,8 @@ public class MainController {
 	 */
 	public CheckBoxTreeItem<String> populateView(File directory) {
 		dirContent.setCellFactory(CheckBoxTreeCell.<String>forTreeView());
-		CheckBoxTreeItem<String> root  
-				= new CheckBoxTreeItem<>(directory.getName());
+		SaveDisplayValue<String> root  
+				= new SaveDisplayValue<>(directory.getName(), directory.getAbsolutePath());
 		root.setIndependent(true);
         for(File file : directory.listFiles()) {
             if(file.isDirectory()) {
@@ -121,5 +121,27 @@ public class MainController {
 			dirContent.setRoot(populateView(files.get(0)));
 			dirContent.setShowRoot(true);
 		}
+	}
+	
+	/**
+	 * The purpose of this class is to differentiate between the internal value and 
+	 * the displayed value of the checkbox of the tree
+	 * 
+	 * @author Samanjate Sood
+	 *
+	 * @param <String>
+	 */
+	private class SaveDisplayValue<T> extends CheckBoxTreeItem<T> {
+		
+		public SaveDisplayValue(T value, T internalValue) {
+			super(value);
+			this.internalValue = internalValue;
+		}
+		
+		public T getDisplayValue() {
+			return internalValue;
+		}
+		 
+		private T internalValue;
 	}
 }
