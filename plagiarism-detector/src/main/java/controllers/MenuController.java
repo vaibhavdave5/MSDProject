@@ -1,10 +1,9 @@
 package controllers;
 
+import controllers.popups.PopupMessage;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuBar;
 
 public class MenuController {
@@ -12,18 +11,27 @@ public class MenuController {
 	@FXML private MenuBar menu;
 	
 	/**
+	 * This method runs on page load and initializes all components of the Start.fxml page
+	 */
+	@FXML protected void initialize() {
+		applyStyle();
+	}
+	
+	/**
+	 * This method applies the CSS properties to the controls of the Start page.
+	 */
+	private void applyStyle() {
+		menu.getStyleClass().add("menu-color");
+	}
+	
+	/**
 	 * This methods shows the information about the application
 	 */
 	@FXML public void showAbout() {
-		Alert alert = new Alert(null);
-		alert.setTitle("About");
-		alert.setHeaderText("© Team 107\nManaging Software Development, Spring 2018");
-		alert.setContentText("This Software was developed by:\n\nDave, Vaibhav\nPanse, Darshan\nShah, Shail\nSood, Samanjate");
-		alert.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
-        Node closeButton = alert.getDialogPane().lookupButton(ButtonType.CLOSE);
-        closeButton.managedProperty().bind(closeButton.visibleProperty());
-        closeButton.setVisible(false);
-		alert.showAndWait();
+		PopupMessage.getInstance().showAlertMessage(AlertType.INFORMATION,
+				"About", 
+				"© Team 107\nManaging Software Development, Spring 2018", 
+				"This Software was developed by:\n\nDave, Vaibhav\nPanse, Darshan\nShah, Shail\nSood, Samanjate");
 	}
 	
 	/**

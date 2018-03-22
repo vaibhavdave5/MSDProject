@@ -6,13 +6,16 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import controllers.popups.PopupMessage;
 import driver.Driver;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.CheckBoxTreeCell;
 import javafx.scene.image.Image;
@@ -31,6 +34,7 @@ public class MainController {
 	
 	// Controller injectors
 	@FXML private TreeView<String> dirContent;
+	@FXML private TreeItem<String> root;
 	@FXML private Button summary;
 	@FXML private Label logo;
 	@FXML private Label chooseDir;
@@ -57,6 +61,7 @@ public class MainController {
 	@FXML protected void initialize() {
 		applyStyle();
 		folder.setImage(emptyFolder);
+		hw.setPromptText("Search e.g. HW1...");
 	}
 	
 	/**
@@ -97,7 +102,15 @@ public class MainController {
 	 * This method runs the algorithm
 	 */
 	@FXML public void runAlgorithm() {
-		Driver.getInstance().checkForPlagiarism(getListOfPaths(), hw.getText());
+		List<String> allPaths =  getListOfPaths();
+		if(hw.getText() == null || allPaths.isEmpty()) {
+			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
+					"Error", 
+					"An error occurred", 
+					"Make sure to select a directory and enter homework number");
+		} else {
+			Driver.getInstance().checkForPlagiarism(allPaths, hw.getText());
+		}
 	}
 	
 	/**
@@ -115,8 +128,8 @@ public class MainController {
 	 */
 	public CheckBoxTreeItem<String> populateView(File directory) {
 		dirContent.setCellFactory(CheckBoxTreeCell.<String>forTreeView());
-		SaveDisplayValue<String> root  
-				= new SaveDisplayValue<>(directory.getName(), directory);
+		SaveFileObject<String> root  
+				= new SaveFileObject<>(directory.getName(), directory);
 		root.setIndependent(true);
         for(File file : directory.listFiles()) {
             if(file.isDirectory()) {
@@ -185,9 +198,9 @@ public class MainController {
 	 *
 	 * @param <String>
 	 */
-	private class SaveDisplayValue<T> extends CheckBoxTreeItem<T> {
+	private class SaveFileObject<T> extends CheckBoxTreeItem<T> {
 		
-		public SaveDisplayValue(T value, File file) {
+		public SaveFileObject(T value, File file) {
 			super(value);
 			this.file = file;
 		}
