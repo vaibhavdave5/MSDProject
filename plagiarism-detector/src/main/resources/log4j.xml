@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE log4j:configuration SYSTEM 
           "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
-<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+					 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+					 xsi:schemaLocation="http://jakarta.apache.org/log4j/ ">
 	<appender name="mailAppender" class="org.apache.log4j.net.SMTPAppender">
 		<!-- Email Configuration -->
-		<param name="BufferSize" value="512" />
-		<param name="SMTPProtocol" value="smtps" />
-		<param name="SMTPHost" value="smtp.gmail.com" />
-		<param name="SMTPPort" value="465" />
-		<param name="SMTPUsername" value="cs5500team107@gmail.com" />
-		<param name="SMTPPassword" value="Mercury1234@" />
-		<param name="From" value="cs5500team107@gmail.com" />
-		<param name="To" value="sood.s@husky.neu.edu,vaibhavdave5@gmail.com" />
-		<param name="Subject" value="Testing Log4j Mail Notification" />
+		<param name="BufferSize" value="512"/>
+		<param name="SMTPProtocol" value="smtps"/>
+		<param name="SMTPHost" value="smtp.gmail.com"/>
+		<param name="SMTPPort" value="465"/>
+		<param name="SMTPUsername" value="cs5500team107@gmail.com"/>
+		<param name="SMTPPassword" value="Mercury1234@"/>
+		<param name="From" value="cs5500team107@gmail.com"/>
+		<param name="To" value="sood.s@husky.neu.edu,vaibhavdave5@gmail.com"/>
+		<param name="Subject" value="Testing Log4j Mail Notification"/>
 
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%-7p %d [%t] %c %x - %m%n" />
+			<param name="ConversionPattern" value="%-7p %d [%t] %c %x - %m%n"/>
 		</layout>
 
 		<filter class="org.apache.log4j.varia.LevelRangeFilter">
-			<param name="LevelMin" value="error" />
-			<param name="LevelMax" value="fatal" />
+			<param name="LevelMin" value="error"/>
+			<param name="LevelMax" value="fatal"/>
 		</filter>
 	</appender>
 
 	<root>
-		<level value="INFO" />
-		<appender-ref ref="mailAppender" />
+		<level value="INFO"/>
+		<appender-ref ref="mailAppender"/>
 	</root>
 </log4j:configuration>
