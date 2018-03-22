@@ -7,13 +7,13 @@ package driver;
  *
  */
 public class StudentPair {
-	private Integer student1Id, student2Id;
+	private Integer student1Id;
+	private Integer student2Id;
 	private Double similarityScore;
 	
-	public StudentPair(Integer student1Id, Integer student2Id, Double similarityScore) {
+	public StudentPair(Integer student1Id, Integer student2Id) {
 		this.student1Id = student1Id;
 		this.student2Id = student2Id;
-		this.similarityScore = similarityScore;
 	}
 
 	public Double getSimilarityScore() {

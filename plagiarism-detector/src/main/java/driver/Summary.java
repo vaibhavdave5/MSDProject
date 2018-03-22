@@ -14,7 +14,7 @@ import java.util.Set;
 public class Summary {
 	private Set<StudentPair> red;
 	private Set<StudentPair> yellow;
-	private Set<StudentPair> green;
+	private Set<Integer> green;
 
 	public Set<StudentPair> getRed() {
 		return red;
@@ -33,12 +33,12 @@ public class Summary {
 		this.yellow.add(sp);
 	}
 
-	public Set<StudentPair> getGreen() {
+	public Set<Integer> getGreen() {
 		return green;
 	}
 
-	public void setGreen(StudentPair sp) {
-		this.green.add(sp);
+	public void setGreen(Integer student) {
+		this.green.add(student);
 	}
 	
 }
