@@ -18,6 +18,7 @@
 			**/C*.java
 		</sonar.exclusions>
 		<sonar.coverage.exclusions>
+			**/Main.java,
 			**/MainController.java
     		</sonar.coverage.exclusions>
 		<sonar.junit.reportPaths>
