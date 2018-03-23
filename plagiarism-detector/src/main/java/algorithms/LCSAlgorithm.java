@@ -13,7 +13,7 @@ import parser.Node;
  */
 public class LCSAlgorithm implements AlgorithmStrategy {
 	private List<SimilaritySnippet> snippets = new ArrayList<>();
-
+ 
 	/**
 	 * Compute the similarity between two Node lists
 	 * 
