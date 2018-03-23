@@ -1,5 +1,7 @@
 package controllers.popups;
 
+import java.util.Optional;
+
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -41,7 +43,7 @@ public class PopupMessage {
 	 * @param headerText 
 	 * @param contentText
 	 */
-	public void showAlertMessage(AlertType type, String title, String headerText, String contentText) {
+	public Optional<ButtonType> showAlertMessage(AlertType type, String title, String headerText, String contentText) {
 		Alert alert = new Alert(type);
 		alert.setTitle(title);
 		alert.setHeaderText(headerText);
@@ -50,6 +52,6 @@ public class PopupMessage {
         Node closeButton = alert.getDialogPane().lookupButton(ButtonType.CLOSE);
         closeButton.managedProperty().bind(closeButton.visibleProperty());
         closeButton.setVisible(false);
-		alert.showAndWait();
+		return alert.showAndWait();
 	}
 }

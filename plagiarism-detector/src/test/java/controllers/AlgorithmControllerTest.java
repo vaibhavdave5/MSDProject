@@ -4,13 +4,19 @@ import static org.junit.Assert.*;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 import org.junit.Test;
 import algorithms.LCSAlgorithm;
 import algorithms.NeemanWalshAlgorithm;
+import algorithms.Result;
+import algorithms.SimilaritySnippet;
 import driver.Driver;
 import driver.Student;
+import driver.StudentPair;
+import driver.Summary;
 import parser.Node;
 
 /**
@@ -58,6 +64,7 @@ public class AlgorithmControllerTest {
 		System.out.println(ans);
 		assertTrue(ans >= 0 && ans <= 1);
 	}
+
 	// Student Tests
 	/////////////////////////////////////////////////////////////////////////////
 	@Test
@@ -100,31 +107,93 @@ public class AlgorithmControllerTest {
 	public void testgetCodeFiles() {
 		Driver driver = Driver.getInstance();
 		List<String> repoPaths = new ArrayList<>();
-		
-		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test" + File.separator
-				+ "java" + File.separator + "controllers" + File.separator + "test-repos" + File.separator;
-		
+
+		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "java" + File.separator + "controllers" + File.separator + "test-repos"
+				+ File.separator;
+
 		repoPaths.add(basePath + "student-110");
 		repoPaths.add(basePath + "student-111");
 		driver.setRepoPaths(repoPaths);
 		driver.setHWDir("HW3");
 		driver.getCodeFiles();
 	}
-	
+
 	@Test
 	public void testCheckForPlagiarism() {
 		Driver driver = Driver.getInstance();
 		List<String> repoPaths = new ArrayList<>();
-		
-		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test" + File.separator
-				+ "java" + File.separator + "controllers" + File.separator + "test-repos" + File.separator;
-		
+
+		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "java" + File.separator + "controllers" + File.separator + "test-repos"
+				+ File.separator;
+
 		repoPaths.add(basePath + "student-110");
 		repoPaths.add(basePath + "student-111");
 		String hwDir = "HW3";
 		driver.checkForPlagiarism(repoPaths, hwDir);
-	}
+		Summary summary = driver.viewSummary();
+		Integer expected1 = 110;
+		Integer expected2 = 111;
+		Set<StudentPair> actual = summary.getRed();
+		for(StudentPair sp: actual) {
+			Integer actual1 = sp.getStudent1Id();
+			Integer actual2 = sp.getStudent2Id();
+			assertEquals(expected1, actual1);
+			assertEquals(expected2, actual2);
+		}
+		assertTrue(summary.getYellow().isEmpty());
+		assertTrue(summary.getGreen().isEmpty());
+	} 
+ 
+	/**
+	 * Testing the snippet generator
+	 */
+	@Test
+	public void testSnippets() {  
+		 
+		String path1 = "sample2.c";
+		String path2 = "sample.c";
+		
+		File file1 = new File(path1);
+		File file2 = new File(path2);
 
+		AlgorithmController ac = new AlgorithmController(file1, file2);
+		Result result = ac.getResult(new LCSAlgorithm());
+		Set<SimilaritySnippet> set = result.generateSnippet();
+		// Checking if all the values are set
+		for (SimilaritySnippet s : set) {
+			s.getStart();
+			s.getStart2();
+			s.getEnd();
+			s.getEnd2();
+			s.equals(s);
+			s.hashCode();
+		}
+		
+		
+		assertTrue(set.size() > 0);
+	}
+	
+	@Test
+	public void testgenerateSnippet() {
+		Driver driver = Driver.getInstance();
+		List<String> repoPaths = new ArrayList<>();
+
+		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "java" + File.separator + "controllers" + File.separator + "test-repos"
+				+ File.separator;
+
+		repoPaths.add(basePath + "student-110");
+		repoPaths.add(basePath + "student-111");
+		driver.setRepoPaths(repoPaths);
+		driver.setHWDir("HW3");
+		driver.getCodeFiles();
+		Integer student1Id = 110;
+		Integer student2Id = 111;
+		driver.generateSnippet(student1Id, student2Id);
+	}
+	
 	// @Test
 	// public void testgetStudentDataInvalidXLSXPath() {
 	// Driver driver = Driver.getInstance();

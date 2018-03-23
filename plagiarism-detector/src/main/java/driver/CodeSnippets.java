@@ -1,27 +1,22 @@
 package driver;
 
+import java.util.List;
+
 /**
  * 
  * @author darshan.panse
- * This class makes a studentId pair 
+ * This class holds the data to populate the similarity snippets of the homework
+ * submissions of two students.
  *
  */
-public class StudentPair {
+public class CodeSnippets {
 	private Integer student1Id;
 	private Integer student2Id;
-	private Double similarityScore;
+	private List<FilePair> filePairList;
 	
-	public StudentPair(Integer student1Id, Integer student2Id) {
+	public CodeSnippets(Integer student1Id, Integer student2Id) {
 		this.student1Id = student1Id;
 		this.student2Id = student2Id;
-	}
-
-	public Double getSimilarityScore() {
-		return similarityScore;
-	}
-
-	public void setSimilarityScore(Double similarityScore) {
-		this.similarityScore = similarityScore;
 	}
 
 	public Integer getStudent1Id() {
@@ -40,11 +35,12 @@ public class StudentPair {
 		this.student2Id = student2Id;
 	}
 	
-	@Override
-	public String toString() {
-		return "Student-" + getStudent1Id() 
-		+ " - " 
-		+ "Student-" + getStudent2Id();
+	public List<FilePair> getFilePairList() {
+		return filePairList;
+	}
+
+	public void setFilePairList(List<FilePair> filePairList) {
+		this.filePairList = filePairList;
 	}
 	
 }
