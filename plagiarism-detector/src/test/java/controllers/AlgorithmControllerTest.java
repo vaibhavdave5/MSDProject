@@ -139,7 +139,7 @@ public class AlgorithmControllerTest {
 		 
 		String path1 = "sample2.c";
 		String path2 = "sample.c";
-		;
+		
 		File file1 = new File(path1);
 		File file2 = new File(path2);
 
@@ -159,6 +159,26 @@ public class AlgorithmControllerTest {
 		
 		assertTrue(set.size() > 0);
 	}
+	
+	@Test
+	public void testgenerateSnippet() {
+		Driver driver = Driver.getInstance();
+		List<String> repoPaths = new ArrayList<>();
+
+		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "java" + File.separator + "controllers" + File.separator + "test-repos"
+				+ File.separator;
+
+		repoPaths.add(basePath + "student-110");
+		repoPaths.add(basePath + "student-111");
+		driver.setRepoPaths(repoPaths);
+		driver.setHWDir("HW3");
+		driver.getCodeFiles();
+		Integer student1Id = 110;
+		Integer student2Id = 111;
+		driver.generateSnippet(student1Id, student2Id);
+	}
+	
 	// @Test
 	// public void testgetStudentDataInvalidXLSXPath() {
 	// Driver driver = Driver.getInstance();
