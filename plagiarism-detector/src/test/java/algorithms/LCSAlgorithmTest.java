@@ -1,29 +1,18 @@
 package algorithms;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import org.junit.Test;
-
-import parser.Node;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+import utils.FileUtils;
 
 /**
- * Tests for LCS Algorithm
- * @author Shail Shah
+ * This is the main test suite where in you should call all the tests
+ * @author Vaibhav Dave
+ * @since 3/23/2018
  */
+
+@RunWith(Suite.class)
+@SuiteClasses({ LCSUnitTest.class, NeemanWalshAlgorithmTest.class, NodeTests.class, FileUtils.class })
 public class LCSAlgorithmTest {
 
-	/**
-	 * If the Node lists are empty, an exception should be thrown
-	 */
-	@Test(expected = IllegalArgumentException.class)
-	public void test() {
-		List<Node> list1 = new LinkedList<>();
-		List<Node> list2 = new LinkedList<>();
-		
-		AlgorithmStrategy lcs = new LCSAlgorithm();
-		lcs.computeSimilarity(list1, list2);
-		
-	}
 }
-

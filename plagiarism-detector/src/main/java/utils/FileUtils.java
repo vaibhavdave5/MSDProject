@@ -1,7 +1,7 @@
 package utils;
 
 import org.apache.log4j.Logger;
-import scratch.Scratch;
+//import scratch.Scratch;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -13,7 +13,7 @@ import java.nio.file.Paths;
  */
 public class FileUtils {
 
-	final static Logger logger = Logger.getLogger(Scratch.class);
+	final static Logger logger = Logger.getLogger(FileUtils.class);
 
 	private FileUtils(){};
 	/**
