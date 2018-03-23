@@ -104,7 +104,7 @@ public class AlgorithmControllerTest {
 		driver.setRepoPaths(repoPaths);
 		driver.setHWDir("HW3");
 		URL url = this.getClass().getResource("/studentData.xlsx");
-		Driver.getStudentData(url.getPath());
+		// Driver.getStudentData(url.getPath());
 	}
 
 	@Test
@@ -270,8 +270,7 @@ public class AlgorithmControllerTest {
 		Driver driver = Driver.getInstance();
 		String expected1 = "Darshan";
 		String expected2 = "Saman";
-		URL url = this.getClass().getResource("/studentData.xlsx");
-		Driver.getStudentData(url.getPath());
+		driver.getStudentData();
 		String actual1 = driver.getNameById(101);
 		String actual2 = driver.getNameById(102);
 		assertEquals(expected1, actual1);
@@ -295,9 +294,9 @@ public class AlgorithmControllerTest {
 		Set<SimilaritySnippet> set = result.generateSnippet();
 		// Checking if all the values are set
 		for (SimilaritySnippet s : set) {
-			s.getStart();
+			s.getStart1();
 			s.getStart2();
-			s.getEnd();
+			s.getEnd1();
 			s.getEnd2();
 			s.equals(s);
 			s.hashCode();
@@ -325,12 +324,6 @@ public class AlgorithmControllerTest {
 		Integer student2Id = 111;
 		driver.generateSnippet(student1Id, student2Id);
 	}
-	
-	// @Test
-	// public void testgetStudentDataInvalidXLSXPath() {
-	// Driver driver = Driver.getInstance();
-	// driver.getStudentData("invalid_path_to_test_IOException");
-	// }
 
 	//////////////////////////////////////////////////////////////////////////////
 
