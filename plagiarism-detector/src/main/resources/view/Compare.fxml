@@ -27,7 +27,7 @@
                   <TextFlow fx:id="studentACode" prefHeight="439.0" prefWidth="358.0" />
                </content>
             </ScrollPane>
-            <Button fx:id="reveal" layoutX="345.0" layoutY="24.0" mnemonicParsing="false" text="Reveal Names" />
+            <Button fx:id="reveal" layoutX="345.0" layoutY="24.0" mnemonicParsing="false" onAction="#revealNames" text="Reveal Names" />
             <Button fx:id="prev" layoutX="268.0" layoutY="546.0" mnemonicParsing="false" onAction="#onPreviousButtonClick" text="&lt;" />
             <Button fx:id="next" layoutX="511.0" layoutY="547.0" mnemonicParsing="false" onAction="#onNextButtonClick" text="&gt;" />
             <Button fx:id="back" layoutX="32.0" layoutY="18.0" mnemonicParsing="false" text="Back" />

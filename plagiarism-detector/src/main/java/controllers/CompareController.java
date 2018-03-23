@@ -4,6 +4,7 @@ import algorithms.SimpleFilePair;
 import algorithms.Result;
 import algorithms.SimilaritySnippet;
 import driver.CodeSnippets;
+import driver.Driver;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.*;
@@ -50,6 +51,7 @@ public class CompareController {
 	protected void initialize() {
 		applyStyle();
 		simpleFilePairs = getSimpleFilePairs();
+		reveal.setDisable(false);
 		initializeSnippet();
 		initializeLabels();
 	}
@@ -83,6 +85,10 @@ public class CompareController {
 		next.getStyleClass().add("danger");
 		reportButton.getStyleClass().add("success");
 		reveal.getStyleClass().add("success");
+		studentAName.getStyleClass().add("logo");
+		studentBName.getStyleClass().add("logo");
+		studentACode.setId("supertextflow1");
+		studentBCode.setId("supertextflow2");
 	}
 
 	/**
@@ -103,6 +109,15 @@ public class CompareController {
 			return;
 		currentSnippet++;
 		initializeSnippet();
+	}
+	
+	/**
+	 * This function reveals the name of the students
+	 */
+	@FXML public void revealNames() {
+		reveal.setDisable(true);
+		studentAName.setText(Driver.getInstance().getNameById(codeSnippets.getStudent1Id()));
+		studentBName.setText(Driver.getInstance().getNameById(codeSnippets.getStudent2Id()));
 	}
 
 	/**
