@@ -2,19 +2,24 @@ package controllers;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.Optional;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import controllers.popups.PopupMessage;
 import driver.StudentPair;
 import driver.Summary;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Alert.AlertType;
 
 /**
  * This Controller is responsible to load the Summary page of the application.
@@ -109,6 +114,12 @@ public class SummaryController {
 	 */
 	@FXML public void goBack()
 	{
+		Optional<ButtonType> type 
+		    = PopupMessage.getInstance().showAlertMessage(AlertType.CONFIRMATION,
+				"Confirmation", 
+				"Are you sure?", 
+				"You will lose all your changes.");
+		if(type.isPresent() && type.get() == ButtonType.CANCEL) return;
 		if(screenController != null) {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Start.fxml"));
 			try {

@@ -956,7 +956,7 @@ VBox > .split-menu-button.last > .arrow-button {
 }
 .medium-students
 {
-	-fx-background-color: orange;
+	-fx-background-color: #f0ad4e;
    	-fx-font-size: 14;
    	-fx-font-family: "Comic Sans MS";
 }
@@ -971,7 +971,7 @@ VBox > .split-menu-button.last > .arrow-button {
     -fx-text-fill: white; /* 5 */
 }
 #medium .list-cell:filled:selected:focused, .ds:filled:selected {
-    -fx-background-color: orange;
+    -fx-background-color: #f0ad4e;
     -fx-text-fill: white; /* 5 */
 }
 #safe .list-cell:filled:selected:focused, .ds:filled:selected {

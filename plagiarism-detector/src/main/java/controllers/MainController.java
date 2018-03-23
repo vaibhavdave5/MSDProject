@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import algorithms.Algorithm;
 import controllers.popups.PopupMessage;
 import driver.Driver;
 import driver.Summary;
@@ -18,6 +19,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -43,14 +45,17 @@ public class MainController {
 	@FXML private Label chooseDir;
 	@FXML private ImageView folder;
 	@FXML private TextField hw;
+	@FXML private MenuButton strategy;
 	
 	private Image emptyFolder;
 	private Image filledFolder;
 	private SaveFileObject<String> root;
+	private Algorithm algo;
 	
 	private static Logger logger = Logger.getLogger(MainController.class);
 	
 	public MainController() {
+		algo = Algorithm.LCS;
 		emptyFolder = new Image(getClass()
 				.getResource("/images/folder.png")
 				.toExternalForm());
@@ -65,13 +70,14 @@ public class MainController {
 	@FXML protected void initialize() {
 		applyStyle();
 		folder.setImage(emptyFolder);
-		hw.setPromptText("Search e.g. HW1...");
+		hw.setPromptText("Select e.g. HW1...");
 	}
 	
 	/**
 	 * This method applies the CSS properties to the controls.
 	 */
 	private void applyStyle() {
+		strategy.getStyleClass().add("primary");
 		summary.getStyleClass().add("primary");
 		logo.getStyleClass().add("logo");
 		chooseDir.getStyleClass().add("drag-folder");
@@ -232,6 +238,16 @@ public class MainController {
 	private void hideImage() {
 		folder.setVisible(false);
 		chooseDir.setVisible(false);
+	}
+	
+	@FXML private void selectLCS() {
+		strategy.setText("Longest Common Sequence");
+		algo = Algorithm.LCS;
+	}
+	
+	@FXML private void selectNW() {
+		strategy.setText("Neelam-Walsh");
+		algo = Algorithm.NW;
 	}
 	
 	/**
