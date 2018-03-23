@@ -948,3 +948,33 @@ VBox > .split-menu-button.last > .arrow-button {
 {
 	-fx-background-color: #F8F8F8;
 }
+.danger-students
+{
+    -fx-background-color: #d9534f;
+   	-fx-font-size: 14;
+   	-fx-font-family: "Comic Sans MS";
+}
+.medium-students
+{
+	-fx-background-color: orange;
+   	-fx-font-size: 14;
+   	-fx-font-family: "Comic Sans MS";
+}
+.safe-student
+{
+    -fx-background-color: #5cb85c;
+   	-fx-font-size: 14;
+   	-fx-font-family: "Comic Sans MS";
+}
+#danger .list-cell:filled:selected:focused, .ds:filled:selected {
+    -fx-background-color: #d9534f;
+    -fx-text-fill: white; /* 5 */
+}
+#medium .list-cell:filled:selected:focused, .ds:filled:selected {
+    -fx-background-color: orange;
+    -fx-text-fill: white; /* 5 */
+}
+#safe .list-cell:filled:selected:focused, .ds:filled:selected {
+    -fx-background-color: #5cb85c;
+    -fx-text-fill: white; /* 5 */
+}

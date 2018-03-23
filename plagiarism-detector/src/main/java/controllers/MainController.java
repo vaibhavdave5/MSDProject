@@ -66,7 +66,7 @@ public class MainController {
 	}
 	
 	/**
-	 * This method applies the CSS properties to the controls of the Start page.
+	 * This method applies the CSS properties to the controls.
 	 */
 	private void applyStyle() {
 		summary.getStyleClass().add("primary");
