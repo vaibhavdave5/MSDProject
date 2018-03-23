@@ -135,14 +135,10 @@ public class AlgorithmControllerTest {
 	 * Testing the snippet generator
 	 */
 	@Test
-	public void testSnippets() {
+	public void testSnippets() {  
 		 
-		String path1 = System.getProperty("user.dir") + File.separator + "target"
-				+ File.separator + "test-classes" + File.separator + "controllers" + File.separator + "test-repos"
-				+ File.separator + "student-110" + File.separator + "HW3" + File.separator + "sample2.c";
-		String path2 = System.getProperty("user.dir") + File.separator + "target"
-				+ File.separator + "test-classes" + File.separator + "controllers" + File.separator + "test-repos"
-				+ File.separator + "student-111" + File.separator + "HW3" + File.separator + "sample.c";
+		String path1 = "sample2.c";
+		String path2 = "sample.c";
 		;
 		File file1 = new File(path1);
 		File file2 = new File(path2);
