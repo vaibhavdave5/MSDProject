@@ -1,5 +1,8 @@
 package utils;
 
+import org.apache.log4j.Logger;
+import scratch.Scratch;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -9,6 +12,10 @@ import java.nio.file.Paths;
  * @author Shail Shah
  */
 public class FileUtils {
+
+	final static Logger logger = Logger.getLogger(Scratch.class);
+
+	private FileUtils(){};
 	/**
 	 * Converts a file from the given start and end lines to its String equivalent
 	 * @param file a source file
@@ -17,9 +24,9 @@ public class FileUtils {
 	 * @return a String of the provided line, from the start to end lines (inclusive)
 	 */
 	public static String getFileString(File file, int start, int end) {
-		start = start >= 1 ? start : 1;
+		int startOffset = start >= 1 ? start : 1;
 
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 			String line;
@@ -27,12 +34,12 @@ public class FileUtils {
 			while ((line = br.readLine()) != null) {
 				count++;
 
-				if (count < start) {
+				if (count < startOffset) {
 					continue;
 				}
 
 				if (count > end) {
-					break;
+					return sb.toString();
 				}
 
 				sb.append(count + ". " + line);
@@ -40,7 +47,7 @@ public class FileUtils {
 			}
 			br.close();
 		}catch (IOException e) {
-			e.printStackTrace();
+			logger.error("IOException");
 		}
 
 		return sb.toString();
