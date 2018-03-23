@@ -11,11 +11,11 @@ import java.nio.file.Paths;
  * Handy utilities that will be useful throughout the project
  * @author Shail Shah
  */
-public class FileUtils {
+public class FileUtils2 {
 
-	final static Logger logger = Logger.getLogger(FileUtils.class);
+	final static Logger logger = Logger.getLogger(FileUtils2.class);
 
-	private FileUtils(){};
+	private FileUtils2(){};
 	/**
 	 * Converts a file from the given start and end lines to its String equivalent
 	 * @param file a source file
