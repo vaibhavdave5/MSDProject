@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
  * Tests for the Util class
  * @author Shail Shah
  */
-public class UtilsTest {
+public class FileUtilsTest {
 
 	/**
 	 * get file string from the start
@@ -19,7 +19,7 @@ public class UtilsTest {
 		File file = new File("sample.c");
 		int start = 1;
 		int end = 3;
-		String fileString = Utils.getFileString(file, start, end);
+		String fileString = FileUtils.getFileString(file, start, end);
 		String expectedfileString = "1. int main()\n" + "2. {\n" + "3. \tint a = 0;\n";
 		assertEquals(expectedfileString, fileString);
 	}
@@ -32,7 +32,7 @@ public class UtilsTest {
 		File file = new File("sample.c");
 		int start = 2;
 		int end = 3;
-		String fileString = Utils.getFileString(file, start, end);
+		String fileString = FileUtils.getFileString(file, start, end);
 		String expectedfileString = "2. {\n" + "3. \tint a = 0;\n";
 		assertEquals(expectedfileString, fileString);
 	}
@@ -45,7 +45,7 @@ public class UtilsTest {
 		File file = new File("sample.c");
 		int start = -1;
 		int end = 3;
-		String fileString = Utils.getFileString(file, start, end);
+		String fileString = FileUtils.getFileString(file, start, end);
 		String expectedfileString = "1. int main()\n" + "2. {\n" + "3. \tint a = 0;\n";
 		assertEquals(expectedfileString, fileString);
 	}
@@ -58,7 +58,7 @@ public class UtilsTest {
 		File file = new File("sample.c");
 		int start = -1;
 		int end = 300;
-		String fileString = Utils.getFileString(file, start, end);
+		String fileString = FileUtils.getFileString(file, start, end);
 		String expectedfileString = "1. int main()\n" + "2. {\n" + "3. \tint a = 0;\n"
 				+ "4. 	return a;\n" + "5. } \n";
 		assertEquals(expectedfileString, fileString);
@@ -72,7 +72,7 @@ public class UtilsTest {
 		int start = -1;
 		int end = 3;
 		File file = new File("DoesNotExist.c");
-		String fileString = Utils.getFileString(file, start, end);
+		String fileString = FileUtils.getFileString(file, start, end);
 		assertEquals("", fileString);
 	}
 

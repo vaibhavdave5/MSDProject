@@ -5,7 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
-import utils.Utils;
+import utils.FileUtils;
 
 import java.io.*;
 
@@ -31,7 +31,7 @@ public class CompareController {
 		double size = 12;
 
 
-		Text text1 = new Text(Utils.getFileString(new File("sample3.c"), 4, 10));
+		Text text1 = new Text(FileUtils.getFileString(new File("sample3.c"), 4, 10));
 
 		text1.setFont(Font.font(family, size));
 		text1.setFill(Color.RED);

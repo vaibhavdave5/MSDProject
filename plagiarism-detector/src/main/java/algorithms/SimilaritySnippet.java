@@ -22,7 +22,7 @@ public class SimilaritySnippet implements Comparable<SimilaritySnippet> {
 	 * This is the start of code snippet in file 1
 	 * @return int start
 	 */
-	public int getStart() {
+	public int getStart1() {
 		return node1.getStart();
 	}
 
@@ -40,7 +40,7 @@ public class SimilaritySnippet implements Comparable<SimilaritySnippet> {
 	 * This is the end of code snippet in file 1
 	 * @return int end
 	 */
-	public int getEnd() {
+	public int getEnd1() {
 		return node1.getEnd();
 	}
 
@@ -62,7 +62,7 @@ public class SimilaritySnippet implements Comparable<SimilaritySnippet> {
 	 */
 	@Override
 	public int compareTo(SimilaritySnippet o) {
-		return this.getStart() - o.getStart();
+		return this.getStart1() - o.getStart1();
 	}
 
 	/**
@@ -71,13 +71,13 @@ public class SimilaritySnippet implements Comparable<SimilaritySnippet> {
 	@Override
 	public boolean equals(Object o) {
 		return (o instanceof SimilaritySnippet)
-					&& this.getStart() >= ((SimilaritySnippet) o).getStart()
-					&& this.getEnd() <= ((SimilaritySnippet) o).getEnd();
+					&& this.getStart1() >= ((SimilaritySnippet) o).getStart1()
+					&& this.getEnd1() <= ((SimilaritySnippet) o).getEnd1();
 	}
 
 	@Override
 	public int hashCode() {
-		return this.getStart();
+		return this.getStart1();
 	}
 
 }

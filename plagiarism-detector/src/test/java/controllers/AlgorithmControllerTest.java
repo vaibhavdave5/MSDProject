@@ -148,9 +148,9 @@ public class AlgorithmControllerTest {
 		Set<SimilaritySnippet> set = result.generateSnippet();
 		// Checking if all the values are set
 		for (SimilaritySnippet s : set) {
-			s.getStart();
+			s.getStart1();
 			s.getStart2();
-			s.getEnd();
+			s.getEnd1();
 			s.getEnd2();
 			s.equals(s);
 			s.hashCode();
