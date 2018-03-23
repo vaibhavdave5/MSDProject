@@ -217,7 +217,7 @@ public class Driver {
 	 * of the plagiarism algorithm along with the snippets data.
 	 * @param fileList1 List<File>
 	 * @param fileList2 List<File>
-	 * @return List<FilePair>
+	 * @return List<SimpleFilePair>
 	 */
 	public List<FilePair> compareFilesForResult(Collection<File> fileList1, Collection<File> fileList2) {
 		List<FilePair> filePairList = new ArrayList<>();

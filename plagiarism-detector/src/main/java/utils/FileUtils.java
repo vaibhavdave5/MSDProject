@@ -1,21 +1,21 @@
-package utilities;
+package utils;
 
 import org.apache.log4j.Logger;
-//import scratch.Scratch;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- * Handy utilities that will be useful throughout the project
+ * Handy utils that will be useful throughout the project
  * @author Shail Shah
  */
-public class FileUtils2 {
+public class FileUtils {
 
-	final static Logger logger = Logger.getLogger(FileUtils2.class);
+	final static Logger logger = Logger.getLogger(FileUtils.class);
 
-	private FileUtils2(){};
+	private FileUtils(){};
+
 	/**
 	 * Converts a file from the given start and end lines to its String equivalent
 	 * @param file a source file

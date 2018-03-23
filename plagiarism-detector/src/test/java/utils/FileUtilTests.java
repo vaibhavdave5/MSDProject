@@ -2,8 +2,6 @@ package utils;
 
 import org.junit.Test;
 
-import utilities.FileUtils2;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -27,7 +25,7 @@ public class FileUtilTests {
 		File file = new File("utilTestData.c");
 		int start = 1;
 		int end = 3;
-		String fileString = FileUtils2.getFileString(file, start, end);
+		String fileString = FileUtils.getFileString(file, start, end);
 		String expectedfileString = "1. /*\n2.  * Generic cpu hotunplug interrupt migration code copied from the\n3.  * arch/arm implementation\n";
 		assertEquals(expectedfileString, fileString);
 	}
@@ -40,7 +38,7 @@ public class FileUtilTests {
 		File file = new File("utilTestData.c");
 		int start = 2;
 		int end = 3;
-		String fileString = FileUtils2.getFileString(file, start, end);
+		String fileString = FileUtils.getFileString(file, start, end);
 		String expectedfileString = "2.  * Generic cpu hotunplug interrupt migration code copied from the\n" +
 				"3.  * arch/arm implementation\n";
 		assertEquals(expectedfileString, fileString);
@@ -54,7 +52,7 @@ public class FileUtilTests {
 		File file = new File("utilTestData.c");
 		int start = -1;
 		int end = 3;
-		String fileString = FileUtils2.getFileString(file, start, end);
+		String fileString = FileUtils.getFileString(file, start, end);
 		String expectedfileString = "1. /*\n2.  * Generic cpu hotunplug interrupt migration code copied from the\n3.  * arch/arm implementation\n";
 		assertEquals(expectedfileString, fileString);
 	}
@@ -67,7 +65,7 @@ public class FileUtilTests {
 		File file = new File("utilTestData.c");
 		int start = -1;
 		int end = 300;
-		String fileString = FileUtils2.getFileString(file, start, end);
+		String fileString = FileUtils.getFileString(file, start, end);
 		String expectedfileString = "1. /*\n" +
 				"2.  * Generic cpu hotunplug interrupt migration code copied from the\n" +
 				"3.  * arch/arm implementation\n" +
@@ -294,7 +292,7 @@ public class FileUtilTests {
 		File file = new File("utilTestData.java");
 		int start = 925;
 		int end = 931;
-		String fileString = FileUtils2.getFileString(file, start, end);
+		String fileString = FileUtils.getFileString(file, start, end);
 		String expectedfileString = "925. \t\tpublic void add(int index, E e) {\n" +
 				"926. \t\t\trangeCheckForAdd(index);\n" +
 				"927. \t\t\tcheckForComodification();\n" +
@@ -313,7 +311,7 @@ public class FileUtilTests {
 		int start = -1;
 		int end = 3;
 		File file = new File("DoesNotExist.c");
-		String fileString = FileUtils2.getFileString(file, start, end);
+		String fileString = FileUtils.getFileString(file, start, end);
 		assertEquals("", fileString);
 	}
 
@@ -325,7 +323,7 @@ public class FileUtilTests {
 	public void writeToFileNormal() throws IOException {
 		String filename = "testWrite.txt";
 		String message = "Testing file\nNewline";
-		FileUtils2.writeToFile(filename, message);
+		FileUtils.writeToFile(filename, message);
 		StringBuilder sb = new StringBuilder();
 
 		BufferedReader br = new BufferedReader(new FileReader(filename));
