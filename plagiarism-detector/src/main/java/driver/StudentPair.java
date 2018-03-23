@@ -40,5 +40,11 @@ public class StudentPair {
 		this.student2Id = student2Id;
 	}
 	
+	@Override
+	public String toString() {
+		return "Student-" + getStudent1Id() 
+		+ " - " 
+		+ "Student-" + getStudent2Id();
+	}
 	
 }

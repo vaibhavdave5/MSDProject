@@ -2,7 +2,7 @@ package view;
 	
 import org.apache.log4j.Logger;
 
-import controllers.MainController;
+import controllers.ScreenController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,9 +17,9 @@ import javafx.stage.Stage;
  */ 
 
 public class Main extends Application {
-	
-	// private static Logger logger = Logger.getLogger(MainController.class);
-	
+
+	private static Logger logger = Logger.getLogger(Main.class);
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -27,10 +27,11 @@ public class Main extends Application {
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/theme.css").toExternalForm());
 			primaryStage.setResizable(false);
+			ScreenController.setInstance(scene);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
-			//logger.error(e.toString());
+			logger.error(e);
 		}
 	}
 

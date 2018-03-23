@@ -38,8 +38,24 @@ public class Summary {
 		return green;
 	}
 
-	public void setGreen(Integer student) {
-		this.green.add(student);
+	public void setGreen(Integer studentId) {
+		this.green.add(studentId);
 	}
 	
+	/**
+	 * This method returns false if the given studentId is present in red or yellow lists,
+	 * else returns true.
+	 * @param studentId
+	 * @return boolean
+	 */
+	public boolean isSafe(Integer studentId) {
+		for(StudentPair sp: this.red) {
+			if(studentId == sp.getStudent1Id() || studentId ==sp.getStudent2Id()) return false;
+		}
+		for(StudentPair sp: this.yellow) {
+			if(studentId == sp.getStudent1Id() || studentId ==sp.getStudent2Id()) return false;
+		}
+		return true;
+		
+	}
 }
