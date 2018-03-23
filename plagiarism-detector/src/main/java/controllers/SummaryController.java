@@ -6,6 +6,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 
+/**
+ * This Controller is responsible to load the Summary page of the application.
+ * 
+ * @author Samanjate Sood
+ *
+ */
 public class SummaryController {
 
 	@FXML private ProgressBar progress;
