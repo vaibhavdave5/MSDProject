@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -9,7 +10,9 @@ import org.apache.log4j.Logger;
 
 import controllers.popups.PopupMessage;
 import driver.Driver;
+import driver.Summary;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -114,7 +117,33 @@ public class MainController {
 					"An error occurred", 
 					"Make sure to select a directory and enter homework number");
 		} else {
-			Driver.getInstance().checkForPlagiarism(allPaths, hw.getText());
+			Driver drive = Driver.getInstance();
+			drive.checkForPlagiarism(allPaths, hw.getText());
+			routeToSummary(drive.viewSummary());
+		}
+	}
+	
+	/**
+	 * This method routes to the summary page passing it the necessary detail
+	 * 
+	 * @param summary
+	 */
+	private void routeToSummary(Summary summary) {
+		ScreenController screenController = ScreenController.getInstance();
+		if(screenController != null) {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Summary.fxml"));
+			loader.setController(new SummaryController(summary));
+			try {
+				screenController.addScreen("summary", loader.load());
+			} catch (IOException e) {
+				logger.error(e.toString());
+			}
+			screenController.activate("summary");
+		} else {
+			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
+					"Error", 
+					"An error occurred", 
+					"Cannot route to the summary page. Try again later.");
 		}
 	}
 	

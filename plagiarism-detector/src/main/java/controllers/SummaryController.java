@@ -1,5 +1,6 @@
 package controllers;
 
+import driver.Summary;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -20,6 +21,12 @@ public class SummaryController {
 	@FXML private ListView<String> medium;
 	@FXML private ListView<String> safe;
 	@FXML private Button back;
+	
+	private Summary summary;
+	
+	public SummaryController(Summary summary) {
+		this.summary = summary;
+	}
 	
 	/**
 	 * This method runs on page load and initializes all components of the Summary.fxml page
