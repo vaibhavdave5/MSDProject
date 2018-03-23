@@ -44,6 +44,7 @@ public class MainController {
 	@FXML private Label logo;
 	@FXML private Label chooseDir;
 	@FXML private ImageView folder;
+	@FXML private ImageView northeastern;
 	@FXML private TextField hw;
 	@FXML private MenuButton strategy;
 	
@@ -69,6 +70,9 @@ public class MainController {
 	@FXML protected void initialize() {
 		applyStyle();
 		folder.setImage(emptyFolder);
+		northeastern.setImage(new Image(getClass()
+				.getResource("/images/logo.png")
+				.toExternalForm()));
 		hw.setPromptText("Select e.g. HW1...");
 	}
 	
@@ -122,8 +126,15 @@ public class MainController {
 					"An error occurred", 
 					"Make sure to select a directory and enter homework number");
 		} else {
+			if(algo == null || algo == Algorithm.DEFAULT) {
+				PopupMessage.getInstance().showAlertMessage(AlertType.INFORMATION,
+						"Information", 
+						"Running Textual", 
+						"Since no strategy was provided, textual similarity will be reported");
+				algo = Algorithm.LCS;
+			}
 			Driver drive = Driver.getInstance();
-			drive.checkForPlagiarism(allPaths, hw.getText());
+			drive.checkForPlagiarism(allPaths, hw.getText(), algo);
 			routeToSummary(drive.viewSummary());
 		}
 	}
@@ -239,13 +250,19 @@ public class MainController {
 		chooseDir.setVisible(false);
 	}
 	
+	/**
+	 * Event that occurs when user selects Textual similarity Strategy
+	 */
 	@FXML private void selectLCS() {
-		strategy.setText("Longest Common Sequence");
+		strategy.setText("Textual Similarity");
 		algo = Algorithm.LCS;
 	}
 	
+	/**
+	 * Event that occurs when user selects Code similarity Strategy
+	 */
 	@FXML private void selectNW() {
-		strategy.setText("Neelam-Walsh");
+		strategy.setText("Code Similarity");
 		algo = Algorithm.NW;
 	}
 	

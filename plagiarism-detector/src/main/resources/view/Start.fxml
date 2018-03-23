@@ -19,16 +19,17 @@
          <children>
             <TreeView fx:id="dirContent" layoutX="33.0" layoutY="98.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="337.0" prefWidth="739.0" />
             <Button fx:id="summary" layoutX="464.0" layoutY="514.0" mnemonicParsing="false" onAction="#runAlgorithm" prefHeight="27.0" prefWidth="175.0" text="Run" />
-            <Label fx:id="logo" layoutX="41.0" layoutY="47.0" prefHeight="28.0" prefWidth="170.0" text="Integrity" />
+            <Label fx:id="logo" layoutX="98.0" layoutY="35.0" prefHeight="28.0" prefWidth="170.0" text="Integrity" />
             <ImageView fx:id="folder" fitHeight="82.0" fitWidth="102.0" layoutX="350.0" layoutY="216.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" onMouseClicked="#browseDirectory" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="chooseDir" alignment="CENTER" contentDisplay="CENTER" layoutX="215.0" layoutY="333.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="33.0" prefWidth="379.0" text="Click to choose a directory or drag it here" />
             <TextField fx:id="hw" layoutX="312.0" layoutY="447.0" prefHeight="39.0" prefWidth="175.0" />
             <MenuButton fx:id="strategy" layoutX="183.0" layoutY="513.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="175.0" text="Select a strategy...">
               <items>
-                <MenuItem onAction="#selectLCS" mnemonicParsing="false" text="Longest Common Sequence" />
-                <MenuItem onAction="#selectNW" mnemonicParsing="false" text="Neeman-Walsh" />
+                <MenuItem mnemonicParsing="false" onAction="#selectLCS" text="Textual Similarity" />
+                <MenuItem mnemonicParsing="false" onAction="#selectNW" text="Code Similarity" />
               </items>
             </MenuButton>
+            <ImageView fx:id="northeastern" fitHeight="67.0" fitWidth="66.0" layoutX="23.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </bottom>
