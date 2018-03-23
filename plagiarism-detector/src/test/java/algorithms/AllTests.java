@@ -4,8 +4,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import utils.FileUtils;
+
 @RunWith(Suite.class)
-@SuiteClasses({ LCSAlgorithmTest.class, NeemanWalshAlgorithmTest.class, NodeTests.class })
+@SuiteClasses({ LCSUnitTest.class, NeemanWalshAlgorithmTest.class, NodeTests.class, FileUtils.class })
+
 public class AllTests {
 
 }
