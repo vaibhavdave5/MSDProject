@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
+import algorithms.Algorithm;
 import algorithms.LCSAlgorithm;
 import algorithms.NeemanWalshAlgorithm;
 import algorithms.Result;
@@ -41,6 +42,7 @@ public class Driver {
 	private static Map<Integer, Student> studentMap;
 	private Map<Integer, Collection<File>> studentHWMap = new HashMap<>();
 	private Summary summary;
+	private Algorithm algo = Algorithm.LCS;
 
 	/**
 	 * Setter for repoPaths.
@@ -123,16 +125,26 @@ public class Driver {
 	 * This method compares the similarity between the homework c files of two students
 	 * and generates the summary. Also it returns false if the two students get paired
 	 * for plagiarism (both high and medium probability).
-	 * @return isSafe boolean
+	 * @param fileList1 Collection<File>
+	 * @param fileList2 Collection<File>
+	 * @param sp StudentPair
 	 */
-	public boolean compareFiles(Collection<File> fileList1, Collection<File> fileList2, StudentPair sp, boolean isSafe) {
+	public void compareFiles(Collection<File> fileList1, Collection<File> fileList2, StudentPair sp) {
 		List<Double> similarityScoreList = new ArrayList<>();
 		for(File file1: fileList1) {
 			for(File file2: fileList2) {
 				LOGGER.log(Level.INFO, "File1: {0}", file1.getAbsolutePath());
 				LOGGER.log(Level.INFO, "File2: {0}", file2.getAbsolutePath());
 				AlgorithmController ac = new AlgorithmController(file1, file2);
-				similarityScoreList.add(ac.getAns(new LCSAlgorithm()));
+				if(algo == Algorithm.LCS) {
+					similarityScoreList.add(ac.getAns(new LCSAlgorithm()));
+				} else if(algo == Algorithm.NW) {
+					similarityScoreList.add(ac.getAns(new NeemanWalshAlgorithm()));
+				} else {
+					// This is same as first condition, we will add weighted 
+					// average later using ML
+					similarityScoreList.add(ac.getAns(new LCSAlgorithm()));
+				}
 			}
 		}
 		
@@ -142,17 +154,13 @@ public class Driver {
 			// send student pair to red list
 			sp.setSimilarityScore(maxScore);
 			this.summary.setRed(sp);
-			isSafe = false;
 		} else if(maxScore >= 0.3 && maxScore < 0.5) {
 			// send student pair to yellow list
 			sp.setSimilarityScore(maxScore);
 			this.summary.setYellow(sp);
-			isSafe = false;
 		} else {
 			// do nothing
 		}
-		
-		return isSafe;
 	}
 	
 	
@@ -164,20 +172,18 @@ public class Driver {
 		this.summary = new Summary();
 		
 		for(Map.Entry<Integer, Collection<File>> entry1 : this.studentHWMap.entrySet()) {
-			StudentPair sp;
 			Integer student1Id = entry1.getKey();
-			boolean isSafe = true;
 			for(Map.Entry<Integer, Collection<File>> entry2: this.studentHWMap.entrySet()) {
 				if(entry1.getKey() < entry2.getKey()) {
 					Collection<File> fileList1 = entry1.getValue();
 					Collection<File> fileList2 = entry2.getValue();
 					Integer student2Id = entry2.getKey();
-					sp = new StudentPair(student1Id, student2Id);
-					isSafe = this.compareFiles(fileList1, fileList2, sp, isSafe);
+					StudentPair sp = new StudentPair(student1Id, student2Id);
+					this.compareFiles(fileList1, fileList2, sp);
 				}
 			}
 			
-			if(isSafe) {
+			if(this.summary.isSafe(student1Id)) {
 				this.summary.setGreen(student1Id);
 			}
 		}
@@ -188,8 +194,9 @@ public class Driver {
 	 * @param repoPaths List<String>
 	 * @param hwDir String
 	 */
-	public void checkForPlagiarism(List<String> repoPaths, String hwDir) {
+	public void checkForPlagiarism(List<String> repoPaths, String hwDir, Algorithm algo) {
 		if(repoPaths != null && hwDir != null && hwDir != "") {
+			this.algo = algo;
 			this.setRepoPaths(repoPaths);
 			this.setHWDir(hwDir);
 			this.getCodeFiles();
