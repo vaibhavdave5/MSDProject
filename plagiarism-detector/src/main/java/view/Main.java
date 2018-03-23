@@ -3,10 +3,12 @@ package view;
 import org.apache.log4j.Logger;
 
 import controllers.ScreenController;
+import controllers.popups.PopupMessage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 /**
  * Entry point of application  
@@ -31,6 +33,10 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
+			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
+					"Error", 
+					"An error occurred", 
+					"Try again later.");
 			logger.error(e);
 		}
 	}
