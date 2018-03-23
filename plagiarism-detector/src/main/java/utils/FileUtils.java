@@ -52,6 +52,11 @@ public class FileUtils {
 		return sb.toString();
 	}
 
+	/**
+	 *
+	 * @param codeSnippets an object containing suspicious codes of two students
+	 * @return a report that prints all the suspicious code snippets
+	 */
 	public String getReport(CodeSnippets codeSnippets) {
 		StringBuffer sb = new StringBuffer();
 
