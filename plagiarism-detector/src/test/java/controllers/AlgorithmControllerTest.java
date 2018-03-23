@@ -264,6 +264,19 @@ public class AlgorithmControllerTest {
 		String hwDir = null;
 		driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.NW);
 	}
+	
+	@Test
+	public void testGetNameById() {
+		Driver driver = Driver.getInstance();
+		String expected1 = "Darshan";
+		String expected2 = "Saman";
+		URL url = this.getClass().getResource("/studentData.xlsx");
+		Driver.getStudentData(url.getPath());
+		String actual1 = driver.getNameById(101);
+		String actual2 = driver.getNameById(102);
+		assertEquals(expected1, actual1);
+		assertEquals(expected2, actual2);
+	}
  
 	/**
 	 * Testing the snippet generator
