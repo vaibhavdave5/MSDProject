@@ -6,6 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuBar;
 
+/**
+ * This Controller is responsible to load the menu of the application.
+ * 
+ * @author Samanjate Sood
+ *
+ */
 public class MenuController {
 
 	@FXML private MenuBar menu;

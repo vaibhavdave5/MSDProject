@@ -17,17 +17,23 @@ import java.util.Set;
 import static utils.FileUtils.getFileString;
 
 /**
- * Controller for the UI that shows comparision between two submissions
+ * This Controller is responsible to load the Compare page of the application.
+ * 
  * @author Shail Shah
+ * @autho Samanjate Sood
  */
 public class CompareController {
 	
 	// Controller injectors
 	@FXML private TextFlow studentACode;
 	@FXML private TextFlow studentBCode;
-	@FXML private Button reportButton;
 	@FXML private Label studentAName;
 	@FXML private Label studentBName;
+	@FXML private Button reportButton;
+	@FXML private Button prev;
+	@FXML private Button next;
+	@FXML private Button reveal;
+	@FXML private Button back;
 	
 	private CodeSnippets codeSnippets;
 	private int currentSnippet = 0;
@@ -42,39 +48,67 @@ public class CompareController {
 	 */
 	@FXML
 	protected void initialize() {
+		applyStyle();
 		simpleFilePairs = getSimpleFilePairs();
+		initializeSnippet();
+		initializeLabels();
+	}
+	
+	/**
+	 * This method initializes the snippet text
+	 */
+	private void initializeSnippet() {
 		Text snippetA = new Text(simpleFilePairs.get(currentSnippet).getSnippet1());
 		Text snippetB = new Text(simpleFilePairs.get(currentSnippet).getSnippet2());
-
+		studentACode.getChildren().clear();
+		studentBCode.getChildren().clear();
 		studentACode.getChildren().addAll(snippetA);
 		studentBCode.getChildren().addAll(snippetB);
 	}
+	
+	/**
+	 * This method initializes the Student names and labels the snippet
+	 */
+	private void initializeLabels() {
+		studentAName.setText("Student-" + codeSnippets.getStudent1Id());
+		studentBName.setText("Student-" + codeSnippets.getStudent2Id());
+	}
+	
+	/**
+	 * This method applies the CSS properties to the controls.
+	 */
+	private void applyStyle() {
+		back.getStyleClass().add("primary");
+		prev.getStyleClass().add("danger");
+		next.getStyleClass().add("danger");
+		reportButton.getStyleClass().add("success");
+		reveal.getStyleClass().add("success");
+	}
 
-	protected void onPreviousButtonClick() {
+	/**
+	 * This method handles the event when the previous button is clicked.
+	 */
+	@FXML public void onPreviousButtonClick() {
 		if(currentSnippet == 0)
 			return;
 		currentSnippet--;
-
-		refreshSnippets();
+		initializeSnippet();
 	}
 
-	protected void onNextButtonClick() {
+	/**
+	 * This method handles the event when the next button is clicked.
+	 */
+	@FXML public void onNextButtonClick() {
 		if(currentSnippet >= simpleFilePairs.size())
 			return;
-
 		currentSnippet++;
-
-		refreshSnippets();
+		initializeSnippet();
 	}
 
-	private void refreshSnippets() {
-		Text snippetA = new Text(simpleFilePairs.get(currentSnippet).getSnippet1());
-		Text snippetB = new Text(simpleFilePairs.get(currentSnippet).getSnippet2());
-
-		studentACode.getChildren().addAll(snippetA);
-		studentBCode.getChildren().addAll(snippetB);
-	}
-
+	/**
+	 * This method gets a list of file pairs that contains the file names
+	 * and the code snippets
+	 */
 	private List<SimpleFilePair> getSimpleFilePairs() {
 		simpleFilePairs = new ArrayList<>();
 		if(codeSnippets == null) {
