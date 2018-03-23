@@ -1,7 +1,16 @@
 package controllers;
 
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.Set;
+
+import org.apache.log4j.Logger;
+
+import driver.StudentPair;
 import driver.Summary;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -17,14 +26,19 @@ public class SummaryController {
 
 	@FXML private ProgressBar progress;
 	@FXML private Label info;
-	@FXML private ListView<String> danger;
-	@FXML private ListView<String> medium;
+	@FXML private ListView<StudentPair> danger;
+	@FXML private ListView<StudentPair> medium;
 	@FXML private ListView<String> safe;
 	@FXML private Button back;
+	@FXML private Label score;
 	
 	private Summary summary;
+	private ScreenController screenController;
+	
+	private static Logger logger = Logger.getLogger(SummaryController.class);
 	
 	public SummaryController(Summary summary) {
+		this.screenController = ScreenController.getInstance();
 		this.summary = summary;
 	}
 	
@@ -33,50 +47,77 @@ public class SummaryController {
 	 */
 	@FXML protected void initialize() {
 		applyStyle();
-		progress.setProgress(0.25);
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		medium.getItems().add("Darshan - Vaibhav");
-		medium.getItems().add("Darshan - Vaibhav");
-		medium.getItems().add("Darshan - Vaibhav");
-		medium.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		danger.getItems().add("Darshan - Vaibhav");
-		medium.getItems().add("Darshan - Vaibhav");
-		medium.getItems().add("Darshan - Vaibhav");
-		medium.getItems().add("Darshan - Vaibhav");
-		medium.getItems().add("Darshan - Vaibhav");
-		safe.getItems().add("Samanjate");
-		safe.getItems().add("Samanjate");
-		safe.getItems().add("Samanjate");
-		safe.getItems().add("Samanjate");
-		safe.getItems().add("Samanjate");
+		setDefaultText(danger, "No Plagiarism Detected");
+		setDefaultText(medium, "No Warnings Detected");
+		setDefaultText(safe, "No Clean Assignments");
+		safe.setMouseTransparent(true);
+		safe.setFocusTraversable(false);
+		populateView(danger, summary.getRed());
+		addListener(danger);
+		populateView(medium, summary.getYellow());
+		addListener(medium);
+		populateSafeStudents();
+		progress.setProgress(0.0);
+		score.setText("-");
+	}
+	
+	/**
+	 * Sets the message for empty ListViews
+	 * @param <T>
+	 */
+	private <T> void setDefaultText(ListView<T> listView, String message) {
+		listView.setPlaceholder(new Label(message));
+	}
+	
+	private void addListener(ListView<StudentPair> listView) {
+		listView
+			.getSelectionModel()
+			.selectedItemProperty()
+			.addListener((ObservableValue<? extends StudentPair> observable, 
+							StudentPair oldValue, 
+							StudentPair newValue) ->  {
+								if(newValue != null) {
+									progress.setProgress(newValue.getSimilarityScore());
+									DecimalFormat df = new DecimalFormat("###.##");
+									score
+									 .setText(df.format(newValue.getSimilarityScore() * 100.0) + "%");
+								} else {
+									progress.setProgress(0.0);
+									score.setText("-");
+								}
+								
+							});
+	}
+	
+	/**
+	 * This method populates the list view with the pairs of student
+	 */
+	private void populateView(ListView<StudentPair> view, Set<StudentPair> pairs) {
+		for(StudentPair pair : pairs) {
+			view.getItems().add(pair);
+		}
+	}
+	
+	private void populateSafeStudents() {
+		for(Integer i : summary.getGreen()) {
+			safe.getItems().add("Student-" + i.toString());
+		}
+	}
+	
+	/**
+	 * This method takes the user back to the Start screen
+	 */
+	@FXML public void goBack()
+	{
+		if(screenController != null) {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Start.fxml"));
+			try {
+				screenController.addScreen("main", loader.load());
+				screenController.activate("main");
+			} catch (IOException e) {
+				logger.error(e.toString());
+			}
+		}
 	}
 	
 	/**
@@ -84,6 +125,7 @@ public class SummaryController {
 	 */
 	private void applyStyle() {
 		info.getStyleClass().add("logo");
+		score.getStyleClass().add("logo");
 		danger.getStyleClass().add("danger-students");
 		medium.getStyleClass().add("medium-students");
 		safe.getStyleClass().add("safe-student");
@@ -112,11 +154,13 @@ public class SummaryController {
 	}
 	/**
 	 * This method removes the selections of the list items of the two list items provided.
+	 * @param <T>
+	 * @param <E>
 	 * 
 	 * @param listView1
 	 * @param listView2
 	 */
-	private void unselectItems(ListView<String> listView1, ListView<String> listView2) {
+	private <T, E> void unselectItems(ListView<T> listView1, ListView<E> listView2) {
 		listView1.getSelectionModel().clearSelection();
 		listView2.getSelectionModel().clearSelection();
 	}
