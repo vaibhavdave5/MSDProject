@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
+import algorithms.Algorithm;
 import algorithms.LCSAlgorithm;
 import algorithms.NeemanWalshAlgorithm;
 import algorithms.Result;
@@ -41,6 +42,7 @@ public class Driver {
 	private static Map<Integer, Student> studentMap;
 	private Map<Integer, Collection<File>> studentHWMap = new HashMap<>();
 	private Summary summary;
+	private Algorithm algo = Algorithm.LCS;
 
 	/**
 	 * Setter for repoPaths.
@@ -134,7 +136,15 @@ public class Driver {
 				LOGGER.log(Level.INFO, "File1: {0}", file1.getAbsolutePath());
 				LOGGER.log(Level.INFO, "File2: {0}", file2.getAbsolutePath());
 				AlgorithmController ac = new AlgorithmController(file1, file2);
-				similarityScoreList.add(ac.getAns(new LCSAlgorithm()));
+				if(algo == Algorithm.LCS) {
+					similarityScoreList.add(ac.getAns(new LCSAlgorithm()));
+				} else if(algo == Algorithm.NW) {
+					similarityScoreList.add(ac.getAns(new NeemanWalshAlgorithm()));
+				} else {
+					// This is same as first condition, we will add weighted 
+					// average later using ML
+					similarityScoreList.add(ac.getAns(new LCSAlgorithm()));
+				}
 			}
 		}
 		
@@ -184,8 +194,9 @@ public class Driver {
 	 * @param repoPaths List<String>
 	 * @param hwDir String
 	 */
-	public void checkForPlagiarism(List<String> repoPaths, String hwDir) {
+	public void checkForPlagiarism(List<String> repoPaths, String hwDir, Algorithm algo) {
 		if(repoPaths != null && hwDir != null && hwDir != "") {
+			this.algo = algo;
 			this.setRepoPaths(repoPaths);
 			this.setHWDir(hwDir);
 			this.getCodeFiles();

@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
 import org.junit.Test;
+
+import algorithms.Algorithm;
 import algorithms.LCSAlgorithm;
 import algorithms.NeemanWalshAlgorithm;
 import algorithms.Result;
@@ -131,7 +133,7 @@ public class AlgorithmControllerTest {
 		repoPaths.add(basePath + "student-110");
 		repoPaths.add(basePath + "student-111");
 		String hwDir = "HW3";
-		driver.checkForPlagiarism(repoPaths, hwDir);
+		driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.LCS);
 		Summary summary = driver.viewSummary();
 		Integer expected1 = 110;
 		Integer expected2 = 111;
