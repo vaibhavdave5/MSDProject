@@ -104,6 +104,9 @@ public class SummaryController {
 		}
 	}
 	
+	/**
+	 * This method populates the list view with students who didn't plagiarize
+	 */
 	private void populateSafeStudents() {
 		for(Integer i : summary.getGreen()) {
 			safe.getItems().add("Student-" + i.toString());

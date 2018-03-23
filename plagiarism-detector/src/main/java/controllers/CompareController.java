@@ -1,21 +1,27 @@
 package controllers;
 
-import algorithms.SimpleFilePair;
-import algorithms.Result;
-import algorithms.SimilaritySnippet;
-import driver.CodeSnippets;
-import driver.Driver;
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.text.*;
+import static utils.FileUtils.getFileString;
 
-
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static utils.FileUtils.getFileString;
+import org.apache.log4j.Logger;
+
+import algorithms.Result;
+import algorithms.SimilaritySnippet;
+import algorithms.SimpleFilePair;
+import driver.CodeSnippets;
+import driver.Driver;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+import javafx.stage.FileChooser;
 
 /**
  * This Controller is responsible to load the Compare page of the application.
@@ -39,8 +45,12 @@ public class CompareController {
 	private CodeSnippets codeSnippets;
 	private int currentSnippet = 0;
 	private List<SimpleFilePair> simpleFilePairs;
+	private ScreenController screenController;
+	
+	private static Logger logger = Logger.getLogger(CompareController.class);
 
 	public CompareController(CodeSnippets codeSnippets) {
+		this.screenController = ScreenController.getInstance();
 		this.codeSnippets = codeSnippets;
 	}
 	
@@ -119,6 +129,16 @@ public class CompareController {
 		studentAName.setText(Driver.getInstance().getNameById(codeSnippets.getStudent1Id()));
 		studentBName.setText(Driver.getInstance().getNameById(codeSnippets.getStudent2Id()));
 	}
+	
+	/**
+	 * This method takes the user back to the Start screen
+	 */
+	@FXML public void goBack()
+	{
+		if(screenController != null) {
+			screenController.activate("summary");
+		}
+	}
 
 	/**
 	 * This method gets a list of file pairs that contains the file names
@@ -151,4 +171,33 @@ public class CompareController {
 
 		return simpleFilePairs;
 	}
+	
+	/**
+	 * This function is used to generate the report
+	 */
+	@FXML public void generateReport() {
+		final String report = "";
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter 
+         	= new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showSaveDialog(null);
+        if(file != null){
+            saveFile(report, file);
+        }
+    }
+	
+	/**
+	 * This function prompts the user to save file
+	 * 
+	 * @param content The content the need to be saved
+	 * @param file
+	 */
+	private void saveFile(String content, File file) {
+        try(FileWriter fileWriter = new FileWriter(file)) {
+            fileWriter.write(content);
+        } catch (IOException e) {
+        		logger.error(e); 
+        } 
+    }
 }
