@@ -21,6 +21,7 @@ import static utils.FileUtils.getFileString;
  * @author Shail Shah
  */
 public class CompareController {
+	
 	// Controller injectors
 	@FXML private TextFlow studentACode;
 	@FXML private TextFlow studentBCode;
