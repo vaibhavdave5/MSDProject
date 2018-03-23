@@ -6,9 +6,8 @@ import algorithms.SimilaritySnippet;
 import driver.CodeSnippets;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.Region;
-import javafx.scene.paint.Color;
 import javafx.scene.text.*;
+
 
 import java.io.*;
 import java.util.ArrayList;
