@@ -251,11 +251,22 @@ public class Driver {
 	}
 
 	/**
-	 * Getter for studentHWMap
+	 * Getter for studentHWMap. This method is made for testing purposes.
 	 * @return studentHWMap Map<Integer, Collection<File>>
 	 */
 	public Map<Integer, Collection<File>> getStudentHWMap() {
 		return studentHWMap;
 	}
 	
+	/**
+	 * This method returns the name of the student given the id of the student.
+	 * @param studentId Integer
+	 * @return String
+	 * @param studentId
+	 * @return
+	 */
+	public String getNameById(Integer studentId) {
+		Student student = studentMap.get(studentId);
+		return student.getName();
+	}
 }
