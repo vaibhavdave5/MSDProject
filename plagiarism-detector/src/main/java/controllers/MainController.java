@@ -50,12 +50,11 @@ public class MainController {
 	private Image emptyFolder;
 	private Image filledFolder;
 	private SaveFileObject<String> root;
-	private Algorithm algo;
+	private Algorithm algo = Algorithm.LCS;
 	
 	private static Logger logger = Logger.getLogger(MainController.class);
 	
 	public MainController() {
-		algo = Algorithm.LCS;
 		emptyFolder = new Image(getClass()
 				.getResource("/images/folder.png")
 				.toExternalForm());

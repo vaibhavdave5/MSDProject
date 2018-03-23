@@ -19,6 +19,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert.AlertType;
 
 /**
@@ -174,5 +175,16 @@ public class SummaryController {
 	private <T, E> void unselectItems(ListView<T> listView1, ListView<E> listView2) {
 		listView1.getSelectionModel().clearSelection();
 		listView2.getSelectionModel().clearSelection();
+	}
+	
+	@FXML public void routeToCompare(MouseEvent event) {
+		if(event.getClickCount() == 2 && screenController != null) {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Compare.fxml"));
+			loader.setController(new CompareController());
+			try {
+				screenController.addScreen("compare", loader.load());
+				screenController.activate("compare");
+			} catch (IOException e) { }
+		}
 	}
 }
