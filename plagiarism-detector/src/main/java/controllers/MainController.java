@@ -1,14 +1,21 @@
 package controllers;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import controllers.popups.PopupMessage;
+import driver.Driver;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.CheckBoxTreeCell;
 import javafx.scene.image.Image;
@@ -27,21 +34,34 @@ public class MainController {
 	
 	// Controller injectors
 	@FXML private TreeView<String> dirContent;
+	@FXML private TreeItem<String> root;
 	@FXML private Button summary;
 	@FXML private Label logo;
 	@FXML private Label chooseDir;
 	@FXML private ImageView folder;
+	@FXML private TextField hw;
+	
+	private Image emptyFolder;
+	private Image filledFolder;
 	
 	private static Logger logger = Logger.getLogger(MainController.class);
+	
+	public MainController() {
+		emptyFolder = new Image(getClass()
+				.getResource("/images/folder.png")
+				.toExternalForm());
+		filledFolder = new Image(getClass()
+				.getResource("/images/folder-filled.png")
+				.toExternalForm());
+	}
 	
 	/**
 	 * This method runs on page load and initializes all components of the Start.fxml page
 	 */
 	@FXML protected void initialize() {
 		applyStyle();
-		folder.setImage(new Image(getClass()
-									.getResource("/images/folder.png")
-									.toExternalForm()));
+		folder.setImage(emptyFolder);
+		hw.setPromptText("Search e.g. HW1...");
 	}
 	
 	/**
@@ -60,10 +80,11 @@ public class MainController {
 	@FXML public void browseDirectory() {
 		try {
 			File directory = selectDirectory();
-			folder.setImage(null);
-			chooseDir.setText(null);
-			dirContent.setRoot(populateView(directory));
-			dirContent.setShowRoot(true);
+			if(directory != null && directory.isDirectory()) {
+				hideImage();
+				dirContent.setRoot(populateView(directory));
+				dirContent.setShowRoot(true);
+			}
 		} catch(Exception e) { 
 			logger.error(e.toString());
 		}
@@ -78,6 +99,28 @@ public class MainController {
 	}
 	
 	/**
+	 * This method runs the algorithm
+	 */
+	@FXML public void runAlgorithm() {
+		List<String> allPaths =  getListOfPaths();
+		if(hw.getText() == null || allPaths.isEmpty()) {
+			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
+					"Error", 
+					"An error occurred", 
+					"Make sure to select a directory and enter homework number");
+		} else {
+			Driver.getInstance().checkForPlagiarism(allPaths, hw.getText());
+		}
+	}
+	
+	/**
+	 * This is a helper method to extract all selected items in the TreeView
+	 */
+	private List<String> getListOfPaths() {
+		return new ArrayList<>();
+	}
+	
+	/**
 	 * This method populates the TreeView of the Start page
 	 * 
 	 * @param directory a directory as the File object
@@ -85,8 +128,8 @@ public class MainController {
 	 */
 	public CheckBoxTreeItem<String> populateView(File directory) {
 		dirContent.setCellFactory(CheckBoxTreeCell.<String>forTreeView());
-		CheckBoxTreeItem<String> root  
-				= new CheckBoxTreeItem<>(directory.getName());
+		SaveFileObject<String> root  
+				= new SaveFileObject<>(directory.getName(), directory);
 		root.setIndependent(true);
         for(File file : directory.listFiles()) {
             if(file.isDirectory()) {
@@ -103,6 +146,7 @@ public class MainController {
 	 */
 	@FXML public void handleDragOver(DragEvent event) {
 		if(event.getDragboard().hasFiles()) {
+			folder.setImage(filledFolder);
 			event.acceptTransferModes(TransferMode.ANY);
 		}
 	}
@@ -114,12 +158,57 @@ public class MainController {
 	 * @param event
 	 */
 	@FXML public void handleDrop(DragEvent event) {
+		folder.setImage(emptyFolder);
 		List<File> files = event.getDragboard().getFiles();
 		if(!files.isEmpty() && files.get(0).isDirectory()) {
-			folder.setImage(null);
-			chooseDir.setText(null);
+			hideImage();
 			dirContent.setRoot(populateView(files.get(0)));
 			dirContent.setShowRoot(true);
 		}
+	}
+	
+	/**
+	 * A method to handle the mouse enter event on the ImageView of the page
+	 */
+	@FXML public void onMouseEntered() {
+		folder.setCursor(Cursor.HAND);
+		folder.setImage(filledFolder);
+	}
+	
+	/**
+	 * A method to handle the mouse exit event on the ImageView of the page
+	 */
+	@FXML public void onMouseExited() {
+		folder.setImage(emptyFolder);
+	}
+	
+	/**
+	 * This method hides the image and label in the Tree View
+	 */
+	private void hideImage() {
+		folder.setVisible(false);
+		chooseDir.setVisible(false);
+	}
+	
+	/**
+	 * The purpose of this class is to differentiate between the internal value and 
+	 * the displayed value of the checkbox of the tree
+	 * 
+	 * @author Samanjate Sood
+	 *
+	 * @param <String>
+	 */
+	private class SaveFileObject<T> extends CheckBoxTreeItem<T> {
+		
+		public SaveFileObject(T value, File file) {
+			super(value);
+			this.file = file;
+		}
+		
+		public File getFile() {
+			return file;
+		}
+		 
+		private File file;
 	}
 }

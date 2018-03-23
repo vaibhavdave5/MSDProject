@@ -55,5 +55,6 @@ nb-configuration.xml
 release.properties
 pom.xml.releaseBackup
 pom.xml.tag
-../bin
 bin/
+plagiarism-detector/logs/
+plagiarism-detector/src/main/java/scratch/
