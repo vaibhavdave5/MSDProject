@@ -51,7 +51,7 @@ public class MainController {
 	private Image emptyFolder;
 	private Image filledFolder;
 	private SaveFileObject<String> root;
-	private Algorithm algo = Algorithm.LCS;
+	private Algorithm algo = Algorithm.DEFAULT;
 	
 	private static Logger logger = Logger.getLogger(MainController.class);
 	

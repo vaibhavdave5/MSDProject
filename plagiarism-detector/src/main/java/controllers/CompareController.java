@@ -28,16 +28,21 @@ public class CompareController {
 	@FXML private Button reportButton;
 	@FXML private Label studentAName;
 	@FXML private Label studentBName;
+	
+	private CodeSnippets codeSnippets;
+	private int currentSnippet = 0;
+	private List<SimpleFilePair> simpleFilePairs;
 
-	private static int currentSnippet = 0;
-	private static List<SimpleFilePair> simpleFilePairs;
-
+	public CompareController(CodeSnippets codeSnippets) {
+		this.codeSnippets = codeSnippets;
+	}
+	
 	/**
 	 * This method runs on page load and initializes all components of the Start.fxml page
 	 */
 	@FXML
 	protected void initialize() {
-		// simpleFilePairs = getSimpleFilePairs(codeSnippets);
+		simpleFilePairs = getSimpleFilePairs();
 		Text snippetA = new Text(simpleFilePairs.get(currentSnippet).getSnippet1());
 		Text snippetB = new Text(simpleFilePairs.get(currentSnippet).getSnippet2());
 
@@ -70,8 +75,11 @@ public class CompareController {
 		studentBCode.getChildren().addAll(snippetB);
 	}
 
-	private List<SimpleFilePair> getSimpleFilePairs(CodeSnippets codeSnippets) {
-		List<SimpleFilePair> simpleFilePairs = new ArrayList<>();
+	private List<SimpleFilePair> getSimpleFilePairs() {
+		simpleFilePairs = new ArrayList<>();
+		if(codeSnippets == null) {
+			return simpleFilePairs;
+		}
 		List<driver.FilePair> filePairs = codeSnippets.getFilePairList();
 		filePairs.forEach(fp -> {
 			File file1 = fp.getFile1();
@@ -79,7 +87,7 @@ public class CompareController {
 			String fileName1 = file1.getName();
 			String fileName2 = file2.getName();
 			Result result = fp.getResult();
-			Set<SimilaritySnippet> snippets = result.getSnippets();
+			Set<SimilaritySnippet> snippets = result.generateSnippet();
 			snippets.forEach(s -> {
 				int start1 = s.getStart();
 				int end1 = s.getEnd();

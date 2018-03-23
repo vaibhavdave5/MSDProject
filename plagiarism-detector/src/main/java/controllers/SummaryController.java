@@ -8,19 +8,19 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 
 import controllers.popups.PopupMessage;
+import driver.Driver;
 import driver.StudentPair;
 import driver.Summary;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.control.Alert.AlertType;
 
 /**
  * This Controller is responsible to load the Summary page of the application.
@@ -147,15 +147,29 @@ public class SummaryController {
 	/**
 	 * This method removes the selections of danger and safe students
 	 */
-	@FXML public void unselectDangerAndSafe() {
+	@FXML public void unselectDangerAndSafe(MouseEvent event) {
 		unselectItems(danger, safe);
+		if(event.getClickCount() == 2) {
+			routeToCompare(medium
+							.getItems()
+							.get(medium
+									.getSelectionModel()
+									.getSelectedIndex()));
+		}
 	}
 	
 	/**
 	 * This method removes the selections of medium and safe students
 	 */
-	@FXML public void unselectMediumAndSafe() {
+	@FXML public void unselectMediumAndSafe(MouseEvent event) {
 		unselectItems(medium, safe);
+		if(event.getClickCount() == 2) {
+			routeToCompare(danger
+							.getItems()
+							.get(danger
+									.getSelectionModel()
+									.getSelectedIndex()));
+		}
 	}
 	
 	/**
@@ -177,14 +191,26 @@ public class SummaryController {
 		listView2.getSelectionModel().clearSelection();
 	}
 	
-	@FXML public void routeToCompare(MouseEvent event) {
-		if(event.getClickCount() == 2 && screenController != null) {
+	/**
+	 * This method routes to the Compare page.
+	 * 
+	 * @param event
+	 */
+	public void routeToCompare(StudentPair studentPair) {
+		if(screenController != null) {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Compare.fxml"));
-			loader.setController(new CompareController());
+			loader
+				.setController(new CompareController(Driver
+														.getInstance()
+														.generateSnippet(
+																studentPair.getStudent1Id(),
+																studentPair.getStudent2Id())));
 			try {
 				screenController.addScreen("compare", loader.load());
 				screenController.activate("compare");
-			} catch (IOException e) { }
+			} catch (IOException e) {
+				logger.error(e);
+			}
 		}
 	}
 }
