@@ -1,12 +1,14 @@
 package utils;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * Handy utilities that will be useful throughout the project
  * @author Shail Shah
  */
-public class Utils {
+public class FileUtils {
 	/**
 	 * Converts a file from the given start and end lines to its String equivalent
 	 * @param file a source file
@@ -25,23 +27,32 @@ public class Utils {
 			while ((line = br.readLine()) != null) {
 				count++;
 
-				if(count < start) {
+				if (count < start) {
 					continue;
 				}
 
-				if(count > end) {
+				if (count > end) {
 					break;
 				}
 
 				sb.append(count + ". " + line);
 				sb.append("\n");
 			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+			br.close();
+		}catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		return sb.toString();
+	}
+
+	/**
+	 * Writes the given message in the given path
+	 * @param filePath the path of the file to write
+	 * @param message the message to print in the file
+	 * @throws IOException such as FileNotFoundException
+	 */
+	public static void writeToFile(String filePath, String message) throws IOException {
+		Files.write(Paths.get(filePath), message.getBytes());
 	}
 }
