@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
@@ -14,6 +15,8 @@ import algorithms.Result;
 import algorithms.SimilaritySnippet;
 import driver.Driver;
 import driver.Student;
+import driver.StudentPair;
+import driver.Summary;
 import parser.Node;
 
 /**
@@ -129,6 +132,18 @@ public class AlgorithmControllerTest {
 		repoPaths.add(basePath + "student-111");
 		String hwDir = "HW3";
 		driver.checkForPlagiarism(repoPaths, hwDir);
+		Summary summary = driver.viewSummary();
+		Integer expected1 = 110;
+		Integer expected2 = 111;
+		Set<StudentPair> actual = summary.getRed();
+		for(StudentPair sp: actual) {
+			Integer actual1 = sp.getStudent1Id();
+			Integer actual2 = sp.getStudent2Id();
+			assertEquals(expected1, actual1);
+			assertEquals(expected2, actual2);
+		}
+		assertTrue(summary.getYellow().isEmpty());
+		assertTrue(summary.getGreen().isEmpty());
 	} 
  
 	/**
