@@ -1,6 +1,7 @@
 package driver;
 
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -39,10 +40,12 @@ public class Driver {
 	
 	private List<String> repoPaths;
 	private String hwDir;
-	private static Map<Integer, Student> studentMap;
+	private Map<Integer, Student> studentMap;
 	private Map<Integer, Collection<File>> studentHWMap = new HashMap<>();
 	private Summary summary;
 	private Algorithm algo = Algorithm.LCS;
+
+	private URL url = this.getClass().getResource("/studentData.xlsx");
 
 	/**
 	 * Setter for repoPaths.
@@ -63,12 +66,12 @@ public class Driver {
 	/**
 	 * Gets the student data from the excel file provided by prof or TA
 	 * and stores it as a map in the studentMap.
-	 * @param xlsPath String
 	 */
-	public static void getStudentData(String xlsPath) {
+	public void getStudentData() {
 		ExcelReader er = new ExcelReader();
 		try {
-			studentMap = er.getStudentMap(xlsPath);
+			System.out.println(url.getPath());
+			this.studentMap = er.getStudentMap(url.getPath());
 		}
 		catch (InvalidFormatException | IOException e) {
 			LOGGER.log(Level.INFO, e.getMessage());

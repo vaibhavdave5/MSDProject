@@ -1,6 +1,12 @@
 package utils;
 
+import algorithms.Result;
+import algorithms.SimilaritySnippet;
+import driver.CodeSnippets;
+import driver.Driver;
+import driver.FilePair;
 import org.junit.Test;
+import parser.Node;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,6 +14,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import static org.junit.Assert.*;
 
@@ -15,7 +25,7 @@ import static org.junit.Assert.*;
  * Tests for the Util class
  * @author Shail Shah
  */
-public class FileUtilTests {
+public class FileUtilsTest {
 
 	/**
 	 * get file string from the start
@@ -337,5 +347,35 @@ public class FileUtilTests {
 
 		br.close();
 		Files.deleteIfExists(Paths.get(filename));
+	}
+
+	@Test(expected = NullPointerException.class)
+	public void getReportTestNull() {
+		CodeSnippets cs = new CodeSnippets(1, 2);
+		String report = FileUtils.getReport(cs);
+	}
+
+	@Test(expected = NullPointerException.class)
+	public void getReportTestNormal() {
+		CodeSnippets cs = new CodeSnippets(101, 102);
+
+		File file1 = new File("sample.c");
+		File file2 = new File("sample2.c");
+
+		Set<SimilaritySnippet> set = new TreeSet<>();
+		Node node1 = new Node(1, 40, 3, "className1");
+		Node node2 = new Node(1, 50, 3, "className2" );
+		List<SimilaritySnippet> snippetList = new ArrayList<>();
+		snippetList.add(new SimilaritySnippet(node1, node2));
+		Result result =  new Result(0.6, snippetList);
+		FilePair filePair = new FilePair(file1, file2);
+		filePair.setResult(result);
+		List<FilePair> filePairList = new ArrayList<>();
+		filePairList.add(filePair);
+		cs.setFilePairList(filePairList);
+
+		String report = FileUtils.getReport(cs);
+
+		assertEquals("abc", report);
 	}
 }
