@@ -1,19 +1,25 @@
 package controllers;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import algorithms.Algorithm;
 import controllers.popups.PopupMessage;
 import driver.Driver;
+import driver.Summary;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -34,19 +40,22 @@ public class MainController {
 	
 	// Controller injectors
 	@FXML private TreeView<String> dirContent;
-	@FXML private TreeItem<String> root;
 	@FXML private Button summary;
 	@FXML private Label logo;
 	@FXML private Label chooseDir;
 	@FXML private ImageView folder;
 	@FXML private TextField hw;
+	@FXML private MenuButton strategy;
 	
 	private Image emptyFolder;
 	private Image filledFolder;
+	private SaveFileObject<String> root;
+	private Algorithm algo;
 	
 	private static Logger logger = Logger.getLogger(MainController.class);
 	
 	public MainController() {
+		algo = Algorithm.LCS;
 		emptyFolder = new Image(getClass()
 				.getResource("/images/folder.png")
 				.toExternalForm());
@@ -61,13 +70,14 @@ public class MainController {
 	@FXML protected void initialize() {
 		applyStyle();
 		folder.setImage(emptyFolder);
-		hw.setPromptText("Search e.g. HW1...");
+		hw.setPromptText("Select e.g. HW1...");
 	}
 	
 	/**
-	 * This method applies the CSS properties to the controls of the Start page.
+	 * This method applies the CSS properties to the controls.
 	 */
 	private void applyStyle() {
+		strategy.getStyleClass().add("primary");
 		summary.getStyleClass().add("primary");
 		logo.getStyleClass().add("logo");
 		chooseDir.getStyleClass().add("drag-folder");
@@ -102,22 +112,61 @@ public class MainController {
 	 * This method runs the algorithm
 	 */
 	@FXML public void runAlgorithm() {
-		List<String> allPaths =  getListOfPaths();
-		if(hw.getText() == null || allPaths.isEmpty()) {
+		List<String> allPaths =  new ArrayList<>();
+		getListOfPaths(allPaths, root);
+		if(hw.getText() == null 
+				|| allPaths.isEmpty() 
+				|| root == null 
+				|| "".equals(hw.getText())) {
 			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
 					"Error", 
 					"An error occurred", 
 					"Make sure to select a directory and enter homework number");
 		} else {
-			Driver.getInstance().checkForPlagiarism(allPaths, hw.getText());
+			Driver drive = Driver.getInstance();
+			drive.checkForPlagiarism(allPaths, hw.getText());
+			routeToSummary(drive.viewSummary());
+		}
+	}
+	
+	/**
+	 * This method routes to the summary page passing it the necessary detail
+	 * 
+	 * @param summary
+	 */
+	private void routeToSummary(Summary summary) {
+		ScreenController screenController = ScreenController.getInstance();
+		if(screenController != null) {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Summary.fxml"));
+			loader.setController(new SummaryController(summary));
+			try {
+				screenController.addScreen("summary", loader.load());
+			} catch (IOException e) {
+				logger.error(e.toString());
+			}
+			screenController.activate("summary");
+		} else {
+			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
+					"Error", 
+					"An error occurred", 
+					"Cannot route to the summary page. Try again later.");
 		}
 	}
 	
 	/**
 	 * This is a helper method to extract all selected items in the TreeView
 	 */
-	private List<String> getListOfPaths() {
-		return new ArrayList<>();
+	private void getListOfPaths(List<String> allPaths, TreeItem<String> rootDir) {
+		if(rootDir == null) {
+			return;
+		}
+		if(((SaveFileObject<String>) rootDir).isSelected()) {
+			allPaths.add(((SaveFileObject<String>)rootDir).getFile().getAbsolutePath());
+		}
+		Iterator<TreeItem<String>> it = rootDir.getChildren().iterator();
+		while(it.hasNext()) {
+			getListOfPaths(allPaths, it.next());
+		}
 	}
 	
 	/**
@@ -128,15 +177,16 @@ public class MainController {
 	 */
 	public CheckBoxTreeItem<String> populateView(File directory) {
 		dirContent.setCellFactory(CheckBoxTreeCell.<String>forTreeView());
-		SaveFileObject<String> root  
+		SaveFileObject<String> rootDirectory  
 				= new SaveFileObject<>(directory.getName(), directory);
-		root.setIndependent(true);
+		rootDirectory.setIndependent(true);
         for(File file : directory.listFiles()) {
             if(file.isDirectory()) {
-                root.getChildren().add(populateView(file));
+                rootDirectory.getChildren().add(populateView(file));
             }
         }
-        return root;
+        root = rootDirectory;
+        return rootDirectory;
     }
 	
 	/**
@@ -188,6 +238,16 @@ public class MainController {
 	private void hideImage() {
 		folder.setVisible(false);
 		chooseDir.setVisible(false);
+	}
+	
+	@FXML private void selectLCS() {
+		strategy.setText("Longest Common Sequence");
+		algo = Algorithm.LCS;
+	}
+	
+	@FXML private void selectNW() {
+		strategy.setText("Neelam-Walsh");
+		algo = Algorithm.NW;
 	}
 	
 	/**
