@@ -17,13 +17,13 @@ import javafx.stage.Stage;
  */ 
 
 public class Main extends Application {
-	
+
 	private static Logger logger = Logger.getLogger(Main.class);
-	
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/Compare.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/Start.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/theme.css").toExternalForm());
 			primaryStage.setResizable(false);
@@ -31,7 +31,7 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
-			//logger.error(e.toString());
+			logger.error(e);
 		}
 	}
 

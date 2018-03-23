@@ -1,6 +1,7 @@
 package driver;
 
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -39,10 +40,12 @@ public class Driver {
 	
 	private List<String> repoPaths;
 	private String hwDir;
-	private static Map<Integer, Student> studentMap;
+	private Map<Integer, Student> studentMap;
 	private Map<Integer, Collection<File>> studentHWMap = new HashMap<>();
 	private Summary summary;
 	private Algorithm algo = Algorithm.LCS;
+
+	private URL url = this.getClass().getResource("/studentData.xlsx");
 
 	/**
 	 * Setter for repoPaths.
@@ -63,12 +66,12 @@ public class Driver {
 	/**
 	 * Gets the student data from the excel file provided by prof or TA
 	 * and stores it as a map in the studentMap.
-	 * @param xlsPath String
 	 */
-	public static void getStudentData(String xlsPath) {
+	public void getStudentData() {
 		ExcelReader er = new ExcelReader();
 		try {
-			studentMap = er.getStudentMap(xlsPath);
+			System.out.println(url.getPath());
+			this.studentMap = er.getStudentMap(url.getPath());
 		}
 		catch (InvalidFormatException | IOException e) {
 			LOGGER.log(Level.INFO, e.getMessage());
@@ -136,9 +139,9 @@ public class Driver {
 				LOGGER.log(Level.INFO, "File1: {0}", file1.getAbsolutePath());
 				LOGGER.log(Level.INFO, "File2: {0}", file2.getAbsolutePath());
 				AlgorithmController ac = new AlgorithmController(file1, file2);
-				if(algo == Algorithm.LCS) {
+				if(this.algo == Algorithm.LCS) {
 					similarityScoreList.add(ac.getAns(new LCSAlgorithm()));
-				} else if(algo == Algorithm.NW) {
+				} else if(this.algo == Algorithm.NW) {
 					similarityScoreList.add(ac.getAns(new NeemanWalshAlgorithm()));
 				} else {
 					// This is same as first condition, we will add weighted 
@@ -217,7 +220,7 @@ public class Driver {
 	 * of the plagiarism algorithm along with the snippets data.
 	 * @param fileList1 List<File>
 	 * @param fileList2 List<File>
-	 * @return List<FilePair>
+	 * @return List<SimpleFilePair>
 	 */
 	public List<FilePair> compareFilesForResult(Collection<File> fileList1, Collection<File> fileList2) {
 		List<FilePair> filePairList = new ArrayList<>();
@@ -248,5 +251,25 @@ public class Driver {
 		List<FilePair> fpList = this.compareFilesForResult(student1FileList, student2FileList);
 		codeSnippets.setFilePairList(fpList);
 		return codeSnippets;
+	}
+
+	/**
+	 * Getter for studentHWMap. This method is made for testing purposes.
+	 * @return studentHWMap Map<Integer, Collection<File>>
+	 */
+	public Map<Integer, Collection<File>> getStudentHWMap() {
+		return studentHWMap;
+	}
+	
+	/**
+	 * This method returns the name of the student given the id of the student.
+	 * @param studentId Integer
+	 * @return String
+	 * @param studentId
+	 * @return
+	 */
+	public String getNameById(Integer studentId) {
+		Student student = studentMap.get(studentId);
+		return student.getName();
 	}
 }
