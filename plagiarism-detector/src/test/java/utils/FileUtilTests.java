@@ -2,6 +2,8 @@ package utils;
 
 import org.junit.Test;
 
+import utilities.FileUtils2;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;

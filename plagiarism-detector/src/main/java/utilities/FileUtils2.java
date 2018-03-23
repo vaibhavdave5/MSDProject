@@ -1,4 +1,4 @@
-package utils;
+package utilities;
 
 import org.apache.log4j.Logger;
 //import scratch.Scratch;

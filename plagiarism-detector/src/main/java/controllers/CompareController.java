@@ -5,7 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
-import utils.FileUtils2;
+import utilities.FileUtils2;
 
 import java.io.*;
 
