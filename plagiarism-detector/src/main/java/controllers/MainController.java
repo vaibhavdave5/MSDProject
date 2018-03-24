@@ -129,9 +129,8 @@ public class MainController {
 			if(algo == null || algo == Algorithm.DEFAULT) {
 				PopupMessage.getInstance().showAlertMessage(AlertType.INFORMATION,
 						"Information", 
-						"Running Textual", 
-						"Since no strategy was provided, textual similarity will be reported");
-				algo = Algorithm.LCS;
+						"Running Weighted Average", 
+						"Since no strategy was provided, a weighted average of the two will be reported");
 			}
 			Driver drive = Driver.getInstance();
 			drive.checkForPlagiarism(allPaths, hw.getText(), algo);
