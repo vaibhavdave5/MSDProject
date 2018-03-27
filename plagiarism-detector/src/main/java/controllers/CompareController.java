@@ -126,6 +126,7 @@ public class CompareController {
 	 */
 	@FXML public void revealNames() {
 		reveal.setDisable(true);
+		Driver.getInstance().getStudentData();
 		studentAName.setText(Driver.getInstance().getNameById(codeSnippets.getStudent1Id()));
 		studentBName.setText(Driver.getInstance().getNameById(codeSnippets.getStudent2Id()));
 	}
