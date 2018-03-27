@@ -22,7 +22,7 @@ public class LCSAlgorithm implements AlgorithmStrategy {
 	 * @return a number representing the similarity between two nodes
 	 */
 	@Override
-	public Result computeSimilarity(List<Node> list1, List<Node> list2) {
+	public IResult computeSimilarity(List<Node> list1, List<Node> list2) {
 		int totalSize = list1.size() + list2.size();
 		if (totalSize == 0)
 			throw new IllegalArgumentException("Both lists are empty.");
@@ -44,14 +44,12 @@ public class LCSAlgorithm implements AlgorithmStrategy {
 
 		int i = list1.size();
 		int j = list2.size();
-		int index = map[i][j];
 		while (i > 0 && j > 0) {
 
 			if (list1.get(i - 1).equals(list2.get(j - 1))) {
 				snippets.add(new SimilaritySnippet(list1.get(i-1), list2.get(j-1)));
 				i--;
 				j--;
-				index--;
 			} else if (map[i - 1][j] > map[i][j - 1])
 				i--;
 			else

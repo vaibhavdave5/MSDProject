@@ -16,7 +16,7 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import algorithms.Algorithm;
 import algorithms.LCSAlgorithm;
 import algorithms.NeemanWalshAlgorithm;
-import algorithms.Result;
+import algorithms.IResult;
 import controllers.AlgorithmController;
 
 /**
@@ -228,7 +228,7 @@ public class Driver {
 			for(File file2: fileList2) {
 				FilePair fp = new FilePair(file1, file2);
 				AlgorithmController ac = new AlgorithmController(file1, file2);
-				Result result = ac.getResult(new LCSAlgorithm());
+				IResult result = ac.getResult(new LCSAlgorithm());
 				fp.setResult(result);
 				filePairList.add(fp);
 			}

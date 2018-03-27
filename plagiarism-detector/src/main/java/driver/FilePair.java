@@ -2,12 +2,12 @@ package driver;
 
 import java.io.File;
 
-import algorithms.Result;
+import algorithms.IResult;
 
 public class FilePair {
 	private File file1;
 	private File file2;
-	private Result result;
+	private IResult result;
 	
 	public FilePair(File file1, File file2) {
 		this.file1 = file1;
@@ -30,11 +30,11 @@ public class FilePair {
 		this.file2 = file2;
 	}
 	
-	public Result getResult() {
+	public IResult getResult() {
 		return result;
 	}
 
-	public void setResult(Result result) {
+	public void setResult(IResult result) {
 		this.result = result;
 	}
 	
