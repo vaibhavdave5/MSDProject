@@ -18,7 +18,7 @@
 			**/C*.java
 		</sonar.exclusions>
 		<sonar.coverage.exclusions>
-			**/Main.java, **/MainController.java, **/MenuController.java, **/SummaryController.java, **/ScreenController.java, **/PopupMessage.java
+			**/Main.java, **/MainController.java, **/MenuController.java, **/SummaryController.java, **/ScreenController.java, **/CompareController.java, **/PopupMessage.java, **/MailUtils.java
     		</sonar.coverage.exclusions>
 		<sonar.junit.reportPaths>
 			${project.basedir}/target/surefire-reports
@@ -53,6 +53,13 @@
 					<include>**/*.fxml</include>
 					<include>**/*.css</include>
 					<include>**/*.png</include>
+					<include>**/*.xlsx</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.xlsx</include>
 				</includes>
 			</resource>
 		</resources>
@@ -72,7 +79,7 @@
 			<groupId>com.oracle</groupId> 
 			<artifactId>javaFX</artifactId> 
 			<version>2.2</version> 
-		</dependency> 
+		</dependency>  
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
@@ -112,6 +119,12 @@
 		  	<groupId>commons-io</groupId>
 		  	<artifactId>commons-io</artifactId>
 		  	<version>2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
