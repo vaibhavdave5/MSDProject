@@ -68,14 +68,16 @@ public class Driver {
 	 * and stores it as a map in the studentMap.
 	 */
 	public String getStudentData() {
+		String errorMessage = "";
 		ExcelReader er = new ExcelReader();
 		try {
 			this.studentMap = er.getStudentMap(url.getPath());
 		}
 		catch (InvalidFormatException | IOException e) {
-			return "Could not gather students data.";
+			errorMessage = "Could not gather students data.";
+			return errorMessage;
 		}
-		return "";
+		return errorMessage;
 	}
 	
 	/**
@@ -91,6 +93,7 @@ public class Driver {
 	 * Gets the c files recursively from all the directories.
 	 */
 	public String getCodeFiles() {
+		String errorMessage = "";
 		String path = null;
 		Integer studentId = 0;
 		for(String repoPath: this.repoPaths) {
@@ -104,13 +107,15 @@ public class Driver {
 				this.studentHWMap.put(studentId, listOfFiles);
 			}
 			catch(NumberFormatException e) {
-				return "One of the selected directories is not a student repository";
+				errorMessage = "One of the selected directories is not a student repository"; 
+				return errorMessage;
 			}
 			catch(IllegalArgumentException e) {
-				return "The homework directory specified is incorrect";
+				errorMessage = "The homework directory specified is incorrect";
+				return errorMessage;
 			}
 		}
-		return "";
+		return errorMessage;
 	}
 	
 	/**
