@@ -156,7 +156,7 @@ public class AlgorithmControllerTest {
 		repoPaths.add(basePath + "student-110");
 		repoPaths.add(basePath + "student-111");
 		String hwDir = "HW3";
-		driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.LCS);
+		String message = driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.LCS);
 		Summary summary = driver.viewSummary();
 		Integer expected1 = 110;
 		Integer expected2 = 111;
@@ -210,7 +210,7 @@ public class AlgorithmControllerTest {
 		repoPaths.add(basePath + "student-110");
 		repoPaths.add(basePath + "student-111");
 		String hwDir = "HW3";
-		driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.DEFAULT);
+		String message = driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.DEFAULT);
 		Summary summary = driver.viewSummary();
 		Integer expected1 = 110;
 		Integer expected2 = 111;
@@ -230,7 +230,7 @@ public class AlgorithmControllerTest {
 		Driver driver = Driver.getInstance();
 		List<String> repoPaths = null;
 		String hwDir = "HW3";
-		driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.NW);
+		String message = driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.NW);
 	}
 	
 	@Test
@@ -246,7 +246,7 @@ public class AlgorithmControllerTest {
 		repoPaths.add(basePath + "student-111");
 		
 		String hwDir = "";
-		driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.NW);
+		String message = driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.NW);
 	}
 	
 	@Test
@@ -262,7 +262,7 @@ public class AlgorithmControllerTest {
 		repoPaths.add(basePath + "student-111");
 		
 		String hwDir = null;
-		driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.NW);
+		String message = driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.NW);
 	}
 	
 	@Test

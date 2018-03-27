@@ -73,6 +73,7 @@ public class Driver {
 			this.studentMap = er.getStudentMap(url.getPath());
 		}
 		catch (InvalidFormatException | IOException e) {
+			String errorMessage = "Could not gather the student data.";
 			LOGGER.log(Level.INFO, e.getMessage());
 		}
 	}
@@ -89,19 +90,27 @@ public class Driver {
 	/**
 	 * Gets the c files recursively from all the directories.
 	 */
-	public void getCodeFiles() {
+	public String getCodeFiles() {
 		String path = null;
 		Integer studentId = 0;
 		for(String repoPath: this.repoPaths) {
-			studentId = Integer.parseInt(repoPath.substring(repoPath.length() - 3));
-			
-			path = constructPath(repoPath);
-			File dir = new File(path);
-			String[] extensions = {"c"};
-			Collection<File> listOfFiles = FileUtils.listFiles(dir, extensions, true);
-			
-			this.studentHWMap.put(studentId, listOfFiles);
+			try {
+				studentId = Integer.parseInt(repoPath.substring(repoPath.length() - 3));
+				path = constructPath(repoPath);
+				File dir = new File(path);
+				String[] extensions = {"c"};
+				Collection<File> listOfFiles = FileUtils.listFiles(dir, extensions, true);
+				
+				this.studentHWMap.put(studentId, listOfFiles);
+			}
+			catch(NumberFormatException e) {
+				return "One of the selected directories is not a student repository";
+			}
+			catch(IllegalArgumentException e) {
+				return "The homework directory specified is incorrect";
+			}
 		}
+		return "";
 	}
 	
 	/**
@@ -197,13 +206,17 @@ public class Driver {
 	 * @param repoPaths List<String>
 	 * @param hwDir String
 	 */
-	public void checkForPlagiarism(List<String> repoPaths, String hwDir, Algorithm algo) {
+	public String checkForPlagiarism(List<String> repoPaths, String hwDir, Algorithm algo) {
 		if(repoPaths != null && hwDir != null && hwDir != "") {
 			this.algo = algo;
 			this.setRepoPaths(repoPaths);
 			this.setHWDir(hwDir);
-			this.getCodeFiles();
+			String message = this.getCodeFiles();
 			this.generateSummary();
+			return message;
+		}
+		else {
+			return "No student repository or homework directory selected";
 		}
 	}
 	
