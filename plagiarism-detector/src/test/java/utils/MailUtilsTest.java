@@ -8,7 +8,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Tests for mail utilities
@@ -63,7 +64,7 @@ public class MailUtilsTest {
 	 * @throws IOException IOExceptions are thrown
 	 * @throws URISyntaxException URISyntaxException are thrown
 	 */
-	@Test (expected = RuntimeException.class)
+	@Test
 	public void sendMailValidEmail() throws IOException, URISyntaxException {
 		String recipient = "shail@ccs.neu.edu";
 		String subject = "URGENT: See me at my office";
