@@ -67,15 +67,15 @@ public class Driver {
 	 * Gets the student data from the excel file provided by prof or TA
 	 * and stores it as a map in the studentMap.
 	 */
-	public void getStudentData() {
+	public String getStudentData() {
 		ExcelReader er = new ExcelReader();
 		try {
 			this.studentMap = er.getStudentMap(url.getPath());
 		}
 		catch (InvalidFormatException | IOException e) {
-			String errorMessage = "Could not gather the student data.";
-			LOGGER.log(Level.INFO, e.getMessage());
+			return "Could not gather students data.";
 		}
+		return "";
 	}
 	
 	/**
