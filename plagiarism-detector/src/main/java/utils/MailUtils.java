@@ -26,14 +26,15 @@ public class MailUtils {
 		if(!Desktop.isDesktopSupported()){
 			String errorString = "No support for Desktop";
 			logger.error(errorString);
-			throw new RuntimeException(errorString);
+			return;
 		}
 
 		Desktop desktop = Desktop.getDesktop();
 
 		if(!desktop.isSupported(Desktop.Action.MAIL)) {
 			String errorString = "Mailing is not supported";
-			throw new RuntimeException(errorString);
+			logger.error(errorString);
+			return;
 		}
 
 		try {
