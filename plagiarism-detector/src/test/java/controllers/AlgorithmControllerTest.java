@@ -5,7 +5,6 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -15,7 +14,7 @@ import org.junit.Test;
 import algorithms.Algorithm;
 import algorithms.LCSAlgorithm;
 import algorithms.NeemanWalshAlgorithm;
-import algorithms.Result;
+import algorithms.IResult;
 import algorithms.SimilaritySnippet;
 import driver.Driver;
 import driver.Student;
@@ -290,7 +289,7 @@ public class AlgorithmControllerTest {
 		File file2 = new File(path2);
 
 		AlgorithmController ac = new AlgorithmController(file1, file2);
-		Result result = ac.getResult(new LCSAlgorithm());
+		IResult result = ac.getResult(new LCSAlgorithm());
 		Set<SimilaritySnippet> set = result.generateSnippet();
 		// Checking if all the values are set
 		for (SimilaritySnippet s : set) {

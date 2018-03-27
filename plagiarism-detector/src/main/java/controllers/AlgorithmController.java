@@ -13,11 +13,11 @@ import org.apache.log4j.Logger;
 
 import algorithms.AlgorithmContext;
 import algorithms.AlgorithmStrategy;
-import algorithms.Result;
 import parser.CASTNodeListener;
 import parser.CLexer;
 import parser.CParser;
 import parser.Node;
+import algorithms.IResult;
 
 /**
  * The main controller of the application that can tell if two files are similar
@@ -42,7 +42,7 @@ public class AlgorithmController {
 	 * @param strategy
 	 * @return Result
 	 */
-	public Result getResult(AlgorithmStrategy strategy) {
+	public IResult getResult(AlgorithmStrategy strategy) {
 		List<Node> nodeList1 = new ArrayList<>();
 		List<Node> nodeList2 = new ArrayList<>();
 				
