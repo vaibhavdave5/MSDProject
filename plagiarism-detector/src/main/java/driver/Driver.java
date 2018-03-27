@@ -70,7 +70,6 @@ public class Driver {
 	public void getStudentData() {
 		ExcelReader er = new ExcelReader();
 		try {
-			System.out.println(url.getPath());
 			this.studentMap = er.getStudentMap(url.getPath());
 		}
 		catch (InvalidFormatException | IOException e) {
@@ -144,9 +143,10 @@ public class Driver {
 				} else if(this.algo == Algorithm.NW) {
 					similarityScoreList.add(ac.getAns(new NeemanWalshAlgorithm()));
 				} else {
-					// This is same as first condition, we will add weighted 
-					// average later using ML
-					similarityScoreList.add(ac.getAns(new LCSAlgorithm()));
+					// This will be replaced by an ML algorithm in the next sprint
+					double weightedAverage = 0.25 * ac.getAns(new NeemanWalshAlgorithm())
+											+ 0.75 * ac.getAns(new LCSAlgorithm());
+					similarityScoreList.add(weightedAverage);
 				}
 			}
 		}

@@ -51,12 +51,11 @@ public class MainController {
 	private Image emptyFolder;
 	private Image filledFolder;
 	private SaveFileObject<String> root;
-	private Algorithm algo;
+	private Algorithm algo = Algorithm.DEFAULT;
 	
 	private static Logger logger = Logger.getLogger(MainController.class);
 	
 	public MainController() {
-		algo = Algorithm.DEFAULT;
 		emptyFolder = new Image(getClass()
 				.getResource("/images/folder.png")
 				.toExternalForm());
@@ -130,9 +129,8 @@ public class MainController {
 			if(algo == null || algo == Algorithm.DEFAULT) {
 				PopupMessage.getInstance().showAlertMessage(AlertType.INFORMATION,
 						"Information", 
-						"Running Textual", 
-						"Since no strategy was provided, textual similarity will be reported");
-				algo = Algorithm.LCS;
+						"Running Weighted Average", 
+						"Since no strategy was provided, a weighted average of the two will be reported");
 			}
 			Driver drive = Driver.getInstance();
 			drive.checkForPlagiarism(allPaths, hw.getText(), algo);
@@ -272,8 +270,6 @@ public class MainController {
 	 * the displayed value of the checkbox of the tree
 	 * 
 	 * @author Samanjate Sood
-	 *
-	 * @param <String>
 	 */
 	private class SaveFileObject<T> extends CheckBoxTreeItem<T> {
 		
