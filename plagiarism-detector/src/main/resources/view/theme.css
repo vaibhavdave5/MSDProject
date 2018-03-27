@@ -978,3 +978,13 @@ VBox > .split-menu-button.last > .arrow-button {
     -fx-background-color: #5cb85c;
     -fx-text-fill: white; /* 5 */
 }
+#supertextflow1 > Text { 
+    -fx-text-fill: red;
+    -fx-font-size: 14;
+    -fx-font-family: "Verdana";
+}
+#supertextflow2 > Text { 
+    -fx-text-fill: red;
+    -fx-font-size: 14;
+    -fx-font-family: "Verdana";
+}
