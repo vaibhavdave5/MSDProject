@@ -1,28 +1,26 @@
 package algorithms;
 
-import parser.Node;
-
 import java.util.Set;
 
 /**
  * Classes implementing IResult are able to store %, common Nodes and Snippets.
- * They can be easily be retreived by getters.
- * @author Shail Shah
+ * They can be easily be retrieved by getters.
+ * 
+ * @author Shail Shah, Vaibhav Dave
  */
 public interface IResult {
 
 	/**
 	 * @return the percentage of similarities between two lists of nodes
 	 */
-	double getPercentage();
+	public double getPercentage();
+
 
 	/**
-	 * @return the common nodes between two Node lists
+	 * This function deduplicates the snippets captured in the list and returns
+	 * a set of similar snippets from the two codes
+	 * 
+	 * @return a set of similarity snippets.
 	 */
-	Node[] getCommonNodes();
-
-	/**
-	 * @return the set of similar snippets between two node lists
-	 */
-	Set<SimilaritySnippet> getSnippets();
+	public Set<SimilaritySnippet> generateSnippet();
 }

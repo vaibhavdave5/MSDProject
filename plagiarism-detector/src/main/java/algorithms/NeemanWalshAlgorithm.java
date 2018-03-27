@@ -25,7 +25,7 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 	 * @return a number representing the similarity between two nodes
 	 */
 	@Override
-	public Result computeSimilarity(List<Node> list1, List<Node> list2) {
+	public IResult computeSimilarity(List<Node> list1, List<Node> list2) {
 
 		if (list1.isEmpty() || list2.isEmpty())
 			throw new IllegalArgumentException();
