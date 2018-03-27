@@ -349,13 +349,13 @@ public class FileUtilsTest {
 		Files.deleteIfExists(Paths.get(filename));
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test(expected = Exception.class)
 	public void getReportTestNull() {
 		CodeSnippets cs = new CodeSnippets(1, 2);
 		String report = FileUtils.getReport(cs);
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test(expected = Exception.class)
 	public void getReportTestNormal() {
 		CodeSnippets cs = new CodeSnippets(101, 102);
 
