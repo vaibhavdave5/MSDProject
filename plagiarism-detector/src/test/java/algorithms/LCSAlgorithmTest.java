@@ -6,7 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 import utils.FileUtilsTest;
 
 @RunWith(Suite.class)
-@SuiteClasses({ LCSUnitTest.class, NeemanWalshAlgorithmTest.class, NodeTests.class, FileUtilsTest.class })
+@SuiteClasses({AllTests.class, LCSUnitTest.class, NeemanWalshAlgorithmTest.class, NodeTests.class, FileUtilsTest.class })
 
 public class LCSAlgorithmTest {
 	

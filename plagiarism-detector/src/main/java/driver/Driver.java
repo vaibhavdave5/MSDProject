@@ -67,14 +67,17 @@ public class Driver {
 	 * Gets the student data from the excel file provided by prof or TA
 	 * and stores it as a map in the studentMap.
 	 */
-	public void getStudentData() {
+	public String getStudentData() {
+		String errorMessage = "";
 		ExcelReader er = new ExcelReader();
 		try {
 			this.studentMap = er.getStudentMap(url.getPath());
 		}
 		catch (InvalidFormatException | IOException e) {
-			LOGGER.log(Level.INFO, e.getMessage());
+			errorMessage = "Could not gather students data.";
+			return errorMessage;
 		}
+		return errorMessage;
 	}
 	
 	/**
@@ -89,19 +92,30 @@ public class Driver {
 	/**
 	 * Gets the c files recursively from all the directories.
 	 */
-	public void getCodeFiles() {
+	public String getCodeFiles() {
+		String errorMessage = "";
 		String path = null;
 		Integer studentId = 0;
 		for(String repoPath: this.repoPaths) {
-			studentId = Integer.parseInt(repoPath.substring(repoPath.length() - 3));
-			
-			path = constructPath(repoPath);
-			File dir = new File(path);
-			String[] extensions = {"c"};
-			Collection<File> listOfFiles = FileUtils.listFiles(dir, extensions, true);
-			
-			this.studentHWMap.put(studentId, listOfFiles);
+			try {
+				studentId = Integer.parseInt(repoPath.substring(repoPath.length() - 3));
+				path = constructPath(repoPath);
+				File dir = new File(path);
+				String[] extensions = {"c"};
+				Collection<File> listOfFiles = FileUtils.listFiles(dir, extensions, true);
+				
+				this.studentHWMap.put(studentId, listOfFiles);
+			}
+			catch(NumberFormatException e) {
+				errorMessage = "One of the selected directories is not a student repository"; 
+				return errorMessage;
+			}
+			catch(IllegalArgumentException e) {
+				errorMessage = "The homework directory specified is incorrect";
+				return errorMessage;
+			}
 		}
+		return errorMessage;
 	}
 	
 	/**
@@ -197,13 +211,17 @@ public class Driver {
 	 * @param repoPaths List<String>
 	 * @param hwDir String
 	 */
-	public void checkForPlagiarism(List<String> repoPaths, String hwDir, Algorithm algo) {
+	public String checkForPlagiarism(List<String> repoPaths, String hwDir, Algorithm algo) {
 		if(repoPaths != null && hwDir != null && hwDir != "") {
 			this.algo = algo;
 			this.setRepoPaths(repoPaths);
 			this.setHWDir(hwDir);
-			this.getCodeFiles();
+			String message = this.getCodeFiles();
 			this.generateSummary();
+			return message;
+		}
+		else {
+			return "No student repository or homework directory selected";
 		}
 	}
 	
