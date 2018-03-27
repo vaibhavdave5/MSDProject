@@ -64,15 +64,15 @@ public class MailUtilsTest {
 	 * @throws IOException IOExceptions are thrown
 	 * @throws URISyntaxException URISyntaxException are thrown
 	 */
-	@Test
+	@Test(expected = RuntimeException.class)
 	public void sendMailValidEmail() throws IOException, URISyntaxException {
 		String recipient = "shail@ccs.neu.edu";
 		String subject = "URGENT: See me at my office";
-		String body = "Hello Shail,\n\n" +
+		String body = "Hello Student,\n\n" +
 				"I need to talk to you about academic integrity. Please stop by my office tomorrow at 1 PM." +
 				"\nThanks." +
 				"\n\nBest," +
-				"\nMike\n";
+				"\nProfessor X\n";
 
 		MailUtils.sendMail(recipient, subject, body);
 	}
@@ -86,7 +86,11 @@ public class MailUtilsTest {
 	public void sendMailInvalidEmail() throws IOException, URISyntaxException {
 		String recipient = "(#*&%^@mail.com";
 		String subject = "See me at my office";
-		String body = "Hello Shail,\n\nCome meet me at my office tomorrow at 1 PM.\n\nBest,\nMike\n";
+		String body = "Hello Student,\n\n" +
+				"I need to talk to you about academic integrity. Please stop by my office tomorrow at 1 PM." +
+				"\nThanks." +
+				"\n\nBest," +
+				"\nProfessor X\n";
 
 		MailUtils.sendMail(recipient, subject, body);
 	}
