@@ -1,6 +1,6 @@
 package utils;
 
-import algorithms.Result;
+import algorithms.IResult;
 import algorithms.SimilaritySnippet;
 import driver.CodeSnippets;
 import driver.Driver;
@@ -8,7 +8,6 @@ import driver.FilePair;
 import org.apache.log4j.Logger;
 
 import java.io.*;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
@@ -80,7 +79,7 @@ public class FileUtils {
 	 * @return a String containing the
 	 */
 	public static String getReport(CodeSnippets codeSnippets) {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 
 		Driver driver = Driver.getInstance();
 		driver.getStudentData();
@@ -100,9 +99,9 @@ public class FileUtils {
 			File file1 = fp.getFile1();
 			File file2 = fp.getFile2();
 			sb.append(file1.getName() + " and " + file2.getName() + " are suspected to be similar. \n");
-			Result result = fp.getResult();
+			IResult result = fp.getResult();
 			sb.append("There is a " + result.getPercentage()*100 + "% match.\n");
-			Set<SimilaritySnippet> snippets = result.getSnippets();
+			Set<SimilaritySnippet> snippets = result.generateSnippet();
 			snippets.forEach(s -> {
 				int start1 = s.getStart1();
 				int end1 = s.getEnd1();

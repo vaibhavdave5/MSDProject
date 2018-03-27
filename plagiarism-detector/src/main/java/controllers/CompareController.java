@@ -11,7 +11,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import algorithms.Result;
+import algorithms.IResult;
 import algorithms.SimilaritySnippet;
 import algorithms.SimpleFilePair;
 import driver.CodeSnippets;
@@ -155,7 +155,7 @@ public class CompareController {
 			File file2 = fp.getFile2();
 			String fileName1 = file1.getName();
 			String fileName2 = file2.getName();
-			Result result = fp.getResult();
+			IResult result = fp.getResult();
 			Set<SimilaritySnippet> snippets = result.generateSnippet();
 			snippets.forEach(s -> {
 				int start1 = s.getStart1();
