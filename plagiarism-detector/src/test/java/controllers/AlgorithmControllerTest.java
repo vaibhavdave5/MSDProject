@@ -68,6 +68,7 @@ public class AlgorithmControllerTest {
 		assertTrue(ans >= 0 && ans <= 1);
 	}
 
+
 	/**
 	 * Should throw IOException if path is invalid
 	 * 
