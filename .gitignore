@@ -58,4 +58,6 @@ pom.xml.tag
 bin/
 plagiarism-detector/logs/
 plagiarism-detector/src/main/java/scratch/
+plagiarism-detector/*.log
 *.ini
+
