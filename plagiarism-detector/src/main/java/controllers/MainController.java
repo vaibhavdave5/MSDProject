@@ -270,8 +270,6 @@ public class MainController {
 	 * the displayed value of the checkbox of the tree
 	 * 
 	 * @author Samanjate Sood
-	 *
-	 * @param <String>
 	 */
 	private class SaveFileObject<T> extends CheckBoxTreeItem<T> {
 		
