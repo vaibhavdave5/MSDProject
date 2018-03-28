@@ -29,7 +29,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.stage.DirectoryChooser;
-
 /**
  * This Controller is responsible to load the main page of the application.
  * 
@@ -39,7 +38,7 @@ import javafx.stage.DirectoryChooser;
 public class MainController {
 	
 	// Controller injectors
-	@FXML private TreeView<String> dirContent;
+	@FXML private TreeView<DirectoryView> dirContent;
 	@FXML private Button summary;
 	@FXML private Label logo;
 	@FXML private Label chooseDir;
@@ -50,7 +49,7 @@ public class MainController {
 	
 	private Image emptyFolder;
 	private Image filledFolder;
-	private SaveFileObject<String> root;
+	private CheckBoxTreeItem<DirectoryView> root;
 	private Algorithm algo = Algorithm.DEFAULT;
 	
 	private static Logger logger = Logger.getLogger(MainController.class);
@@ -119,7 +118,6 @@ public class MainController {
 		getListOfPaths(allPaths, root);
 		if(hw.getText() == null 
 				|| allPaths.isEmpty() 
-				|| root == null 
 				|| "".equals(hw.getText())) {
 			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
 					"Error", 
@@ -165,16 +163,18 @@ public class MainController {
 	/**
 	 * This is a helper method to extract all selected items in the TreeView
 	 */
-	private void getListOfPaths(List<String> allPaths, TreeItem<String> rootDir) {
+	private void getListOfPaths(List<String> allPaths, 
+							   	  CheckBoxTreeItem<DirectoryView> rootDir) {
 		if(rootDir == null) {
 			return;
 		}
-		if(((SaveFileObject<String>) rootDir).isSelected()) {
-			allPaths.add(((SaveFileObject<String>)rootDir).getFile().getAbsolutePath());
+		if(rootDir.isSelected()) {
+			allPaths.add(rootDir.getValue().getFile().getAbsolutePath());
+			return;
 		}
-		Iterator<TreeItem<String>> it = rootDir.getChildren().iterator();
+		Iterator<TreeItem<DirectoryView>> it = rootDir.getChildren().iterator();
 		while(it.hasNext()) {
-			getListOfPaths(allPaths, it.next());
+			getListOfPaths(allPaths, (CheckBoxTreeItem<DirectoryView>) it.next());
 		}
 	}
 	
@@ -184,10 +184,10 @@ public class MainController {
 	 * @param directory a directory as the File object
 	 * @return a tree view of the directory structure
 	 */
-	public CheckBoxTreeItem<String> populateView(File directory) {
-		dirContent.setCellFactory(CheckBoxTreeCell.<String>forTreeView());
-		SaveFileObject<String> rootDirectory  
-				= new SaveFileObject<>(directory.getName(), directory);
+	public CheckBoxTreeItem<DirectoryView> populateView(File directory) {
+		dirContent.setCellFactory(CheckBoxTreeCell.<DirectoryView>forTreeView());
+		CheckBoxTreeItem<DirectoryView> rootDirectory  
+				= new CheckBoxTreeItem<>(new DirectoryView(directory));
 		rootDirectory.setIndependent(true);
         for(File file : directory.listFiles()) {
             if(file.isDirectory()) {
@@ -266,20 +266,23 @@ public class MainController {
 	}
 	
 	/**
-	 * The purpose of this class is to differentiate between the internal value and 
-	 * the displayed value of the checkbox of the tree
+	 * This is the internal representation of a tree item on the TreeView
 	 * 
 	 * @author Samanjate Sood
 	 */
-	private class SaveFileObject<T> extends CheckBoxTreeItem<T> {
+	private class DirectoryView {
 		
-		public SaveFileObject(T value, File file) {
-			super(value);
+		public DirectoryView(File file) {
 			this.file = file;
 		}
 		
 		public File getFile() {
 			return file;
+		}
+		
+		@Override
+		public String toString() {
+			return file.getName();
 		}
 		 
 		private File file;
