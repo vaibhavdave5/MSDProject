@@ -3,7 +3,6 @@ package utils;
 import algorithms.Result;
 import algorithms.SimilaritySnippet;
 import driver.CodeSnippets;
-import driver.Driver;
 import driver.FilePair;
 import org.junit.Test;
 import parser.Node;
@@ -14,12 +13,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Tests for the Util class
@@ -355,27 +352,125 @@ public class FileUtilsTest {
 		String report = FileUtils.getReport(cs);
 	}
 
-//	@Test(expected = Exception.class)
-//	public void getReportTestNormal() {
-//		CodeSnippets cs = new CodeSnippets(101, 102);
-//
-//		File file1 = new File("sample.c");
-//		File file2 = new File("sample2.c");
-//
-//		Set<SimilaritySnippet> set = new TreeSet<>();
-//		Node node1 = new Node(1, 40, 3, "className1");
-//		Node node2 = new Node(1, 50, 3, "className2" );
-//		List<SimilaritySnippet> snippetList = new ArrayList<>();
-//		snippetList.add(new SimilaritySnippet(node1, node2));
-//		Result result =  new Result(0.6, snippetList);
-//		FilePair filePair = new FilePair(file1, file2);
-//		filePair.setResult(result);
-//		List<FilePair> filePairList = new ArrayList<>();
-//		filePairList.add(filePair);
-//		cs.setFilePairList(filePairList);
-//
-//		String report = FileUtils.getReport(cs);
-//
-//		assertEquals("abc", report);
-//	}
+	@Test
+	public void getReportTestNormal() {
+		CodeSnippets cs = new CodeSnippets(101, 102);
+
+		File file1 = new File("sample.c");
+		File file2 = new File("sample2.c");
+
+		Set<SimilaritySnippet> set = new TreeSet<>();
+		Node node1 = new Node(1, 40, 3, "className1");
+		Node node2 = new Node(1, 50, 3, "className2" );
+		List<SimilaritySnippet> snippetList = new ArrayList<>();
+		snippetList.add(new SimilaritySnippet(node1, node2));
+		Result result =  new Result(0.6, snippetList);
+		FilePair filePair = new FilePair(file1, file2);
+		filePair.setResult(result);
+		List<FilePair> filePairList = new ArrayList<>();
+		filePairList.add(filePair);
+		cs.setFilePairList(filePairList);
+
+		String report = FileUtils.getReport(cs);
+
+		String date = new SimpleDateFormat("yyyy-MM-dd",
+				Locale.getDefault()).format(new Date()) + "\n";
+
+		String expectedReport = date + "Report for Darshan and Saman\n" +
+				"sample.c and sample2.c are suspected to be similar. \n" +
+				"There is a 60.0% match.\n" +
+				"Student A's sample.c\n" +
+				"1. /* This function takes last element as pivot, places\n" +
+				"2.    the pivot element at its correct position in sorted\n" +
+				"3. \tarray, and places all smaller (smaller than pivot)\n" +
+				"4.    to left of pivot and all greater elements to right\n" +
+				"5.    of pivot */\n" +
+				"6. int partition (int arr[], int low, int high)\n" +
+				"7. {\n" +
+				"8. \tint pivot = arr[high];    // pivot\n" +
+				"9. \tint i = (low - 1);  // Index of smaller element\n" +
+				"10. \n" +
+				"11. \tfor (int j = low; j <= high- 1; j++)\n" +
+				"12. \t{\n" +
+				"13. \t\t// If current element is smaller than or\n" +
+				"14. \t\t// equal to pivot\n" +
+				"15. \t\tif (arr[j] <= pivot)\n" +
+				"16. \t\t{\n" +
+				"17. \t\t\ti++;    // increment index of smaller element\n" +
+				"18. \t\t\tswap(&arr[i], &arr[j]);\n" +
+				"19. \t\t}\n" +
+				"20. \t}\n" +
+				"21. \tswap(&arr[i + 1], &arr[high]);\n" +
+				"22. \treturn (i + 1);\n" +
+				"23. }\n" +
+				"24. \n" +
+				"25. /* The main function that implements QuickSort\n" +
+				"26.  arr[] --> Array to be sorted,\n" +
+				"27.   low  --> Starting index,\n" +
+				"28.   high  --> Ending index */\n" +
+				"29. void quickSort(int arr[], int low, int high)\n" +
+				"30. {\n" +
+				"31. \tif (low < high)\n" +
+				"32. \t{\n" +
+				"33. \t\t/* pi is partitioning index, arr[p] is now\n" +
+				"34. \t\t   at right place */\n" +
+				"35. \t\tint pi = partition(arr, low, high);\n" +
+				"36. \n" +
+				"37. \t\t// Separately sort elements before\n" +
+				"38. \t\t// partition and after partition\n" +
+				"39. \t\tquickSort(arr, low, pi - 1);\n" +
+				"40. \t\tquickSort(arr, pi + 1, high);\n" +
+				"Student B's sample2.c\n" +
+				"1. ///* C program for Merge Sort */\n" +
+				"2. //#include<stdlib.h>\n" +
+				"3. //#include<stdio.h>\n" +
+				"4. \n" +
+				"5. // Merges two subarrays of arr[].\n" +
+				"6. // First subarray is arr[l..m]\n" +
+				"7. // Second subarray is arr[m+1..r]\n" +
+				"8. void merge(int arr[], int l, int m, int r)\n" +
+				"9. {\n" +
+				"10.     int i, j, k;\n" +
+				"11.     int n1 = m - l + 1;\n" +
+				"12.     int n2 =  r - m;\n" +
+				"13. \n" +
+				"14.     /* create temp arrays */\n" +
+				"15.     int L[n1], R[n2];\n" +
+				"16. \n" +
+				"17.     /* Copy data to temp arrays L[] and R[] */\n" +
+				"18.     for (i = 0; i < n1; i++)\n" +
+				"19.         L[i] = arr[l + i];\n" +
+				"20.     for (j = 0; j < n2; j++)\n" +
+				"21.         R[j] = arr[m + 1+ j];\n" +
+				"22. \n" +
+				"23.     /* Merge the temp arrays back into arr[l..r]*/\n" +
+				"24.     i = 0; // Initial index of first subarray\n" +
+				"25.     j = 0; // Initial index of second subarray\n" +
+				"26.     k = l; // Initial index of merged subarray\n" +
+				"27.     while (i < n1 && j < n2)\n" +
+				"28.     {\n" +
+				"29.         if (L[i] <= R[j])\n" +
+				"30.         {\n" +
+				"31.             arr[k] = L[i];\n" +
+				"32.             i++;\n" +
+				"33.         }\n" +
+				"34.         else\n" +
+				"35.         {\n" +
+				"36.             arr[k] = R[j];\n" +
+				"37.             j++;\n" +
+				"38.         }\n" +
+				"39.         k++;\n" +
+				"40.     }\n" +
+				"41. \n" +
+				"42.     /* Copy the remaining elements of L[], if there\n" +
+				"43.        are any */\n" +
+				"44.     while (i < n1)\n" +
+				"45.     {\n" +
+				"46.         arr[k] = L[i];\n" +
+				"47.         i++;\n" +
+				"48.         k++;\n" +
+				"49.     }\n" +
+				"50. \n";
+		assertEquals(expectedReport, report);
+	}
 }
