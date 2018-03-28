@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
+import utils.FileUtils;
 
 /**
  * This Controller is responsible to load the Compare page of the application.
@@ -126,6 +127,7 @@ public class CompareController {
 	 */
 	@FXML public void revealNames() {
 		reveal.setDisable(true);
+		Driver.getInstance().getStudentData();
 		studentAName.setText(Driver.getInstance().getNameById(codeSnippets.getStudent1Id()));
 		studentBName.setText(Driver.getInstance().getNameById(codeSnippets.getStudent2Id()));
 	}
@@ -176,7 +178,7 @@ public class CompareController {
 	 * This function is used to generate the report
 	 */
 	@FXML public void generateReport() {
-		final String report = "";
+		final String report = FileUtils.getReport(codeSnippets);
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter 
          	= new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
