@@ -11,11 +11,11 @@ import java.util.Map;
 
 public class ExcelReader {
 
-    public Map<Integer, Student> getStudentMap(String xlsxPath) throws IOException, InvalidFormatException {
+    public Map<Integer, Student> getStudentMap(File xlsxFile) throws IOException, InvalidFormatException {
     	Map<Integer, Student> studentMap = new HashMap<>();
     	Workbook workbook = null;
     	try {
-    		workbook = WorkbookFactory.create(new File(xlsxPath));
+    		workbook = WorkbookFactory.create(xlsxFile);
 	        Sheet sheet = workbook.getSheetAt(0);
 	        DataFormatter dataFormatter = new DataFormatter(); 
 	        

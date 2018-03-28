@@ -192,9 +192,11 @@ public class DriverTests {
 	@Test
 	public void testGetNameById() {
 		Driver driver = Driver.getInstance();
+		URL url = this.getClass().getResource("/studentData.xlsx");
 		String expected1 = "Darshan";
 		String expected2 = "Saman";
-		driver.getStudentData();
+		String xlsxPath = url.getPath();
+		driver.getStudentData(new File(xlsxPath));
 		String actual1 = driver.getNameById(101);
 		String actual2 = driver.getNameById(102);
 		assertEquals(expected1, actual1);
