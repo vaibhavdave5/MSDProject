@@ -26,8 +26,8 @@ public class ExcelReader {
 	    		String studentEmail = dataFormatter.formatCellValue(row.getCell(2));
 	    		Student s = new Student(studentId, studentName, studentEmail);
 	    		studentMap.put(studentId, s);
-	        }
-    	}    
+	        }	
+    	}
         finally {
         	if(workbook != null) workbook.close();
         }
