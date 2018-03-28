@@ -168,13 +168,12 @@ public class MainController {
 		if(rootDir == null) {
 			return;
 		}
-		if(rootDir.isSelected()) {
-			allPaths.add(rootDir.getValue().getFile().getAbsolutePath());
-			return;
-		}
 		Iterator<TreeItem<DirectoryView>> it = rootDir.getChildren().iterator();
 		while(it.hasNext()) {
-			getListOfPaths(allPaths, (CheckBoxTreeItem<DirectoryView>) it.next());
+			CheckBoxTreeItem<DirectoryView> dir = (CheckBoxTreeItem<DirectoryView>) it.next();
+			if(dir.isSelected()) {
+				allPaths.add(dir.getValue().getFile().getAbsolutePath());
+			}
 		}
 	}
 	
@@ -188,10 +187,11 @@ public class MainController {
 		dirContent.setCellFactory(CheckBoxTreeCell.<DirectoryView>forTreeView());
 		CheckBoxTreeItem<DirectoryView> rootDirectory  
 				= new CheckBoxTreeItem<>(new DirectoryView(directory));
-		rootDirectory.setIndependent(true);
         for(File file : directory.listFiles()) {
             if(file.isDirectory()) {
-                rootDirectory.getChildren().add(populateView(file));
+                rootDirectory
+                			.getChildren()
+                			.add(new CheckBoxTreeItem<>(new DirectoryView(file)));
             }
         }
         root = rootDirectory;
