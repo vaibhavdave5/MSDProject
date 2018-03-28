@@ -127,7 +127,8 @@ public class CompareController {
 	 */
 	@FXML public void revealNames() {
 		reveal.setDisable(true);
-		Driver.getInstance().getStudentData();
+		File file = new File(""); // stub file, should be replaced with xlsx file.
+		Driver.getInstance().getStudentData(file);
 		studentAName.setText(Driver.getInstance().getNameById(codeSnippets.getStudent1Id()));
 		studentBName.setText(Driver.getInstance().getNameById(codeSnippets.getStudent2Id()));
 	}
