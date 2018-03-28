@@ -125,6 +125,7 @@ public class SummaryController {
 				"You will lose all your changes.");
 		if(type.isPresent() && type.get() == ButtonType.CANCEL) return;
 		if(screenController != null) {
+			Driver.getInstance().resetState();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Start.fxml"));
 			try {
 				screenController.addScreen("main", loader.load());

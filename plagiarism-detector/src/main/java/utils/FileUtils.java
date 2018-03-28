@@ -82,8 +82,6 @@ public class FileUtils {
 		StringBuilder sb = new StringBuilder();
 
 		Driver driver = Driver.getInstance();
-		File file  = new File(""); // stub file, needs to be replaced with the excel file obj
-		driver.getStudentData(file);
 
 		String studentName1 = driver.getNameById(codeSnippets.getStudent1Id());
 		String studentName2 = driver.getNameById(codeSnippets.getStudent2Id());
