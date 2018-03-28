@@ -23,14 +23,12 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.control.cell.CheckBoxTreeCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.stage.DirectoryChooser;
-import utils.CheckBoxTreeCellExt;
-import utils.CheckBoxTreeItemExt;
-
 /**
  * This Controller is responsible to load the main page of the application.
  * 
@@ -96,7 +94,7 @@ public class MainController {
 			File directory = selectDirectory();
 			if(directory != null && directory.isDirectory()) {
 				hideImage();
-				dirContent.setRoot(populateView(directory, 0));
+				dirContent.setRoot(populateView(directory));
 				dirContent.setShowRoot(true);
 			}
 		} catch(Exception e) { 
@@ -186,17 +184,14 @@ public class MainController {
 	 * @param directory a directory as the File object
 	 * @return a tree view of the directory structure
 	 */
-	public CheckBoxTreeItem<DirectoryView> populateView(File directory, int level) {
-		dirContent.setCellFactory(CheckBoxTreeCellExt.<DirectoryView>forTreeView());
-		CheckBoxTreeItemExt<DirectoryView> rootDirectory  
-				= new CheckBoxTreeItemExt<>(new DirectoryView(directory));
+	public CheckBoxTreeItem<DirectoryView> populateView(File directory) {
+		dirContent.setCellFactory(CheckBoxTreeCell.<DirectoryView>forTreeView());
+		CheckBoxTreeItem<DirectoryView> rootDirectory  
+				= new CheckBoxTreeItem<>(new DirectoryView(directory));
 		rootDirectory.setIndependent(true);
-		if(level == 0) {
-			rootDirectory.setDisabled(true);
-		}
         for(File file : directory.listFiles()) {
             if(file.isDirectory()) {
-                rootDirectory.getChildren().add(populateView(file, level++));
+                rootDirectory.getChildren().add(populateView(file));
             }
         }
         root = rootDirectory;
@@ -226,7 +221,7 @@ public class MainController {
 		List<File> files = event.getDragboard().getFiles();
 		if(!files.isEmpty() && files.get(0).isDirectory()) {
 			hideImage();
-			dirContent.setRoot(populateView(files.get(0), 0));
+			dirContent.setRoot(populateView(files.get(0)));
 			dirContent.setShowRoot(true);
 		}
 	}
