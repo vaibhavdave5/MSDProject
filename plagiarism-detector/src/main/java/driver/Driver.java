@@ -293,4 +293,14 @@ public class Driver {
 		return student.getName();
 	}
 	
+	/**
+	 * This method resets the state of the application and clears all the parameters.
+	 * 
+	 */
+	public void resetState() {
+		this.setHWDir(null);
+		this.setRepoPaths(null);
+		this.studentHWMap = null;
+		this.summary = null;
+	}
 }
