@@ -1,7 +1,7 @@
 package driver;
 
-import java.io.*;
-import java.net.URL;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -14,9 +14,9 @@ import org.apache.commons.io.FileUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 import algorithms.Algorithm;
+import algorithms.IResult;
 import algorithms.LCSAlgorithm;
 import algorithms.NeemanWalshAlgorithm;
-import algorithms.IResult;
 import controllers.AlgorithmController;
 
 /**
@@ -300,7 +300,7 @@ public class Driver {
 	public void resetState() {
 		this.setHWDir(null);
 		this.setRepoPaths(null);
-		this.studentHWMap = null;
+		this.studentHWMap = new HashMap<>();
 		this.summary = null;
 	}
 }
