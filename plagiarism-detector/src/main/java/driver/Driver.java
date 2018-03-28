@@ -45,8 +45,6 @@ public class Driver {
 	private Summary summary;
 	private Algorithm algo = Algorithm.LCS;
 
-	private URL url = this.getClass().getResource("/studentData.xlsx");
-
 	/**
 	 * Setter for repoPaths.
 	 * @param repoPaths List<String>
@@ -66,12 +64,14 @@ public class Driver {
 	/**
 	 * Gets the student data from the excel file provided by prof or TA
 	 * and stores it as a map in the studentMap.
+	 * @param xlsxFile File
+	 * @return errorMessage String
 	 */
-	public String getStudentData() {
+	public String getStudentData(File xlsxFile) {
 		String errorMessage = "";
 		ExcelReader er = new ExcelReader();
 		try {
-			this.studentMap = er.getStudentMap(url.getPath());
+			this.studentMap = er.getStudentMap(xlsxFile);
 		}
 		catch (InvalidFormatException | IOException e) {
 			errorMessage = "Could not gather students data.";
@@ -91,6 +91,7 @@ public class Driver {
 	
 	/**
 	 * Gets the c files recursively from all the directories.
+	 * @return errorMessage String
 	 */
 	public String getCodeFiles() {
 		String errorMessage = "";
@@ -210,6 +211,7 @@ public class Driver {
 	 * Employs a comparison strategy and compares all files of all students.
 	 * @param repoPaths List<String>
 	 * @param hwDir String
+	 * @return errorMessage String
 	 */
 	public String checkForPlagiarism(List<String> repoPaths, String hwDir, Algorithm algo) {
 		if(repoPaths != null && hwDir != null && hwDir != "") {
@@ -284,7 +286,7 @@ public class Driver {
 	 * @param studentId Integer
 	 * @return String
 	 * @param studentId
-	 * @return
+	 * @return String
 	 */
 	public String getNameById(Integer studentId) {
 		Student student = studentMap.get(studentId);
