@@ -29,6 +29,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 /**
  * This Controller is responsible to load the main page of the application.
  * 
@@ -40,6 +41,7 @@ public class MainController {
 	// Controller injectors
 	@FXML private TreeView<DirectoryView> dirContent;
 	@FXML private Button summary;
+	@FXML private Button excel;
 	@FXML private Label logo;
 	@FXML private Label chooseDir;
 	@FXML private ImageView folder;
@@ -49,6 +51,7 @@ public class MainController {
 	
 	private Image emptyFolder;
 	private Image filledFolder;
+	private File excelFile;
 	private CheckBoxTreeItem<DirectoryView> root;
 	private Algorithm algo = Algorithm.DEFAULT;
 	
@@ -61,6 +64,7 @@ public class MainController {
 		filledFolder = new Image(getClass()
 				.getResource("/images/folder-filled.png")
 				.toExternalForm());
+		excelFile = null;
 	}
 	
 	/**
@@ -81,6 +85,7 @@ public class MainController {
 	private void applyStyle() {
 		strategy.getStyleClass().add("primary");
 		summary.getStyleClass().add("primary");
+		excel.getStyleClass().add("danger");
 		logo.getStyleClass().add("logo");
 		chooseDir.getStyleClass().add("drag-folder");
 	}
@@ -111,6 +116,22 @@ public class MainController {
 	}
 	
 	/**
+	 * This method uploads the excel sheet provided by the user, used to validate
+	 * repo names and student IDs 
+	 */
+	@FXML public void uploadExcel() {
+		FileChooser fileChooser = new FileChooser();
+		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XLST files (*.xlsx)", "*.xlsx");
+		fileChooser.getExtensionFilters().add(extFilter);
+		File file = fileChooser.showOpenDialog(null);
+        if (file != null) {
+        		excelFile = file;
+	        	excel.getStyleClass().removeAll("danger");
+	    		excel.getStyleClass().add("success");
+        }
+	}
+	
+	/**
 	 * This method runs the algorithm
 	 */
 	@FXML public void runAlgorithm() {
@@ -118,11 +139,12 @@ public class MainController {
 		getListOfPaths(allPaths, root);
 		if(hw.getText() == null 
 				|| allPaths.isEmpty() 
-				|| "".equals(hw.getText())) {
+				|| "".equals(hw.getText())
+				|| excelFile == null) {
 			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
 					"Error", 
 					"An error occurred", 
-					"Make sure to select a directory and enter homework number");
+					"Make sure to select a directory, upload an excel validator sheet, and to enter a homework number");
 		} else {
 			if(algo == null || algo == Algorithm.DEFAULT) {
 				PopupMessage.getInstance().showAlertMessage(AlertType.INFORMATION,
@@ -131,8 +153,16 @@ public class MainController {
 						"Since no strategy was provided, a weighted average of the two will be reported");
 			}
 			Driver drive = Driver.getInstance();
-			drive.checkForPlagiarism(allPaths, hw.getText(), algo);
-			routeToSummary(drive.viewSummary());
+			drive.getStudentData(excelFile);
+			String returnMessage = drive.checkForPlagiarism(allPaths, hw.getText(), algo);
+			if(!returnMessage.isEmpty()) {
+				PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
+						"Error!", 
+						"Some error occurred", 
+						returnMessage);
+			} else {
+				routeToSummary(drive.viewSummary());
+			}
 		}
 	}
 	
