@@ -30,6 +30,7 @@
               </items>
             </MenuButton>
             <ImageView fx:id="northeastern" fitHeight="67.0" fitWidth="66.0" layoutX="23.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="excel" layoutX="597.0" layoutY="35.0" mnemonicParsing="false" onAction="#uploadExcel" prefHeight="27.0" prefWidth="175.0" text="Upload Excel Validator" />
          </children>
       </AnchorPane>
    </bottom>
