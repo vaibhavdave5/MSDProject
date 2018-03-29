@@ -61,6 +61,9 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 			case 3:
 				i--;
 				break;
+
+			default:
+				break;
 			}
 		}
 		return snippets;

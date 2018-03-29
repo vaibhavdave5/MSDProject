@@ -69,7 +69,7 @@ public class Student {
 	 * @param email the email of the Student
 	 */
 	public void setEmail(String email) {
-		email.toLowerCase();
+		email = email.toLowerCase();
 		if(MailUtils.isValidEmail(email)) this.email = email;
 		else throw new IllegalArgumentException();
 	}
