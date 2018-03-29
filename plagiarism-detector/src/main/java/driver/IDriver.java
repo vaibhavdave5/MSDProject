@@ -1,11 +1,11 @@
 package driver;
 
+import algorithms.Algorithm;
+
 import java.io.File;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-
-import algorithms.Algorithm;
 
 public interface IDriver {
 	/**
@@ -84,7 +84,7 @@ public interface IDriver {
 	 * of the plagiarism algorithm along with the snippets data.
 	 * @param fileList1 List<File>
 	 * @param fileList2 List<File>
-	 * @return List<SimpleFilePair>
+	 * @return List<SnippetPair>
 	 */
 	public List<FilePair> compareFilesForResult(Collection<File> fileList1, Collection<File> fileList2);
 	

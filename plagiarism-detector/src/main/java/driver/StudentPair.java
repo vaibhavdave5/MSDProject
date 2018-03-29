@@ -1,50 +1,81 @@
 package driver;
 
 /**
- * 
- * @author darshan.panse
- * This class makes a studentId pair 
- *
+ * A StudentPair represents two students
+ * @author Darshan Panse
  */
 public class StudentPair {
-	private Integer student1Id;
-	private Integer student2Id;
+	private Integer studentId1;
+	private Integer studentId2;
 	private Double similarityScore;
-	
-	public StudentPair(Integer student1Id, Integer student2Id) {
-		this.student1Id = student1Id;
-		this.student2Id = student2Id;
+
+	/**
+	 * Constructor for making a new StudentPair
+	 * @param studentId1 the ID of the first student
+	 * @param studentId2 the ID of the second student
+	 */
+	public StudentPair(Integer studentId1, Integer studentId2) {
+		this.studentId1 = studentId1;
+		this.studentId2 = studentId2;
 	}
 
+	/**
+	 * Get the similarity score of the student pair
+	 * @return the similarity score of the student pair
+	 */
 	public Double getSimilarityScore() {
 		return similarityScore;
 	}
 
+	/**
+	 * Set the similarity score of the student pair
+	 * @param similarityScore similarity score of the student pair
+	 */
 	public void setSimilarityScore(Double similarityScore) {
 		this.similarityScore = similarityScore;
 	}
 
-	public Integer getStudent1Id() {
-		return student1Id;
+	/**
+	 * Get the Id of the first student in the pair
+	 * @return the Id of the first student in the pair
+	 */
+	public Integer getStudentId1() {
+		return studentId1;
 	}
 
-	public void setStudent1Id(Integer student1Id) {
-		this.student1Id = student1Id;
+	/**
+	 * Set the Id of the first student in the pair
+	 * @param studentId1 the Id of the first student in the pair
+	 */
+	public void setStudentId1(Integer studentId1) {
+		this.studentId1 = studentId1;
 	}
 
-	public Integer getStudent2Id() {
-		return student2Id;
+	/**
+	 * Get the Id of the second student in the pair
+	 * @return the Id of the second student in the pair
+	 */
+	public Integer getStudentId2() {
+		return studentId2;
 	}
 
-	public void setStudent2Id(Integer student2Id) {
-		this.student2Id = student2Id;
+	/**
+	 * Set the Id of the second student in the pair
+	 * @param studentId2 the Id of the second student in the pair
+	 */
+	public void setStudentId2(Integer studentId2) {
+		this.studentId2 = studentId2;
 	}
-	
+
+	/**
+	 * Get this object in a String representation
+	 * @return a String representation of this student pair
+	 */
 	@Override
 	public String toString() {
-		return "Student-" + getStudent1Id() 
+		return "Student-" + getStudentId1()
 		+ " - " 
-		+ "Student-" + getStudent2Id();
+		+ "Student-" + getStudentId2();
 	}
 	
 }

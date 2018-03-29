@@ -22,9 +22,9 @@ import java.util.Set;
  */
 public class FileUtils {
 
-	final static Logger logger = Logger.getLogger(FileUtils.class);
+	static final Logger logger = Logger.getLogger(FileUtils.class);
 
-	private FileUtils(){};
+	private FileUtils(){}
 
 	/**
 	 * Converts a file from the given start and end lines to its String equivalent
@@ -55,8 +55,7 @@ public class FileUtils {
 				sb.append(count + ". " + line);
 				sb.append("\n");
 			}
-			br.close();
-		}catch (IOException e) {
+		} catch (IOException e) {
 			logger.error("IOException");
 		}
 

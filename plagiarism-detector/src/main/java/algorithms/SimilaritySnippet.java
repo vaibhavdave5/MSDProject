@@ -52,13 +52,13 @@ public class SimilaritySnippet implements Comparable<SimilaritySnippet> {
 	public int getEnd2() {
 		return node2.getEnd();
 	}
-	
+
 	/**
-	 * This function compares two snippets on the 
-	 * basis of the starts of first file 
+	 * This function compares two snippets on the
+	 * basis of the starts of first file
 	 * This is done to maintain an order.
-	 * @param SimilaritySnippet o
-	 * @return int
+	 * @param o a SimilaritySnippet object
+	 * @return the difference between this and the parameter's starting line number
 	 */
 	@Override
 	public int compareTo(SimilaritySnippet o) {
@@ -66,7 +66,9 @@ public class SimilaritySnippet implements Comparable<SimilaritySnippet> {
 	}
 
 	/**
-	 * Avoids similar snippets
+	 * Tells if the given object and this object are equal
+	 * @param o an object
+	 * @return true iff given object and this object are equal
 	 */
 	@Override
 	public boolean equals(Object o) {
@@ -75,6 +77,9 @@ public class SimilaritySnippet implements Comparable<SimilaritySnippet> {
 					&& this.getEnd1() <= ((SimilaritySnippet) o).getEnd1();
 	}
 
+	/**
+	 * @return the hash code of this object
+	 */
 	@Override
 	public int hashCode() {
 		return this.getStart1();
