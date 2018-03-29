@@ -27,7 +27,7 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 	public IResult computeSimilarity(List<Node> list1, List<Node> list2) {
 
 		if (list1.isEmpty() || list2.isEmpty())
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("The files are empty");
 
 		else if (list1.size() < 500 || list2.size() < 500) {
 			return new Result(0.0, new ArrayList<>());
@@ -61,9 +61,6 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 			case 3:
 				i--;
 				break;
-
-			default:
-				throw new IllegalStateException("trackMatrix not initialized correctly.");
 			}
 		}
 		return snippets;

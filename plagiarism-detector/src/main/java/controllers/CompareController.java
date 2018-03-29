@@ -46,7 +46,7 @@ public class CompareController {
 	private int currentSnippet = 0;
 	private List<SnippetPair> snippetPairs;
 	private ScreenController screenController;
-	
+	 
 	private static Logger logger = Logger.getLogger(CompareController.class);
 
 	public CompareController(CodeSnippets codeSnippets) {
@@ -115,7 +115,7 @@ public class CompareController {
 	 * This method handles the event when the next button is clicked.
 	 */
 	@FXML public void onNextButtonClick() {
-		if(currentSnippet >= snippetPairs.size())
+		if(currentSnippet >= (snippetPairs.size()-1))
 			return;
 		currentSnippet++;
 		initializeSnippet();
