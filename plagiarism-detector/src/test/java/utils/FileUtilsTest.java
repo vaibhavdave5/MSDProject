@@ -346,12 +346,18 @@ public class FileUtilsTest {
 		Files.deleteIfExists(Paths.get(filename));
 	}
 
+	/**
+	 * Assert that an exception is thrown when CodeSnippet is not well formed
+	 */
 	@Test(expected = Exception.class)
 	public void getReportTestNull() {
 		CodeSnippets cs = new CodeSnippets(1, 2);
 		String report = FileUtils.getReport(cs);
 	}
 
+	/**
+	 * Test for getting a report
+	 */
 	@Test
 	public void getReportTestNormal() {
 		CodeSnippets cs = new CodeSnippets(101, 102);

@@ -163,11 +163,11 @@ public class Driver {
 		if(maxScore >= 0.5) {
 			// send student pair to red list
 			sp.setSimilarityScore(maxScore);
-			this.summary.setRedPairs(sp);
+			this.summary.addToRedPairs(sp);
 		} else if(maxScore >= 0.3 && maxScore < 0.5) {
 			// send student pair to yellow list
 			sp.setSimilarityScore(maxScore);
-			this.summary.setYellowPairs(sp);
+			this.summary.addToYellowPairs(sp);
 		} else {
 			// do nothing
 		}
@@ -194,7 +194,7 @@ public class Driver {
 			}
 			
 			if(this.summary.isSafe(student1Id)) {
-				this.summary.setGreenIds(student1Id);
+				this.summary.addToGreenIds(student1Id);
 			}
 		}
 	}

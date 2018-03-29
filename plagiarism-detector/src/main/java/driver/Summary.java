@@ -29,7 +29,7 @@ public class Summary {
 	 * Add a student pair to the set containing pairs suspected to have significant plagiarism
 	 * @param sp a student pair
 	 */
-	public void setRedPairs(StudentPair sp) {
+	public void addToRedPairs(StudentPair sp) {
 		this.redPairs.add(sp);
 	}
 
@@ -45,7 +45,7 @@ public class Summary {
 	 * Add a student pair to the set containing pairs suspected to have medium plagiarism
 	 * @param sp a student pair
 	 */
-	public void setYellowPairs(StudentPair sp) {
+	public void addToYellowPairs(StudentPair sp) {
 		this.yellowPairs.add(sp);
 	}
 
@@ -61,7 +61,7 @@ public class Summary {
 	 * Add a studentId to the set containing student Ids of students who are not believed to have cheated
 	 * @param studentId the Id of a student
 	 */
-	public void setGreenIds(Integer studentId) {
+	public void addToGreenIds(Integer studentId) {
 		this.greenIds.add(studentId);
 	}
 	

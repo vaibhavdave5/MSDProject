@@ -1,24 +1,28 @@
 package driver;
 
-import static org.junit.Assert.*;
-
-import java.io.File;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.junit.Test;
-
 import algorithms.Algorithm;
 import algorithms.IResult;
 import algorithms.LCSAlgorithm;
 import algorithms.SimilaritySnippet;
 import controllers.AlgorithmController;
+import org.junit.Test;
 
+import java.io.File;
+import java.net.URL;
+import java.util.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+/**
+ * Tests for testing the Driver
+ * @author Darshan Panse
+ */
 public class DriverTests {
+
+	/**
+	 * Test for normal program flow
+	 */
 	@Test
 	public void testDriver() {
 		Driver driver = Driver.getInstance();
@@ -28,9 +32,11 @@ public class DriverTests {
 		driver.setRepoPaths(repoPaths);
 		driver.setHWDir("HW3");
 		URL url = this.getClass().getResource("/studentData.xlsx");
-		// Driver.getStudentData(url.getPath());
 	}
 
+	/**
+	 * Test for checking the returned Ids in getStudentHWMap()
+	 */
 	@Test
 	public void testgetCodeFiles() {
 		Driver driver = Driver.getInstance();
@@ -57,7 +63,10 @@ public class DriverTests {
 		assertEquals(expectedKey1, actualKeys[0]);
 		assertEquals(expectedKey2, actualKeys[1]);
 	}
-	
+
+	/**
+	 * Test for checking maxSimilarityScore() on an empty list
+	 */
 	@Test
 	public void testSimilarityScoreListEmpty() {
 		Driver driver = Driver.getInstance();
@@ -68,6 +77,9 @@ public class DriverTests {
 		assertEquals(expected, actual);
 	}
 
+	/**
+	 * Test for checking for plagiarism using LCS algorithm
+	 */
 	@Test
 	public void testCheckForPlagiarismLCS() {
 		Driver driver = Driver.getInstance();
@@ -93,8 +105,12 @@ public class DriverTests {
 		}
 		assertTrue(summary.getYellowPairs().isEmpty());
 		assertTrue(summary.getGreenIds().isEmpty());
-	} 
-	
+	}
+
+
+	/**
+	 * Test for checking for plagiarism using NW algorithm
+	 */
 	@Test
 	public void testCheckForPlagiarismNW() {
 		Driver driver = Driver.getInstance();
@@ -121,7 +137,10 @@ public class DriverTests {
 		assertTrue(summary.getYellowPairs().isEmpty());
 		assertTrue(summary.getGreenIds().isEmpty());
 	}
-	
+
+	/**
+	 * Test for checking for plagiarism using the default algorithm
+	 */
 	@Test
 	public void testCheckForPlagiarismDefault() {
 		Driver driver = Driver.getInstance();
@@ -148,15 +167,23 @@ public class DriverTests {
 		assertTrue(summary.getYellowPairs().isEmpty());
 		assertTrue(summary.getGreenIds().isEmpty());
 	}
-	
+
+
+	/**
+	 * Assert that a message is thrown when repoPath is null
+	 */
 	@Test
 	public void testCheckForPlagiarismNullRepos() {
 		Driver driver = Driver.getInstance();
 		List<String> repoPaths = null;
 		String hwDir = "HW3";
 		String message = driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.NW);
+		assertEquals("No student repository or homework directory selected", message);
 	}
-	
+
+	/**
+	 * Assert that a message is thrown when hwdir is empty
+	 */
 	@Test
 	public void testCheckForPlagiarismEmptyHW() {
 		Driver driver = Driver.getInstance();
@@ -171,8 +198,12 @@ public class DriverTests {
 		
 		String hwDir = "";
 		String message = driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.NW);
+		assertEquals("No student repository or homework directory selected", message);
 	}
-	
+
+	/**
+	 * Assert that a message is thrown when hwdir is null
+	 */
 	@Test
 	public void testCheckForPlagiarismNullHW() {
 		Driver driver = Driver.getInstance();
@@ -187,8 +218,12 @@ public class DriverTests {
 		
 		String hwDir = null;
 		String message = driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.NW);
+		assertEquals("No student repository or homework directory selected", message);
 	}
-	
+
+	/**
+	 * Test getNameById()
+	 */
 	@Test
 	public void testGetNameById() {
 		Driver driver = Driver.getInstance();
@@ -231,7 +266,10 @@ public class DriverTests {
 		
 		assertTrue(set.size() > 0);
 	}
-	
+
+	/**
+	 * Test generateSnippet()
+	 */
 	@Test
 	public void testgenerateSnippet() {
 		Driver driver = Driver.getInstance();
