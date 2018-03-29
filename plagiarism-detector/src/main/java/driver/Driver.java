@@ -146,13 +146,13 @@ public class Driver {
 				LOGGER.log(Level.INFO, "File2: {0}", file2.getAbsolutePath());
 				AlgorithmController ac = new AlgorithmController(file1, file2);
 				if(this.algo == Algorithm.LCS) {
-					similarityScoreList.add(ac.getAns(new LCSAlgorithm()));
+					similarityScoreList.add(ac.getSimilarityPercentage(new LCSAlgorithm()));
 				} else if(this.algo == Algorithm.NW) {
-					similarityScoreList.add(ac.getAns(new NeemanWalshAlgorithm()));
+					similarityScoreList.add(ac.getSimilarityPercentage(new NeemanWalshAlgorithm()));
 				} else {
 					// This will be replaced by an ML algorithm in the next sprint
-					double weightedAverage = 0.25 * ac.getAns(new NeemanWalshAlgorithm())
-											+ 0.75 * ac.getAns(new LCSAlgorithm());
+					double weightedAverage = 0.25 * ac.getSimilarityPercentage(new NeemanWalshAlgorithm())
+											+ 0.75 * ac.getSimilarityPercentage(new LCSAlgorithm());
 					similarityScoreList.add(weightedAverage);
 				}
 			}

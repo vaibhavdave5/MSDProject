@@ -2,22 +2,10 @@ package controllers;
 
 import static org.junit.Assert.*;
 import java.io.File;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.logging.Logger;
 import org.junit.Test;
 import algorithms.LCSAlgorithm;
 import algorithms.NeemanWalshAlgorithm;
-import algorithms.IResult;
-import algorithms.SimilaritySnippet;
-import driver.Driver;
-import driver.Student;
-import driver.StudentPair;
-import driver.Summary;
 import parser.Node;
 
 /**
@@ -44,7 +32,7 @@ public class AlgorithmControllerTest {
 
 		AlgorithmController ac = new AlgorithmController(file1, file2);
 		double ans = -1;
-		ans = ac.getAns(new LCSAlgorithm());
+		ans = ac.getSimilarityPercentage(new LCSAlgorithm());
 		System.out.println(ans);
 		assertTrue(ans >= 0 && ans <= 1);
 	}
@@ -61,7 +49,7 @@ public class AlgorithmControllerTest {
 
 		AlgorithmController ac = new AlgorithmController(file1, file2);
 		double ans = -1;
-		ans = ac.getAns(new NeemanWalshAlgorithm());
+		ans = ac.getSimilarityPercentage(new NeemanWalshAlgorithm());
 		System.out.println(ans);
 		assertTrue(ans >= 0 && ans <= 1);
 	}
