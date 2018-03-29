@@ -28,7 +28,7 @@ import utils.FileUtils;
  * This Controller is responsible to load the Compare page of the application.
  * 
  * @author Shail Shah
- * @autho Samanjate Sood
+ * @author Samanjate Sood
  */
 public class CompareController {
 	

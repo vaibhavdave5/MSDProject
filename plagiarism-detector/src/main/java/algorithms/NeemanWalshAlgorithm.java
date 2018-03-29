@@ -18,10 +18,9 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 	/**
 	 * Compute the similarity between two Node lists
 	 * 
-	 * @param list1
-	 *            a list of Nodes
-	 * @param list2
-	 *            another list of Nodes
+	 * @param list1 a list of Nodes
+	 * @param list2 another list of Nodes
+	 * @throws IllegalArgumentException
 	 * @return a number representing the similarity between two nodes
 	 */
 	@Override
@@ -40,12 +39,6 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 		return new Result(similarityScore, snippets);
 	}
 
-	/**
-	 * Sets the list of common nodes in the optical alignment
-	 * 
-	 * @param list1
-	 * @param list2
-	 */
 	private List<SimilaritySnippet> getCommonNodesList(List<Node> list1, List<Node> list2) {
 		List<SimilaritySnippet> snippets = new ArrayList<>();
 
@@ -76,15 +69,7 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 		return snippets;
 	}
 
-	/**
-	 * This is an intermediate function which updates the track matrix on the
-	 * basis of the given condition Populate the c array
-	 * 
-	 * @param list1
-	 *            a list of Nodes
-	 * @param list2
-	 *            another list of Nodes
-	 */
+	
 	private int[][] getTrackMatrix(List<Node> list1, List<Node> list2) {
 		int size1 = list1.size();
 		int size2 = list2.size();
@@ -99,17 +84,7 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 		return trackMatrix;
 	}
 
-	/**
-	 * This is an initialization function of NeemanWalsh Algorithm You can view
-	 * refer the algorithm provided in the paper for more info.
-	 * 
-	 * @param list1
-	 *            a list of Nodes
-	 * @param list2
-	 *            another list of Nodes
-	 * @return an initialized substitution matrix
-	 * 
-	 */
+	
 	private int[][] initializeSubstitutionMatrix(List<Node> list1, List<Node> list2) {
 		int size1 = list1.size();
 		int size2 = list2.size();
@@ -122,20 +97,7 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 		return substitutionMatrix;
 	}
 
-	/**
-	 * Set the ith row and jth column of the trackMatrix
-	 * 
-	 * @param substitutionMatrix
-	 *            the substitution matrix
-	 * @param c
-	 *            the c matrix
-	 * @param trackMatrix
-	 *            the trackMatrix
-	 * @param i
-	 *            the row number
-	 * @param j
-	 *            the column number
-	 */
+	
 	private void setTrackMatrix(int[][] substitutionMatrix, int[][] c, int[][] trackMatrix, int i, int j) {
 
 		int scoreDiagonal = c[i - 1][j - 1] + substitutionMatrix[i][j];

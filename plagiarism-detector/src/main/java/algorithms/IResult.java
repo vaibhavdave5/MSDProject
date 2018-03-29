@@ -3,10 +3,13 @@ package algorithms;
 import java.util.Set;
 
 /**
- * Classes implementing IResult are able to store %, common Nodes and Snippets.
- * They can be easily be retrieved by getters.
  * 
- * @author Shail Shah, Vaibhav Dave
+ * An object of this interface represents the a result obtained after running
+ * an algorithm strategy on two files
+ * The object should be able to return percent plagiarism between two files 
+ * and a Set of similarity snippets
+ * 
+ * @author Vaibhav Dave
  */
 public interface IResult {
 

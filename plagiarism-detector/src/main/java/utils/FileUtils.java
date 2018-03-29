@@ -22,9 +22,7 @@ import java.util.Set;
  */
 public class FileUtils {
 
-	final static Logger logger = Logger.getLogger(FileUtils.class);
-
-	private FileUtils(){};
+	private static final Logger logger = Logger.getLogger(FileUtils.class);
 
 	/**
 	 * Converts a file from the given start and end lines to its String equivalent
@@ -35,7 +33,7 @@ public class FileUtils {
 	 */
 	public static String getFileString(File file, int start, int end) {
 		int startOffset = start >= 1 ? start : 1;
-
+ 
 		StringBuilder sb = new StringBuilder();
 
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -55,7 +53,6 @@ public class FileUtils {
 				sb.append(count + ". " + line);
 				sb.append("\n");
 			}
-			br.close();
 		}catch (IOException e) {
 			logger.error("IOException");
 		}

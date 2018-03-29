@@ -16,11 +16,13 @@ import java.net.URLEncoder;
 public class MailUtils {
 	final static Logger logger = Logger.getLogger(MailUtils.class);
 
+	private MailUtils(){}
 	/**
 	 * Send a mail by opening a new email client
 	 * @param recipient the recipient of the email
 	 * @param subject the subject of the email
 	 * @param body the body of the email
+	 * @throws RuntimeException
 	 */
 	public static void sendMail(String recipient, String subject, String body) throws IOException, URISyntaxException {
 		if(!Desktop.isDesktopSupported()){
@@ -43,7 +45,7 @@ public class MailUtils {
 		} catch(Exception e) {
 			logger.error(e);
 			throw e;
-		}
+		} 
 	}
 
 	/**

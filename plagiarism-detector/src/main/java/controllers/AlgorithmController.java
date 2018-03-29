@@ -23,8 +23,7 @@ import algorithms.IResult;
  * The main controller of the application that can tell if two files are similar
  * 
  * @author Vaibhav Dave
- * @author Shail Shah
- *
+ * 
  */
 public class AlgorithmController {
 
@@ -32,9 +31,9 @@ public class AlgorithmController {
 	private File file2 = null;
 	private static Logger logger = Logger.getLogger(AlgorithmController.class);
 	
-	public AlgorithmController(File file1, File file2) {
-		this.file1 = file1;
-		this.file2 = file2; 
+	public AlgorithmController(File f1, File f2) {
+		file1 = f1;
+		file2 = f2; 
 	}
 
 	/**
@@ -66,7 +65,7 @@ public class AlgorithmController {
 
 	/**
 	 * Gets the result and returns the answer in percentage
-	 * @param strategy
+	 * @param Strategy strategy
 	 * @return double : Percentage
 	 */
 	public double getAns(AlgorithmStrategy strategy){

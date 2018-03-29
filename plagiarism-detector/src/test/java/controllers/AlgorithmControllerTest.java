@@ -10,8 +10,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
 import org.junit.Test;
-
-import algorithms.Algorithm;
 import algorithms.LCSAlgorithm;
 import algorithms.NeemanWalshAlgorithm;
 import algorithms.IResult;
