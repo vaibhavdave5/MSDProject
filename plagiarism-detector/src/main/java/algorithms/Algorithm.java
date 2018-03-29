@@ -7,7 +7,8 @@ package algorithms;
  * @author team-107
  *
  */
-
 public enum Algorithm {
-	DEFAULT, NW, LCS
+	DEFAULT,
+	NW,
+	LCS
 }

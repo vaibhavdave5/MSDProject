@@ -24,6 +24,8 @@ public class FileUtils {
 
 	private static final Logger logger = Logger.getLogger(FileUtils.class);
 
+	private FileUtils(){}
+
 	/**
 	 * Converts a file from the given start and end lines to its String equivalent
 	 * @param file a source file
@@ -53,7 +55,7 @@ public class FileUtils {
 				sb.append(count + ". " + line);
 				sb.append("\n");
 			}
-		}catch (IOException e) {
+		} catch (IOException e) {
 			logger.error("IOException");
 		}
 

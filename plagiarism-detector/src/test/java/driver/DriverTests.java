@@ -84,15 +84,15 @@ public class DriverTests {
 		Summary summary = driver.viewSummary();
 		Integer expected1 = 110;
 		Integer expected2 = 111;
-		Set<StudentPair> actual = summary.getRed();
+		Set<StudentPair> actual = summary.getRedPairs();
 		for(StudentPair sp: actual) {
-			Integer actual1 = sp.getStudent1Id();
-			Integer actual2 = sp.getStudent2Id();
+			Integer actual1 = sp.getStudentId1();
+			Integer actual2 = sp.getStudentId2();
 			assertEquals(expected1, actual1);
 			assertEquals(expected2, actual2);
 		}
-		assertTrue(summary.getYellow().isEmpty());
-		assertTrue(summary.getGreen().isEmpty());
+		assertTrue(summary.getYellowPairs().isEmpty());
+		assertTrue(summary.getGreenIds().isEmpty());
 	} 
 	
 	@Test
@@ -111,15 +111,15 @@ public class DriverTests {
 		Summary summary = driver.viewSummary();
 		Integer expected1 = 110;
 		Integer expected2 = 111;
-		Set<StudentPair> actual = summary.getRed();
+		Set<StudentPair> actual = summary.getRedPairs();
 		for(StudentPair sp: actual) {
-			Integer actual1 = sp.getStudent1Id();
-			Integer actual2 = sp.getStudent2Id();
+			Integer actual1 = sp.getStudentId1();
+			Integer actual2 = sp.getStudentId2();
 			assertEquals(expected1, actual1);
 			assertEquals(expected2, actual2);
 		}
-		assertTrue(summary.getYellow().isEmpty());
-		assertTrue(summary.getGreen().isEmpty());
+		assertTrue(summary.getYellowPairs().isEmpty());
+		assertTrue(summary.getGreenIds().isEmpty());
 	}
 	
 	@Test
@@ -138,15 +138,15 @@ public class DriverTests {
 		Summary summary = driver.viewSummary();
 		Integer expected1 = 110;
 		Integer expected2 = 111;
-		Set<StudentPair> actual = summary.getRed();
+		Set<StudentPair> actual = summary.getRedPairs();
 		for(StudentPair sp: actual) {
-			Integer actual1 = sp.getStudent1Id();
-			Integer actual2 = sp.getStudent2Id();
+			Integer actual1 = sp.getStudentId1();
+			Integer actual2 = sp.getStudentId2();
 			assertEquals(expected1, actual1);
 			assertEquals(expected2, actual2);
 		}
-		assertTrue(summary.getYellow().isEmpty());
-		assertTrue(summary.getGreen().isEmpty());
+		assertTrue(summary.getYellowPairs().isEmpty());
+		assertTrue(summary.getGreenIds().isEmpty());
 	}
 	
 	@Test

@@ -14,7 +14,7 @@ import java.net.URLEncoder;
  * @author Shail Shah
  */
 public class MailUtils {
-	final static Logger logger = Logger.getLogger(MailUtils.class);
+	private static final Logger logger = Logger.getLogger(MailUtils.class);
 
 	private MailUtils(){}
 	/**
@@ -28,7 +28,7 @@ public class MailUtils {
 		if(!Desktop.isDesktopSupported()){
 			String errorString = "No support for Desktop";
 			logger.error(errorString);
-			throw new RuntimeException(errorString);
+			throw new UnsupportedOperationException(errorString);
 		}
 
 		Desktop desktop = Desktop.getDesktop();
@@ -36,7 +36,7 @@ public class MailUtils {
 		if(!desktop.isSupported(Desktop.Action.MAIL)) {
 			String errorString = "Mailing is not supported";
 			logger.error(errorString);
-			throw new RuntimeException(errorString);
+			throw new UnsupportedOperationException(errorString);
 		}
 
 		try {
@@ -55,10 +55,10 @@ public class MailUtils {
 	 * @param body the body of the email
 	 * @return the URI containing metadata about the email
 	 * @throws URISyntaxException
-	 */
+	 */                           
 	private static URI getURI(String recipient, String subject, String body) throws URISyntaxException {
 		if(!isValidEmail(recipient))
-			throw new RuntimeException("Email address of recipient isn't valid");
+			throw new IllegalArgumentException("Email address of recipient isn't valid");
 
 		subject = encodeText(subject);
 		body = encodeText(body);

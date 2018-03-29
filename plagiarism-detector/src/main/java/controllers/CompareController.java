@@ -1,19 +1,8 @@
 package controllers;
 
-import static utils.FileUtils.getFileString;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import org.apache.log4j.Logger;
-
 import algorithms.IResult;
 import algorithms.SimilaritySnippet;
-import algorithms.SimpleFilePair;
+import algorithms.SnippetPair;
 import driver.CodeSnippets;
 import driver.Driver;
 import javafx.fxml.FXML;
@@ -22,7 +11,17 @@ import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
+import org.apache.log4j.Logger;
 import utils.FileUtils;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import static utils.FileUtils.getFileString;
 
 /**
  * This Controller is responsible to load the Compare page of the application.
@@ -45,7 +44,7 @@ public class CompareController {
 	
 	private CodeSnippets codeSnippets;
 	private int currentSnippet = 0;
-	private List<SimpleFilePair> simpleFilePairs;
+	private List<SnippetPair> snippetPairs;
 	private ScreenController screenController;
 	
 	private static Logger logger = Logger.getLogger(CompareController.class);
@@ -61,7 +60,7 @@ public class CompareController {
 	@FXML
 	protected void initialize() {
 		applyStyle();
-		simpleFilePairs = getSimpleFilePairs();
+		snippetPairs = getSnippetPairs();
 		reveal.setDisable(false);
 		initializeSnippet();
 		initializeLabels();
@@ -71,8 +70,8 @@ public class CompareController {
 	 * This method initializes the snippet text
 	 */
 	private void initializeSnippet() {
-		Text snippetA = new Text(simpleFilePairs.get(currentSnippet).getSnippet1());
-		Text snippetB = new Text(simpleFilePairs.get(currentSnippet).getSnippet2());
+		Text snippetA = new Text(snippetPairs.get(currentSnippet).getSnippet1());
+		Text snippetB = new Text(snippetPairs.get(currentSnippet).getSnippet2());
 		studentACode.getChildren().clear();
 		studentBCode.getChildren().clear();
 		studentACode.getChildren().addAll(snippetA);
@@ -116,7 +115,7 @@ public class CompareController {
 	 * This method handles the event when the next button is clicked.
 	 */
 	@FXML public void onNextButtonClick() {
-		if(currentSnippet >= simpleFilePairs.size())
+		if(currentSnippet >= snippetPairs.size())
 			return;
 		currentSnippet++;
 		initializeSnippet();
@@ -145,10 +144,10 @@ public class CompareController {
 	 * This method gets a list of file pairs that contains the file names
 	 * and the code snippets
 	 */
-	private List<SimpleFilePair> getSimpleFilePairs() {
-		simpleFilePairs = new ArrayList<>();
+	private List<SnippetPair> getSnippetPairs() {
+		snippetPairs = new ArrayList<>();
 		if(codeSnippets == null) {
-			return simpleFilePairs;
+			return snippetPairs;
 		}
 		List<driver.FilePair> filePairs = codeSnippets.getFilePairList();
 		filePairs.forEach(fp -> {
@@ -166,11 +165,11 @@ public class CompareController {
 				String snippet1 = getFileString(file1, start1, end1);
 				String snippet2 = getFileString(file2, start2, end2);
 
-				simpleFilePairs.add(new SimpleFilePair(fileName1, fileName2, snippet1, snippet2));
+				snippetPairs.add(new SnippetPair(fileName1, fileName2, snippet1, snippet2));
 			});
 		});
 
-		return simpleFilePairs;
+		return snippetPairs;
 	}
 	
 	/**

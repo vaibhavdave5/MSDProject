@@ -30,11 +30,19 @@ public class Result implements IResult {
 		this.snippet = null;
 	}
 
+
+	/**
+	 * @return the similarity percentage of the result
+	 */
 	@Override
 	public double getPercentage() {
 		return this.percentage;
 	}
 
+	/**
+	 * Generate the snippet set
+	 * @return a set containing similar snippets
+	 */
 	@Override
 	public Set<SimilaritySnippet> generateSnippet() {
 		if (this.snippet == null) {

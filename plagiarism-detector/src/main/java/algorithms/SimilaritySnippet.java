@@ -56,11 +56,11 @@ public class SimilaritySnippet implements Comparable<SimilaritySnippet> {
 	}
 
 	/**
-	 * This function compares two snippets on the basis of the starts of first
-	 * file This is done to maintain an order.
-	 * 
-	 * @param SimilaritySnippet o
-	 * @return int
+	 * This function compares two snippets on the
+	 * basis of the starts of first file
+	 * This is done to maintain an order.
+	 * @param o a SimilaritySnippet object
+	 * @return the difference between this and the parameter's starting line number
 	 */
 	@Override
 	public int compareTo(SimilaritySnippet o) {
@@ -68,10 +68,9 @@ public class SimilaritySnippet implements Comparable<SimilaritySnippet> {
 	}
 
 	/**
-	 * Avoids overlapping snippets entering into the set
-	 * 
-	 * @param Object o
-	 * @return boolean b
+	 * Tells if the given object and this object are equal
+	 * @param o an object
+	 * @return true iff given object and this object are equal
 	 */
 	@Override
 	public boolean equals(Object o) {
@@ -85,7 +84,7 @@ public class SimilaritySnippet implements Comparable<SimilaritySnippet> {
 	/**
 	 * Returns hashcode of the object
 	 * 
-	 * @return int hashcode
+	 * @return the hash code of this object
 	 */
 	@Override
 	public int hashCode() {

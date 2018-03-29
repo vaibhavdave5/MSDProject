@@ -1,8 +1,9 @@
 package algorithms;
 
+import parser.Node;
+
 import java.util.ArrayList;
 import java.util.List;
-import parser.Node;
 
 /**
  * An instance of LCS is able to compute the similarity between two Node Lists
@@ -35,7 +36,7 @@ public class LCSAlgorithm implements AlgorithmStrategy {
 	 * Backtrack the result of the lcs and find out the actual longest common
 	 * subsequence
 	 * 
-	 * @param list a list of nodes
+	 * @param list1 a list of nodes
 	 * @param list2 another list of nodes
 	 * @return Node[] of lcs
 	 */

@@ -1,15 +1,15 @@
 package algorithms;
 
+import parser.Node;
+
 import java.util.ArrayList;
 import java.util.List;
-import parser.Node;
 
 /**
  * An object of NeemanWalshAlgorithm is able to compute the similarity between
  * two Node lists, using the Neeman-Walsh Similarity Algorithm.
  * 
  * @author Vaibhav Dave
- * @author Shail Shah
  * @since 02/28/2018
  */
 
@@ -69,7 +69,6 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 		return snippets;
 	}
 
-	
 	private int[][] getTrackMatrix(List<Node> list1, List<Node> list2) {
 		int size1 = list1.size();
 		int size2 = list2.size();
@@ -84,7 +83,6 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 		return trackMatrix;
 	}
 
-	
 	private int[][] initializeSubstitutionMatrix(List<Node> list1, List<Node> list2) {
 		int size1 = list1.size();
 		int size2 = list2.size();
@@ -97,7 +95,6 @@ public class NeemanWalshAlgorithm implements AlgorithmStrategy {
 		return substitutionMatrix;
 	}
 
-	
 	private void setTrackMatrix(int[][] substitutionMatrix, int[][] c, int[][] trackMatrix, int i, int j) {
 
 		int scoreDiagonal = c[i - 1][j - 1] + substitutionMatrix[i][j];

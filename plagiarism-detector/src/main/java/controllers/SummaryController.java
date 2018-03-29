@@ -58,9 +58,9 @@ public class SummaryController {
 		setDefaultText(safe, "No Clean Assignments");
 		safe.setMouseTransparent(true);
 		safe.setFocusTraversable(false);
-		populateView(danger, summary.getRed());
+		populateView(danger, summary.getRedPairs());
 		addListener(danger);
-		populateView(medium, summary.getYellow());
+		populateView(medium, summary.getYellowPairs());
 		addListener(medium);
 		populateSafeStudents();
 		progress.setProgress(0.0);
@@ -108,7 +108,7 @@ public class SummaryController {
 	 * This method populates the list view with students who didn't plagiarize
 	 */
 	private void populateSafeStudents() {
-		for(Integer i : summary.getGreen()) {
+		for(Integer i : summary.getGreenIds()) {
 			safe.getItems().add("Student-" + i.toString());
 		}
 	}
@@ -207,8 +207,8 @@ public class SummaryController {
 				.setController(new CompareController(Driver
 														.getInstance()
 														.generateSnippet(
-																studentPair.getStudent1Id(),
-																studentPair.getStudent2Id())));
+																studentPair.getStudentId1(),
+																studentPair.getStudentId2())));
 			try {
 				screenController.addScreen("compare", loader.load());
 				screenController.activate("compare");
