@@ -65,19 +65,6 @@ public class DriverTests {
 	}
 
 	/**
-	 * Test for checking maxSimilarityScore() on an empty list
-	 */
-	@Test
-	public void testSimilarityScoreListEmpty() {
-		IDriver driver = Driver.getInstance();
-		List<Double> similarityScoreList = new ArrayList<>();
-		driver.maxSimilarityScore(similarityScoreList);
-		List<Double> expected = new ArrayList<>();
-		List<Double> actual = similarityScoreList;
-		assertEquals(expected, actual);
-	}
-
-	/**
 	 * Test for checking for plagiarism using LCS algorithm
 	 */
 	@Test

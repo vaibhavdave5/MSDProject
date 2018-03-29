@@ -45,15 +45,7 @@ public interface IDriver {
 	 * @return errorMessage String
 	 */
 	public String getCodeFiles();
-	
-	/**
-	 * This method returns the max similarity score between all the HW files of
-	 * two students.
-	 * @param similarityScoreList List<Double>
-	 * @return maxSimilarityScore Double
-	 */
-	public double maxSimilarityScore(List<Double> similarityScoreList);
-	
+
 	/**
 	 * This method compares the similarity between the homework c files of two students
 	 * and generates the summary. Also it returns false if the two students get paired
@@ -62,7 +54,7 @@ public interface IDriver {
 	 * @param fileList2 Collection<File>
 	 * @param sp StudentPair
 	 */
-	public void compareFiles(Collection<File> fileList1, Collection<File> fileList2, IStudentPair sp);
+	public void computeSimilarityScore(Collection<File> fileList1, Collection<File> fileList2, IStudentPair sp);
 	
 	/**
 	 * This method runs the algorithm on the homework c files of all the 
