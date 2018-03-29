@@ -7,7 +7,8 @@ import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.misc.*;
 import org.antlr.v4.runtime.tree.*;
 import java.util.List;
-
+//This class is retrieved from ANTLR team-107 is not adding futhur
+//documentation than what is provided
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class CParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.7.1", RuntimeMetaData.VERSION); }

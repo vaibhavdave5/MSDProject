@@ -9,7 +9,6 @@ import java.util.TreeSet;
  * Algorithm
  * 
  * @author Vaibhav Dave
- * @author Shail Shah
  * @since 3/21/2018
  *
  */
@@ -30,9 +29,8 @@ public class Result implements IResult {
 		this.snippet = null;
 	}
 
-
 	/**
-	 * @return the similarity percentage of the result
+	 * 
 	 */
 	@Override
 	public double getPercentage() {
@@ -40,8 +38,7 @@ public class Result implements IResult {
 	}
 
 	/**
-	 * Generate the snippet set
-	 * @return a set containing similar snippets
+	 * 
 	 */
 	@Override
 	public Set<SimilaritySnippet> generateSnippet() {

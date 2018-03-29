@@ -64,7 +64,7 @@ public class AlgorithmController {
 			CParser cParser = new CParser(new CommonTokenStream(cLexer));
 			new ParseTreeWalker().walk(new CASTNodeListener(nodeList), cParser.compilationUnit());
 		} catch(IOException e) {
-			logger.error(e);
+			logger.error(e);  
 		}
 		return nodeList;
 	}

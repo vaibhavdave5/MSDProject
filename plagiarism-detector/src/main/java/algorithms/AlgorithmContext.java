@@ -1,13 +1,14 @@
 package algorithms;
 
-import parser.Node;
-
 import java.util.List;
+
+import parser.Node;
 
 /**
  * An object of AlgorithmContext is able to set the strategy
  * and execute it on two ASTs to compute their similarities
  * @author Vaibhav Dave
+ * 
  */
 public class AlgorithmContext {
 	
@@ -24,8 +25,8 @@ public class AlgorithmContext {
 
 	/**
 	 * Execute this object's strategy to compute the similarity
-	 * @param list1 a list of nodes
-	 * @param list2 another list of nodes
+	 * @param list1 a list of nodes from file 1
+	 * @param list2 list of nodes from file 2
 	 * @return a Result object which encapsulates the similarities between
 	 * the two list of nodes
 	 */
