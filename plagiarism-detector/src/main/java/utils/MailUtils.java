@@ -54,7 +54,7 @@ public class MailUtils {
 	 * @param subject the subject of the email
 	 * @param body the body of the email
 	 * @return the URI containing metadata about the email
-	 * @throws URISyntaxException throw when something goes wrong while encoding text 
+	 * @throws URISyntaxException throw when something goes wrong while encoding text
 	 */                           
 	private static URI getURI(String recipient, String subject, String body) throws URISyntaxException {
 		if(!isValidEmail(recipient))

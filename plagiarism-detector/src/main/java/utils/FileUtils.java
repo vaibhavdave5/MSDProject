@@ -35,7 +35,6 @@ public class FileUtils {
 	 */
 	public static String getFileString(File file, int start, int end) {
 		int startOffset = start >= 1 ? start : 1;
- 
 		StringBuilder sb = new StringBuilder();
 
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
