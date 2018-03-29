@@ -1,9 +1,11 @@
 package algorithms;
 
 /**
- * An Algorithm represents an algorithm for detecting plagiarism
- * @author Vaibhav Dave
- * @author Shail Shah
+ * 
+ * This enum represents the types of strategies that can be used
+ * for determining plagiarism
+ * @author team-107
+ *
  */
 public enum Algorithm {
 	DEFAULT,

@@ -27,7 +27,7 @@ import static utils.FileUtils.getFileString;
  * This Controller is responsible to load the Compare page of the application.
  * 
  * @author Shail Shah
- * @autho Samanjate Sood
+ * @author Samanjate Sood
  */
 public class CompareController {
 	
@@ -46,7 +46,7 @@ public class CompareController {
 	private int currentSnippet = 0;
 	private List<SnippetPair> snippetPairs;
 	private ScreenController screenController;
-	
+	 
 	private static Logger logger = Logger.getLogger(CompareController.class);
 
 	public CompareController(CodeSnippets codeSnippets) {
@@ -115,7 +115,7 @@ public class CompareController {
 	 * This method handles the event when the next button is clicked.
 	 */
 	@FXML public void onNextButtonClick() {
-		if(currentSnippet >= snippetPairs.size())
+		if(currentSnippet >= (snippetPairs.size()-1))
 			return;
 		currentSnippet++;
 		initializeSnippet();

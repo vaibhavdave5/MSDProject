@@ -228,6 +228,7 @@ public class DriverTests {
 	public void testGetNameById() {
 		Driver driver = Driver.getInstance();
 		URL url = this.getClass().getResource("/studentData.xlsx");
+		System.out.println(url.toString());
 		String expected1 = "Darshan";
 		String expected2 = "Saman";
 		String xlsxPath = url.getPath();
@@ -237,7 +238,7 @@ public class DriverTests {
 		assertEquals(expected1, actual1);
 		assertEquals(expected2, actual2);
 	}
- 
+  
 	/**
 	 * Testing the snippet generator
 	 */

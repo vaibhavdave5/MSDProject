@@ -1,5 +1,10 @@
 package parser;
-
+/**
+ * This class represents a subset of properties that can be retrieved from
+ * CParser
+ * @author Vaibhav Dave
+ *
+ */
 public class Node {
 	private String className;
 	private int hash;
@@ -31,14 +36,28 @@ public class Node {
 		return false;
 	}
 
+	/**
+	 * Returns a hash generated in CParser
+	 * @return int hash
+	 */
 	public int getHash() {
 		return hash;
 	}
 	
+	/**
+	 * Returns start line of the code
+	 * @return int start
+	 */
 	public int getStart() {
 		return this.startLine;
 	}
 	
+
+	/**
+	 * Returns end line of the code
+	 * @return int end
+	 */
+
 	public int getEnd(){
 		return this.endline;
 	}

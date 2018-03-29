@@ -17,12 +17,12 @@ public class MailUtils {
 	private static final Logger logger = Logger.getLogger(MailUtils.class);
 
 	private MailUtils(){}
-
 	/**
 	 * Send a mail by opening a new email client
 	 * @param recipient the recipient of the email
 	 * @param subject the subject of the email
 	 * @param body the body of the email
+	 * @throws RuntimeException
 	 */
 	public static void sendMail(String recipient, String subject, String body) throws IOException, URISyntaxException {
 		if(!Desktop.isDesktopSupported()){
@@ -45,7 +45,7 @@ public class MailUtils {
 		} catch(Exception e) {
 			logger.error(e);
 			throw e;
-		}
+		} 
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class MailUtils {
 	 * @param body the body of the email
 	 * @return the URI containing metadata about the email
 	 * @throws URISyntaxException
-	 */
+	 */                           
 	private static URI getURI(String recipient, String subject, String body) throws URISyntaxException {
 		if(!isValidEmail(recipient))
 			throw new IllegalArgumentException("Email address of recipient isn't valid");

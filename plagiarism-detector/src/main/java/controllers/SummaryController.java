@@ -47,7 +47,7 @@ public class SummaryController {
 		this.screenController = ScreenController.getInstance();
 		this.summary = summary;
 	}
-	
+	 
 	/**
 	 * This method runs on page load and initializes all components of the Summary.fxml page
 	 */
@@ -87,10 +87,7 @@ public class SummaryController {
 									DecimalFormat df = new DecimalFormat("###.##");
 									score
 									 .setText(df.format(newValue.getSimilarityScore() * 100.0) + "%");
-								} else {
-									progress.setProgress(0.0);
-									score.setText("-");
-								}
+								} 
 								
 							});
 	}
@@ -215,6 +212,6 @@ public class SummaryController {
 			} catch (IOException e) {
 				logger.error(e);
 			}
-		}
+		} 
 	}
 }
