@@ -14,8 +14,8 @@ public class SummaryTests {
 		summary.setRedPairs(sp);
 		Set<StudentPair> actual = summary.getRedPairs();
 		for(StudentPair stp: actual) {
-			assertEquals((Integer) 101, stp.getStudentId1());
-			assertEquals((Integer) 102, stp.getStudentId2());
+			assertEquals((Integer) 101, stp.getStudent1Id());
+			assertEquals((Integer) 102, stp.getStudent2Id());
 		}
 	}
 	
@@ -26,8 +26,8 @@ public class SummaryTests {
 		summary.setYellowPairs(sp);
 		Set<StudentPair> actual = summary.getYellowPairs();
 		for(StudentPair stp: actual) {
-			assertEquals((Integer) 101, stp.getStudentId1());
-			assertEquals((Integer) 102, stp.getStudentId2());
+			assertEquals((Integer) 101, stp.getStudent1Id());
+			assertEquals((Integer) 102, stp.getStudent2Id());
 		}
 	}
 	

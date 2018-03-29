@@ -9,7 +9,6 @@ import java.util.Set;
  * The yellowPairs set holds the StudentPairs with the case for medium plagiarism.
  * The greenIds set holds the StudentPairs with the case for no/insignificant plagiarism.
  * @author Darshan Panse
- * @author Shail Shah
  * 
  */
 public class Summary {
@@ -72,7 +71,7 @@ public class Summary {
 	 * @return boolean
 	 */
 	public boolean isSafe(Integer studentId) {
-		return redPairs.stream().noneMatch(p -> p.getStudentId1().equals(studentId) || p.getStudentId2().equals(studentId))
-				&& yellowPairs.stream().noneMatch(p -> p.getStudentId1().equals(studentId) || p.getStudentId2().equals(studentId));
+		return redPairs.stream().noneMatch(p -> p.getStudent1Id().equals(studentId) || p.getStudent2Id().equals(studentId))
+				&& yellowPairs.stream().noneMatch(p -> p.getStudent1Id().equals(studentId) || p.getStudent2Id().equals(studentId));
 	}
 }

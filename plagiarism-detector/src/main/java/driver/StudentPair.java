@@ -66,42 +66,10 @@ public class StudentPair {
 	/**
 	 * Sets student id of student2 for whom we are running 
 	 * plagiarism test
-	 * @param int student2ID
+	 * @param int student2Id
 	 */
 	public void setStudent2Id(Integer student2Id) {
 		this.studentId2 = student2Id;
-	}
-	
-	/**
-	 * Get the Id of the first student in the pair
-	 * @return the Id of the first student in the pair
-	 */
-	public Integer getStudentId1() {
-		return studentId1;
-	}
-
-	/**
-	 * Set the Id of the first student in the pair
-	 * @param studentId1 the Id of the first student in the pair
-	 */
-	public void setStudentId1(Integer studentId1) {
-		this.studentId1 = studentId1;
-	}
-
-	/**
-	 * Get the Id of the second student in the pair
-	 * @return the Id of the second student in the pair
-	 */
-	public Integer getStudentId2() {
-		return studentId2;
-	}
-
-	/**
-	 * Set the Id of the second student in the pair
-	 * @param studentId2 the Id of the second student in the pair
-	 */
-	public void setStudentId2(Integer studentId2) {
-		this.studentId2 = studentId2;
 	}
 
 	/**
@@ -110,9 +78,9 @@ public class StudentPair {
 	 */
 	@Override
 	public String toString() {
-		return "Student-" + getStudentId1()
+		return "Student-" + getStudent1Id()
 		+ " - " 
-		+ "Student-" + getStudentId2();
+		+ "Student-" + getStudent2Id();
 	}
 	
 }

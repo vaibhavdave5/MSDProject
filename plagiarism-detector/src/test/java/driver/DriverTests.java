@@ -86,8 +86,8 @@ public class DriverTests {
 		Integer expected2 = 111;
 		Set<StudentPair> actual = summary.getRedPairs();
 		for(StudentPair sp: actual) {
-			Integer actual1 = sp.getStudentId1();
-			Integer actual2 = sp.getStudentId2();
+			Integer actual1 = sp.getStudent1Id();
+			Integer actual2 = sp.getStudent2Id();
 			assertEquals(expected1, actual1);
 			assertEquals(expected2, actual2);
 		}
@@ -113,8 +113,8 @@ public class DriverTests {
 		Integer expected2 = 111;
 		Set<StudentPair> actual = summary.getRedPairs();
 		for(StudentPair sp: actual) {
-			Integer actual1 = sp.getStudentId1();
-			Integer actual2 = sp.getStudentId2();
+			Integer actual1 = sp.getStudent1Id();
+			Integer actual2 = sp.getStudent2Id();
 			assertEquals(expected1, actual1);
 			assertEquals(expected2, actual2);
 		}
@@ -140,8 +140,8 @@ public class DriverTests {
 		Integer expected2 = 111;
 		Set<StudentPair> actual = summary.getRedPairs();
 		for(StudentPair sp: actual) {
-			Integer actual1 = sp.getStudentId1();
-			Integer actual2 = sp.getStudentId2();
+			Integer actual1 = sp.getStudent1Id();
+			Integer actual2 = sp.getStudent2Id();
 			assertEquals(expected1, actual1);
 			assertEquals(expected2, actual2);
 		}

@@ -6,6 +6,7 @@ import java.io.File;
 
 /**
  * A FilePair is a pair containing two files and their similarities
+ * @author darshan.panse
  */
 public class FilePair {
 	private File file1;

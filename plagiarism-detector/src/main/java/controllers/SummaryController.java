@@ -204,8 +204,8 @@ public class SummaryController {
 				.setController(new CompareController(Driver
 														.getInstance()
 														.generateSnippet(
-																studentPair.getStudentId1(),
-																studentPair.getStudentId2())));
+																studentPair.getStudent1Id(),
+																studentPair.getStudent1Id())));
 			try {
 				screenController.addScreen("compare", loader.load());
 				screenController.activate("compare");

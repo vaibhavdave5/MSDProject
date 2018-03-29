@@ -7,6 +7,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This interface provides a contract for the driver of the application.
+ * @author darshan.panse
+ *
+ */
 public interface IDriver {
 	/**
 	 * Setter for repoPaths.
