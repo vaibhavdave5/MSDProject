@@ -60,10 +60,8 @@ public class MailUtils {
 		if(!isValidEmail(recipient))
 			throw new IllegalArgumentException("Email address of recipient isn't valid");
 
-		String encodedSubject = encodeText(subject);
-		String encodedBody = encodeText(body);
-
-		return new URI(String.format("mailto:%s?subject=%s&body=%s", recipient, encodedSubject, encodedBody));
+		return new URI(String.format("mailto:%s?subject=%s&body=%s"
+				, recipient, encodeText(subject), encodeText(body)));
 	}
 
 	private static String encodeText(String text){
