@@ -8,7 +8,7 @@ public class StudentTests {
 
 	@Test
     public void testGetters() {
-        Student s = new Student(101, "John", "s.s@husky.neu.edu");
+        IStudent s = new Student(101, "John", "s.s@husky.neu.edu");
         assertEquals(101, s.getId());
         assertEquals("John", s.getName());
         assertEquals("s.s@husky.neu.edu", s.getEmail());
@@ -16,7 +16,7 @@ public class StudentTests {
     
     @Test
     public void testSetters() {
-        Student s = new Student(101, "Sam", "s.s@husky.neu.edu");
+        IStudent s = new Student(101, "Sam", "s.s@husky.neu.edu");
         s.setId(102);
         assertEquals(102, s.getId());
         

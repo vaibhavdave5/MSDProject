@@ -12,25 +12,25 @@ public interface ISummary {
 	 * Get a set of student pairs that are suspected to have significant plagiarism
 	 * @return a set of student pairs that are suspected to have significant plagiarism
 	 */
-	public Set<StudentPair> getRedPairs();
+	public Set<IStudentPair> getRedPairs();
 	
 	/**
 	 * Add a student pair to the set containing pairs suspected to have significant plagiarism
 	 * @param sp a student pair
 	 */
-	public void setRedPairs(StudentPair sp);
+	public void setRedPairs(IStudentPair sp);
 	
 	/**
 	 * Get a set of student pairs that are suspected to have medium plagiarism
 	 * @return a set of student pairs that are suspected to have medium plagiarism
 	 */
-	public Set<StudentPair> getYellowPairs();
+	public Set<IStudentPair> getYellowPairs();
 	
 	/**
 	 * Add a student pair to the set containing pairs suspected to have medium plagiarism
 	 * @param sp a student pair
 	 */
-	public void setYellowPairs(StudentPair sp);
+	public void setYellowPairs(IStudentPair sp);
 	
 	/**
 	 * Get a set of student pairs that are suspected to have no/insignificant plagiarism

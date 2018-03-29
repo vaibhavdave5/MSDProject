@@ -21,7 +21,7 @@ import controllers.AlgorithmController;
 public class DriverTests {
 	@Test
 	public void testDriver() {
-		Driver driver = Driver.getInstance();
+		IDriver driver = Driver.getInstance();
 		List<String> repoPaths = new ArrayList<>();
 		repoPaths.add("C:/test-repos/student-110");
 		repoPaths.add("C:/test-repos/student-111");
@@ -33,7 +33,7 @@ public class DriverTests {
 
 	@Test
 	public void testgetCodeFiles() {
-		Driver driver = Driver.getInstance();
+		IDriver driver = Driver.getInstance();
 		List<String> repoPaths = new ArrayList<>();
 
 		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
@@ -60,7 +60,7 @@ public class DriverTests {
 	
 	@Test
 	public void testSimilarityScoreListEmpty() {
-		Driver driver = Driver.getInstance();
+		IDriver driver = Driver.getInstance();
 		List<Double> similarityScoreList = new ArrayList<>();
 		driver.maxSimilarityScore(similarityScoreList);
 		List<Double> expected = new ArrayList<>();
@@ -70,7 +70,7 @@ public class DriverTests {
 
 	@Test
 	public void testCheckForPlagiarismLCS() {
-		Driver driver = Driver.getInstance();
+		IDriver driver = Driver.getInstance();
 		List<String> repoPaths = new ArrayList<>();
 
 		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
@@ -81,11 +81,11 @@ public class DriverTests {
 		repoPaths.add(basePath + "student-111");
 		String hwDir = "HW3";
 		String message = driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.LCS);
-		Summary summary = driver.viewSummary();
+		ISummary summary = driver.viewSummary();
 		Integer expected1 = 110;
 		Integer expected2 = 111;
-		Set<StudentPair> actual = summary.getRedPairs();
-		for(StudentPair sp: actual) {
+		Set<IStudentPair> actual = summary.getRedPairs();
+		for(IStudentPair sp: actual) {
 			Integer actual1 = sp.getStudent1Id();
 			Integer actual2 = sp.getStudent2Id();
 			assertEquals(expected1, actual1);
@@ -97,7 +97,7 @@ public class DriverTests {
 	
 	@Test
 	public void testCheckForPlagiarismNW() {
-		Driver driver = Driver.getInstance();
+		IDriver driver = Driver.getInstance();
 		List<String> repoPaths = new ArrayList<>();
 
 		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
@@ -108,11 +108,11 @@ public class DriverTests {
 		repoPaths.add(basePath + "student-111");
 		String hwDir = "HW3";
 		driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.NW);
-		Summary summary = driver.viewSummary();
+		ISummary summary = driver.viewSummary();
 		Integer expected1 = 110;
 		Integer expected2 = 111;
-		Set<StudentPair> actual = summary.getRedPairs();
-		for(StudentPair sp: actual) {
+		Set<IStudentPair> actual = summary.getRedPairs();
+		for(IStudentPair sp: actual) {
 			Integer actual1 = sp.getStudent1Id();
 			Integer actual2 = sp.getStudent2Id();
 			assertEquals(expected1, actual1);
@@ -124,7 +124,7 @@ public class DriverTests {
 	
 	@Test
 	public void testCheckForPlagiarismDefault() {
-		Driver driver = Driver.getInstance();
+		IDriver driver = Driver.getInstance();
 		List<String> repoPaths = new ArrayList<>();
 
 		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
@@ -135,11 +135,11 @@ public class DriverTests {
 		repoPaths.add(basePath + "student-111");
 		String hwDir = "HW3";
 		String message = driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.DEFAULT);
-		Summary summary = driver.viewSummary();
+		ISummary summary = driver.viewSummary();
 		Integer expected1 = 110;
 		Integer expected2 = 111;
-		Set<StudentPair> actual = summary.getRedPairs();
-		for(StudentPair sp: actual) {
+		Set<IStudentPair> actual = summary.getRedPairs();
+		for(IStudentPair sp: actual) {
 			Integer actual1 = sp.getStudent1Id();
 			Integer actual2 = sp.getStudent2Id();
 			assertEquals(expected1, actual1);
@@ -151,7 +151,7 @@ public class DriverTests {
 	
 	@Test
 	public void testCheckForPlagiarismNullRepos() {
-		Driver driver = Driver.getInstance();
+		IDriver driver = Driver.getInstance();
 		List<String> repoPaths = null;
 		String hwDir = "HW3";
 		String message = driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.NW);
@@ -159,7 +159,7 @@ public class DriverTests {
 	
 	@Test
 	public void testCheckForPlagiarismEmptyHW() {
-		Driver driver = Driver.getInstance();
+		IDriver driver = Driver.getInstance();
 		List<String> repoPaths = new ArrayList<>();
 
 		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
@@ -175,7 +175,7 @@ public class DriverTests {
 	
 	@Test
 	public void testCheckForPlagiarismNullHW() {
-		Driver driver = Driver.getInstance();
+		IDriver driver = Driver.getInstance();
 		List<String> repoPaths = new ArrayList<>();
 
 		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
@@ -191,7 +191,7 @@ public class DriverTests {
 	
 	@Test
 	public void testGetNameById() {
-		Driver driver = Driver.getInstance();
+		IDriver driver = Driver.getInstance();
 		URL url = this.getClass().getResource("/studentData.xlsx");
 		System.out.println(url.toString());
 		String expected1 = "Darshan";
@@ -235,7 +235,7 @@ public class DriverTests {
 	
 	@Test
 	public void testgenerateSnippet() {
-		Driver driver = Driver.getInstance();
+		IDriver driver = Driver.getInstance();
 		List<String> repoPaths = new ArrayList<>();
 
 		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"

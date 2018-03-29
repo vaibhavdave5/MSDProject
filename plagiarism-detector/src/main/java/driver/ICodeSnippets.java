@@ -34,11 +34,11 @@ public interface ICodeSnippets {
 	/**
 	 * @return a list of FilePairs that represent the similar snippets
 	 */
-	public List<FilePair> getFilePairList();
+	public List<IFilePair> getFilePairList();
 	
 	/**
 	 * Set the FilePair list
 	 * @param filePairList a list of FilePairs
 	 */
-	public void setFilePairList(List<FilePair> filePairList);
+	public void setFilePairList(List<IFilePair> filePairList);
 }

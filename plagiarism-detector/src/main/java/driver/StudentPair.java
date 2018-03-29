@@ -4,7 +4,7 @@ package driver;
  * A StudentPair represents two students
  * @author Darshan Panse
  */
-public class StudentPair {
+public class StudentPair implements IStudentPair {
 	private Integer studentId1;
 	private Integer studentId2;
 	private Double similarityScore;

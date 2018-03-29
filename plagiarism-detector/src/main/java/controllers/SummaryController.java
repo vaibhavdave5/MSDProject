@@ -9,6 +9,8 @@ import org.apache.log4j.Logger;
 
 import controllers.popups.PopupMessage;
 import driver.Driver;
+import driver.IStudentPair;
+import driver.ISummary;
 import driver.StudentPair;
 import driver.Summary;
 import javafx.beans.value.ObservableValue;
@@ -38,14 +40,14 @@ public class SummaryController {
 	@FXML private Button back;
 	@FXML private Label score;
 	
-	private Summary summary;
+	private ISummary summary;
 	private ScreenController screenController;
 	
 	private static Logger logger = Logger.getLogger(SummaryController.class);
 	
-	public SummaryController(Summary summary) {
+	public SummaryController(ISummary iSummary) {
 		this.screenController = ScreenController.getInstance();
-		this.summary = summary;
+		this.summary = iSummary;
 	}
 	 
 	/**
@@ -95,9 +97,9 @@ public class SummaryController {
 	/**
 	 * This method populates the list view with the pairs of student
 	 */
-	private void populateView(ListView<StudentPair> view, Set<StudentPair> pairs) {
-		for(StudentPair pair : pairs) {
-			view.getItems().add(pair);
+	private void populateView(ListView<StudentPair> view, Set<IStudentPair> set) {
+		for(IStudentPair pair : set) {
+			view.getItems().add((StudentPair) pair);
 		}
 	}
 	
