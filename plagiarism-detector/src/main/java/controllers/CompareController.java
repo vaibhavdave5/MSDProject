@@ -5,6 +5,7 @@ import algorithms.SimilaritySnippet;
 import algorithms.SnippetPair;
 import driver.CodeSnippets;
 import driver.Driver;
+import driver.ICodeSnippets;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -42,16 +43,16 @@ public class CompareController {
 	@FXML private Button reveal;
 	@FXML private Button back;
 	
-	private CodeSnippets codeSnippets;
+	private ICodeSnippets codeSnippets;
 	private int currentSnippet = 0;
 	private List<SnippetPair> snippetPairs;
 	private ScreenController screenController;
 	 
 	private static Logger logger = Logger.getLogger(CompareController.class);
 
-	public CompareController(CodeSnippets codeSnippets) {
+	public CompareController(ICodeSnippets iCodeSnippets) {
 		this.screenController = ScreenController.getInstance();
-		this.codeSnippets = codeSnippets;
+		this.codeSnippets = iCodeSnippets;
 	}
 	
 	/**
@@ -149,7 +150,7 @@ public class CompareController {
 		if(codeSnippets == null) {
 			return snippetPairs;
 		}
-		List<driver.FilePair> filePairs = codeSnippets.getFilePairList();
+		List<driver.IFilePair> filePairs = codeSnippets.getFilePairList();
 		filePairs.forEach(fp -> {
 			File file1 = fp.getFile1();
 			File file2 = fp.getFile2();
