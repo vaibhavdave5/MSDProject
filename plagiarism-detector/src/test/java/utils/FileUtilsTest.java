@@ -372,7 +372,7 @@ public class FileUtilsTest {
 		cs.setFilePairList(filePairList);
 
 		String report = FileUtils.getReport(cs);
-
+ 
 		String date = new SimpleDateFormat("yyyy-MM-dd",
 				Locale.getDefault()).format(new Date()) + "\n";
 

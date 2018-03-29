@@ -18,23 +18,60 @@ public class StudentPair {
 		this.studentId1 = studentId1;
 		this.studentId2 = studentId2;
 	}
-
+ 
 	/**
-	 * Get the similarity score of the student pair
-	 * @return the similarity score of the student pair
+	 * Returns a similarity score between two students
+	 * @return Double similarity score
 	 */
 	public Double getSimilarityScore() {
 		return similarityScore;
 	}
 
 	/**
-	 * Set the similarity score of the student pair
-	 * @param similarityScore similarity score of the student pair
+	 * Sets the similarity score for two students for a certain 
+	 * HW submission
+	 * @param similarityScore
 	 */
 	public void setSimilarityScore(Double similarityScore) {
 		this.similarityScore = similarityScore;
 	}
 
+	/**
+	 * Gets student id of student1 for whom we are running 
+	 * plagiarism test
+	 * @return int student1ID
+	 */
+	public Integer getStudent1Id() {
+		return this.studentId1;
+	}
+
+	/**
+	 * Sets student id of student2 for whom we are running 
+	 * plagiarism test
+	 * @param int student1ID
+	 */
+	public void setStudent1Id(Integer student1Id) {
+		this.studentId1 = student1Id;
+	}
+
+	/**
+	 * Gets student id of student1 for whom we are running 
+	 * plagiarism test
+	 * @return int student2ID
+	 */
+	public Integer getStudent2Id() {
+		return studentId2;
+	}
+
+	/**
+	 * Sets student id of student2 for whom we are running 
+	 * plagiarism test
+	 * @param int student2ID
+	 */
+	public void setStudent2Id(Integer student2Id) {
+		this.studentId2 = student2Id;
+	}
+	
 	/**
 	 * Get the Id of the first student in the pair
 	 * @return the Id of the first student in the pair

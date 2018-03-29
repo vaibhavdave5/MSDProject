@@ -22,23 +22,24 @@ import java.util.List;
  * The main controller of the application that can tell if two files are similar
  * 
  * @author Vaibhav Dave
- * @author Shail Shah
- *
+ * 
  */
 public class AlgorithmController {
 	private File file1;
 	private File file2;
 	private static Logger logger = Logger.getLogger(AlgorithmController.class);
-
+	
 	/**
 	 * Constructor for making a new AlgorithmController
-	 * @param file1 the first file
-	 * @param file2 the secocnd file
+	 * @param f1 the first file
+	 * @param f2 the secocnd file
 	 */
-	public AlgorithmController(File file1, File file2) {
-		this.file1 = file1;
-		this.file2 = file2; 
+	public AlgorithmController(File f1, File f2) {
+		file1 = f1;
+		file2 = f2; 
 	}
+	
+	
 
 	/**
 	 * Gets the results from the type of algorithm passed in the strategy
@@ -62,16 +63,15 @@ public class AlgorithmController {
 			CLexer cLexer = new CLexer(CharStreams.fromStream(new FileInputStream(file)));
 			CParser cParser = new CParser(new CommonTokenStream(cLexer));
 			new ParseTreeWalker().walk(new CASTNodeListener(nodeList), cParser.compilationUnit());
-			new ParseTreeWalker().walk(new CASTNodeListener(nodeList), cParser.compilationUnit());
 		} catch(IOException e) {
-			logger.error(e);
+			logger.error(e);  
 		}
 		return nodeList;
 	}
 
 	/**
 	 * Gets the result and returns the answer in percentage
-	 * @param strategy
+	 * @param Strategy strategy
 	 * @return double : Percentage
 	 */
 	public double getAns(AlgorithmStrategy strategy){

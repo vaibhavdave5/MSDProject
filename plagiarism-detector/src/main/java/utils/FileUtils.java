@@ -22,7 +22,7 @@ import java.util.Set;
  */
 public class FileUtils {
 
-	static final Logger logger = Logger.getLogger(FileUtils.class);
+	private static final Logger logger = Logger.getLogger(FileUtils.class);
 
 	private FileUtils(){}
 
@@ -35,7 +35,7 @@ public class FileUtils {
 	 */
 	public static String getFileString(File file, int start, int end) {
 		int startOffset = start >= 1 ? start : 1;
-
+ 
 		StringBuilder sb = new StringBuilder();
 
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
