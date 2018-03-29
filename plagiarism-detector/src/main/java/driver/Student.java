@@ -5,9 +5,8 @@ import utils.MailUtils;
 /**
  * A Student represents a student enrolled in the course
  * @author Darshan Panse
- * @author Shail Shah
  */
-public class Student {
+public class Student implements IStudent {
 	private String name;
 	private int id;
 	private String email;

@@ -12,10 +12,10 @@ public class SummaryTests {
 		Summary summary = new Summary();
 		StudentPair sp = new StudentPair(101, 102);
 		summary.setRedPairs(sp);
-		Set<StudentPair> actual = summary.getRedPairs();
-		for(StudentPair stp: actual) {
-			assertEquals((Integer) 101, stp.getStudentId1());
-			assertEquals((Integer) 102, stp.getStudentId2());
+		Set<IStudentPair> actual = summary.getRedPairs();
+		for(IStudentPair stp: actual) {
+			assertEquals((Integer) 101, stp.getStudent1Id());
+			assertEquals((Integer) 102, stp.getStudent2Id());
 		}
 	}
 	
@@ -24,10 +24,10 @@ public class SummaryTests {
 		Summary summary = new Summary();
 		StudentPair sp = new StudentPair(101, 102);
 		summary.setYellowPairs(sp);
-		Set<StudentPair> actual = summary.getYellowPairs();
-		for(StudentPair stp: actual) {
-			assertEquals((Integer) 101, stp.getStudentId1());
-			assertEquals((Integer) 102, stp.getStudentId2());
+		Set<IStudentPair> actual = summary.getYellowPairs();
+		for(IStudentPair stp: actual) {
+			assertEquals((Integer) 101, stp.getStudent1Id());
+			assertEquals((Integer) 102, stp.getStudent2Id());
 		}
 	}
 	
@@ -43,10 +43,10 @@ public class SummaryTests {
 	
 	@Test
 	public void testIsSafe() {
-		Summary summary = new Summary();
-		StudentPair sp1 = new StudentPair(101, 102);
+		ISummary summary = new Summary();
+		IStudentPair sp1 = new StudentPair(101, 102);
 		summary.setRedPairs(sp1);
-		StudentPair sp2 = new StudentPair(103, 104);
+		IStudentPair sp2 = new StudentPair(103, 104);
 		summary.setYellowPairs(sp2);
 		assertEquals(false, summary.isSafe(101));
 		assertEquals(false, summary.isSafe(102));

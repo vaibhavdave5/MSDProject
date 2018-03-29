@@ -9,15 +9,15 @@ import java.util.List;
  * @author Darshan Panse
  *
  */
-public class CodeSnippets {
+public class CodeSnippets implements ICodeSnippets {
 	private Integer student1Id;
 	private Integer student2Id;
-	private List<FilePair> filePairList;
+	private List<IFilePair> filePairList;
 
 	/**
 	 * Constructor for making a new object of this class
 	 * @param student1Id the ID of the first student
-	 * @param student2Id the ID of the second studenet
+	 * @param student2Id the ID of the second student
 	 */
 	public CodeSnippets(Integer student1Id, Integer student2Id) {
 		this.student1Id = student1Id;
@@ -58,16 +58,16 @@ public class CodeSnippets {
 	/**
 	 * @return a list of FilePairs that represent the similar snippets
 	 */
-	public List<FilePair> getFilePairList() {
+	public List<IFilePair> getFilePairList() {
 		return filePairList;
 	}
 
 	/**
 	 * Set the FilePair list
-	 * @param filePairList a list of FilePairs
+	 * @param fpList a list of FilePairs
 	 */
-	public void setFilePairList(List<FilePair> filePairList) {
-		this.filePairList = filePairList;
+	public void setFilePairList(List<IFilePair> fpList) {
+		this.filePairList = fpList;
 	}
 	
 }

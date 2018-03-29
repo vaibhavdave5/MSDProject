@@ -5,6 +5,10 @@ import algorithms.SimilaritySnippet;
 import driver.CodeSnippets;
 import driver.Driver;
 import driver.FilePair;
+import driver.ICodeSnippets;
+import driver.IDriver;
+import driver.IFilePair;
+
 import org.apache.log4j.Logger;
 
 import java.io.*;
@@ -77,10 +81,10 @@ public class FileUtils {
 	 * @param codeSnippets code snippets of two students
 	 * @return a String containing the
 	 */
-	public static String getReport(CodeSnippets codeSnippets) {
+	public static String getReport(ICodeSnippets codeSnippets) {
 		StringBuilder sb = new StringBuilder();
 
-		Driver driver = Driver.getInstance();
+		IDriver driver = Driver.getInstance();
 
 		String studentName1 = driver.getNameById(codeSnippets.getStudent1Id());
 		String studentName2 = driver.getNameById(codeSnippets.getStudent2Id());
@@ -92,7 +96,7 @@ public class FileUtils {
 
 		sb.append("Report for " + studentName1 + " and " + studentName2 + "\n");
 
-		List<FilePair> filePairs = codeSnippets.getFilePairList();
+		List<IFilePair> filePairs = codeSnippets.getFilePairList();
 		filePairs.forEach(fp -> {
 			File file1 = fp.getFile1();
 			File file2 = fp.getFile2();

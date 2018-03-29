@@ -11,6 +11,8 @@ import org.apache.log4j.Logger;
 import algorithms.Algorithm;
 import controllers.popups.PopupMessage;
 import driver.Driver;
+import driver.IDriver;
+import driver.ISummary;
 import driver.Summary;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -152,7 +154,7 @@ public class MainController {
 						"Running Weighted Average", 
 						"Since no strategy was provided, a weighted average of the two will be reported");
 			}
-			Driver drive = Driver.getInstance();
+			IDriver drive = Driver.getInstance();
 			drive.getStudentData(excelFile);
 			String returnMessage = drive.checkForPlagiarism(allPaths, hw.getText(), algo);
 			if(!returnMessage.isEmpty()) {
@@ -169,13 +171,13 @@ public class MainController {
 	/**
 	 * This method routes to the summary page passing it the necessary detail
 	 * 
-	 * @param summary
+	 * @param iSummary
 	 */
-	private void routeToSummary(Summary summary) {
+	private void routeToSummary(ISummary iSummary) {
 		ScreenController screenController = ScreenController.getInstance();
 		if(screenController != null) {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Summary.fxml"));
-			loader.setController(new SummaryController(summary));
+			loader.setController(new SummaryController(iSummary));
 			try {
 				screenController.addScreen("summary", loader.load());
 			} catch (IOException e) {
