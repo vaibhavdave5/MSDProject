@@ -11,11 +11,11 @@ public class SummaryTests {
 	public void testGetSetRed() {
 		Summary summary = new Summary();
 		StudentPair sp = new StudentPair(101, 102);
-		summary.setRed(sp);
-		Set<StudentPair> actual = summary.getRed();
+		summary.setRedPairs(sp);
+		Set<StudentPair> actual = summary.getRedPairs();
 		for(StudentPair stp: actual) {
-			assertEquals((Integer) 101, stp.getStudent1Id());
-			assertEquals((Integer) 102, stp.getStudent2Id());
+			assertEquals((Integer) 101, stp.getStudentId1());
+			assertEquals((Integer) 102, stp.getStudentId2());
 		}
 	}
 	
@@ -23,19 +23,19 @@ public class SummaryTests {
 	public void testGetSetYellow() {
 		Summary summary = new Summary();
 		StudentPair sp = new StudentPair(101, 102);
-		summary.setYellow(sp);
-		Set<StudentPair> actual = summary.getYellow();
+		summary.setYellowPairs(sp);
+		Set<StudentPair> actual = summary.getYellowPairs();
 		for(StudentPair stp: actual) {
-			assertEquals((Integer) 101, stp.getStudent1Id());
-			assertEquals((Integer) 102, stp.getStudent2Id());
+			assertEquals((Integer) 101, stp.getStudentId1());
+			assertEquals((Integer) 102, stp.getStudentId2());
 		}
 	}
 	
 	@Test
 	public void testGetSetGreen() {
 		Summary summary = new Summary();
-		summary.setGreen(101);
-		Set<Integer> actual = summary.getGreen();
+		summary.setGreenIds(101);
+		Set<Integer> actual = summary.getGreenIds();
 		for(Integer id: actual) {
 			assertEquals((Integer) 101, id);
 		}
@@ -45,9 +45,9 @@ public class SummaryTests {
 	public void testIsSafe() {
 		Summary summary = new Summary();
 		StudentPair sp1 = new StudentPair(101, 102);
-		summary.setRed(sp1);
+		summary.setRedPairs(sp1);
 		StudentPair sp2 = new StudentPair(103, 104);
-		summary.setYellow(sp2);
+		summary.setYellowPairs(sp2);
 		assertEquals(false, summary.isSafe(101));
 		assertEquals(false, summary.isSafe(102));
 		assertEquals(false, summary.isSafe(103));

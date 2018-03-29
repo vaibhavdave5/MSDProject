@@ -16,15 +16,15 @@ public class StudentPairTests {
 	@Test
 	public void testSetGetStudent1Id() {
 		StudentPair sp = new StudentPair(101, 102);
-		sp.setStudent1Id(111);
-		assertEquals((Integer) 111, sp.getStudent1Id());
+		sp.setStudentId1(111);
+		assertEquals((Integer) 111, sp.getStudentId1());
 	}
 
 	@Test
 	public void testSetGetStudent2Id() {
 		StudentPair sp = new StudentPair(101, 102);
-		sp.setStudent2Id(111);
-		assertEquals((Integer) 111, sp.getStudent2Id());
+		sp.setStudentId2(111);
+		assertEquals((Integer) 111, sp.getStudentId2());
 	}
 	
 	@Test

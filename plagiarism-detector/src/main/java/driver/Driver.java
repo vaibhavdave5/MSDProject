@@ -1,43 +1,26 @@
 package driver;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-
 import algorithms.Algorithm;
 import algorithms.IResult;
 import algorithms.LCSAlgorithm;
 import algorithms.NeemanWalshAlgorithm;
 import controllers.AlgorithmController;
+import org.apache.commons.io.FileUtils;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
- * 
- * @author darshan.panse
  * This is the driver of the application. This connects the frontend to the backend.
+ * @author Darshan Panse
  */
 public class Driver {
 	private static final Logger LOGGER = Logger.getLogger(Driver.class.getName());
 	private static Driver instance = new Driver();
-	
-	private Driver() {}
-	
-	/**
-	 * 
-	 * @return the instance of the Driver class.
-	 */
-	public static Driver getInstance() {
-		return instance;
-	}
-	
 	private List<String> repoPaths;
 	private String hwDir;
 	private Map<Integer, Student> studentMap;
@@ -45,9 +28,18 @@ public class Driver {
 	private Summary summary;
 	private Algorithm algo = Algorithm.LCS;
 
+	private Driver() {}
+	
+	/**
+	 * @return the single instance of the Driver class.
+	 */
+	public static Driver getInstance() {
+		return instance;
+	}
+
 	/**
 	 * Setter for repoPaths.
-	 * @param repoPaths List<String>
+	 * @param repoPaths a list of paths of the repositories
 	 */
 	public void setRepoPaths(List<String> repoPaths) {
 		this.repoPaths = repoPaths;
@@ -55,7 +47,7 @@ public class Driver {
 	
 	/**
 	 * Setter for hwDir.
-	 * @param hwDir String
+	 * @param hwDir the name of the homework directory
 	 */
 	public void setHWDir(String hwDir) {
 		this.hwDir = hwDir;
@@ -64,7 +56,7 @@ public class Driver {
 	/**
 	 * Gets the student data from the excel file provided by prof or TA
 	 * and stores it as a map in the studentMap.
-	 * @param xlsxFile File
+	 * @param xlsxFile the excel file containing student data
 	 * @return errorMessage String
 	 */
 	public String getStudentData(File xlsxFile) {
@@ -82,8 +74,8 @@ public class Driver {
 	
 	/**
 	 * Constructs the path to get the c files from the dir recursively.
-	 * @param repoPath String
-	 * @return String
+	 * @param repoPath the path of the repository
+	 * @return the path of the homework directory
 	 */
 	public String constructPath(String repoPath) {
 		return repoPath + File.separator + this.hwDir;
@@ -171,11 +163,11 @@ public class Driver {
 		if(maxScore >= 0.5) {
 			// send student pair to red list
 			sp.setSimilarityScore(maxScore);
-			this.summary.setRed(sp);
+			this.summary.setRedPairs(sp);
 		} else if(maxScore >= 0.3 && maxScore < 0.5) {
 			// send student pair to yellow list
 			sp.setSimilarityScore(maxScore);
-			this.summary.setYellow(sp);
+			this.summary.setYellowPairs(sp);
 		} else {
 			// do nothing
 		}
@@ -202,7 +194,7 @@ public class Driver {
 			}
 			
 			if(this.summary.isSafe(student1Id)) {
-				this.summary.setGreen(student1Id);
+				this.summary.setGreenIds(student1Id);
 			}
 		}
 	}
@@ -240,7 +232,7 @@ public class Driver {
 	 * of the plagiarism algorithm along with the snippets data.
 	 * @param fileList1 List<File>
 	 * @param fileList2 List<File>
-	 * @return List<SimpleFilePair>
+	 * @return List<SnippetPair>
 	 */
 	public List<FilePair> compareFilesForResult(Collection<File> fileList1, Collection<File> fileList2) {
 		List<FilePair> filePairList = new ArrayList<>();
@@ -294,8 +286,7 @@ public class Driver {
 	}
 	
 	/**
-	 * This method resets the state of the application and clears all the parameters.
-	 * 
+	 * reset the state of the application
 	 */
 	public void resetState() {
 		this.setHWDir(null);
