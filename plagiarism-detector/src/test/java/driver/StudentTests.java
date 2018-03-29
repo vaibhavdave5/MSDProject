@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class StudentTests {
 
-    private static Student student;
+    private static IStudent student;
 
     /**
      * Initializing test data to be used in all the test cases

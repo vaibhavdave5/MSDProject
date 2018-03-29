@@ -4,6 +4,8 @@ import algorithms.Result;
 import algorithms.SimilaritySnippet;
 import driver.CodeSnippets;
 import driver.FilePair;
+import driver.IFilePair;
+
 import org.junit.Test;
 import parser.Node;
 
@@ -373,7 +375,7 @@ public class FileUtilsTest {
 		Result result =  new Result(0.6, snippetList);
 		FilePair filePair = new FilePair(file1, file2);
 		filePair.setResult(result);
-		List<FilePair> filePairList = new ArrayList<>();
+		List<IFilePair> filePairList = new ArrayList<>();
 		filePairList.add(filePair);
 		cs.setFilePairList(filePairList);
 

@@ -4,7 +4,7 @@ package driver;
  * A StudentPair represents two students
  * @author Darshan Panse
  */
-public class StudentPair {
+public class StudentPair implements IStudentPair {
 	private Integer studentId1;
 	private Integer studentId2;
 	private Double similarityScore;
@@ -14,7 +14,7 @@ public class StudentPair {
 	 * @param studentId1 the ID of the first student
 	 * @param studentId2 the ID of the second student
 	 */
-	public StudentPair(Integer studentId1, Integer studentId2) {
+	StudentPair(Integer studentId1, Integer studentId2) {
 		this.studentId1 = studentId1;
 		this.studentId2 = studentId2;
 	}
@@ -61,42 +61,10 @@ public class StudentPair {
 
 	/**
 	 * Set the Id of the second student
-	 * @param student2Id the Id to be set for the second student
+	 * @param student2Id the Id of the second student
 	 */
 	public void setStudent2Id(Integer student2Id) {
 		this.studentId2 = student2Id;
-	}
-	
-	/**
-	 * Get the Id of the first student in the pair
-	 * @return the Id of the first student in the pair
-	 */
-	public Integer getStudentId1() {
-		return studentId1;
-	}
-
-	/**
-	 * Set the Id of the first student in the pair
-	 * @param studentId1 the Id of the first student in the pair
-	 */
-	public void setStudentId1(Integer studentId1) {
-		this.studentId1 = studentId1;
-	}
-
-	/**
-	 * Get the Id of the second student in the pair
-	 * @return the Id of the second student in the pair
-	 */
-	public Integer getStudentId2() {
-		return studentId2;
-	}
-
-	/**
-	 * Set the Id of the second student in the pair
-	 * @param studentId2 the Id of the second student in the pair
-	 */
-	public void setStudentId2(Integer studentId2) {
-		this.studentId2 = studentId2;
 	}
 
 	/**
@@ -105,9 +73,9 @@ public class StudentPair {
 	 */
 	@Override
 	public String toString() {
-		return "Student-" + getStudentId1()
+		return "Student-" + getStudent1Id()
 		+ " - " 
-		+ "Student-" + getStudentId2();
+		+ "Student-" + getStudent2Id();
 	}
 	
 }

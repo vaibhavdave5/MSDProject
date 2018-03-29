@@ -9,19 +9,18 @@ import java.util.Set;
  * The yellowPairs set holds the StudentPairs with the case for medium plagiarism.
  * The greenIds set holds the StudentPairs with the case for no/insignificant plagiarism.
  * @author Darshan Panse
- * @author Shail Shah
  * 
  */
-public class Summary {
-	private Set<StudentPair> redPairs = new HashSet<>();
-	private Set<StudentPair> yellowPairs = new HashSet<>();
+public class Summary implements ISummary {
+	private Set<IStudentPair> redPairs = new HashSet<>();
+	private Set<IStudentPair> yellowPairs = new HashSet<>();
 	private Set<Integer> greenIds = new HashSet<>();
 
 	/**
 	 * Get a set of student pairs that are suspected to have significant plagiarism
 	 * @return a set of student pairs that are suspected to have significant plagiarism
 	 */
-	public Set<StudentPair> getRedPairs() {
+	public Set<IStudentPair> getRedPairs() {
 		return redPairs;
 	}
 
@@ -29,7 +28,7 @@ public class Summary {
 	 * Add a student pair to the set containing pairs suspected to have significant plagiarism
 	 * @param sp a student pair
 	 */
-	public void addToRedPairs(StudentPair sp) {
+	public void addToRedPairs(IStudentPair sp) {
 		this.redPairs.add(sp);
 	}
 
@@ -37,7 +36,7 @@ public class Summary {
 	 * Get a set of student pairs that are suspected to have medium plagiarism
 	 * @return a set of student pairs that are suspected to have medium plagiarism
 	 */
-	public Set<StudentPair> getYellowPairs() {
+	public Set<IStudentPair> getYellowPairs() {
 		return yellowPairs;
 	}
 
@@ -45,7 +44,7 @@ public class Summary {
 	 * Add a student pair to the set containing pairs suspected to have medium plagiarism
 	 * @param sp a student pair
 	 */
-	public void addToYellowPairs(StudentPair sp) {
+	public void addToYellowPairs(IStudentPair sp) {
 		this.yellowPairs.add(sp);
 	}
 
@@ -68,11 +67,11 @@ public class Summary {
 	/**
 	 * This method returns false if the given studentId is present in redPairs or yellowPairs lists,
 	 * else returns true.
-	 * @param studentId
-	 * @return boolean
+	 * @param studentId the Id of the student
+	 * @return boolean true if the student is not suspected of cheating
 	 */
 	public boolean isSafe(Integer studentId) {
-		return redPairs.stream().noneMatch(p -> p.getStudentId1().equals(studentId) || p.getStudentId2().equals(studentId))
-				&& yellowPairs.stream().noneMatch(p -> p.getStudentId1().equals(studentId) || p.getStudentId2().equals(studentId));
+		return redPairs.stream().noneMatch(p -> p.getStudent1Id().equals(studentId) || p.getStudent2Id().equals(studentId))
+				&& yellowPairs.stream().noneMatch(p -> p.getStudent1Id().equals(studentId) || p.getStudent2Id().equals(studentId));
 	}
 }

@@ -29,8 +29,8 @@ public class ExcelReader {
 	 * @throws IOException in case the file reading doesn't go as planned
 	 * @throws InvalidFormatException in case the file provided isn't in the correct format
 	 */
-    public Map<Integer, Student> getStudentMap(File xlsxFile) throws IOException, InvalidFormatException {
-    	Map<Integer, Student> studentMap = new HashMap<>();
+    public Map<Integer, IStudent> getStudentMap(File xlsxFile) throws IOException, InvalidFormatException {
+    	Map<Integer, IStudent> studentMap = new HashMap<>();
 		try(Workbook workbook = create(xlsxFile)) {
 	        Sheet sheet = workbook.getSheetAt(0);
 	        DataFormatter dataFormatter = new DataFormatter();
