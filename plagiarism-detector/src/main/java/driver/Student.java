@@ -68,8 +68,8 @@ public class Student implements IStudent {
 	 * @param email the email of the Student
 	 */
 	public void setEmail(String email) {
-		email = email.toLowerCase();
-		if(MailUtils.isValidEmail(email)) this.email = email;
+		String lowerCaseEmail = email.toLowerCase();
+		if(MailUtils.isValidEmail(lowerCaseEmail)) this.email = lowerCaseEmail;
 		else throw new IllegalArgumentException();
 	}
 }

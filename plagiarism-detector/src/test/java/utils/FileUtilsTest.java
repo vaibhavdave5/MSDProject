@@ -2,10 +2,7 @@ package utils;
 
 import algorithms.Result;
 import algorithms.SimilaritySnippet;
-import driver.CodeSnippets;
-import driver.FilePair;
-import driver.IFilePair;
-
+import driver.*;
 import org.junit.Test;
 import parser.Node;
 
@@ -379,6 +376,8 @@ public class FileUtilsTest {
 		filePairList.add(filePair);
 		cs.setFilePairList(filePairList);
 
+		IDriver driver = Driver.getInstance();
+		driver.getStudentData(new File("src\\test\\resources\\studentData.xlsx"));
 		String report = FileUtils.getReport(cs);
  
 		String date = new SimpleDateFormat("yyyy-MM-dd",
