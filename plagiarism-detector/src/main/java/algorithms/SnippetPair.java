@@ -19,6 +19,8 @@ public class SnippetPair {
 	 * @param snippet2 the text of the second snippet
 	 */
 	public SnippetPair(String fileName1, String fileName2, String snippet1, String snippet2) {
+		if(fileName1 == null || fileName2 == null || snippet1 == null || snippet2 == null)
+			throw new IllegalArgumentException();
 		this.fileName1 = fileName1;
 		this.fileName2 = fileName2;
 		this.snippet1 = snippet1;

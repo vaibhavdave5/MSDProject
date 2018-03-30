@@ -21,7 +21,7 @@ public class Result implements IResult {
 	 * Constructor for making a new Result object
 	 * 
 	 * @param percentage the percentage of similarity
-	 * @param common the list of common Nodes
+	 * @param snippetList the list of snippets
 	 */
 	public Result(double percentage, List<SimilaritySnippet> snippetList) {
 		this.percentage = percentage;
@@ -30,15 +30,18 @@ public class Result implements IResult {
 	}
 
 	/**
-	 * 
+	 * Get the percentage of similarity
+	 * @return the percentage of similarity
 	 */
 	@Override
 	public double getPercentage() {
 		return this.percentage;
 	}
 
+
 	/**
-	 * 
+	 * Gernerate the snippets
+	 * @return a set containing similar snippets
 	 */
 	@Override
 	public Set<SimilaritySnippet> generateSnippet() {

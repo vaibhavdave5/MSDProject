@@ -18,7 +18,7 @@ public interface ISummary {
 	 * Add a student pair to the set containing pairs suspected to have significant plagiarism
 	 * @param sp a student pair
 	 */
-	public void setRedPairs(IStudentPair sp);
+	public void addToRedPairs(IStudentPair sp);
 	
 	/**
 	 * Get a set of student pairs that are suspected to have medium plagiarism
@@ -30,7 +30,7 @@ public interface ISummary {
 	 * Add a student pair to the set containing pairs suspected to have medium plagiarism
 	 * @param sp a student pair
 	 */
-	public void setYellowPairs(IStudentPair sp);
+	public void addToYellowPairs(IStudentPair sp);
 	
 	/**
 	 * Get a set of student pairs that are suspected to have no/insignificant plagiarism
@@ -42,7 +42,7 @@ public interface ISummary {
 	 * Add a studentId to the set containing student Ids of students who are not believed to have cheated
 	 * @param studentId the Id of a student
 	 */
-	public void setGreenIds(Integer studentId);
+	public void addToGreenIds(Integer studentId);
 	
 	/**
 	 * This method returns false if the given studentId is present in redPairs or yellowPairs lists,

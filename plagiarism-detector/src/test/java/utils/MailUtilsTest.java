@@ -33,6 +33,7 @@ public class MailUtilsTest {
 				"1234567890@mail.com",
 				"email@mail-dash.com",
 				"_______@underscore.com",
+				"shah.shail1@husky.neu.edu",
 				"email@domain.name",
 				"email@domain.co.in",
 				"john-doe@gmail.com"));

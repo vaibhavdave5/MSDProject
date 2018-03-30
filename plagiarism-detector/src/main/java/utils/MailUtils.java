@@ -22,7 +22,7 @@ public class MailUtils {
 	 * @param recipient the recipient of the email
 	 * @param subject the subject of the email
 	 * @param body the body of the email
-	 * @throws RuntimeException
+	 * @throws RuntimeException throw when Desktop is not supported
 	 */
 	public static void sendMail(String recipient, String subject, String body) throws IOException, URISyntaxException {
 		if(!Desktop.isDesktopSupported()){
@@ -54,16 +54,14 @@ public class MailUtils {
 	 * @param subject the subject of the email
 	 * @param body the body of the email
 	 * @return the URI containing metadata about the email
-	 * @throws URISyntaxException
+	 * @throws URISyntaxException throw when something goes wrong while encoding text
 	 */                           
 	private static URI getURI(String recipient, String subject, String body) throws URISyntaxException {
 		if(!isValidEmail(recipient))
 			throw new IllegalArgumentException("Email address of recipient isn't valid");
 
-		subject = encodeText(subject);
-		body = encodeText(body);
-
-		return new URI(String.format("mailto:%s?subject=%s&body=%s", recipient, subject, body));
+		return new URI(String.format("mailto:%s?subject=%s&body=%s"
+				, recipient, encodeText(subject), encodeText(body)));
 	}
 
 	private static String encodeText(String text){

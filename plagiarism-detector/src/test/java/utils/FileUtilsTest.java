@@ -2,10 +2,7 @@ package utils;
 
 import algorithms.Result;
 import algorithms.SimilaritySnippet;
-import driver.CodeSnippets;
-import driver.FilePair;
-import driver.IFilePair;
-
+import driver.*;
 import org.junit.Test;
 import parser.Node;
 
@@ -348,12 +345,18 @@ public class FileUtilsTest {
 		Files.deleteIfExists(Paths.get(filename));
 	}
 
+	/**
+	 * Assert that an exception is thrown when CodeSnippet is not well formed
+	 */
 	@Test(expected = Exception.class)
 	public void getReportTestNull() {
 		CodeSnippets cs = new CodeSnippets(1, 2);
 		String report = FileUtils.getReport(cs);
 	}
 
+	/**
+	 * Test for getting a report
+	 */
 	@Test
 	public void getReportTestNormal() {
 		CodeSnippets cs = new CodeSnippets(101, 102);
@@ -373,6 +376,8 @@ public class FileUtilsTest {
 		filePairList.add(filePair);
 		cs.setFilePairList(filePairList);
 
+		IDriver driver = Driver.getInstance();
+		driver.getStudentData(new File("src\\test\\resources\\studentData.xlsx"));
 		String report = FileUtils.getReport(cs);
  
 		String date = new SimpleDateFormat("yyyy-MM-dd",

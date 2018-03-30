@@ -38,8 +38,6 @@ public class AlgorithmController {
 		file1 = f1;
 		file2 = f2; 
 	}
-	
-	
 
 	/**
 	 * Gets the results from the type of algorithm passed in the strategy
@@ -71,10 +69,10 @@ public class AlgorithmController {
 
 	/**
 	 * Gets the result and returns the answer in percentage
-	 * @param Strategy strategy
-	 * @return double : Percentage
+	 * @param strategy the strategy to emply
+	 * @return the percentage of similarity using the given strategy
 	 */
-	public double getAns(AlgorithmStrategy strategy){
+	public double getSimilarityPercentage(AlgorithmStrategy strategy){
 		return getResult(strategy).getPercentage();
 	}
 	

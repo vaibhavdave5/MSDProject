@@ -20,9 +20,7 @@ public class Student implements IStudent {
 	public Student(int id, String name, String email) {
 		this.name = name;
 		this.id = id;
-
-		if(MailUtils.isValidEmail(email)) this.email = email;
-		else throw new IllegalArgumentException();
+		this.setEmail(email);
 	}
 
 	/**
@@ -70,7 +68,8 @@ public class Student implements IStudent {
 	 * @param email the email of the Student
 	 */
 	public void setEmail(String email) {
-		if(MailUtils.isValidEmail(email)) this.email = email;
+		String lowerCaseEmail = email.toLowerCase();
+		if(MailUtils.isValidEmail(lowerCaseEmail)) this.email = lowerCaseEmail;
 		else throw new IllegalArgumentException();
 	}
 }
