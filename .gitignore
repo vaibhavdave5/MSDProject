@@ -15,6 +15,7 @@ tomcat
 *.iso
 *.jar
 !jfxrt.jar
+!plagiarism-detector-0.0.1-SNAPSHOT-jfx.jar
 *.rar
 *.tar
 *.zip
