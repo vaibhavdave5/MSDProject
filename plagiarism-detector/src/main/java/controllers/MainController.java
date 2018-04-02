@@ -13,7 +13,6 @@ import controllers.popups.PopupMessage;
 import driver.Driver;
 import driver.IDriver;
 import driver.ISummary;
-import driver.Summary;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
