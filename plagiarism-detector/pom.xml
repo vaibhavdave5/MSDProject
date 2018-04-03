@@ -54,6 +54,7 @@
 					<include>**/*.css</include>
 					<include>**/*.png</include>
 					<include>**/*.xlsx</include>
+					<include>**/*.sqlite</include>
 				</includes>
 			</resource>
 		</resources>
@@ -119,6 +120,12 @@
 			<artifactId>mockito-all</artifactId>
 			<version>1.9.5</version>
 			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
+		<dependency>
+		    <groupId>org.xerial</groupId>
+		    <artifactId>sqlite-jdbc</artifactId>
+		    <version>3.21.0.1</version>
 		</dependency>
 	</dependencies>
 

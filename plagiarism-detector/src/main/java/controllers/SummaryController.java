@@ -12,7 +12,6 @@ import driver.Driver;
 import driver.IStudentPair;
 import driver.ISummary;
 import driver.StudentPair;
-import driver.Summary;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
