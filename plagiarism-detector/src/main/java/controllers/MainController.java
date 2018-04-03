@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import org.apache.log4j.Logger;
 
@@ -13,15 +14,17 @@ import controllers.popups.PopupMessage;
 import driver.Driver;
 import driver.IDriver;
 import driver.ISummary;
-import driver.Summary;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -50,6 +53,7 @@ public class MainController {
 	@FXML private ImageView northeastern;
 	@FXML private TextField hw;
 	@FXML private MenuButton strategy;
+	@FXML private ProgressIndicator progress;
 	
 	private Image emptyFolder;
 	private Image filledFolder;
@@ -79,6 +83,7 @@ public class MainController {
 				.getResource("/images/logo.png")
 				.toExternalForm()));
 		hw.setPromptText("Select e.g. HW1...");
+		progress.setVisible(false);
 	}
 	
 	/**
@@ -154,18 +159,56 @@ public class MainController {
 						"Running Weighted Average", 
 						"Since no strategy was provided, a weighted average of the two will be reported");
 			}
-			IDriver drive = Driver.getInstance();
-			drive.getStudentData(excelFile);
-			String returnMessage = drive.checkForPlagiarism(allPaths, hw.getText(), algo);
-			if(!returnMessage.isEmpty()) {
-				PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
-						"Error!", 
-						"Some error occurred", 
-						returnMessage);
-			} else {
-				routeToSummary(drive.viewSummary());
-			}
+			runAlgorithmAndReturnResults(allPaths, Driver.getInstance());
 		}
+	}
+	
+	/**
+	 * This method runs a new Thread to compute similarity on the files provided
+	 * @param allPaths The path of all the files
+	 * @param drive the instance of the application Driver, used globally
+	 */
+	private void runAlgorithmAndReturnResults(List<String> allPaths, IDriver drive) {
+		Task<String> task = new Task<String>() {
+		    @Override public String call() {
+				drive.getStudentData(excelFile);
+				return drive.checkForPlagiarism(allPaths, hw.getText(), algo);
+		    }
+		};
+		task.setOnRunning(e -> {
+			progress.setVisible(true);
+			progress.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
+			summary.setDisable(true);
+		});
+		task.setOnSucceeded(e -> {
+		    try {
+				String returnMessage = task.get();
+				if(!returnMessage.isEmpty()) {
+					progress.setVisible(false);
+					summary.setDisable(false);
+					PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
+							"Error!", 
+							"Some error occurred", 
+							returnMessage);
+				} else {
+					routeToSummary(drive.viewSummary());
+				}
+			} catch (InterruptedException e1) {
+				logger.error(e1.toString());
+				Thread.currentThread().interrupt();
+			} catch (ExecutionException e1) {
+				logger.error(e1.toString());
+			}
+		});
+		task.setOnFailed(e -> {
+			progress.setVisible(false);
+			summary.setDisable(false);
+			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
+					"Error!", 
+					"Error occurred", 
+					"Something doesn't seem to be working. Try again later.");
+			});
+		new Thread(task).start();
 	}
 	
 	/**
@@ -180,10 +223,10 @@ public class MainController {
 			loader.setController(new SummaryController(iSummary));
 			try {
 				screenController.addScreen("summary", loader.load());
+				screenController.activate("summary");
 			} catch (IOException e) {
 				logger.error(e.toString());
 			}
-			screenController.activate("summary");
 		} else {
 			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
 					"Error", 

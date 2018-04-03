@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.image.ImageView?>
@@ -31,6 +32,7 @@
             </MenuButton>
             <ImageView fx:id="northeastern" fitHeight="67.0" fitWidth="66.0" layoutX="23.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" />
             <Button fx:id="excel" layoutX="597.0" layoutY="35.0" mnemonicParsing="false" onAction="#uploadExcel" prefHeight="27.0" prefWidth="175.0" text="Upload Excel Validator" />
+            <ProgressIndicator fx:id="progress" layoutX="372.0" layoutY="540.0" prefHeight="46.0" prefWidth="58.0" progress="0.0" />
          </children>
       </AnchorPane>
    </bottom>

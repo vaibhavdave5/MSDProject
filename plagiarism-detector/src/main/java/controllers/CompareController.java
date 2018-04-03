@@ -1,19 +1,6 @@
 package controllers;
 
-import algorithms.IResult;
-import algorithms.SimilaritySnippet;
-import algorithms.SnippetPair;
-import driver.CodeSnippets;
-import driver.Driver;
-import driver.ICodeSnippets;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
-import javafx.stage.FileChooser;
-import org.apache.log4j.Logger;
-import utils.FileUtils;
+import static utils.FileUtils.getFileString;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -22,7 +9,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static utils.FileUtils.getFileString;
+import org.apache.log4j.Logger;
+
+import algorithms.IResult;
+import algorithms.SimilaritySnippet;
+import algorithms.SnippetPair;
+import driver.Driver;
+import driver.ICodeSnippets;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+import javafx.stage.FileChooser;
+import utils.FileUtils;
 
 /**
  * This Controller is responsible to load the Compare page of the application.
