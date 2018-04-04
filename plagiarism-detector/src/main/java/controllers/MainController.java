@@ -138,27 +138,83 @@ public class MainController {
 	}
 	
 	/**
+	 * Helper method returns an error message when no student directory is set by the user.
+	 * @return errMsg String
+	 */
+	public String errNoStudentDir(List<String> allPaths) {
+		String errMsg = "";
+		if(allPaths.isEmpty()) {
+			errMsg = "Make sure to select a directory containing the student repo directories in the format\n" + 
+								"student-<number>\n" +
+								"E.g.\n" +
+								"student-101\n" +
+								"studnet-104\n" +
+								"   ... \n";
+		}
+		return errMsg;
+	}
+	
+	/**
+	 * Helper method returns an error message when only one student directory is selected.
+	 * @return errMsg String
+	 */
+	public String errOnlyOneSelected(List<String> allPaths) {
+		String errMsg = "";
+		if(allPaths.size() == 1) {
+			errMsg = "Only one student selected. Make sure to select atleast two studentds. ";
+		}
+		return errMsg;
+	}
+	
+	/**
+	 * Helper method returns an error message when no HW is selected.
+	 * @return errMsg String
+	 */
+	public String errNoHW() {
+		String errMsg = "";
+		if(hw.getText() == null  || "".equals(hw.getText())) {
+			errMsg = "Make sure to enter a homework number in the format" + 
+						"HW<number>\n" +
+						"E.g.\n" +
+						"HW2\n" +
+						"HW3\n" +
+						"...\n";
+		}
+		return errMsg;
+	}
+	
+	/**
+	 * Helper method returns an error message when no excel file is selected.
+	 * @return errMsg String
+	 */
+	public String errNoExcel() {
+		String errMsg = "";
+		if(excelFile == null) {
+			errMsg = "Please select an excel file which maps student ID to the the student names and their email addresses. ";
+		}
+		return errMsg;
+	}
+	
+	/**
 	 * This method runs the algorithm
 	 */
 	@FXML public void runAlgorithm() {
 		List<String> allPaths =  new ArrayList<>();
 		getListOfPaths(allPaths, root);
-		if(hw.getText() == null 
-				|| allPaths.isEmpty() 
-				|| "".equals(hw.getText())
-				|| excelFile == null) {
+		String errorMsg = errNoStudentDir(allPaths) + errNoHW() + errNoExcel() + errOnlyOneSelected(allPaths);
+		if(!"".equals(errorMsg)) {
 			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
 					"Error", 
 					"An error occurred", 
-					"Make sure to select a directory, upload an excel validator sheet, and to enter a homework number");
+					errorMsg);
 		} else {
 			if(algo == null || algo == Algorithm.DEFAULT) {
 				PopupMessage.getInstance().showAlertMessage(AlertType.INFORMATION,
 						"Information", 
 						"Running Weighted Average", 
 						"Since no strategy was provided, a weighted average of the two will be reported");
-			}
-			runAlgorithmAndReturnResults(allPaths, Driver.getInstance());
+				}
+				runAlgorithmAndReturnResults(allPaths, Driver.getInstance());
 		}
 	}
 	
