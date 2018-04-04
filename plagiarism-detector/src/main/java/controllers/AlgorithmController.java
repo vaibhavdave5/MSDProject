@@ -25,8 +25,6 @@ import java.util.List;
  * 
  */
 public class AlgorithmController {
-	private File file1;
-	private File file2;
 	private static Logger logger = Logger.getLogger(AlgorithmController.class);
 	
 	/**
@@ -34,19 +32,16 @@ public class AlgorithmController {
 	 * @param f1 the first file
 	 * @param f2 the secocnd file
 	 */
-	public AlgorithmController(File f1, File f2) {
-		file1 = f1;
-		file2 = f2; 
-	}
+	public AlgorithmController() {}
 
 	/**
 	 * Gets the results from the type of algorithm passed in the strategy
 	 * @param strategy the method to use to run the plagiarism detector
+	 * @param nodeList1 list of nodes retrieved from file1
+	 * @param nodeList2 list of nodes retrieved from file2
 	 * @return Result a Result containing the outcome of the algorithm
 	 */
-	public IResult getResult(AlgorithmStrategy strategy) {
-		List<Node> nodeList1 = getNodeList(file1);
-		List<Node> nodeList2 = getNodeList(file2);
+	public IResult getResult(AlgorithmStrategy strategy, List<Node> nodeList1 ,List<Node> nodeList2) {
 		return new AlgorithmContext(strategy).executeStrategy(nodeList1, nodeList2);
 	}
 
@@ -55,7 +50,7 @@ public class AlgorithmController {
 	 * @param file a C file
 	 * @return a list of Nodes that represent the given C file
 	 */
-	private List<Node> getNodeList(File file) {
+	public List<Node> getNodeList(File file) {
 		List<Node> nodeList = new ArrayList<>();
 		try {
 			CLexer cLexer = new CLexer(CharStreams.fromStream(new FileInputStream(file)));
@@ -69,11 +64,13 @@ public class AlgorithmController {
 
 	/**
 	 * Gets the result and returns the answer in percentage
-	 * @param strategy the strategy to emply
+	 * @param strategy the strategy to empty
+	 * @param nodeList1 list of nodes retrieved from file1
+	 * @param nodeList2 list of nodes retrieved from file2
 	 * @return the percentage of similarity using the given strategy
 	 */
-	public double getSimilarityPercentage(AlgorithmStrategy strategy){
-		return getResult(strategy).getPercentage();
+	public double getSimilarityPercentage(AlgorithmStrategy strategy,List<Node> nodeList1,List<Node> nodeList2){
+		return getResult(strategy,nodeList1,nodeList2).getPercentage();
 	}
 	
 }

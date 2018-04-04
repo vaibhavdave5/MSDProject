@@ -5,6 +5,8 @@ import algorithms.IResult;
 import algorithms.LCSAlgorithm;
 import algorithms.NeemanWalshAlgorithm;
 import controllers.AlgorithmController;
+import parser.Node;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
@@ -17,7 +19,7 @@ import java.util.logging.Logger;
 /**
  * This is the driver of the application. This connects the frontend to the backend.
  * @author Darshan Panse
- */
+ */ 
 public class Driver implements IDriver {
 	private static final Logger LOGGER = Logger.getLogger(Driver.class.getName());
 	private static Driver instance = new Driver();
@@ -143,22 +145,26 @@ public class Driver implements IDriver {
 	private List<Double> getSimilarityScoreList(Collection<File> fileCollection1, Collection<File> fileCollection2) {
 		List<Double> similarityScoreList = new ArrayList<>();
 		for(File file1: fileCollection1) {
+			AlgorithmController ac = new AlgorithmController();
+			List<Node> list1 = ac.getNodeList(file1);
 			for(File file2: fileCollection2) {
 				LOGGER.log(Level.INFO, "File1: {0}", file1.getAbsolutePath());
 				LOGGER.log(Level.INFO, "File2: {0}", file2.getAbsolutePath());
-				AlgorithmController ac = new AlgorithmController(file1, file2);
 				if(this.algo == Algorithm.LCS) {
-					similarityScoreList.add(ac.getSimilarityPercentage(new LCSAlgorithm()));
-				} else if(this.algo == Algorithm.NW) {
-					similarityScoreList.add(ac.getSimilarityPercentage(new NeemanWalshAlgorithm()));
-				} else {
-					// This will be replaced by an ML algorithm in the future
-					double weightedAverage = 0.25 * ac.getSimilarityPercentage(new NeemanWalshAlgorithm())
-							+ 0.75 * ac.getSimilarityPercentage(new LCSAlgorithm());
-					similarityScoreList.add(weightedAverage);
+					similarityScoreList.add(ac.getSimilarityPercentage(new LCSAlgorithm(),list1,ac.getNodeList(file2)));
+				} 
+				 
+				else if(this.algo == Algorithm.NW) {
+					similarityScoreList.add(ac.getSimilarityPercentage(new NeemanWalshAlgorithm(),list1,ac.getNodeList(file2)));
 				}
+				//
+					// This will be replaced by an ML algorithm in the future
+					double weightedAverage = 0.75 * ac.getSimilarityPercentage(new LCSAlgorithm(),list1,ac.getNodeList(file2))+
+							0.25 * ac.getSimilarityPercentage(new NeemanWalshAlgorithm(),list1,ac.getNodeList(file2));
+					similarityScoreList.add(weightedAverage);				
 			}
 		}
+		
 
 		return similarityScoreList;
 	}
@@ -228,10 +234,11 @@ public class Driver implements IDriver {
 	public List<IFilePair> compareFilesForResult(Collection<File> fileCollection1, Collection<File> fileCollection2) {
 		List<IFilePair> filePairList = new ArrayList<>();
 		for(File file1: fileCollection1) {
+			AlgorithmController ac = new AlgorithmController();
+			List<Node> list1 = ac.getNodeList(file1);
 			for(File file2: fileCollection2) {
 				FilePair fp = new FilePair(file1, file2);
-				AlgorithmController ac = new AlgorithmController(file1, file2);
-				IResult result = ac.getResult(new LCSAlgorithm());
+				IResult result = ac.getResult(new LCSAlgorithm(),list1,ac.getNodeList(file2));
 				fp.setResult(result);
 				filePairList.add(fp);
 			}

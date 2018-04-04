@@ -70,11 +70,11 @@
 		</plugins>
 	</build>
 	<dependencies>
-	   	<dependency> 
+    	<dependency> 
 			<groupId>com.oracle</groupId> 
 			<artifactId>javaFX</artifactId> 
 			<version>2.2</version> 
-		</dependency>   
+		</dependency>    
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>

@@ -30,9 +30,9 @@ public class AlgorithmControllerTest {
 		File file1 = new File(path1);
 		File file2 = new File(path2);
 
-		AlgorithmController ac = new AlgorithmController(file1, file2);
+		AlgorithmController ac = new AlgorithmController();
 		double ans = -1;
-		ans = ac.getSimilarityPercentage(new LCSAlgorithm());
+		ans = ac.getSimilarityPercentage(new LCSAlgorithm(),ac.getNodeList(file1),ac.getNodeList(file2));
 		System.out.println(ans);
 		assertTrue(ans >= 0 && ans <= 1);
 	}
@@ -47,9 +47,9 @@ public class AlgorithmControllerTest {
 		File file1 = new File(path1);
 		File file2 = new File(path2);
 
-		AlgorithmController ac = new AlgorithmController(file1, file2);
+		AlgorithmController ac = new AlgorithmController();
 		double ans = -1;
-		ans = ac.getSimilarityPercentage(new NeemanWalshAlgorithm());
+		ans = ac.getSimilarityPercentage(new NeemanWalshAlgorithm(),ac.getNodeList(file1),ac.getNodeList(file2));
 		System.out.println(ans);
 		assertTrue(ans >= 0 && ans <= 1);
 	}
