@@ -18,15 +18,15 @@ import org.sqlite.SQLiteConfig;
 public class Connect {
 
 	private Connect() {
-	} 
+	}
 
 	private static final String DB_PATH = Connect.class.getResource("/data/plagiarism-detector-app.sqlite").toString();
+
 	private static Logger logger = Logger.getLogger(Connect.class);
 
 	private static Connection connect() {
 		// SQLite connection string
 		final SQLiteConfig config = new SQLiteConfig();
-		config.setReadOnly(true);
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection("jdbc:sqlite:" + DB_PATH, config.toProperties());
@@ -46,7 +46,8 @@ public class Connect {
 		final Connection connection = connect();
 
 		try (PreparedStatement stmt = connection.prepareStatement(query); ResultSet rs = stmt.executeQuery()) {
-			return rs.getInt("FilesScanned");
+			int result = rs.getInt("FilesScanned");
+			return result;
 		} catch (SQLException e) {
 			logger.error(e.toString());
 		}
@@ -54,16 +55,15 @@ public class Connect {
 	}
 
 	public static void update() {
-        String sql = "UPDATE Statistics SET FilesScanned = ? ";
-        try (Connection conn = connect();
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
- 
-            // set the corresponding param
-            pstmt.setInt(1, (Connect.runQuery("Select * from Statistics")+1));
-            // update 
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
+		String sql = "UPDATE Statistics SET FilesScanned = ? ";
+		try (Connection conn = connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			// set the corresponding param
+			pstmt.setInt(1, (Connect.runQuery("Select * from Statistics") + 1));
+			// update
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }

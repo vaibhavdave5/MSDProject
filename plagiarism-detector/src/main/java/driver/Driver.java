@@ -5,6 +5,7 @@ import algorithms.IResult;
 import algorithms.LCSAlgorithm;
 import algorithms.NeemanWalshAlgorithm;
 import controllers.AlgorithmController;
+import database.Connect;
 import parser.Node;
 
 import org.apache.commons.io.FileUtils;
@@ -146,6 +147,7 @@ public class Driver implements IDriver {
 		List<Double> similarityScoreList = new ArrayList<>();
 		for(File file1: fileCollection1) {
 			AlgorithmController ac = new AlgorithmController();
+			Connect.update();
 			List<Node> list1 = ac.getNodeList(file1);
 			for(File file2: fileCollection2) {
 				LOGGER.log(Level.INFO, "File1: {0}", file1.getAbsolutePath());

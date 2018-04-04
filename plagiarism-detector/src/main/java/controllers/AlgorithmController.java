@@ -57,9 +57,7 @@ public class AlgorithmController {
 		try {
 			CLexer cLexer = new CLexer(CharStreams.fromStream(new FileInputStream(file)));
 			CParser cParser = new CParser(new CommonTokenStream(cLexer));
-			new ParseTreeWalker().walk(new CASTNodeListener(nodeList), cParser.compilationUnit());
-			Connect.update();
-		
+			new ParseTreeWalker().walk(new CASTNodeListener(nodeList), cParser.compilationUnit());		
 		} catch(IOException e) {
 			logger.error(e);  
 		}

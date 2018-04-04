@@ -23,6 +23,7 @@ public class Main extends Application {
 
 	private static Logger logger = Logger.getLogger(Main.class);
 	
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
