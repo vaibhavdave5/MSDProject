@@ -142,23 +142,53 @@ public class MainController {
 	 */
 	@FXML public void runAlgorithm() {
 		List<String> allPaths =  new ArrayList<>();
+		String errNoStudentDir = "";
+		String errOnlyOneSelected = "";
+		String errNoHW = "";
+		String errNoExcel = "";
 		getListOfPaths(allPaths, root);
-		if(hw.getText() == null 
-				|| allPaths.isEmpty() 
-				|| "".equals(hw.getText())
-				|| excelFile == null) {
+		boolean errorOccured = false;
+		if(allPaths.isEmpty()) {
+			errorOccured = true;
+			errNoStudentDir = "Make sure to select a directory containing the student repo directories in the format\n" + 
+								"student-<number>\n" +
+								"E.g.\n" +
+								"student-101\n" +
+								"studnet-104\n" +
+								"   ... \n";
+		}
+		if(allPaths.size() == 1) {
+			errorOccured = true;
+			errOnlyOneSelected = "Only one student selected. Make sure to select atleast two studentds. ";
+		}
+		if(hw.getText() == null  || "".equals(hw.getText())) {
+			errorOccured = true;
+			errNoHW = "Make sure to enter a homework number in the format" + 
+						"HW<number>\n" +
+						"E.g.\n" +
+						"HW2\n" +
+						"HW3\n" +
+						"...\n";
+		}
+		if(excelFile == null) {
+			errorOccured = true;
+			errNoExcel = "Please select an excel file which maps student ID to the the student names and their email addresses. ";
+		}
+		
+		if(errorOccured) {
+			String errorMsg = errNoStudentDir + errNoHW + errNoExcel + errOnlyOneSelected;
 			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
 					"Error", 
 					"An error occurred", 
-					"Make sure to select a directory, upload an excel validator sheet, and to enter a homework number");
+					errorMsg);
 		} else {
 			if(algo == null || algo == Algorithm.DEFAULT) {
 				PopupMessage.getInstance().showAlertMessage(AlertType.INFORMATION,
 						"Information", 
 						"Running Weighted Average", 
 						"Since no strategy was provided, a weighted average of the two will be reported");
-			}
-			runAlgorithmAndReturnResults(allPaths, Driver.getInstance());
+				}
+				runAlgorithmAndReturnResults(allPaths, Driver.getInstance());
 		}
 	}
 	
