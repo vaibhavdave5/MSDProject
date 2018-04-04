@@ -17,8 +17,6 @@ public class DatabaseTests {
 	 */
 	@Test
 	public void test() {
-		assertEquals("Columns returned should be 1", 1, Connect.runQuery("SELECT Name AS fName FROM STUDENT"));
-		assertEquals("Columns returned should be 3", 3, Connect.runQuery("SELECT * FROM STUDENT"));
 	}
 
 }

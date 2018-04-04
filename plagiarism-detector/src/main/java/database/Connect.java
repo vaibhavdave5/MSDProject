@@ -16,13 +16,26 @@ import org.sqlite.SQLiteConfig;
  *
  */
 public class Connect {
-	
-	private Connect() { }
-	
-	private static final String DB_PATH 
-			= Connect.class.getResource("/data/plagiarism-detector-app.sqlite").toString();
+
+	private Connect() {
+	} 
+
+	private static final String DB_PATH = Connect.class.getResource("/data/plagiarism-detector-app.sqlite").toString();
 	private static Logger logger = Logger.getLogger(Connect.class);
-	
+
+	private static Connection connect() {
+		// SQLite connection string
+		final SQLiteConfig config = new SQLiteConfig();
+		config.setReadOnly(true);
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection("jdbc:sqlite:" + DB_PATH, config.toProperties());
+		} catch (SQLException e) {
+			logger.error(e.toString());
+		}
+		return conn;
+	}
+
 	/**
 	 * This method runs the provided query.
 	 * 
@@ -30,18 +43,27 @@ public class Connect {
 	 * @return the number of columns of the result of the query
 	 */
 	public static int runQuery(String query) {
-		final SQLiteConfig config = new SQLiteConfig();
-	    config.setReadOnly(true);
-		try(final Connection connection 
-				= DriverManager.getConnection("jdbc:sqlite:" + DB_PATH, 
-											 config.toProperties());
-			PreparedStatement stmt = 
-					connection.prepareStatement(query);
-			ResultSet rs = stmt.executeQuery()) {
-				return rs.getMetaData().getColumnCount();	
+		final Connection connection = connect();
+
+		try (PreparedStatement stmt = connection.prepareStatement(query); ResultSet rs = stmt.executeQuery()) {
+			return rs.getInt("FilesScanned");
 		} catch (SQLException e) {
 			logger.error(e.toString());
 		}
 		return 0;
 	}
+
+	public static void update() {
+        String sql = "UPDATE Statistics SET FilesScanned = ? ";
+        try (Connection conn = connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+ 
+            // set the corresponding param
+            pstmt.setInt(1, (Connect.runQuery("Select * from Statistics")+1));
+            // update 
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

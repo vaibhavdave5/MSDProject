@@ -3,6 +3,8 @@ package controllers;
 import algorithms.AlgorithmContext;
 import algorithms.AlgorithmStrategy;
 import algorithms.IResult;
+import database.Connect;
+
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
@@ -56,6 +58,8 @@ public class AlgorithmController {
 			CLexer cLexer = new CLexer(CharStreams.fromStream(new FileInputStream(file)));
 			CParser cParser = new CParser(new CommonTokenStream(cLexer));
 			new ParseTreeWalker().walk(new CASTNodeListener(nodeList), cParser.compilationUnit());
+			Connect.update();
+		
 		} catch(IOException e) {
 			logger.error(e);  
 		}
@@ -72,5 +76,7 @@ public class AlgorithmController {
 	public double getSimilarityPercentage(AlgorithmStrategy strategy,List<Node> nodeList1,List<Node> nodeList2){
 		return getResult(strategy,nodeList1,nodeList2).getPercentage();
 	}
+	
+
 	
 }
