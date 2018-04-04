@@ -138,45 +138,71 @@ public class MainController {
 	}
 	
 	/**
-	 * This method runs the algorithm
+	 * Helper method returns an error message when no student directory is set by the user.
+	 * @return errMsg String
 	 */
-	@FXML public void runAlgorithm() {
-		List<String> allPaths =  new ArrayList<>();
-		String errNoStudentDir = "";
-		String errOnlyOneSelected = "";
-		String errNoHW = "";
-		String errNoExcel = "";
-		getListOfPaths(allPaths, root);
-		boolean errorOccured = false;
+	public String errNoStudentDir(List<String> allPaths) {
+		String errMsg = "";
 		if(allPaths.isEmpty()) {
-			errorOccured = true;
-			errNoStudentDir = "Make sure to select a directory containing the student repo directories in the format\n" + 
+			errMsg = "Make sure to select a directory containing the student repo directories in the format\n" + 
 								"student-<number>\n" +
 								"E.g.\n" +
 								"student-101\n" +
 								"studnet-104\n" +
 								"   ... \n";
 		}
+		return errMsg;
+	}
+	
+	/**
+	 * Helper method returns an error message when only one student directory is selected.
+	 * @return errMsg String
+	 */
+	public String errOnlyOneSelected(List<String> allPaths) {
+		String errMsg = "";
 		if(allPaths.size() == 1) {
-			errorOccured = true;
-			errOnlyOneSelected = "Only one student selected. Make sure to select atleast two studentds. ";
+			errMsg = "Only one student selected. Make sure to select atleast two studentds. ";
 		}
+		return errMsg;
+	}
+	
+	/**
+	 * Helper method returns an error message when no HW is selected.
+	 * @return errMsg String
+	 */
+	public String errNoHW() {
+		String errMsg = "";
 		if(hw.getText() == null  || "".equals(hw.getText())) {
-			errorOccured = true;
-			errNoHW = "Make sure to enter a homework number in the format" + 
+			errMsg = "Make sure to enter a homework number in the format" + 
 						"HW<number>\n" +
 						"E.g.\n" +
 						"HW2\n" +
 						"HW3\n" +
 						"...\n";
 		}
+		return errMsg;
+	}
+	
+	/**
+	 * Helper method returns an error message when no excel file is selected.
+	 * @return errMsg String
+	 */
+	public String errNoExcel() {
+		String errMsg = "";
 		if(excelFile == null) {
-			errorOccured = true;
-			errNoExcel = "Please select an excel file which maps student ID to the the student names and their email addresses. ";
+			errMsg = "Please select an excel file which maps student ID to the the student names and their email addresses. ";
 		}
-		
-		if(errorOccured) {
-			String errorMsg = errNoStudentDir + errNoHW + errNoExcel + errOnlyOneSelected;
+		return errMsg;
+	}
+	
+	/**
+	 * This method runs the algorithm
+	 */
+	@FXML public void runAlgorithm() {
+		List<String> allPaths =  new ArrayList<>();
+		getListOfPaths(allPaths, root);
+		String errorMsg = errNoStudentDir(allPaths) + errNoHW() + errNoExcel() + errOnlyOneSelected(allPaths);
+		if(!"".equals(errorMsg)) {
 			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
 					"Error", 
 					"An error occurred", 
