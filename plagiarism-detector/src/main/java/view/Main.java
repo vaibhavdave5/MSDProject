@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 
 import controllers.ScreenController;
 import controllers.popups.PopupMessage;
-import database.Connect;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

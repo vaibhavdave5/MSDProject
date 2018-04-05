@@ -1,9 +1,10 @@
 package controllers;
 
+import algorithms.Algorithm;
 import algorithms.AlgorithmContext;
+import algorithms.AlgorithmFactory;
 import algorithms.AlgorithmStrategy;
 import algorithms.IResult;
-import database.Connect;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -18,7 +19,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The main controller of the application that can tell if two files are similar
@@ -76,5 +79,18 @@ public class AlgorithmController {
 	}
 	
 
+	/**
+	 * Gets the results from the all types of algorithm
+	 * 
+	 * @param nodeList1 list of nodes retrieved from file1
+	 * @param nodeList2 list of nodes retrieved from file2
+	 * @return Map<Algorithm,IResult> map with key as the Algorithm and value is its corresponding result
+	 */
+	public Map<Algorithm,IResult> getAllResults(List<Node> nodeList1 ,List<Node> nodeList2) {
+		Map<Algorithm, IResult> map = new EnumMap<> (Algorithm.class);
+		map.put(Algorithm.LCS, new AlgorithmContext(new AlgorithmFactory().getAlgo(Algorithm.LCS)).executeStrategy(nodeList1, nodeList2));
+		map.put(Algorithm.NW, new AlgorithmContext(new AlgorithmFactory().getAlgo(Algorithm.NW)).executeStrategy(nodeList1, nodeList2));
+		return map;
+	}
 	
 }

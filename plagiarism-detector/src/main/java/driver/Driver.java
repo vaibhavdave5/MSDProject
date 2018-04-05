@@ -174,7 +174,6 @@ public class Driver implements IDriver {
 					similarityScoreList.add(ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.LCS),
 							list1, ac.getNodeList(file2)));
 				}
-
 				else if (this.algo == Algorithm.NW) {
 					similarityScoreList.add(ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.NW),
 							list1, ac.getNodeList(file2)));
