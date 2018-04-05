@@ -212,7 +212,7 @@ public class SummaryController {
 														.getInstance()
 														.generateSnippet(
 																studentPair.getStudent1Id(),
-																studentPair.getStudent1Id())));
+																studentPair.getStudent2Id())));
 			try {
 				screenController.addScreen("compare", loader.load());
 				screenController.activate("compare");
