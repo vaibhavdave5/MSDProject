@@ -9,36 +9,46 @@ public class Node {
 	private String className;
 	private int hash;
 	private int startLine;
-	private int endline;
-	
+	private int endLine;
+
+	/**
+	 * Constructor for creating a new Node object
+	 * @param start the start of the Node
+	 * @param end the end line of the Node
+	 * @param hash the hash value of the Node
+	 * @param className the name of the class of the Node
+	 */
 	public Node(int start, int end, int hash, String className){
 		this.startLine = start;
-		this.endline = end;
+		this.endLine = end;
 		this.hash = hash;
 		this.className = className;
 	}
-		
+
+	/**
+	 *
+	 * @return the hash code of this Node object
+	 */
 	@Override
 	public int hashCode() {
 		return className.length(); 
 	}
 
+	/**
+	 *
+	 * @param o an object
+	 * @return true iff the parameter is a Node and if it is a clone of this Node
+	 */
 	@Override
 	public boolean equals(Object o) {
-		if (o == null) {
-			return false;
-		} else if (!(o instanceof Node)) {
-			return false;
-		} else if (((Node) o).className.equals(this.className) && (((Node) o).hash == this.hash)) {
-			return (this.hash==((Node) o).getHash());
-		}
-
-		return false;
+		return (o != null) &&
+				(o instanceof Node) &&
+				((Node) o).className.equals(this.className) &&
+				(((Node) o).hash == this.hash);
 	}
 
 	/**
-	 * Returns a hash generated in CParser
-	 * @return int hash
+	 * @return a hash generated in CParser
 	 */
 	public int getHash() {
 		return hash;
@@ -54,11 +64,9 @@ public class Node {
 	
 
 	/**
-	 * Returns end line of the code
-	 * @return int end
+	 * @return end line of the code
 	 */
-
 	public int getEnd(){
-		return this.endline;
+		return this.endLine;
 	}
 }

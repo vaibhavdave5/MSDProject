@@ -1,15 +1,7 @@
 package controllers;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-
-import org.apache.log4j.Logger;
-
 import algorithms.Algorithm;
+import constants.AlertStrings;
 import controllers.popups.PopupMessage;
 import driver.Driver;
 import driver.IDriver;
@@ -34,6 +26,14 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
+import org.apache.log4j.Logger;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 /**
  * This Controller is responsible to load the main page of the application.
  * 
@@ -139,60 +139,44 @@ public class MainController {
 	
 	/**
 	 * Helper method returns an error message when no student directory is set by the user.
-	 * @return errMsg String
+	 * @return a message if no student directory is selected
 	 */
-	public String errNoStudentDir(List<String> allPaths) {
-		String errMsg = "";
-		if(allPaths.isEmpty()) {
-			errMsg = "Make sure to select a directory containing the student repo directories in the format\n" + 
-								"student-<number>\n" +
-								"E.g.\n" +
-								"student-101\n" +
-								"studnet-104\n" +
-								"   ... \n";
-		}
-		return errMsg;
+	private String errNoStudentDir(List<String> allPaths) {
+		return allPaths.isEmpty() ?
+				AlertStrings.noDirectorySelectedMessage :
+				"";
 	}
 	
 	/**
 	 * Helper method returns an error message when only one student directory is selected.
-	 * @return errMsg String
+	 * @param allPaths a list of all the paths containing student code
+	 * @return a message if only one student directory is selected
 	 */
-	public String errOnlyOneSelected(List<String> allPaths) {
-		String errMsg = "";
-		if(allPaths.size() == 1) {
-			errMsg = "Only one student selected. Make sure to select atleast two studentds. ";
-		}
-		return errMsg;
+	private String errOnlyOneSelected(List<String> allPaths) {
+		return allPaths.size() == 1 ?
+				AlertStrings.onlyOneDirSelectedMEssage :
+				"";
 	}
 	
 	/**
 	 * Helper method returns an error message when no HW is selected.
-	 * @return errMsg String
+	 * @return a message if there is a problem getting the homework textbox
 	 */
-	public String errNoHW() {
-		String errMsg = "";
-		if(hw.getText() == null  || "".equals(hw.getText())) {
-			errMsg = "Make sure to enter a homework number in the format" + 
-						"HW<number>\n" +
-						"E.g.\n" +
-						"HW2\n" +
-						"HW3\n" +
-						"...\n";
-		}
-		return errMsg;
+	private String errNoHW() {
+		return (hw.getText() == null  || "".equals(hw.getText()))?
+				AlertStrings.homeworkNumberMessage :
+				"";
 	}
 	
 	/**
 	 * Helper method returns an error message when no excel file is selected.
-	 * @return errMsg String
+	 * @return a message if no excel file is selected
 	 */
-	public String errNoExcel() {
-		String errMsg = "";
-		if(excelFile == null) {
-			errMsg = "Please select an excel file which maps student ID to the the student names and their email addresses. ";
-		}
-		return errMsg;
+	private String errNoExcel() {
+		return (excelFile == null) ?
+				AlertStrings.noExelFileMessage:
+				"";
+
 	}
 	
 	/**
@@ -269,13 +253,13 @@ public class MainController {
 	/**
 	 * This method routes to the summary page passing it the necessary detail
 	 * 
-	 * @param iSummary
+	 * @param summary the summary of the plagiarism detector run
 	 */
-	private void routeToSummary(ISummary iSummary) {
+	private void routeToSummary(ISummary summary) {
 		ScreenController screenController = ScreenController.getInstance();
 		if(screenController != null) {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Summary.fxml"));
-			loader.setController(new SummaryController(iSummary));
+			loader.setController(new SummaryController(summary));
 			try {
 				screenController.addScreen("summary", loader.load());
 				screenController.activate("summary");
@@ -289,9 +273,11 @@ public class MainController {
 					"Cannot route to the summary page. Try again later.");
 		}
 	}
-	
+
 	/**
-	 * This is a helper method to extract all selected items in the TreeView
+	 * add all the paths of the selected directories
+	 * @param allPaths a list of all the paths
+	 * @param rootDir all the selected directories
 	 */
 	private void getListOfPaths(List<String> allPaths, 
 							   	  CheckBoxTreeItem<DirectoryView> rootDir) {
@@ -331,7 +317,7 @@ public class MainController {
 	/**
 	 * This method acknowledges if the dragged file is acceptable in the application
 	 * 
-	 * @param event
+	 * @param event an event containing a Dragboard
 	 */
 	@FXML public void handleDragOver(DragEvent event) {
 		if(event.getDragboard().hasFiles()) {
@@ -344,7 +330,7 @@ public class MainController {
 	 * This method accepts only only directory in the application, which will be 
 	 * the first selected directory by the user that is dragged into the application.
 	 * 
-	 * @param event
+	 * @param event a drag event
 	 */
 	@FXML public void handleDrop(DragEvent event) {
 		folder.setImage(emptyFolder);
@@ -401,15 +387,27 @@ public class MainController {
 	 * @author Samanjate Sood
 	 */
 	private class DirectoryView {
-		
+
+		/**
+		 * Constructor to create a new DirectoryView
+		 * @param file a file in the DirectoryView
+		 */
 		public DirectoryView(File file) {
 			this.file = file;
 		}
-		
+
+		/**
+		 *
+		 * @return this object's file
+		 */
 		public File getFile() {
 			return file;
 		}
-		
+
+		/**
+		 *
+		 * @return the name of the file in this object
+		 */
 		@Override
 		public String toString() {
 			return file.getName();

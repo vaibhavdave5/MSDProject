@@ -1,12 +1,5 @@
 package controllers;
 
-import java.io.IOException;
-import java.text.DecimalFormat;
-import java.util.Optional;
-import java.util.Set;
-
-import org.apache.log4j.Logger;
-
 import controllers.popups.PopupMessage;
 import driver.Driver;
 import driver.IStudentPair;
@@ -22,6 +15,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
+import org.apache.log4j.Logger;
+
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.Optional;
+import java.util.Set;
 
 /**
  * This Controller is responsible to load the Summary page of the application.
@@ -71,6 +70,12 @@ public class SummaryController {
 	/**
 	 * Sets the message for empty ListViews
 	 * @param <T>
+	 */
+	/**
+	 * Sets the message for a ListView
+	 * @param listView a ListView
+	 * @param message the message to set for the ListView
+	 * @param <T> the type of ListView
 	 */
 	private <T> void setDefaultText(ListView<T> listView, String message) {
 		listView.setPlaceholder(new Label(message));
@@ -145,9 +150,10 @@ public class SummaryController {
 		safe.getStyleClass().add("safe-student");
 		back.getStyleClass().add("primary");
 	}
-	
+
 	/**
-	 * This method removes the selections of danger and safe students
+	 * unselects selected highly suspicious and safe students
+	 * @param event the mouse event that occured
 	 */
 	@FXML public void unselectDangerAndSafe(MouseEvent event) {
 		unselectItems(danger, safe);
@@ -159,9 +165,10 @@ public class SummaryController {
 									.getSelectedIndex()));
 		}
 	}
-	
+
 	/**
-	 * This method removes the selections of medium and safe students
+	 * unselects selected mildly suspicious and safe students
+	 * @param event the mouse event that occured
 	 */
 	@FXML public void unselectMediumAndSafe(MouseEvent event) {
 		unselectItems(medium, safe);
@@ -173,30 +180,29 @@ public class SummaryController {
 									.getSelectedIndex()));
 		}
 	}
-	
+
 	/**
-	 * This method removes the selections of medium and danger students
+	 * unselects selected highly suspicious and mildly suspicious students
 	 */
 	@FXML public void unselectMediumAndDanger() {
 		unselectItems(medium, danger);
 	}
+
 	/**
-	 * This method removes the selections of the list items of the two list items provided.
-	 * @param <T>
-	 * @param <E>
-	 * 
-	 * @param listView1
-	 * @param listView2
+	 * Removes selected items in two listViews
+	 * @param listView1 the first ListView
+	 * @param listView2 the second ListView
+	 * @param <T> the type of first ListView
+	 * @param <E> the type of second ListView
 	 */
 	private <T, E> void unselectItems(ListView<T> listView1, ListView<E> listView2) {
 		listView1.getSelectionModel().clearSelection();
 		listView2.getSelectionModel().clearSelection();
 	}
-	
+
 	/**
-	 * This method routes to the Compare page.
-	 * 
-	 * @param event
+	 * routes to the compare page
+	 * @param studentPair an object containing information about a pair of students
 	 */
 	public void routeToCompare(StudentPair studentPair) {
 		if(screenController != null) {
@@ -206,7 +212,7 @@ public class SummaryController {
 														.getInstance()
 														.generateSnippet(
 																studentPair.getStudent1Id(),
-																studentPair.getStudent1Id())));
+																studentPair.getStudent2Id())));
 			try {
 				screenController.addScreen("compare", loader.load());
 				screenController.activate("compare");

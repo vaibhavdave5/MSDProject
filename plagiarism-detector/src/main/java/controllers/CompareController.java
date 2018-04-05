@@ -1,16 +1,5 @@
 package controllers;
 
-import static utils.FileUtils.getFileString;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import org.apache.log4j.Logger;
-
 import algorithms.IResult;
 import algorithms.SimilaritySnippet;
 import algorithms.SnippetPair;
@@ -22,7 +11,17 @@ import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
+import org.apache.log4j.Logger;
 import utils.FileUtils;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import static utils.FileUtils.getFileString;
 
 /**
  * This Controller is responsible to load the Compare page of the application.
@@ -144,6 +143,8 @@ public class CompareController {
 	/**
 	 * This method gets a list of file pairs that contains the file names
 	 * and the code snippets
+	 *
+	 * @return a list of snippet pairs
 	 */
 	private List<SnippetPair> getSnippetPairs() {
 		snippetPairs = new ArrayList<>();
@@ -192,7 +193,7 @@ public class CompareController {
 	 * This function prompts the user to save file
 	 * 
 	 * @param content The content the need to be saved
-	 * @param file
+	 * @param file a file which needs to be saved
 	 */
 	private void saveFile(String content, File file) {
         try(FileWriter fileWriter = new FileWriter(file)) {
