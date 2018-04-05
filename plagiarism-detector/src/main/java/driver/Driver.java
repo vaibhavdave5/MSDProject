@@ -1,9 +1,8 @@
 package driver;
 
 import algorithms.Algorithm;
+import algorithms.AlgorithmFactory;
 import algorithms.IResult;
-import algorithms.LCSAlgorithm;
-import algorithms.NeemanWalshAlgorithm;
 import controllers.AlgorithmController;
 import database.Connect;
 import parser.Node;
@@ -18,9 +17,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * This is the driver of the application. This connects the frontend to the backend.
+ * This is the driver of the application. This connects the frontend to the
+ * backend.
+ * 
  * @author Darshan Panse
- */ 
+ */
 public class Driver implements IDriver {
 	private static final Logger LOGGER = Logger.getLogger(Driver.class.getName());
 	private static Driver instance = new Driver();
@@ -31,8 +32,9 @@ public class Driver implements IDriver {
 	private ISummary summary;
 	private Algorithm algo = Algorithm.LCS;
 
-	private Driver() {}
-	
+	private Driver() {
+	}
+
 	/**
 	 * @return the single instance of the Driver class.
 	 */
@@ -42,24 +44,30 @@ public class Driver implements IDriver {
 
 	/**
 	 * Setter for repoPaths.
-	 * @param repoPaths a list of paths of the repositories
+	 * 
+	 * @param repoPaths
+	 *            a list of paths of the repositories
 	 */
 	public void setRepoPaths(List<String> repoPaths) {
 		this.repoPaths = repoPaths;
 	}
-	
+
 	/**
 	 * Setter for hwDir.
-	 * @param hwDir the name of the homework directory
+	 * 
+	 * @param hwDir
+	 *            the name of the homework directory
 	 */
 	public void setHWDir(String hwDir) {
 		this.hwDir = hwDir;
 	}
-	
+
 	/**
-	 * Gets the student data from the excel file provided by prof or TA
-	 * and stores it as a map in the studentMap.
-	 * @param xlsxFile the excel file containing student data
+	 * Gets the student data from the excel file provided by prof or TA and
+	 * stores it as a map in the studentMap.
+	 * 
+	 * @param xlsxFile
+	 *            the excel file containing student data
 	 * @return errorMessage the error message
 	 */
 	public String getStudentData(File xlsxFile) {
@@ -67,44 +75,44 @@ public class Driver implements IDriver {
 		ExcelReader er = new ExcelReader();
 		try {
 			this.studentMap = er.getStudentMap(xlsxFile);
-		}
-		catch (InvalidFormatException | IOException e) {
+		} catch (InvalidFormatException | IOException e) {
 			errorMessage = "Could not gather students data.";
 			return errorMessage;
 		}
 		return errorMessage;
 	}
-	
+
 	/**
 	 * Constructs the path to get the c files from the dir recursively.
-	 * @param repoPath the path of the repository
+	 * 
+	 * @param repoPath
+	 *            the path of the repository
 	 * @return the path of the homework directory
 	 */
 	public String constructPath(String repoPath) {
 		return repoPath + File.separator + this.hwDir;
 	}
-	
+
 	/**
 	 * Gets the c files recursively from all the directories.
+	 * 
 	 * @return errorMessage String
 	 */
 	public String getCodeFiles() {
 		String errorMessage = "";
 
-		for(String repoPath: this.repoPaths) {
+		for (String repoPath : this.repoPaths) {
 			try {
 				int studentId = Integer.parseInt(repoPath.substring(repoPath.length() - 3));
 				File dir = new File(constructPath(repoPath));
-				String[] extensions = {"c"};
+				String[] extensions = { "c" };
 				Collection<File> listOfFiles = FileUtils.listFiles(dir, extensions, true);
 
 				this.studentHWMap.put(studentId, listOfFiles);
-			}
-			catch(NumberFormatException e) {
-				errorMessage = "One of the selected directories is not a student repository"; 
+			} catch (NumberFormatException e) {
+				errorMessage = "One of the selected directories is not a student repository";
 				return errorMessage;
-			}
-			catch(IllegalArgumentException e) {
+			} catch (IllegalArgumentException e) {
 				errorMessage = "The homework directory specified is incorrect";
 				return errorMessage;
 			}
@@ -113,76 +121,89 @@ public class Driver implements IDriver {
 	}
 
 	/**
-	 * This method compares the similarity between the homework c files of two students
-	 * and generates the summary. Also it returns false if the two students get paired
-	 * for plagiarism (both high and medium probability).
-	 * @param fileCollection1 a collection of files by the first student
-	 * @param fileCollection2 a collection of files by the second student
-	 * @param sp StudentPair a StudentPair containing information about the two students
+	 * This method compares the similarity between the homework c files of two
+	 * students and generates the summary. Also it returns false if the two
+	 * students get paired for plagiarism (both high and medium probability).
+	 * 
+	 * @param fileCollection1
+	 *            a collection of files by the first student
+	 * @param fileCollection2
+	 *            a collection of files by the second student
+	 * @param sp
+	 *            StudentPair a StudentPair containing information about the two
+	 *            students
 	 */
-	public void computeSimilarityScore(Collection<File> fileCollection1, Collection<File> fileCollection2, IStudentPair sp) {
-		Double maxScore = getSimilarityScoreList(fileCollection1, fileCollection2)
-				.stream()
-				.max(Double::compare)
+	public void computeSimilarityScore(Collection<File> fileCollection1, Collection<File> fileCollection2,
+			IStudentPair sp) {
+		Double maxScore = getSimilarityScoreList(fileCollection1, fileCollection2).stream().max(Double::compare)
 				.orElse(null);
 
-		if(maxScore == null) return;
+		if (maxScore == null)
+			return;
 
-		if(maxScore >= 0.5)
+		if (maxScore >= 0.5)
 			this.summary.addToRedPairs(sp);
-		 else if(maxScore >= 0.3)
+		else if (maxScore >= 0.3)
 			this.summary.addToYellowPairs(sp);
 
-		if(maxScore >= 0.3)
+		if (maxScore >= 0.3)
 			sp.setSimilarityScore(maxScore);
 	}
 
 	/**
-	 * Get the similarity scores for all combinations of files from two different collections
-	 * @param fileCollection1 a collection of files
-	 * @param fileCollection2 another collection of files
-	 * @return a list similarity scores of all combination of files from the two collections
+	 * Get the similarity scores for all combinations of files from two
+	 * different collections
+	 * 
+	 * @param fileCollection1
+	 *            a collection of files
+	 * @param fileCollection2
+	 *            another collection of files
+	 * @return a list similarity scores of all combination of files from the two
+	 *         collections
 	 */
 	private List<Double> getSimilarityScoreList(Collection<File> fileCollection1, Collection<File> fileCollection2) {
 		List<Double> similarityScoreList = new ArrayList<>();
-		for(File file1: fileCollection1) {
+		for (File file1 : fileCollection1) {
 			AlgorithmController ac = new AlgorithmController();
 			Connect.update();
 			List<Node> list1 = ac.getNodeList(file1);
-			for(File file2: fileCollection2) {
+			for (File file2 : fileCollection2) {
 				LOGGER.log(Level.INFO, "File1: {0}", file1.getAbsolutePath());
 				LOGGER.log(Level.INFO, "File2: {0}", file2.getAbsolutePath());
-				if(this.algo == Algorithm.LCS) {
-					similarityScoreList.add(ac.getSimilarityPercentage(new LCSAlgorithm(),list1,ac.getNodeList(file2)));
-				} 
-				 
-				else if(this.algo == Algorithm.NW) {
-					similarityScoreList.add(ac.getSimilarityPercentage(new NeemanWalshAlgorithm(),list1,ac.getNodeList(file2)));
+				if (this.algo == Algorithm.LCS) {
+					similarityScoreList.add(ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.LCS),
+							list1, ac.getNodeList(file2)));
+				}
+
+				else if (this.algo == Algorithm.NW) {
+					similarityScoreList.add(ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.NW),
+							list1, ac.getNodeList(file2)));
 				}
 				//
-					// This will be replaced by an ML algorithm in the future
-					double weightedAverage = 0.75 * ac.getSimilarityPercentage(new LCSAlgorithm(),list1,ac.getNodeList(file2))+
-							0.25 * ac.getSimilarityPercentage(new NeemanWalshAlgorithm(),list1,ac.getNodeList(file2));
-					similarityScoreList.add(weightedAverage);				
+				// This will be replaced by an ML algorithm in the future
+				double weightedAverage = 0.75
+						* ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.LCS), list1,
+								ac.getNodeList(file2))
+						+ 0.25 * ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.NW), list1,
+								ac.getNodeList(file2));
+				similarityScoreList.add(weightedAverage);
 			}
 		}
-		
 
 		return similarityScoreList;
 	}
-	
-	
+
 	/**
-	 * This method runs the algorithm on the homework c files of all the 
+	 * This method runs the algorithm on the homework c files of all the
 	 * selected student-repos and generates the Summary.
 	 */
 	public void generateSummary() {
 		this.summary = new Summary();
-		
-		for(Map.Entry<Integer, Collection<File>> entry1 : this.studentHWMap.entrySet()) {
+
+		for (Map.Entry<Integer, Collection<File>> entry1 : this.studentHWMap.entrySet()) {
 			Integer student1Id = entry1.getKey();
-			for(Map.Entry<Integer, Collection<File>> entry2: this.studentHWMap.entrySet()) {
-				if(entry1.getKey() < entry2.getKey()) {
+			for (Map.Entry<Integer, Collection<File>> entry2 : this.studentHWMap.entrySet()) {
+				if (entry1.getKey() < entry2.getKey()) {
 					Collection<File> fileList1 = entry1.getValue();
 					Collection<File> fileList2 = entry2.getValue();
 					Integer student2Id = entry2.getKey();
@@ -190,68 +211,78 @@ public class Driver implements IDriver {
 					this.computeSimilarityScore(fileList1, fileList2, sp);
 				}
 			}
-			
-			if(this.summary.isSafe(student1Id)) {
+
+			if (this.summary.isSafe(student1Id)) {
 				this.summary.addToGreenIds(student1Id);
 			}
 		}
 	}
-	
+
 	/**
 	 * Employs a comparison strategy and compares all files of all students.
-	 * @param repoPaths a list of repository paths
-	 * @param hwDir the name of the homework directory that's supposed to be in each repository
+	 * 
+	 * @param repoPaths
+	 *            a list of repository paths
+	 * @param hwDir
+	 *            the name of the homework directory that's supposed to be in
+	 *            each repository
 	 * @return errorMessage an error message, if applicable
 	 */
 	public String checkForPlagiarism(List<String> repoPaths, String hwDir, Algorithm algo) {
-		if(repoPaths != null && hwDir != null && hwDir != "") {
+		if (repoPaths != null && hwDir != null && hwDir != "") {
 			this.algo = algo;
 			this.setRepoPaths(repoPaths);
 			this.setHWDir(hwDir);
 			String message = this.getCodeFiles();
 			this.generateSummary();
 			return message;
-		}
-		else {
+		} else {
 			return "No student repository or homework directory selected";
 		}
 	}
-	
+
 	/**
-	 * This methods returns the Summary generated by the method generateSummary()
+	 * This methods returns the Summary generated by the method
+	 * generateSummary()
+	 * 
 	 * @return the summary of the run
 	 */
 	public ISummary viewSummary() {
 		return this.summary;
 	}
-	
+
 	/**
-	 * This method compares all the HW files of two students and returns the result
-	 * of the plagiarism algorithm along with the snippets data.
-	 * @param fileCollection1 a collection of files
-	 * @param fileCollection2 another collection of files
-	 * @return a list of FilePairs, with each entry containing the result of the algorithm
-	 * for two files from the two collections
+	 * This method compares all the HW files of two students and returns the
+	 * result of the plagiarism algorithm along with the snippets data.
+	 * 
+	 * @param fileCollection1
+	 *            a collection of files
+	 * @param fileCollection2
+	 *            another collection of files
+	 * @return a list of FilePairs, with each entry containing the result of the
+	 *         algorithm for two files from the two collections
 	 */
 	public List<IFilePair> compareFilesForResult(Collection<File> fileCollection1, Collection<File> fileCollection2) {
 		List<IFilePair> filePairList = new ArrayList<>();
-		for(File file1: fileCollection1) {
+		for (File file1 : fileCollection1) {
 			AlgorithmController ac = new AlgorithmController();
 			List<Node> list1 = ac.getNodeList(file1);
-			for(File file2: fileCollection2) {
+			for (File file2 : fileCollection2) {
 				FilePair fp = new FilePair(file1, file2);
-				IResult result = ac.getResult(new LCSAlgorithm(),list1,ac.getNodeList(file2));
+				IResult result = ac.getResult(new AlgorithmFactory().getAlgo(Algorithm.LCS), list1,
+						ac.getNodeList(file2));
 				fp.setResult(result);
 				filePairList.add(fp);
 			}
 		}
-		
+
 		return filePairList;
 	}
-	
+
 	/**
-	 * This method generates the snippet data for the HW files of two students 
+	 * This method generates the snippet data for the HW files of two students
 	 * and returns the snippet data.
+	 * 
 	 * @param student1Id Integer
 	 * @param student2Id Integer
 	 * @return codeSnippet CodeSnippet
@@ -266,7 +297,8 @@ public class Driver implements IDriver {
 	}
 
 	/**
-	 * @return the studentHWMap, containing StudentId as key and the submission files as value
+	 * @return the studentHWMap, containing StudentId as key and the submission
+	 *         files as value
 	 */
 	public Map<Integer, Collection<File>> getStudentHWMap() {
 		return studentHWMap;
@@ -274,6 +306,7 @@ public class Driver implements IDriver {
 
 	/**
 	 * Get the name of the student by his/her Id
+	 * 
 	 * @param studentId the Id of the student
 	 * @return the name of the student
 	 */
@@ -281,7 +314,7 @@ public class Driver implements IDriver {
 		IStudent student = studentMap.get(studentId);
 		return student.getName();
 	}
-	
+
 	/**
 	 * reset the state of the application
 	 */
