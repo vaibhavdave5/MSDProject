@@ -50,7 +50,6 @@ public class AlgorithmControllerTest {
 		AlgorithmController ac = new AlgorithmController();
 		double ans = -1;
 		ans = ac.getSimilarityPercentage(new NeedlemanWunschAlgorithm(),ac.getNodeList(file1),ac.getNodeList(file2));
-		System.out.println(ans);
 		assertTrue(ans >= 0 && ans <= 1);
 	}
 
