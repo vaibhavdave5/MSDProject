@@ -149,6 +149,7 @@ public class MainController {
 	
 	/**
 	 * Helper method returns an error message when only one student directory is selected.
+	 * @param allPaths a list of all the paths containing student code
 	 * @return a message if only one student directory is selected
 	 */
 	private String errOnlyOneSelected(List<String> allPaths) {
