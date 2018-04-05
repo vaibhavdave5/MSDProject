@@ -232,8 +232,10 @@ public class DriverTests {
 	@Test
 	public void testSnippets() {  
 		 
-		String path1 = "sample2.c";
-		String path2 = "sample.c";
+		String path1 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "resources" + File.separator + "sample2.c";
+		String path2 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "resources" + File.separator + "sample.c";
 		
 		File file1 = new File(path1);
 		File file2 = new File(path2);
