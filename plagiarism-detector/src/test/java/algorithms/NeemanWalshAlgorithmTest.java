@@ -18,7 +18,7 @@ public class NeemanWalshAlgorithmTest {
 		List<Node> list1 = new LinkedList<>();
 		List<Node> list2 = new LinkedList<>();
 		
-		AlgorithmStrategy nw = new NeemanWalshAlgorithm();
+		AlgorithmStrategy nw = new NeedlemanWunschAlgorithm();
 		System.out.println(nw.computeSimilarity(list1, list2));		
 	}
 
