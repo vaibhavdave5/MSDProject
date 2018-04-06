@@ -29,5 +29,12 @@ public class ConnectTest {
 		int y = Connect.getNumberofFilesFromStatistics();
 		assertEquals((x+1), y);
 	}
+	
+	@Test
+	public  void testIncreaseCases(){
+		int cases = Connect.getCases();
+		Connect.increaseCases(10);
+		assertEquals((cases+10), Connect.getCases());
+	}
 
 }

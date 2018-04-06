@@ -1,6 +1,7 @@
 package controllers;
 
 import controllers.popups.PopupMessage;
+import database.Connect;
 import driver.Driver;
 import driver.IStudentPair;
 import driver.ISummary;
@@ -59,6 +60,7 @@ public class SummaryController {
 		safe.setMouseTransparent(true);
 		safe.setFocusTraversable(false);
 		populateView(danger, summary.getRedPairs());
+		Connect.increaseCases(summary.getRedPairs().size());
 		addListener(danger);
 		populateView(medium, summary.getYellowPairs());
 		addListener(medium);
