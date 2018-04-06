@@ -268,9 +268,21 @@ public class Driver implements IDriver {
 			List<Node> list1 = ac.getNodeList(file1);
 			for (File file2 : fileCollection2) {
 				FilePair fp = new FilePair(file1, file2);
-				IResult result = ac.getResult(new AlgorithmFactory().getAlgo(Algorithm.LCS), list1,
-						ac.getNodeList(file2));
-				fp.setResult(result);
+				IResult result1;
+				IResult result2;
+				if(this.algo == Algorithm.LCS) {
+					result1 = ac.getResult(new AlgorithmFactory().getAlgo(Algorithm.LCS), list1,
+							ac.getNodeList(file2));
+					result2 = ac.getResult(new AlgorithmFactory().getAlgo(Algorithm.NW), list1,
+							ac.getNodeList(file2));
+				} else {
+					result2 = ac.getResult(new AlgorithmFactory().getAlgo(Algorithm.LCS), list1,
+							ac.getNodeList(file2));
+					result1 = ac.getResult(new AlgorithmFactory().getAlgo(Algorithm.NW), list1,
+							ac.getNodeList(file2));
+				}
+				fp.setResult1(result1);
+				fp.setResult2(result2);
 				filePairList.add(fp);
 			}
 		}

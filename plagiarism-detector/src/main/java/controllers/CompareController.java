@@ -157,8 +157,8 @@ public class CompareController {
 			File file2 = fp.getFile2();
 			String fileName1 = file1.getName();
 			String fileName2 = file2.getName();
-			IResult result = fp.getResult();
-			Set<SimilaritySnippet> snippets = result.generateSnippet();
+			IResult result1 = fp.getResult1();
+			Set<SimilaritySnippet> snippets = result1.generateSnippet();
 			snippets.forEach(s -> {
 				int start1 = s.getStart1();
 				int end1 = s.getEnd1();
