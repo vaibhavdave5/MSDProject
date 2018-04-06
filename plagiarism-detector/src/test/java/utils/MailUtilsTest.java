@@ -59,17 +59,16 @@ public class MailUtilsTest {
 		invalidEmails.forEach(e -> assertFalse(MailUtils.isValidEmail(e)));
 	}
 
+	// Can't be tested on Jenkins, because Jenkins doesn't have a mail client
 	/**
 	 * Test sending a mail with proper parameters
 	 * Remove (expected = RuntimeException.class) if running locally
 	 * @throws IOException IOExceptions are thrown
 	 * @throws URISyntaxException URISyntaxException are thrown
 	 */
-
-	/* Can't be tested on Jenkins, because Jenkins doesn't have a mail client
-	@Test
+	/* @Test
 	public void sendMailValidEmail() throws IOException, URISyntaxException {
-		String recipient = "shail@ccs.neu.edu";
+		String recipient = "shail@ccs.neu.edu;";
 		String subject = "URGENT: See me at my office";
 		String body = "Hello Student,\n\n" +
 				"I need to talk to you about academic integrity. Please stop by my office tomorrow at 1 PM." +
@@ -78,10 +77,27 @@ public class MailUtilsTest {
 				"\nProfessor X\n";
 
 		MailUtils.sendMail(recipient, subject, body);
-	}
-	*/
+	} */
 
+	// Can't be tested on Jenkins, because Jenkins doesn't have a mail client
+	/**
+	 * Test sending a mail with proper parameters
+	 * Remove (expected = RuntimeException.class) if running locally
+	 * @throws IOException IOExceptions are thrown
+	 * @throws URISyntaxException URISyntaxException are thrown
+	 */
+	/* @Test
+	public void sendMailValidEmailTwoStudents() throws IOException, URISyntaxException {
+		String recipient = "shail@ccs.neu.edu;panse.d@husky.neu.edu";
+		String subject = "URGENT: See me at my office";
+		String body = "Hello Students,\n\n" +
+				"Please stop by my office tomorrow at 1 PM. I want to discuss something important" +
+				"\nThanks." +
+				"\n\nBest," +
+				"\nProfessor X\n";
 
+		MailUtils.sendMail(recipient, subject, body);
+	}*/
 
 	/**
 	 * Test sending a mail with improper recipient

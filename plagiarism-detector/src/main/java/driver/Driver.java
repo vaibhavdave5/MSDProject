@@ -269,8 +269,16 @@ public class Driver implements IDriver {
 	 * @return the name of the student
 	 */
 	public String getNameById(Integer studentId) {
-		IStudent student = studentMap.get(studentId);
-		return student.getName();
+		return studentMap.get(studentId).getName();
+	}
+
+	/**
+	 * Get the email of the student by his/her Id
+	 * @param studentId the Id of the student
+	 * @return the email of the student
+	 */
+	public String getEmailById(Integer studentId) {
+		return studentMap.get(studentId).getEmail();
 	}
 	
 	/**

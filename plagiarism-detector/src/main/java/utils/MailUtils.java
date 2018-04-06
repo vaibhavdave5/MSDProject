@@ -8,6 +8,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Utilities for sending emails
@@ -84,12 +87,16 @@ public class MailUtils {
 	 * Derived from RFC 5322 standard
 	 * https://www.regular-expressions.info/email.html
 	 *
-	 * @param email a string containing a potential email address
+	 * @param recipients a string containing a potential email address
 	 * @return true if the provided string is an email
 	 */
-	public static boolean isValidEmail(String email) {
-		String validEmailPattern = "\\A[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\z";
-		return email != null
-				&& email.matches(validEmailPattern);
+	public static boolean isValidEmail(String recipients) {
+		if(recipients == null) return false;
+		List<String> emails = new ArrayList<>(Arrays.asList(recipients.split(";")));
+
+		String validEmailPattern = "\\A[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*" +
+				"@" +
+				"(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\z";
+		return emails.stream().allMatch(e -> e.matches(validEmailPattern));
 	}
 }

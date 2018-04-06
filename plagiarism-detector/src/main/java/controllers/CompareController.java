@@ -3,8 +3,10 @@ package controllers;
 import algorithms.IResult;
 import algorithms.SimilaritySnippet;
 import algorithms.SnippetPair;
+import constants.MailStrings;
 import driver.Driver;
 import driver.ICodeSnippets;
+import driver.IDriver;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,6 +15,7 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import org.apache.log4j.Logger;
 import utils.FileUtils;
+import utils.MailUtils;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -41,6 +44,7 @@ public class CompareController {
 	@FXML private Button next;
 	@FXML private Button reveal;
 	@FXML private Button back;
+	@FXML private Button emailButton;
 	
 	private ICodeSnippets codeSnippets;
 	private int currentSnippet = 0;
@@ -126,8 +130,13 @@ public class CompareController {
 	 */
 	@FXML public void revealNames() {
 		reveal.setDisable(true);
-		studentAName.setText(Driver.getInstance().getNameById(codeSnippets.getStudent1Id()));
-		studentBName.setText(Driver.getInstance().getNameById(codeSnippets.getStudent2Id()));
+		IDriver driver = Driver.getInstance();
+		Integer studentId1 = codeSnippets.getStudent1Id();
+		Integer studentId2 = codeSnippets.getStudent2Id();
+		String text1 = driver.getNameById(studentId1) + " (" + driver.getEmailById(studentId1) + ")";
+		String text2 = driver.getNameById(studentId2) + " (" + driver.getEmailById(studentId2) + ")";
+		studentAName.setText(text1);
+		studentBName.setText(text2);
 	}
 	
 	/**
@@ -202,4 +211,21 @@ public class CompareController {
         		logger.error(e); 
         } 
     }
+
+	/**
+	 * Send a mail asking to meet the professor
+	 */
+	public void onClickSendMail() {
+		String recipient = Driver.getInstance().getEmailById(codeSnippets.getStudent1Id())
+				+";"
+				+ Driver.getInstance().getEmailById(codeSnippets.getStudent2Id());
+		String subject = MailStrings.SUBJECT_FOR_STUDENTS;
+		String body = MailStrings.BODY_FOR_STUDENTS;
+
+		try {
+			MailUtils.sendMail(recipient, subject, body);
+		} catch(Exception e) {
+			logger.error(e);
+		}
+	}
 }
