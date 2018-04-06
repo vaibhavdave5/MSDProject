@@ -46,7 +46,12 @@ public class MenuController {
 	 */
 	@FXML public void showStatistics() {
 		PopupMessage.getInstance().showAlertMessage(AlertType.INFORMATION,
-				"Global Statistics", "Number of files scanned till now are -",""+Connect.runQuery("Select * from Statistics"));
+				"Global Statistics", "Statistics can be found here",
+				"Number of files scanned till now are :"
+				+Connect.getNumberofFilesFromStatistics()
+				+System.lineSeparator()
+				+"Number of plagiarism cases detected :"+
+				Connect.getCases());
 	}
 	
 	/**

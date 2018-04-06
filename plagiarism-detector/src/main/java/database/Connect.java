@@ -24,6 +24,10 @@ public class Connect {
 
 	private static Logger logger = Logger.getLogger(Connect.class);
 
+	/**
+	 * This function connects to the database
+	 * @return
+	 */
 	private static Connection connect() {
 		// SQLite connection string
 		final SQLiteConfig config = new SQLiteConfig();
@@ -53,6 +57,10 @@ public class Connect {
 		return null;
 
 	}
+	/**
+	 * This function returns the number of files scanned uptil now
+	 * @return int: number of files scanned 
+	 */
 
 	public static int getNumberofFilesFromStatistics() {
 		final Connection connection = connect();
@@ -67,12 +75,55 @@ public class Connect {
 
 	}
 
+	/**
+	 * The number of plagiarism cases detected
+	 * @return int number of cases found 
+	 */
+	public static int getCases() {
+		final Connection connection = connect();
+
+		try (PreparedStatement stmt = connection.prepareStatement("Select * from Statistics"); 
+			ResultSet rs = stmt.executeQuery()) {
+			return rs.getInt("PlagiarismCasesFound");
+		} catch (SQLException e) {
+			logger.error(e.toString());
+		}
+		return 0;
+
+	}
+
+	
+	/**
+	 * This function increases the FilesScanned by one
+	 */
+	
 	public static void increaseByOne() {
 		String sql = "UPDATE Statistics SET FilesScanned = ? ";
 		try (Connection conn = connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
 			int x = Connect.getNumberofFilesFromStatistics();
 			x++;
+			// set the corresponding param
+			pstmt.setInt(1, x);
+			// update
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			logger.error(e.toString());
+		}
+	}
+	
+	/**
+	 * This function increases the number of cases by number of students in 
+	 * the red list
+	 * @param count
+	 */
+	public static void increaseCases(int count) {
+		String sql = "UPDATE Statistics SET PlagiarismCasesFound = ? ";
+		try (Connection conn = connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			int x = Connect.getCases();
+			x = x + count;
 			// set the corresponding param
 			pstmt.setInt(1, x);
 			// update
