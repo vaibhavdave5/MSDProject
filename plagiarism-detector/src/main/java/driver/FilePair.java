@@ -11,7 +11,8 @@ import java.io.File;
 public class FilePair implements IFilePair {
 	private File file1;
 	private File file2;
-	private IResult result;
+	private IResult resultLCS;
+	private IResult resultNW;
 
 	/**
 	 * Constructor for making a new FilePair
@@ -56,20 +57,37 @@ public class FilePair implements IFilePair {
 	}
 
 	/**
-	 * Get the result that contains similarities of the two files
-	 * @return the result that contains the similarities of the two files
+	 * Get the snippet result that contains similarities of the two files
+	 * @return the snippet result that contains the similarities of the two files
 	 */
-	public IResult getResult() {
-		return result;
+	public IResult getResult1() {
+		return resultLCS;
 	}
 
 
 	/**
-	 * Set the result that contains the similarities of the two files
-	 * @param result the result that contains the similarities of the two files
+	 * Set the snippet result that contains the similarities of the two files
+	 * @param result the snippet result that contains the similarities of the two files
 	 */
-	public void setResult(IResult result) {
-		this.result = result;
+	public void setResult1(IResult result) {
+		this.resultLCS = result;
+	}
+	
+	/**
+	 * Get the other result that contains similarities of the two files
+	 * @return the other result that contains the similarities of the two files
+	 */
+	public IResult getResult2() {
+		return resultNW;
+	}
+
+
+	/**
+	 * Set the other result that contains the similarities of the two files
+	 * @param result the other result that contains the similarities of the two files
+	 */
+	public void setResult2(IResult result) {
+		this.resultNW = result;
 	}
 	
 }

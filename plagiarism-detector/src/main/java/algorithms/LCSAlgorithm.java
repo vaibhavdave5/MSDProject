@@ -48,6 +48,7 @@ public class LCSAlgorithm implements AlgorithmStrategy {
 		while (i > 0 && j > 0) {
 
 			if (list1.get(i - 1).equals(list2.get(j - 1))) {
+				//Add the nodes part of the LCS to similar snippet
 				snippets.add(new SimilaritySnippet(list1.get(i-1), list2.get(j-1)));
 				i--;
 				j--;

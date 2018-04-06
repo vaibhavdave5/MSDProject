@@ -5,7 +5,7 @@ import java.io.File;
 import java.util.logging.Logger;
 import org.junit.Test;
 import algorithms.LCSAlgorithm;
-import algorithms.NeemanWalshAlgorithm;
+import algorithms.NeedlemanWunschAlgorithm;
 import parser.Node;
 
 /**
@@ -25,15 +25,16 @@ public class AlgorithmControllerTest {
 
 	@Test
 	public void test() {
-		String path1 = "sample3.c";
-		String path2 = "sample4.c";
+		String path1 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "resources" + File.separator + "sample3.c";
+		String path2 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "resources" + File.separator + "sample4.c";
 		File file1 = new File(path1);
 		File file2 = new File(path2);
 
-		AlgorithmController ac = new AlgorithmController(file1, file2);
+		AlgorithmController ac = new AlgorithmController();
 		double ans = -1;
-		ans = ac.getSimilarityPercentage(new LCSAlgorithm());
-		System.out.println(ans);
+		ans = ac.getSimilarityPercentage(new LCSAlgorithm(), ac.getNodeList(file1), ac.getNodeList(file2));
 		assertTrue(ans >= 0 && ans <= 1);
 	}
 
@@ -42,18 +43,18 @@ public class AlgorithmControllerTest {
 	 */
 	@Test
 	public void test2() {
-		String path1 = "sample3.c";
-		String path2 = "sample4.c";
+		String path1 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "resources" + File.separator + "sample3.c";
+		String path2 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "resources" + File.separator + "sample4.c";
 		File file1 = new File(path1);
 		File file2 = new File(path2);
 
-		AlgorithmController ac = new AlgorithmController(file1, file2);
+		AlgorithmController ac = new AlgorithmController();
 		double ans = -1;
-		ans = ac.getSimilarityPercentage(new NeemanWalshAlgorithm());
-		System.out.println(ans);
+		ans = ac.getSimilarityPercentage(new NeedlemanWunschAlgorithm(), ac.getNodeList(file1), ac.getNodeList(file2));
 		assertTrue(ans >= 0 && ans <= 1);
 	}
-
 
 	/**
 	 * Should throw IOException if path is invalid

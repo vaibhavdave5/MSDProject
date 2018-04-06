@@ -20,6 +20,11 @@
               <MenuItem onAction="#showAbout" mnemonicParsing="false" text="About" />
             </items>
           </Menu>
+          <Menu mnemonicParsing="false" text="Statistics">
+            <items>
+              <MenuItem onAction="#showStatistics" mnemonicParsing="false" text="Global Statistics" />
+            </items>
+          </Menu>
         </menus>
       </MenuBar>
    </children>
