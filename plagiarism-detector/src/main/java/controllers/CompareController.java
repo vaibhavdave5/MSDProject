@@ -7,6 +7,7 @@ import constants.MailStrings;
 import driver.Driver;
 import driver.ICodeSnippets;
 import driver.IDriver;
+import driver.IFilePair;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -20,6 +21,7 @@ import utils.MailUtils;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -45,6 +47,8 @@ public class CompareController {
 	@FXML private Button reveal;
 	@FXML private Button back;
 	@FXML private Button emailButton;
+	@FXML private Label LCSScore;
+	@FXML private Label NWScore;
 	
 	private ICodeSnippets codeSnippets;
 	private int currentSnippet = 0;
@@ -88,6 +92,9 @@ public class CompareController {
 	private void initializeLabels() {
 		studentAName.setText("Student-" + codeSnippets.getStudent1Id());
 		studentBName.setText("Student-" + codeSnippets.getStudent2Id());
+
+		LCSScore.setText("LCS Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
+		NWScore.setText("NW Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
 	}
 	
 	/**
@@ -103,6 +110,7 @@ public class CompareController {
 		studentBName.getStyleClass().add("logo");
 		studentACode.setId("supertextflow1");
 		studentBCode.setId("supertextflow2");
+		emailButton.getStyleClass().add("success");
 	}
 
 	/**
@@ -113,6 +121,9 @@ public class CompareController {
 			return;
 		currentSnippet--;
 		initializeSnippet();
+
+		LCSScore.setText("LCS Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
+		NWScore.setText("NW Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
 	}
 
 	/**
@@ -123,6 +134,9 @@ public class CompareController {
 			return;
 		currentSnippet++;
 		initializeSnippet();
+
+		LCSScore.setText("LCS Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
+		NWScore.setText("NW Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
 	}
 	
 	/**
@@ -137,6 +151,8 @@ public class CompareController {
 		String text2 = driver.getNameById(studentId2) + " (" + driver.getEmailById(studentId2) + ")";
 		studentAName.setText(text1);
 		studentBName.setText(text2);
+
+
 	}
 	
 	/**
@@ -166,6 +182,8 @@ public class CompareController {
 			File file2 = fp.getFile2();
 			String fileName1 = file1.getName();
 			String fileName2 = file2.getName();
+			double percentage1 = fp.getResult1().getPercentage();
+			double percentage2 = fp.getResult2().getPercentage();
 			IResult result1 = fp.getResult1();
 			Set<SimilaritySnippet> snippets = result1.generateSnippet();
 			snippets.forEach(s -> {
@@ -176,7 +194,7 @@ public class CompareController {
 				String snippet1 = getFileString(file1, start1, end1);
 				String snippet2 = getFileString(file2, start2, end2);
 
-				snippetPairs.add(new SnippetPair(fileName1, fileName2, snippet1, snippet2));
+				snippetPairs.add(new SnippetPair(fileName1, fileName2, snippet1, snippet2, percentage1, percentage2));
 			});
 		});
 

@@ -32,6 +32,8 @@
             <Button fx:id="next" layoutX="526.0" layoutY="547.0" mnemonicParsing="false" onAction="#onNextButtonClick" text="&gt;" />
             <Button fx:id="back" layoutX="32.0" layoutY="18.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
             <Button fx:id="emailButton" layoutX="412.0" layoutY="546.0" mnemonicParsing="false" onAction="#onClickSendMail" text="Email students" />
+            <Label fx:id="LCSScore" layoutX="89.0" layoutY="551.0" text="LCS Score: 99.92%" />
+            <Label fx:id="NWScore" layoutX="629.0" layoutY="551.0" text="NW Score: 91.22%" />
          </children></AnchorPane>
    </bottom>
 </BorderPane>
