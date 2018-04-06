@@ -270,6 +270,7 @@ public class Driver implements IDriver {
 				FilePair fp = new FilePair(file1, file2);
 				IResult result1;
 				IResult result2;
+				
 				if(this.algo == Algorithm.LCS) {
 					result1 = ac.getResult(new AlgorithmFactory().getAlgo(Algorithm.LCS), list1,
 							ac.getNodeList(file2));
@@ -281,6 +282,7 @@ public class Driver implements IDriver {
 					result1 = ac.getResult(new AlgorithmFactory().getAlgo(Algorithm.NW), list1,
 							ac.getNodeList(file2));
 				}
+				
 				fp.setResult1(result1);
 				fp.setResult2(result2);
 				filePairList.add(fp);
