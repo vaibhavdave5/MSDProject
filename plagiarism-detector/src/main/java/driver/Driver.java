@@ -165,7 +165,7 @@ public class Driver implements IDriver {
 		List<Double> similarityScoreList = new ArrayList<>();
 		for (File file1 : fileCollection1) {
 			AlgorithmController ac = new AlgorithmController();
-			Connect.update();
+			Connect.increaseByOne();
 			List<Node> list1 = ac.getNodeList(file1);
 			for (File file2 : fileCollection2) {
 				LOGGER.log(Level.INFO, "File1: {0}", file1.getAbsolutePath());

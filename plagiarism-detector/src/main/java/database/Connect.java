@@ -34,7 +34,7 @@ public class Connect {
 			logger.error(e.toString());
 		}
 		return conn;
-	}
+	} 
 
 	/**
 	 * This method runs the provided query.
@@ -42,28 +42,44 @@ public class Connect {
 	 * @param query
 	 * @return the number of columns of the result of the query
 	 */
-	public static int runQuery(String query) {
+	public static ResultSet runQuery(String query) {
 		final Connection connection = connect();
 
 		try (PreparedStatement stmt = connection.prepareStatement(query); ResultSet rs = stmt.executeQuery()) {
-			int result = rs.getInt("FilesScanned");
-			return result;
+			return rs;
+		} catch (SQLException e) {
+			logger.error(e.toString());
+		}
+		return null;
+
+	}
+
+	public static int getNumberofFilesFromStatistics() {
+		final Connection connection = connect();
+
+		try (PreparedStatement stmt = connection.prepareStatement("Select * from Statistics"); 
+			ResultSet rs = stmt.executeQuery()) {
+			return rs.getInt("FilesScanned");
 		} catch (SQLException e) {
 			logger.error(e.toString());
 		}
 		return 0;
+
 	}
 
-	public static void update() {
+	public static void increaseByOne() {
 		String sql = "UPDATE Statistics SET FilesScanned = ? ";
 		try (Connection conn = connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
+			int x = Connect.getNumberofFilesFromStatistics();
+			x++;
 			// set the corresponding param
-			pstmt.setInt(1, (Connect.runQuery("Select * from Statistics") + 1));
+			pstmt.setInt(1, x);
 			// update
 			pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.toString());
 		}
 	}
 }
