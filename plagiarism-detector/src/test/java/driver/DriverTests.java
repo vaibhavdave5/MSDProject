@@ -232,14 +232,16 @@ public class DriverTests {
 	@Test
 	public void testSnippets() {  
 		 
-		String path1 = "sample2.c";
-		String path2 = "sample.c";
+		String path1 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "resources" + File.separator + "sample2.c";
+		String path2 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "resources" + File.separator + "sample.c";
 		
 		File file1 = new File(path1);
 		File file2 = new File(path2);
 
-		AlgorithmController ac = new AlgorithmController(file1, file2);
-		IResult result = ac.getResult(new LCSAlgorithm());
+		AlgorithmController ac = new AlgorithmController();
+		IResult result = ac.getResult(new LCSAlgorithm(),ac.getNodeList(file1),ac.getNodeList(file2));
 		Set<SimilaritySnippet> set = result.generateSnippet();
 		// Checking if all the values are set
 		for (SimilaritySnippet s : set) {

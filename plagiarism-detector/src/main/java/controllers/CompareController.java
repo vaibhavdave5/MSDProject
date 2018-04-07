@@ -3,8 +3,11 @@ package controllers;
 import algorithms.IResult;
 import algorithms.SimilaritySnippet;
 import algorithms.SnippetPair;
+import constants.MailStrings;
 import driver.Driver;
 import driver.ICodeSnippets;
+import driver.IDriver;
+import driver.IFilePair;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,10 +16,12 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import org.apache.log4j.Logger;
 import utils.FileUtils;
+import utils.MailUtils;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -41,6 +46,9 @@ public class CompareController {
 	@FXML private Button next;
 	@FXML private Button reveal;
 	@FXML private Button back;
+	@FXML private Button emailButton;
+	@FXML private Label LCSScore;
+	@FXML private Label NWScore;
 	
 	private ICodeSnippets codeSnippets;
 	private int currentSnippet = 0;
@@ -84,6 +92,9 @@ public class CompareController {
 	private void initializeLabels() {
 		studentAName.setText("Student-" + codeSnippets.getStudent1Id());
 		studentBName.setText("Student-" + codeSnippets.getStudent2Id());
+
+		LCSScore.setText("LCS Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
+		NWScore.setText("NW Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
 	}
 	
 	/**
@@ -99,6 +110,7 @@ public class CompareController {
 		studentBName.getStyleClass().add("logo");
 		studentACode.setId("supertextflow1");
 		studentBCode.setId("supertextflow2");
+		emailButton.getStyleClass().add("success");
 	}
 
 	/**
@@ -109,6 +121,9 @@ public class CompareController {
 			return;
 		currentSnippet--;
 		initializeSnippet();
+
+		LCSScore.setText("LCS Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
+		NWScore.setText("NW Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
 	}
 
 	/**
@@ -119,6 +134,9 @@ public class CompareController {
 			return;
 		currentSnippet++;
 		initializeSnippet();
+
+		LCSScore.setText("LCS Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
+		NWScore.setText("NW Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
 	}
 	
 	/**
@@ -126,8 +144,15 @@ public class CompareController {
 	 */
 	@FXML public void revealNames() {
 		reveal.setDisable(true);
-		studentAName.setText(Driver.getInstance().getNameById(codeSnippets.getStudent1Id()));
-		studentBName.setText(Driver.getInstance().getNameById(codeSnippets.getStudent2Id()));
+		IDriver driver = Driver.getInstance();
+		Integer studentId1 = codeSnippets.getStudent1Id();
+		Integer studentId2 = codeSnippets.getStudent2Id();
+		String text1 = driver.getNameById(studentId1) + " (" + driver.getEmailById(studentId1) + ")";
+		String text2 = driver.getNameById(studentId2) + " (" + driver.getEmailById(studentId2) + ")";
+		studentAName.setText(text1);
+		studentBName.setText(text2);
+
+
 	}
 	
 	/**
@@ -157,8 +182,10 @@ public class CompareController {
 			File file2 = fp.getFile2();
 			String fileName1 = file1.getName();
 			String fileName2 = file2.getName();
-			IResult result = fp.getResult();
-			Set<SimilaritySnippet> snippets = result.generateSnippet();
+			double percentage1 = fp.getResult1().getPercentage();
+			double percentage2 = fp.getResult2().getPercentage();
+			IResult result1 = fp.getResult1();
+			Set<SimilaritySnippet> snippets = result1.generateSnippet();
 			snippets.forEach(s -> {
 				int start1 = s.getStart1();
 				int end1 = s.getEnd1();
@@ -167,7 +194,7 @@ public class CompareController {
 				String snippet1 = getFileString(file1, start1, end1);
 				String snippet2 = getFileString(file2, start2, end2);
 
-				snippetPairs.add(new SnippetPair(fileName1, fileName2, snippet1, snippet2));
+				snippetPairs.add(new SnippetPair(fileName1, fileName2, snippet1, snippet2, percentage1, percentage2));
 			});
 		});
 
@@ -202,4 +229,21 @@ public class CompareController {
         		logger.error(e); 
         } 
     }
+
+	/**
+	 * Send a mail asking to meet the professor
+	 */
+	public void onClickSendMail() {
+		String recipient = Driver.getInstance().getEmailById(codeSnippets.getStudent1Id())
+				+";"
+				+ Driver.getInstance().getEmailById(codeSnippets.getStudent2Id());
+		String subject = MailStrings.SUBJECT_FOR_STUDENTS;
+		String body = MailStrings.BODY_FOR_STUDENTS;
+
+		try {
+			MailUtils.sendMail(recipient, subject, body);
+		} catch(Exception e) {
+			logger.error(e);
+		}
+	}
 }

@@ -35,14 +35,26 @@ public interface IFilePair {
 	public void setFile2(File file2);
 	
 	/**
-	 * Get the result that contains similarities of the two files
-	 * @return the result that contains the similarities of the two files
+	 * Get the snippet result that contains similarities of the two files
+	 * @return the snippet result that contains the similarities of the two files
 	 */
-	public IResult getResult();
+	public IResult getResult1();
 	
 	/**
-	 * Set the result that contains the similarities of the two files
-	 * @param result the result that contains the similarities of the two files
+	 * Set the snippet result that contains the similarities of the two files
+	 * @param result the snippet result that contains the similarities of the two files
 	 */
-	public void setResult(IResult result);
+	public void setResult1(IResult result);
+	
+	/**
+	 * Get the other result that contains similarities of the two files
+	 * @return the other result that contains the similarities of the two files
+	 */
+	public IResult getResult2();
+	
+	/**
+	 * Set the other result that contains the similarities of the two files
+	 * @param result the other result that contains the similarities of the two files
+	 */
+	public void setResult2(IResult result);
 }

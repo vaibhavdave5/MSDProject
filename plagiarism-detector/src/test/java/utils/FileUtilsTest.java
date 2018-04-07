@@ -361,17 +361,21 @@ public class FileUtilsTest {
 	public void getReportTestNormal() {
 		CodeSnippets cs = new CodeSnippets(101, 102);
 
-		File file1 = new File("sample.c");
-		File file2 = new File("sample2.c");
+		String path1 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "resources" + File.separator + "sample.c";
+		String path2 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "resources" + File.separator + "sample2.c";
+		
+		File file1 = new File(path1);
+		File file2 = new File(path2);
 
-		Set<SimilaritySnippet> set = new TreeSet<>();
 		Node node1 = new Node(1, 40, 3, "className1");
 		Node node2 = new Node(1, 50, 3, "className2" );
 		List<SimilaritySnippet> snippetList = new ArrayList<>();
 		snippetList.add(new SimilaritySnippet(node1, node2));
 		Result result =  new Result(0.6, snippetList);
 		FilePair filePair = new FilePair(file1, file2);
-		filePair.setResult(result);
+		filePair.setResult1(result);
 		List<IFilePair> filePairList = new ArrayList<>();
 		filePairList.add(filePair);
 		cs.setFilePairList(filePairList);

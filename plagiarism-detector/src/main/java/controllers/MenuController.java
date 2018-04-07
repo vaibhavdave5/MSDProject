@@ -1,6 +1,7 @@
 package controllers;
 
 import controllers.popups.PopupMessage;
+import database.Connect;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
@@ -38,6 +39,19 @@ public class MenuController {
 				"About", 
 				"© Team 107\nManaging Software Development, Spring 2018", 
 				"This Software was developed by:\n\nDave, Vaibhav\nPanse, Darshan\nShah, Shail\nSood, Samanjate");
+	}
+	
+	/**
+	 * This methods shows the information about the application
+	 */
+	@FXML public void showStatistics() {
+		PopupMessage.getInstance().showAlertMessage(AlertType.INFORMATION,
+				"Global Statistics", "Statistics can be found here",
+				"Number of files scanned till now are :"
+				+Connect.getNumberofFilesFromStatistics()
+				+System.lineSeparator()
+				+"Number of plagiarism cases detected :"+
+				Connect.getCases());
 	}
 	
 	/**

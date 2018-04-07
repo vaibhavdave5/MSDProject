@@ -108,6 +108,13 @@ public interface IDriver {
 	 * @return String
 	 */
 	public String getNameById(Integer studentId);
+
+	/**
+	 * Get the email of the student by his/her Id
+	 * @param studentId the Id of the student
+	 * @return the email of the student
+	 */
+	public String getEmailById(Integer studentId);
 	
 	/**
 	 * This method resets the state of the application and clears all the parameters.
