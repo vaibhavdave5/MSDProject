@@ -74,8 +74,12 @@ public class AlgorithmController {
 	 * @param nodeList2 list of nodes retrieved from file2
 	 * @return the percentage of similarity using the given strategy
 	 */
-	public double getSimilarityPercentage(AlgorithmStrategy strategy,List<Node> nodeList1,List<Node> nodeList2){
-		return getResult(strategy,nodeList1,nodeList2).getPercentage();
+	public double[] getSimilarityPercentage(AlgorithmStrategy strategy,List<Node> nodeList1,List<Node> nodeList2){
+		double[] arr = new double[2];
+		IResult result = getResult(strategy,nodeList1,nodeList2);
+		arr[0] = result.getPercentagefile1();
+		arr[1] = result.getPercentagefile2(); 
+		return arr;
 	}
 	
 
