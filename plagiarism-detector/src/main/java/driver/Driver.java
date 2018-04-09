@@ -122,8 +122,7 @@ public class Driver implements IDriver {
 
 	/**
 	 * This method compares the similarity between the homework c files of two
-	 * students and generates the summary. Also it returns false if the two
-	 * students get paired for plagiarism (both high and medium probability).
+	 * students and generates the summary.
 	 * 
 	 * @param fileCollection1
 	 *            a collection of files by the first student
@@ -171,20 +170,28 @@ public class Driver implements IDriver {
 				LOGGER.log(Level.INFO, "File1: {0}", file1.getAbsolutePath());
 				LOGGER.log(Level.INFO, "File2: {0}", file2.getAbsolutePath());
 				if (this.algo == Algorithm.LCS) {
-					similarityScoreList.add(ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.LCS),
-							list1, ac.getNodeList(file2)));
+					double[] scoresLCS = new double[2];
+					scoresLCS = ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.LCS),
+							list1, ac.getNodeList(file2));
+					similarityScoreList.add(scoresLCS[0] > scoresLCS[1]? scoresLCS[0] : scoresLCS[1]);
 				}
 				else if (this.algo == Algorithm.NW) {
-					similarityScoreList.add(ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.NW),
-							list1, ac.getNodeList(file2)));
+					double[] scoresNW = new double[2];
+					scoresNW = ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.NW),
+							list1, ac.getNodeList(file2));
+					similarityScoreList.add(scoresNW[0] > scoresNW[1]? scoresNW[0] : scoresNW[1]);
 				}
 				//
 				// This will be replaced by an ML algorithm in the future
-				double weightedAverage = 0.75
-						* ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.LCS), list1,
-								ac.getNodeList(file2))
-						+ 0.25 * ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.NW), list1,
-								ac.getNodeList(file2));
+				double[] scoresLCS = new double[2];
+				double[] scoresNW = new double[2];
+				scoresLCS = ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.LCS), list1,
+						ac.getNodeList(file2));
+				scoresNW = ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.NW), list1,
+						ac.getNodeList(file2));
+				double weightedAverage = 
+						0.75 * scoresLCS[0] > scoresLCS[1]? scoresLCS[0] : scoresLCS[1]
+						+ 0.25 * scoresNW[0] > scoresNW[1]? scoresNW[0] : scoresNW[1];
 				similarityScoreList.add(weightedAverage);
 			}
 		}
