@@ -3,11 +3,11 @@ package controllers;
 import algorithms.IResult;
 import algorithms.SimilaritySnippet;
 import algorithms.SnippetPair;
+import constants.AlgorithmAndDriverStrings;
 import constants.MailStrings;
 import driver.Driver;
 import driver.ICodeSnippets;
 import driver.IDriver;
-import driver.IFilePair;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -93,8 +93,8 @@ public class CompareController {
 		studentAName.setText("Student-" + codeSnippets.getStudent1Id());
 		studentBName.setText("Student-" + codeSnippets.getStudent2Id());
 
-		LCSScore.setText("LCS Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
-		NWScore.setText("NW Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
+		LCSScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_LCS + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
+		NWScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_LCS+ new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
 	}
 	
 	/**
@@ -122,8 +122,8 @@ public class CompareController {
 		currentSnippet--;
 		initializeSnippet();
 
-		LCSScore.setText("LCS Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
-		NWScore.setText("NW Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
+		LCSScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_LCS + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
+		NWScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_LCS+ new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
 	}
 
 	/**
@@ -135,8 +135,8 @@ public class CompareController {
 		currentSnippet++;
 		initializeSnippet();
 
-		LCSScore.setText("LCS Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
-		NWScore.setText("NW Score: " + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
+		LCSScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_LCS + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
+		NWScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_LCS+ new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
 	}
 	
 	/**
