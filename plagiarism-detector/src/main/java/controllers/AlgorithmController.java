@@ -72,7 +72,7 @@ public class AlgorithmController {
 	 * @param strategy the strategy to empty
 	 * @param nodeList1 list of nodes retrieved from file1
 	 * @param nodeList2 list of nodes retrieved from file2
-	 * @return the percentage of similarity using the given strategy
+	 * @return the array of percentages of similarity using the given strategy
 	 */
 	public double[] getSimilarityPercentage(AlgorithmStrategy strategy,List<Node> nodeList1,List<Node> nodeList2){
 		double[] arr = new double[2];
