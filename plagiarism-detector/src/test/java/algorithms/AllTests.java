@@ -7,6 +7,8 @@ import driver.SummaryTests;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
+
+import utils.ConfigUtilsTest;
 import utils.FileUtilsTest;
 
 /**
@@ -23,7 +25,8 @@ import utils.FileUtilsTest;
 		NeemanWalshAlgorithmTest.class,
 		NodeTests.class,
 		FileUtilsTest.class,
-		SnippetPairTest.class
+		SnippetPairTest.class,
+		ConfigUtilsTest.class
 })
 public class AllTests {
 

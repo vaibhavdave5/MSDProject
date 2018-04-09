@@ -1,5 +1,6 @@
 package utils;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -28,7 +29,7 @@ public class ConfigUtils {
 	
 		properties.setProperty(title, value);
 		try {
-			properties.store(new FileOutputStream("config.properties"), null);
+			properties.store(new FileOutputStream("config.properties",true), null);
 		} catch (IOException e) {
 			logger.error(e.toString());
 		}
@@ -41,8 +42,12 @@ public class ConfigUtils {
 	 * @param String value
 	 */
 	public String readConfig(String title){
-		String value = properties.getProperty(title);
-		return value;
+		try {
+			properties.load(new FileInputStream("config.properties"));
+		} catch (IOException e) {
+			logger.error(e.toString());
+		}
+		return properties.getProperty(title);
 	}
 	
 }

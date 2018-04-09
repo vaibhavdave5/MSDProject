@@ -20,7 +20,7 @@ public class ConfigUtilsTest {
 
 	@Test
 	public void testReadConfig() {
-		assertEquals("Vaibhav", cu.readConfig("author"));
+		assertEquals("Vaibhav Dave", cu.readConfig("author"));
 	}
 
 }
