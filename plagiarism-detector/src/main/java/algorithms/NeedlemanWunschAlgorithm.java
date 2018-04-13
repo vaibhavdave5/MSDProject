@@ -39,14 +39,16 @@ public class NeedlemanWunschAlgorithm implements AlgorithmStrategy {
 		// similarity
 		// between them
 		else if (list1.size() < 500 || list2.size() < 500) {
-			return new Result(0.0,0.0, new ArrayList<>());
+			return new Result(0.0, new ArrayList<>());
 		}
 
 		List<SimilaritySnippet> snippets = getCommonNodesList(list1, list2);
 
-		return new Result(((2.0 * snippets.size()) / list1.size()),
-  				 ((2.0 * snippets.size()) / list1.size()),
-	 			  snippets);
+		// Normalizing the score between the two files
+
+		double similarityScore = 2.0 * snippets.size() / (list1.size() + list2.size());
+
+		return new Result(similarityScore, snippets);
 	}
 
 	/**

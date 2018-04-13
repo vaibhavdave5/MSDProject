@@ -13,8 +13,7 @@ import java.util.TreeSet;
  *
  */
 public class Result implements IResult {
-	private double percentage1;
-	private double percentage2;
+	private double percentage;
 	private Set<SimilaritySnippet> snippet;
 	private List<SimilaritySnippet> snippetList;
 
@@ -24,19 +23,24 @@ public class Result implements IResult {
 	 * @param percentage the percentage of similarity
 	 * @param snippetList the list of snippets
 	 */
-	public Result(double percentage1, double percentage2, List<SimilaritySnippet> snippetList) {
-		this.percentage1 = percentage1;
-		this.percentage2 = percentage2;
+	public Result(double percentage, List<SimilaritySnippet> snippetList) {
+		this.percentage = percentage;
 		this.snippetList = snippetList;
 		this.snippet = null;
 	}
 
 	/**
-	 * Generates the snippets the snippets are stored into a set snippet itself
-	 * has a equals function which takes care that duplicate snippets are not
-	 * added. snippet also has a compareTo function which helps in sorting the
-	 * snippet w.r.t line number of file-1 .
-	 * 
+	 * Get the percentage of similarity
+	 * @return the percentage of similarity
+	 */
+	@Override
+	public double getPercentage() {
+		return this.percentage;
+	}
+
+
+	/**
+	 * Gernerate the snippets
 	 * @return a set containing similar snippets
 	 */
 	@Override
@@ -51,23 +55,6 @@ public class Result implements IResult {
 			return set;
 		}
 		return this.snippet;
-	}
-
-	/**
-	 * @return the percentage of similarities between two files w.r.t file1.
-	 */
-	@Override
-	public double getPercentagefile1() {
-		return this.percentage1;
-	}
-
-	/**
-	 * @return the percentage of similarities between two files w.r.t file2.
-	 */
-
-	@Override
-	public double getPercentagefile2() {
-		return this.percentage2;
 	}
 
 }

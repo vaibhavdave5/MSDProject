@@ -14,16 +14,9 @@ import java.util.Set;
 public interface IResult {
 
 	/**
-	 * @return the percentage of similarities between two files
-	 *         w.r.t file1.
+	 * @return the percentage of similarities between two lists of nodes
 	 */
-	public double getPercentagefile1();
-	
-	/**
-	 * @return the percentage of similarities between two files
-	 *         w.r.t file2. 
-	 */
-	public double getPercentagefile2();
+	public double getPercentage();
 
 
 	/**
