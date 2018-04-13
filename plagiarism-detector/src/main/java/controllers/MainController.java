@@ -53,6 +53,7 @@ public class MainController {
 	@FXML private TextField hw;
 	@FXML private MenuButton strategy;
 	@FXML private ProgressIndicator progress;
+	@FXML private Button clearButton;
 	
 	private Image emptyFolder;
 	private Image filledFolder;
@@ -92,6 +93,7 @@ public class MainController {
 		strategy.getStyleClass().add("primary");
 		summary.getStyleClass().add("primary");
 		excel.getStyleClass().add("danger");
+		clearButton.getStyleClass().add("danger");
 		logo.getStyleClass().add("logo");
 		chooseDir.getStyleClass().add("drag-folder");
 	}
@@ -300,7 +302,7 @@ public class MainController {
 	 * @return a tree view of the directory structure
 	 */
 	public CheckBoxTreeItem<DirectoryView> populateView(File directory) {
-		dirContent.setCellFactory(CheckBoxTreeCell.<DirectoryView>forTreeView());
+		dirContent.setCellFactory(CheckBoxTreeCell.forTreeView());
 		CheckBoxTreeItem<DirectoryView> rootDirectory  
 				= new CheckBoxTreeItem<>(new DirectoryView(directory));
         for(File file : directory.listFiles()) {
@@ -363,6 +365,15 @@ public class MainController {
 	private void hideImage() {
 		folder.setVisible(false);
 		chooseDir.setVisible(false);
+	}
+
+	/**
+	 * Show the folder icon and prompt to select a root directory
+	 */
+	@FXML public void clearDirContent() {
+		dirContent.setRoot(null);
+		folder.setVisible(true);
+		chooseDir.setVisible(true);
 	}
 	
 	/**
