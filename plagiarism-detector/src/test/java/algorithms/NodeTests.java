@@ -1,10 +1,10 @@
 package algorithms;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
-
 import parser.Node;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class NodeTests {
 

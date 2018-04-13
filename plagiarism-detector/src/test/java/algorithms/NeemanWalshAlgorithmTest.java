@@ -1,12 +1,11 @@
 package algorithms;
 
 
+import org.junit.Test;
+import parser.Node;
+
 import java.util.LinkedList;
 import java.util.List;
-
-import org.junit.Test;
-
-import parser.Node;
 
 public class NeemanWalshAlgorithmTest {
 

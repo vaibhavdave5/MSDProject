@@ -1,12 +1,15 @@
 package controllers;
 
-import static org.junit.Assert.*;
-import java.io.File;
-import java.util.logging.Logger;
-import org.junit.Test;
 import algorithms.LCSAlgorithm;
 import algorithms.NeedlemanWunschAlgorithm;
+import org.junit.Test;
 import parser.Node;
+
+import java.io.File;
+import java.util.logging.Logger;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Tests AlgorithmController to see if the similarity is computed as expected.
