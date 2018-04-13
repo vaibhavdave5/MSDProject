@@ -143,7 +143,7 @@ public class MainController {
 	 */
 	private String errNoStudentDir(List<String> allPaths) {
 		return allPaths.isEmpty() ?
-				AlertStrings.noDirectorySelectedMessage :
+				AlertStrings.NO_DIRECTORY_SELECTED_MESSAGE :
 				"";
 	}
 	
@@ -154,7 +154,7 @@ public class MainController {
 	 */
 	private String errOnlyOneSelected(List<String> allPaths) {
 		return allPaths.size() == 1 ?
-				AlertStrings.onlyOneDirSelectedMEssage :
+				AlertStrings.ONLY_ONE_STUDENT_SELECTED_MAKE_SURE_TO_SELECT_ATLEAST_TWO_STUDENTDS :
 				"";
 	}
 	
@@ -164,7 +164,7 @@ public class MainController {
 	 */
 	private String errNoHW() {
 		return (hw.getText() == null  || "".equals(hw.getText()))?
-				AlertStrings.homeworkNumberMessage :
+				AlertStrings.HOMEWORK_NUMBER_MESSAGE :
 				"";
 	}
 	
@@ -174,7 +174,7 @@ public class MainController {
 	 */
 	private String errNoExcel() {
 		return (excelFile == null) ?
-				AlertStrings.noExelFileMessage:
+				AlertStrings.NO_EXEL_FILE_MESSAGE :
 				"";
 
 	}
