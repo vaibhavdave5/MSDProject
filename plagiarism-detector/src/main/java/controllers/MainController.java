@@ -53,6 +53,7 @@ public class MainController {
 	@FXML private TextField hw;
 	@FXML private MenuButton strategy;
 	@FXML private ProgressIndicator progress;
+	@FXML private Button clearButton;
 	
 	private Image emptyFolder;
 	private Image filledFolder;
@@ -92,6 +93,7 @@ public class MainController {
 		strategy.getStyleClass().add("primary");
 		summary.getStyleClass().add("primary");
 		excel.getStyleClass().add("danger");
+		clearButton.getStyleClass().add("danger");
 		logo.getStyleClass().add("logo");
 		chooseDir.getStyleClass().add("drag-folder");
 	}
@@ -143,7 +145,7 @@ public class MainController {
 	 */
 	private String errNoStudentDir(List<String> allPaths) {
 		return allPaths.isEmpty() ?
-				AlertStrings.noDirectorySelectedMessage :
+				AlertStrings.NO_DIRECTORY_SELECTED_MESSAGE :
 				"";
 	}
 	
@@ -154,7 +156,7 @@ public class MainController {
 	 */
 	private String errOnlyOneSelected(List<String> allPaths) {
 		return allPaths.size() == 1 ?
-				AlertStrings.onlyOneDirSelectedMEssage :
+				AlertStrings.ONLY_ONE_STUDENT_SELECTED_MAKE_SURE_TO_SELECT_ATLEAST_TWO_STUDENTDS :
 				"";
 	}
 	
@@ -164,7 +166,7 @@ public class MainController {
 	 */
 	private String errNoHW() {
 		return (hw.getText() == null  || "".equals(hw.getText()))?
-				AlertStrings.homeworkNumberMessage :
+				AlertStrings.HOMEWORK_NUMBER_MESSAGE :
 				"";
 	}
 	
@@ -174,7 +176,7 @@ public class MainController {
 	 */
 	private String errNoExcel() {
 		return (excelFile == null) ?
-				AlertStrings.noExelFileMessage:
+				AlertStrings.NO_EXEL_FILE_MESSAGE :
 				"";
 
 	}
@@ -300,7 +302,7 @@ public class MainController {
 	 * @return a tree view of the directory structure
 	 */
 	public CheckBoxTreeItem<DirectoryView> populateView(File directory) {
-		dirContent.setCellFactory(CheckBoxTreeCell.<DirectoryView>forTreeView());
+		dirContent.setCellFactory(CheckBoxTreeCell.forTreeView());
 		CheckBoxTreeItem<DirectoryView> rootDirectory  
 				= new CheckBoxTreeItem<>(new DirectoryView(directory));
         for(File file : directory.listFiles()) {
@@ -363,6 +365,15 @@ public class MainController {
 	private void hideImage() {
 		folder.setVisible(false);
 		chooseDir.setVisible(false);
+	}
+
+	/**
+	 * Show the folder icon and prompt to select a root directory
+	 */
+	@FXML public void clearDirContent() {
+		dirContent.setRoot(null);
+		folder.setVisible(true);
+		chooseDir.setVisible(true);
 	}
 	
 	/**

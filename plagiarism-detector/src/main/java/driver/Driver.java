@@ -5,14 +5,18 @@ import algorithms.AlgorithmFactory;
 import algorithms.IResult;
 import controllers.AlgorithmController;
 import database.Connect;
-import parser.Node;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import parser.Node;
+import utils.ConfigUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,7 +35,8 @@ public class Driver implements IDriver {
 	private Map<Integer, Collection<File>> studentHWMap = new HashMap<>();
 	private ISummary summary;
 	private Algorithm algo = Algorithm.LCS;
-
+	private ConfigUtils config = new ConfigUtils(); 
+	
 	private Driver() {
 	}
 
@@ -45,8 +50,7 @@ public class Driver implements IDriver {
 	/**
 	 * Setter for repoPaths.
 	 * 
-	 * @param repoPaths
-	 *            a list of paths of the repositories
+	 * @param repoPaths a list of paths of the repositories
 	 */
 	public void setRepoPaths(List<String> repoPaths) {
 		this.repoPaths = repoPaths;
@@ -55,8 +59,7 @@ public class Driver implements IDriver {
 	/**
 	 * Setter for hwDir.
 	 * 
-	 * @param hwDir
-	 *            the name of the homework directory
+	 * @param hwDir the name of the homework directory
 	 */
 	public void setHWDir(String hwDir) {
 		this.hwDir = hwDir;
@@ -66,8 +69,7 @@ public class Driver implements IDriver {
 	 * Gets the student data from the excel file provided by prof or TA and
 	 * stores it as a map in the studentMap.
 	 * 
-	 * @param xlsxFile
-	 *            the excel file containing student data
+	 * @param xlsxFile the excel file containing student data
 	 * @return errorMessage the error message
 	 */
 	public String getStudentData(File xlsxFile) {
@@ -85,8 +87,7 @@ public class Driver implements IDriver {
 	/**
 	 * Constructs the path to get the c files from the dir recursively.
 	 * 
-	 * @param repoPath
-	 *            the path of the repository
+	 * @param repoPath the path of the repository
 	 * @return the path of the homework directory
 	 */
 	public String constructPath(String repoPath) {
@@ -110,10 +111,10 @@ public class Driver implements IDriver {
 
 				this.studentHWMap.put(studentId, listOfFiles);
 			} catch (NumberFormatException e) {
-				errorMessage = "One of the selected directories is not a student repository";
+				errorMessage = config.readConfig("repoError");
 				return errorMessage;
 			} catch (IllegalArgumentException e) {
-				errorMessage = "The homework directory specified is incorrect";
+				errorMessage = config.readConfig("hwDirError");
 				return errorMessage;
 			}
 		}
@@ -124,12 +125,9 @@ public class Driver implements IDriver {
 	 * This method compares the similarity between the homework c files of two
 	 * students and generates the summary.
 	 * 
-	 * @param fileCollection1
-	 *            a collection of files by the first student
-	 * @param fileCollection2
-	 *            a collection of files by the second student
-	 * @param sp
-	 *            StudentPair a StudentPair containing information about the two
+	 * @param fileCollection a collection of files by the first student
+	 * @param fileCollection2 a collection of files by the second student
+	 * @param sp StudentPair a StudentPair containing information about the two
 	 *            students
 	 */
 	public void computeSimilarityScore(Collection<File> fileCollection1, Collection<File> fileCollection2,
@@ -140,12 +138,12 @@ public class Driver implements IDriver {
 		if (maxScore == null)
 			return;
 
-		if (maxScore >= 0.5)
+		if (maxScore >= Double.parseDouble(config.readConfig("redThreshold")))
 			this.summary.addToRedPairs(sp);
-		else if (maxScore >= 0.3)
+		else if (maxScore >= Double.parseDouble(config.readConfig("yellowThreshold")))
 			this.summary.addToYellowPairs(sp);
 
-		if (maxScore >= 0.3)
+		if (maxScore >= Double.parseDouble(config.readConfig("yellowThreshold")))
 			sp.setSimilarityScore(maxScore);
 	}
 
@@ -183,6 +181,7 @@ public class Driver implements IDriver {
 				}
 				//
 				// This will be replaced by an ML algorithm in the future
+<<<<<<< HEAD
 				double[] scoresLCS = new double[2];
 				double[] scoresNW = new double[2];
 				scoresLCS = ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.LCS), list1,
@@ -192,6 +191,13 @@ public class Driver implements IDriver {
 				double weightedAverage = 
 						0.75 * scoresLCS[0] > scoresLCS[1]? scoresLCS[0] : scoresLCS[1]
 						+ 0.25 * scoresNW[0] > scoresNW[1]? scoresNW[0] : scoresNW[1];
+=======
+				double weightedAverage = Double.parseDouble(config.readConfig("algo1Weight"))
+						* ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.LCS), list1,
+								ac.getNodeList(file2))
+						+ Double.parseDouble(config.readConfig("algo2Weight")) * ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.NW), list1,
+								ac.getNodeList(file2));
+>>>>>>> master
 				similarityScoreList.add(weightedAverage);
 			}
 		}
@@ -261,10 +267,8 @@ public class Driver implements IDriver {
 	 * This method compares all the HW files of two students and returns the
 	 * result of the plagiarism algorithm along with the snippets data.
 	 * 
-	 * @param fileCollection1
-	 *            a collection of files
-	 * @param fileCollection2
-	 *            another collection of files
+	 * @param fileCollection1 a collection of files
+	 * @param fileCollection2 another collection of files
 	 * @return a list of FilePairs, with each entry containing the result of the
 	 *         algorithm for two files from the two collections
 	 */
@@ -278,17 +282,11 @@ public class Driver implements IDriver {
 				IResult result1;
 				IResult result2;
 				
-				if(this.algo == Algorithm.LCS) {
 					result1 = ac.getResult(new AlgorithmFactory().getAlgo(Algorithm.LCS), list1,
 							ac.getNodeList(file2));
 					result2 = ac.getResult(new AlgorithmFactory().getAlgo(Algorithm.NW), list1,
 							ac.getNodeList(file2));
-				} else {
-					result2 = ac.getResult(new AlgorithmFactory().getAlgo(Algorithm.LCS), list1,
-							ac.getNodeList(file2));
-					result1 = ac.getResult(new AlgorithmFactory().getAlgo(Algorithm.NW), list1,
-							ac.getNodeList(file2));
-				}
+				
 				
 				fp.setResult1(result1);
 				fp.setResult2(result2);

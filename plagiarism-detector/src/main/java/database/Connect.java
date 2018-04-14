@@ -1,13 +1,13 @@
 package database;
 
+import org.apache.log4j.Logger;
+import org.sqlite.SQLiteConfig;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import org.apache.log4j.Logger;
-import org.sqlite.SQLiteConfig;
 
 /**
  * A class to connect and run queries against the database

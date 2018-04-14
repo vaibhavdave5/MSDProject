@@ -1,6 +1,4 @@
 package view;
-	
-import org.apache.log4j.Logger;
 
 import controllers.ScreenController;
 import controllers.popups.PopupMessage;
@@ -10,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import org.apache.log4j.Logger;
 /**
  * Entry point of application  
  * @author Samanjate Sood
@@ -21,8 +20,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
 	private static Logger logger = Logger.getLogger(Main.class);
-	
-	
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {

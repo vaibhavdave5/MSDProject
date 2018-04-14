@@ -2,7 +2,11 @@ package utils;
 
 import algorithms.Result;
 import algorithms.SimilaritySnippet;
-import driver.*;
+import driver.CodeSnippets;
+import driver.Driver;
+import driver.FilePair;
+import driver.IDriver;
+import driver.IFilePair;
 import org.junit.Test;
 import parser.Node;
 
@@ -13,7 +17,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
 
@@ -481,7 +488,8 @@ public class FileUtilsTest {
 				"47.         i++;\n" +
 				"48.         k++;\n" +
 				"49.     }\n" +
-				"50. \n";
+				"50. \n" +
+				"--------------------\n";
 		assertEquals(expectedReport, report);
 	}
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">  
 	<top>
       <fx:include source="Menu.fxml" />
    </top>
@@ -17,10 +17,13 @@
             <ListView fx:id="danger" layoutX="48.0" layoutY="85.0" onMouseClicked="#unselectMediumAndSafe" prefHeight="409.0" prefWidth="244.0" />
             <ListView fx:id="medium" layoutX="315.0" layoutY="83.0" onMouseClicked="#unselectDangerAndSafe" prefHeight="412.0" prefWidth="244.0" />
             <ListView fx:id="safe" layoutX="588.0" layoutY="81.0" onMouseClicked="#unselectMediumAndDanger" prefHeight="413.0" prefWidth="173.0" />
-            <Label fx:id="info" alignment="CENTER" layoutX="171.0" layoutY="18.0" prefHeight="46.0" prefWidth="444.0" text="Double click on a student pair to view similarity" />
+            <Label fx:id="info" alignment="CENTER" layoutX="171.0" layoutY="10.0" prefHeight="46.0" prefWidth="444.0" text="Double click on a student pair to view similarity" />
             <ProgressBar fx:id="progress" layoutX="135.0" layoutY="516.0" prefHeight="20.0" prefWidth="548.0" progress="0.0" />
             <Button fx:id="back" layoutX="32.0" layoutY="18.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
             <Label fx:id="score" alignment="CENTER" layoutX="309.0" layoutY="542.0" prefHeight="46.0" prefWidth="157.0" />
+            <Label layoutX="48.0" layoutY="64.0" text="Highly Suspicious Submissions" />
+            <Label layoutX="315.0" layoutY="64.0" text="Moderately Suspicious Submissions" />
+            <Label layoutX="588.0" layoutY="64.0" text="Clean Submissions" />
          </children></AnchorPane>
    </left>
 </BorderPane>
