@@ -181,23 +181,16 @@ public class Driver implements IDriver {
 				}
 				//
 				// This will be replaced by an ML algorithm in the future
-<<<<<<< HEAD
 				double[] scoresLCS = new double[2];
 				double[] scoresNW = new double[2];
 				scoresLCS = ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.LCS), list1,
 						ac.getNodeList(file2));
 				scoresNW = ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.NW), list1,
 						ac.getNodeList(file2));
-				double weightedAverage = 
+				double weightedAverage =
 						0.75 * scoresLCS[0] > scoresLCS[1]? scoresLCS[0] : scoresLCS[1]
 						+ 0.25 * scoresNW[0] > scoresNW[1]? scoresNW[0] : scoresNW[1];
-=======
-				double weightedAverage = Double.parseDouble(config.readConfig("algo1Weight"))
-						* ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.LCS), list1,
-								ac.getNodeList(file2))
-						+ Double.parseDouble(config.readConfig("algo2Weight")) * ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.NW), list1,
-								ac.getNodeList(file2));
->>>>>>> master
+
 				similarityScoreList.add(weightedAverage);
 			}
 		}

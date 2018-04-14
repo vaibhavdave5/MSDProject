@@ -180,8 +180,8 @@ public class CompareController {
 			File file2 = fp.getFile2();
 			String fileName1 = file1.getName();
 			String fileName2 = file2.getName();
-			double percentage1 = fp.getResult1().getPercentage();
-			double percentage2 = fp.getResult2().getPercentage();
+			double percentage1 = fp.getResult1().getPercentagefile1();
+			double percentage2 = fp.getResult2().getPercentagefile2();
 			IResult result1 = fp.getResult1();
 			Set<SimilaritySnippet> snippets = result1.generateSnippet();
 			snippets.forEach(s -> {
