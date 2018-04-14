@@ -2,9 +2,10 @@ package algorithms;
 
 
 import org.junit.Test;
+import parser.Node;
+
 import java.util.LinkedList;
 import java.util.List;
-import parser.Node;
 
 /**
  * Tests for LCS Algorithm

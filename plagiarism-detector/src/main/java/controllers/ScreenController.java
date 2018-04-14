@@ -1,9 +1,9 @@
 package controllers;
 
-import java.util.HashMap;
-
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+
+import java.util.HashMap;
 
 /**
  * This Controller is responsible to switch between different screens of the application
