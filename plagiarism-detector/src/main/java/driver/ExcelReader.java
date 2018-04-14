@@ -10,7 +10,9 @@ import utils.MailUtils;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import static org.apache.poi.ss.usermodel.WorkbookFactory.create;
 
@@ -30,6 +32,9 @@ public class ExcelReader implements IExcelReader{
 	 * @throws InvalidFormatException in case the file provided isn't in the correct format
 	 */
     public Map<Integer, IStudent> getStudentMap(File xlsxFile) throws IOException, InvalidFormatException {
+    	Set<Integer> ids = new HashSet<>();
+    	Set<String> emails = new HashSet<>();
+
     	Map<Integer, IStudent> studentMap = new HashMap<>();
 		try(Workbook workbook = create(xlsxFile)) {
 	        Sheet sheet = workbook.getSheetAt(0);
@@ -37,13 +42,30 @@ public class ExcelReader implements IExcelReader{
 
 	        for(int i = 1; i < sheet.getPhysicalNumberOfRows(); i++) {
 	        	Row row = sheet.getRow(i);
-	        	int id = Integer.parseInt(dataFormatter.formatCellValue(row.getCell(0)));
-	        	String name = dataFormatter.formatCellValue(row.getCell(1));
+	        	int id;
+	        	try {
+					id = Integer.parseInt(dataFormatter.formatCellValue(row.getCell(0)));
+				}
+				catch(NumberFormatException e) {
+	        		throw new IllegalArgumentException("The id should be an integer");
+				}
+
+				String name = dataFormatter.formatCellValue(row.getCell(1));
+				if(name == null || name.isEmpty())
+					throw new IllegalArgumentException("Email of Student-" + id + " is incorrect");
+
 	        	String email = dataFormatter.formatCellValue(row.getCell(2));
 	        	if(!MailUtils.isValidEmail(email))
 	        		throw new IllegalArgumentException("Email of Student-" + id + " is incorrect");
-	        	Student student = new Student(id, name, email);
-	    		studentMap.put(id, student);
+
+	        	if(ids.contains(id))
+	        		throw new IllegalArgumentException("Students cannot have the same id");
+	        	if(emails.contains(email))
+	        		throw new IllegalArgumentException("Students cannot have the same email");
+
+	    		studentMap.put(id, new Student(id, name, email));
+	    		ids.add(id);
+	    		emails.add(email);
 	        }
     	}
 
