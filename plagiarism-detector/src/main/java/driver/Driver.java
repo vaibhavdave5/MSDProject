@@ -139,9 +139,9 @@ public class Driver implements IDriver {
 		if (maxScore == null)
 			return;
 
-		if (maxScore >= Double.parseDouble(config.readConfig("redWeight")))
+		if (maxScore >= Double.parseDouble(config.readConfig("redThreshold")))
 			this.summary.addToRedPairs(sp);
-		else if (maxScore >= Double.parseDouble(config.readConfig("yellowWeight")))
+		else if (maxScore >= Double.parseDouble(config.readConfig("yellowThreshold")))
 			this.summary.addToYellowPairs(sp);
 
 		if (maxScore >= Double.parseDouble(config.readConfig("yellowWeight")))
