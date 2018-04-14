@@ -16,7 +16,7 @@ public interface IResult {
 	/**
 	 * @return the percentage of similarities between two lists of nodes
 	 */
-	public double getPercentage();
+	double getPercentage();
 
 
 	/**
@@ -25,5 +25,5 @@ public interface IResult {
 	 * 
 	 * @return a set of similarity snippets.
 	 */
-	public Set<SimilaritySnippet> generateSnippet();
+	Set<SimilaritySnippet> generateSnippet();
 }
