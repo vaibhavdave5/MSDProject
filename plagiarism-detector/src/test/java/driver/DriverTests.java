@@ -68,95 +68,34 @@ public class DriverTests {
 		assertEquals(expectedKey2, actualKeys[1]);
 	}
 
-	/**
-	 * Test for checking for plagiarism using LCS algorithm
-	 */
 	@Test
-	public void testCheckForPlagiarismLCS() {
+	public void testCheckForPlagiarism() {
 		IDriver driver = Driver.getInstance();
 		List<String> repoPaths = new ArrayList<>();
+		Integer expected1 = 110;
+		Integer expected2 = 111;
 
 		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
 				+ File.separator + "java" + File.separator + "controllers" + File.separator + "test-repos"
 				+ File.separator;
 
-		repoPaths.add(basePath + "student-110");
-		repoPaths.add(basePath + "student-111");
+		repoPaths.add(basePath + "student-" + expected1);
+		repoPaths.add(basePath + "student-" + expected2);
 		String hwDir = "HW3";
-		String message = driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.LCS);
-		ISummary summary = driver.viewSummary();
-		Integer expected1 = 110;
-		Integer expected2 = 111;
-		Set<IStudentPair> actual = summary.getRedPairs();
-		for(IStudentPair sp: actual) {
-			Integer actual1 = sp.getStudent1Id();
-			Integer actual2 = sp.getStudent2Id();
-			assertEquals(expected1, actual1);
-			assertEquals(expected2, actual2);
+
+		for(Algorithm algorithm : Algorithm.values()) {
+			String message = driver.checkForPlagiarism(repoPaths, hwDir, algorithm);
+			ISummary summary = driver.viewSummary();
+			Set<IStudentPair> actual = summary.getRedPairs();
+			for (IStudentPair sp : actual) {
+				Integer actual1 = sp.getStudent1Id();
+				Integer actual2 = sp.getStudent2Id();
+				assertEquals(expected1, actual1);
+				assertEquals(expected2, actual2);
+			}
+			assertTrue(summary.getYellowPairs().isEmpty());
+			assertTrue(summary.getGreenIds().isEmpty());
 		}
-		assertTrue(summary.getYellowPairs().isEmpty());
-		assertTrue(summary.getGreenIds().isEmpty());
-	}
-
-
-	/**
-	 * Test for checking for plagiarism using NW algorithm
-	 */
-	@Test
-	public void testCheckForPlagiarismNW() {
-		IDriver driver = Driver.getInstance();
-		List<String> repoPaths = new ArrayList<>();
-
-		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
-				+ File.separator + "java" + File.separator + "controllers" + File.separator + "test-repos"
-				+ File.separator;
-
-		repoPaths.add(basePath + "student-110");
-		repoPaths.add(basePath + "student-111");
-		String hwDir = "HW3";
-		driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.NW);
-		ISummary summary = driver.viewSummary();
-		Integer expected1 = 110;
-		Integer expected2 = 111;
-		Set<IStudentPair> actual = summary.getRedPairs();
-		for(IStudentPair sp: actual) {
-			Integer actual1 = sp.getStudent1Id();
-			Integer actual2 = sp.getStudent2Id();
-			assertEquals(expected1, actual1);
-			assertEquals(expected2, actual2);
-		}
-		assertTrue(summary.getYellowPairs().isEmpty());
-		assertTrue(summary.getGreenIds().isEmpty());
-	}
-
-	/**
-	 * Test for checking for plagiarism using the default algorithm
-	 */
-	@Test
-	public void testCheckForPlagiarismDefault() {
-		IDriver driver = Driver.getInstance();
-		List<String> repoPaths = new ArrayList<>();
-
-		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
-				+ File.separator + "java" + File.separator + "controllers" + File.separator + "test-repos"
-				+ File.separator;
-
-		repoPaths.add(basePath + "student-110");
-		repoPaths.add(basePath + "student-111");
-		String hwDir = "HW3";
-		String message = driver.checkForPlagiarism(repoPaths, hwDir, Algorithm.DEFAULT);
-		ISummary summary = driver.viewSummary();
-		Integer expected1 = 110;
-		Integer expected2 = 111;
-		Set<IStudentPair> actual = summary.getRedPairs();
-		for(IStudentPair sp: actual) {
-			Integer actual1 = sp.getStudent1Id();
-			Integer actual2 = sp.getStudent2Id();
-			assertEquals(expected1, actual1);
-			assertEquals(expected2, actual2);
-		}
-		assertTrue(summary.getYellowPairs().isEmpty());
-		assertTrue(summary.getGreenIds().isEmpty());
 	}
 
 
