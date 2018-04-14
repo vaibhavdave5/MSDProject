@@ -271,17 +271,11 @@ public class Driver implements IDriver {
 				IResult result1;
 				IResult result2;
 				
-				if(this.algo == Algorithm.LCS) {
 					result1 = ac.getResult(new AlgorithmFactory().getAlgo(Algorithm.LCS), list1,
 							ac.getNodeList(file2));
 					result2 = ac.getResult(new AlgorithmFactory().getAlgo(Algorithm.NW), list1,
 							ac.getNodeList(file2));
-				} else {
-					result2 = ac.getResult(new AlgorithmFactory().getAlgo(Algorithm.LCS), list1,
-							ac.getNodeList(file2));
-					result1 = ac.getResult(new AlgorithmFactory().getAlgo(Algorithm.NW), list1,
-							ac.getNodeList(file2));
-				}
+				
 				
 				fp.setResult1(result1);
 				fp.setResult2(result2);

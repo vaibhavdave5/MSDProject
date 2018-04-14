@@ -37,7 +37,7 @@ public class AlgorithmController {
 	 * @param f1 the first file
 	 * @param f2 the secocnd file
 	 */
-	public AlgorithmController() {}
+	
 
 	/**
 	 * Gets the results from the type of algorithm passed in the strategy
