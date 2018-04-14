@@ -31,11 +31,6 @@ import java.util.Map;
 public class AlgorithmController {
 	private static Logger logger = Logger.getLogger(AlgorithmController.class);
 	
-	/**
-	 * Constructor for making a new AlgorithmController
-	 * @param f1 the first file
-	 * @param f2 the secocnd file
-	 */
 	
 
 	/**
