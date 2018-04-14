@@ -47,21 +47,21 @@ public class ExcelReader implements IExcelReader{
 					id = Integer.parseInt(dataFormatter.formatCellValue(row.getCell(0)));
 				}
 				catch(NumberFormatException e) {
-	        		throw new IllegalArgumentException("The id should be an integer");
+	        		throw new IllegalArgumentException("The id should be an integer. Check row " + i);
 				}
 
 				String name = dataFormatter.formatCellValue(row.getCell(1));
 				if(name == null || name.isEmpty())
-					throw new IllegalArgumentException("Email of Student-" + id + " is incorrect");
+					throw new IllegalArgumentException("Email of Student-" + id + " is incorrect. Check row " + i);
 
 	        	String email = dataFormatter.formatCellValue(row.getCell(2));
 	        	if(!MailUtils.isValidEmail(email))
-	        		throw new IllegalArgumentException("Email of Student-" + id + " is incorrect");
+	        		throw new IllegalArgumentException("Email of Student-" + id + " is incorrect. Check row " + i);
 
 	        	if(ids.contains(id))
-	        		throw new IllegalArgumentException("Students cannot have the same id");
+	        		throw new IllegalArgumentException("Students cannot have the same id. Check row " + i);
 	        	if(emails.contains(email))
-	        		throw new IllegalArgumentException("Students cannot have the same email");
+	        		throw new IllegalArgumentException("Students cannot have the same email. Check row " + i);
 
 	    		studentMap.put(id, new Student(id, name, email));
 	    		ids.add(id);
