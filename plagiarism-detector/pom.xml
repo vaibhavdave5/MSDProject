@@ -15,9 +15,12 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<sonar.exclusions>
+			<!-- Excluding the ANTLR generated files -->
 			**/C*.java
 		</sonar.exclusions>
 		<sonar.coverage.exclusions>
+		   <!-- These files are UI files and cannot be tested on Jenkins so are excluded -->
+		   <!-- We are using squish to locally test the UI -->
 			**/Main.java, **/MainController.java, **/MenuController.java, **/SummaryController.java, **/ScreenController.java, **/CompareController.java, **/PopupMessage.java, **/MailUtils.java
     		</sonar.coverage.exclusions>
 		<sonar.junit.reportPaths>
