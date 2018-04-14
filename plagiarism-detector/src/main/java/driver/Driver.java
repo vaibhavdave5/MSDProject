@@ -144,7 +144,7 @@ public class Driver implements IDriver {
 		else if (maxScore >= Double.parseDouble(config.readConfig("yellowThreshold")))
 			this.summary.addToYellowPairs(sp);
 
-		if (maxScore >= Double.parseDouble(config.readConfig("yellowWeight")))
+		if (maxScore >= Double.parseDouble(config.readConfig("yellowThreshold")))
 			sp.setSimilarityScore(maxScore);
 	}
 
