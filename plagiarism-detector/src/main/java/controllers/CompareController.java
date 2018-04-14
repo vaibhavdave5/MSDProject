@@ -94,7 +94,7 @@ public class CompareController {
 		studentBName.setText("Student-" + codeSnippets.getStudent2Id());
 
 		LCSScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_LCS + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
-		NWScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_LCS+ new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
+		NWScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_NW+ new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
 	}
 	
 	/**
@@ -123,7 +123,7 @@ public class CompareController {
 		initializeSnippet();
 
 		LCSScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_LCS + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
-		NWScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_LCS+ new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
+		NWScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_NW+ new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class CompareController {
 		initializeSnippet();
 
 		LCSScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_LCS + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
-		NWScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_LCS+ new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
+		NWScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_NW+ new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
 	}
 	
 	/**

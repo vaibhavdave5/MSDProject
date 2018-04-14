@@ -10,7 +10,7 @@ public class AlgorithmFactory {
 	/**
 	 * Returns the required algorithm
 	 * @param Algorithm algo
-	 * @return
+	 * @return one of the Algorithm Strategy
 	 */
 	public AlgorithmStrategy getAlgo(Algorithm algo){
 		

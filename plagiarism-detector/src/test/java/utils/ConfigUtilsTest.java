@@ -14,8 +14,8 @@ public class ConfigUtilsTest {
 	ConfigUtils cu = new ConfigUtils();
 	@Test
 	public void testWriteInConfig() {
-		cu.writeInConfig("test", "testing");
-		assertEquals("testing", cu.readConfig("test"));
+		cu.writeInConfig("test", "testin");
+		assertEquals("testin", cu.readConfig("test"));
 	}
 
 	@Test
