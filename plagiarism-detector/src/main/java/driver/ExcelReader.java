@@ -20,7 +20,7 @@ import static org.apache.poi.ss.usermodel.WorkbookFactory.create;
  * @author Darshan Panse
  * @author Shail Shah
  */
-public class ExcelReader {
+public class ExcelReader implements IExcelReader{
 
 	/**
 	 * Get a map in which the key is the ID of the student anf the value is the Student, using an excel file

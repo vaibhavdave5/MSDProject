@@ -1,8 +1,8 @@
 package driver;
 
-import java.io.File;
-
 import algorithms.IResult;
+
+import java.io.File;
 
 /**
  * The classes implementing this interface provide methods to manipulate a file pair.

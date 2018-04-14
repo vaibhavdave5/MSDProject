@@ -1,12 +1,15 @@
 package controllers;
 
-import static org.junit.Assert.*;
-import java.io.File;
-import java.util.logging.Logger;
-import org.junit.Test;
 import algorithms.LCSAlgorithm;
 import algorithms.NeedlemanWunschAlgorithm;
+import org.junit.Test;
 import parser.Node;
+
+import java.io.File;
+import java.util.logging.Logger;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Tests AlgorithmController to see if the similarity is computed as expected.
@@ -33,8 +36,7 @@ public class AlgorithmControllerTest {
 		File file2 = new File(path2);
 
 		AlgorithmController ac = new AlgorithmController();
-		double ans = -1;
-		ans = ac.getSimilarityPercentage(new LCSAlgorithm(), ac.getNodeList(file1), ac.getNodeList(file2));
+		double ans = ac.getSimilarityPercentage(new LCSAlgorithm(), ac.getNodeList(file1), ac.getNodeList(file2));
 		assertTrue(ans >= 0 && ans <= 1);
 	}
 
@@ -51,16 +53,9 @@ public class AlgorithmControllerTest {
 		File file2 = new File(path2);
 
 		AlgorithmController ac = new AlgorithmController();
-		double ans = -1;
-		ans = ac.getSimilarityPercentage(new NeedlemanWunschAlgorithm(), ac.getNodeList(file1), ac.getNodeList(file2));
+		double ans = ac.getSimilarityPercentage(new NeedlemanWunschAlgorithm(), ac.getNodeList(file1), ac.getNodeList(file2));
 		assertTrue(ans >= 0 && ans <= 1);
 	}
-
-	/**
-	 * Should throw IOException if path is invalid
-	 * 
-	 * @throws IOException
-	 */
 
 	/**
 	 * Checking if the equals method works correctly
@@ -102,6 +97,7 @@ public class AlgorithmControllerTest {
 		assertTrue(node.equals(node2));
 	}
 
+	@Test
 	public void Nodetest5() {
 		Node node = new Node(1, 40, 3, "Hello");
 		Node node2 = new Node(1, 40, 3, "Hello");

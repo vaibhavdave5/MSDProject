@@ -20,5 +20,5 @@ public interface IExcelReader {
 	 * @throws IOException in case the file reading doesn't go as planned
 	 * @throws InvalidFormatException in case the file provided isn't in the correct format
 	 */
-	Map<Integer, Student> getStudentMap(File xlsxFile) throws IOException, InvalidFormatException;
+    Map<Integer, IStudent> getStudentMap(File xlsxFile) throws IOException, InvalidFormatException;
 }
