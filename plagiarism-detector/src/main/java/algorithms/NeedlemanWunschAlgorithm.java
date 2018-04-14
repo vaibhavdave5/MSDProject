@@ -79,7 +79,7 @@ public class NeedlemanWunschAlgorithm implements AlgorithmStrategy {
 				j--;
 				break;
 
-			// the neighbor to the left, (a gap is introduced in the left
+			// the neighbor to the left, (a gap is introduced in the left)
 			// sequence)
 			case 3:
 				i--;
