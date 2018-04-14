@@ -151,8 +151,6 @@ public class CompareController {
 		String text2 = driver.getNameById(studentId2) + " (" + driver.getEmailById(studentId2) + ")";
 		studentAName.setText(text1);
 		studentBName.setText(text2);
-
-
 	}
 	
 	/**
