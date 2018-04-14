@@ -488,7 +488,8 @@ public class FileUtilsTest {
 				"47.         i++;\n" +
 				"48.         k++;\n" +
 				"49.     }\n" +
-				"50. \n";
+				"50. \n" +
+				"--------------------\n";
 		assertEquals(expectedReport, report);
 	}
 }
