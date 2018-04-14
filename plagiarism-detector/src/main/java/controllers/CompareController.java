@@ -143,7 +143,7 @@ public class CompareController {
 	 * This function reveals the name of the students
 	 */
 	@FXML public void revealNames() {
-		reveal.setDisable(true);
+		reveal.setVisible(false);
 		IDriver driver = Driver.getInstance();
 		Integer studentId1 = codeSnippets.getStudent1Id();
 		Integer studentId2 = codeSnippets.getStudent2Id();
@@ -151,8 +151,6 @@ public class CompareController {
 		String text2 = driver.getNameById(studentId2) + " (" + driver.getEmailById(studentId2) + ")";
 		studentAName.setText(text1);
 		studentBName.setText(text2);
-
-
 	}
 	
 	/**
