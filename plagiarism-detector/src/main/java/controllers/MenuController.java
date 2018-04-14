@@ -55,7 +55,7 @@ public class MenuController {
 	}
 	
 	/**
-	 * THis method shuts down the application
+	 * This method shuts down the application
 	 */
 	@FXML public void closeApplication() {
 		Platform.exit();
