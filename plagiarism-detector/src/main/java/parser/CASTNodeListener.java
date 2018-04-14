@@ -2,11 +2,12 @@ package parser;
 
 //This class is retrieved from ANTLR team-107 is not adding futhur
 // documentation than what is provided
-import java.util.List;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
+
+import java.util.List;
 
 public class CASTNodeListener implements CListener {
 
