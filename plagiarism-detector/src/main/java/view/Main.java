@@ -32,10 +32,7 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
-	 		PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
-					"Error", 
-					"An error occurred", 
-					"Try again later.");
+	 		PopupMessage.getInstance().showError(null, null);
 			logger.error(e);
 		}
 	}

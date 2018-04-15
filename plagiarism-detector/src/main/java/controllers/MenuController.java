@@ -35,7 +35,7 @@ public class MenuController {
 	 * This methods shows the information about the application
 	 */
 	@FXML public void showAbout() {
-		PopupMessage.getInstance().showAlertMessage(AlertType.INFORMATION,
+		PopupMessage.getInstance().showAlert(AlertType.INFORMATION,
 				"About", 
 				"© Team 107\nManaging Software Development, Spring 2018", 
 				"This Software was developed by:\n\nDave, Vaibhav\nPanse, Darshan\nShah, Shail\nSood, Samanjate");
@@ -45,7 +45,7 @@ public class MenuController {
 	 * This methods shows the information about the application
 	 */
 	@FXML public void showStatistics() {
-		PopupMessage.getInstance().showAlertMessage(AlertType.INFORMATION,
+		PopupMessage.getInstance().showAlert(AlertType.INFORMATION,
 				"Global Statistics", "Statistics can be found here",
 				"Number of files scanned till now are :"
 				+Connect.getNumberofFilesFromStatistics()
