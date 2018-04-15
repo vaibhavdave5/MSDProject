@@ -78,7 +78,7 @@ public class MailUtils {
 					.replaceAll("\\%29", ")")
 					.replaceAll("\\%7E", "~");
 		} catch (UnsupportedEncodingException e) {
-			logger.error(e);
+			logger.error(e); 
 		}
 		return encodedText;
 	}
