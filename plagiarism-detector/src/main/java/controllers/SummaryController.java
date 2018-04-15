@@ -124,9 +124,7 @@ public class SummaryController {
 	@FXML public void goBack()
 	{
 		Optional<ButtonType> type 
-		    = PopupMessage.getInstance().showAlertMessage(AlertType.CONFIRMATION,
-				"Confirmation", 
-				"Are you sure?", 
+		    = PopupMessage.getInstance().showConfirm(null,
 				"You will lose all your changes.");
 		if(type.isPresent() && type.get() == ButtonType.CANCEL) return;
 		if(screenController != null) {
