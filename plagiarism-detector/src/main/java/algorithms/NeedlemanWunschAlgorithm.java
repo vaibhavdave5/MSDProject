@@ -44,8 +44,8 @@ public class NeedlemanWunschAlgorithm implements AlgorithmStrategy {
 
 		List<SimilaritySnippet> snippets = getCommonNodesList(list1, list2);
 
-		return new Result(((2.0 * snippets.size()) / list1.size()),
-  				 ((2.0 * snippets.size()) / list1.size()),
+		return new Result(((1.0 * snippets.size()) / list1.size()),
+  				 ((1.0 * snippets.size()) / list1.size()),
 	 			  snippets);
 	}
 
