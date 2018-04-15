@@ -82,7 +82,7 @@ public class MainController {
 		northeastern.setImage(new Image(getClass()
 				.getResource("/images/logo.png")
 				.toExternalForm()));
-		hw.setPromptText("Select e.g. HW1...");
+		hw.setPromptText("Type in e.g. HW1...");
 		progress.setVisible(false);
 	}
 	

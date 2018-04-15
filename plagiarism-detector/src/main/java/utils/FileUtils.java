@@ -163,7 +163,8 @@ public class FileUtils {
 					.append("Student B's ")
 					.append(file2.getName())
 					.append("\n")
-					.append(getFileString(file2, start2, end2));
+					.append(getFileString(file2, start2, end2))
+					.append("--------------------\n");
 		});
 
 		return sb.toString();
