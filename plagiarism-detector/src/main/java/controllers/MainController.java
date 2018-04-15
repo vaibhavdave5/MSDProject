@@ -189,14 +189,10 @@ public class MainController {
 		getListOfPaths(allPaths, root);
 		String errorMsg = errNoStudentDir(allPaths) + errNoHW() + errNoExcel() + errOnlyOneSelected(allPaths);
 		if(!"".equals(errorMsg)) {
-			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
-					"Error", 
-					"An error occurred", 
-					errorMsg);
+			PopupMessage.getInstance().showError(null, errorMsg);
 		} else {
 			if(algo == null || algo == Algorithm.DEFAULT) {
-				PopupMessage.getInstance().showAlertMessage(AlertType.INFORMATION,
-						"Information", 
+				PopupMessage.getInstance().showInfo( 
 						"Running Weighted Average", 
 						"Since no strategy was provided, a weighted average of the two will be reported");
 				}
@@ -227,10 +223,7 @@ public class MainController {
 				if(!returnMessage.isEmpty()) {
 					progress.setVisible(false);
 					summary.setDisable(false);
-					PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
-							"Error!", 
-							"Some error occurred", 
-							returnMessage);
+					PopupMessage.getInstance().showError(null, returnMessage);
 				} else {
 					routeToSummary(drive.viewSummary());
 				}
@@ -244,10 +237,7 @@ public class MainController {
 		task.setOnFailed(e -> {
 			progress.setVisible(false);
 			summary.setDisable(false);
-			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
-					"Error!", 
-					"Error occurred", 
-					"Something doesn't seem to be working. Try again later.");
+			PopupMessage.getInstance().showError(null, null);
 			});
 		new Thread(task).start();
 	}
@@ -269,10 +259,7 @@ public class MainController {
 				logger.error(e.toString());
 			}
 		} else {
-			PopupMessage.getInstance().showAlertMessage(AlertType.ERROR,
-					"Error", 
-					"An error occurred", 
-					"Cannot route to the summary page. Try again later.");
+			PopupMessage.getInstance().showError(null, null);
 		}
 	}
 
