@@ -36,8 +36,9 @@ public class AlgorithmControllerTest {
 		File file2 = new File(path2);
 
 		AlgorithmController ac = new AlgorithmController();
-		double ans = ac.getSimilarityPercentage(new LCSAlgorithm(), ac.getNodeList(file1), ac.getNodeList(file2));
-		assertTrue(ans >= 0 && ans <= 1);
+		double[] ans = ac.getSimilarityPercentage(new LCSAlgorithm(), ac.getNodeList(file1), ac.getNodeList(file2));
+		assertTrue(ans[0] >= 0 && ans[0] <= 1);
+		assertTrue(ans[1] >= 0 && ans[1] <= 1);
 	}
 
 	/**
@@ -53,8 +54,9 @@ public class AlgorithmControllerTest {
 		File file2 = new File(path2);
 
 		AlgorithmController ac = new AlgorithmController();
-		double ans = ac.getSimilarityPercentage(new NeedlemanWunschAlgorithm(), ac.getNodeList(file1), ac.getNodeList(file2));
-		assertTrue(ans >= 0 && ans <= 1);
+		double[] ans = ac.getSimilarityPercentage(new NeedlemanWunschAlgorithm(), ac.getNodeList(file1), ac.getNodeList(file2));
+		assertTrue(ans[0] >= 0 && ans[0] <= 1);
+		assertTrue(ans[1] >= 0 && ans[1] <= 1);
 	}
 
 	/**

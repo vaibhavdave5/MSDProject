@@ -20,16 +20,21 @@ public class LCSAlgorithm implements AlgorithmStrategy {
 	 * 
 	 * @param list1 a list of Nodes
 	 * @param list2 another list of Nodes
+	 * @throws IllegalArgumentException
 	 * @return a number representing the similarity between two nodes
 	 */
 	@Override
 	public IResult computeSimilarity(List<Node> list1, List<Node> list2) {
-		int totalSize = list1.size() + list2.size();
-		if (totalSize == 0)
-			throw new IllegalArgumentException("Both lists are empty.");
+		if (list1.isEmpty())
+			throw new IllegalArgumentException("File 1 is empty");
+		else if (list2.isEmpty())
+			throw new IllegalArgumentException("File 2 is empty");
 
 		setCommonNodes(list1, list2);
-		return new Result(((2.0 * snippets.size()) / totalSize), snippets);
+		
+		return new Result(((1.0 * snippets.size()) / list1.size()),
+		   				 ((1.0 * snippets.size()) / list1.size()),
+			 			  snippets);
 	}
 
 	/**

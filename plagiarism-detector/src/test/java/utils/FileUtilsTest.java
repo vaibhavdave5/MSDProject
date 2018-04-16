@@ -380,7 +380,7 @@ public class FileUtilsTest {
 		Node node2 = new Node(1, 50, 3, "className2" );
 		List<SimilaritySnippet> snippetList = new ArrayList<>();
 		snippetList.add(new SimilaritySnippet(node1, node2));
-		Result result =  new Result(0.6, snippetList);
+		Result result =  new Result(0.6, 0.8, snippetList);
 		FilePair filePair = new FilePair(file1, file2);
 		filePair.setResult1(result);
 		List<IFilePair> filePairList = new ArrayList<>();
@@ -396,7 +396,8 @@ public class FileUtilsTest {
 
 		String expectedReport = date + "Report for Darshan and Saman\n" +
 				"sample.c and sample2.c are suspected to be similar. \n" +
-				"There is a 60.0% match.\n" +
+				"File1 match: 0.6\n" +
+				"File2 match:0.8\n" +
 				"Student A's sample.c\n" +
 				"1. /* This function takes last element as pivot, places\n" +
 				"2.    the pivot element at its correct position in sorted\n" +
