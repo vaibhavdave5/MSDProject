@@ -158,7 +158,6 @@ public class DriverTests {
 	public void testGetNameById() {
 		IDriver driver = Driver.getInstance();
 		URL url = this.getClass().getResource("/studentData.xlsx");
-		System.out.println(url.toString());
 		String expected1 = "Darshan";
 		String expected2 = "Saman";
 		String xlsxPath = url.getPath();
@@ -167,6 +166,59 @@ public class DriverTests {
 		String actual2 = driver.getNameById(102);
 		assertEquals(expected1, actual1);
 		assertEquals(expected2, actual2);
+	}
+
+	private void testGetStudentDataException(String filepath) {
+		Driver
+			.getInstance()
+			.getStudentData(new File(this.getClass()
+					.getResource(filepath)
+					.getPath()));
+	}
+
+	/**
+	 * Test for getting student data from
+	 * an excel file with a blank name for student
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testGetStudentDataBlankName() {
+		testGetStudentDataException("/studentDataBlankName.xlsx");
+	}
+
+	/**
+	 * Test for getting student data from
+	 * an excel file with an invalid id
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testGetStudentDataInvalidId() {
+		testGetStudentDataException("/studentDataInvalidId.xlsx");
+	}
+
+	/**
+	 * Test for getting student data from
+	 * an excel file with an invalid email address
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testGetStudentDataInvalidEmail() {
+		testGetStudentDataException("/studentDataInvalidEmail.xlsx");
+	}
+
+	/**
+	 * Test for getting student data from
+	 * an excel file with same user id
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testGetStudentDataSameId() {
+		testGetStudentDataException("/studentDataSameId.xlsx");
+	}
+
+	/**
+	 * Test for getting student data from
+	 * an excel file with a same email address
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testGetStudentDataSameEmail() {
+		testGetStudentDataException("/studentDataSameEmail.xlsx");
 	}
   
 	/**
