@@ -157,7 +157,7 @@ public class SummaryController {
 	 */
 	@FXML public void unselectDangerAndSafe(MouseEvent event) {
 		unselectItems(danger, safe);
-		if(event.getClickCount() == 2) {
+		if(event.getClickCount() == 2 && medium.getSelectionModel().getSelectedIndex() != -1) {
 			routeToCompare(medium
 							.getItems()
 							.get(medium
@@ -172,7 +172,7 @@ public class SummaryController {
 	 */
 	@FXML public void unselectMediumAndSafe(MouseEvent event) {
 		unselectItems(medium, safe);
-		if(event.getClickCount() == 2) {
+		if(event.getClickCount() == 2 && danger.getSelectionModel().getSelectedIndex() != -1) {
 			routeToCompare(danger
 							.getItems()
 							.get(danger
