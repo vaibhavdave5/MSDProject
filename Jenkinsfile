@@ -22,21 +22,7 @@ pipeline {
            }
        }
        
-       stage('UI TESTS'){
-           step([
-               $class:'SquishBuilder',
-               abortBuildOnError: false,
-               extraOprions: '--abortOnFail',
-               host:'',
-               port:'',
-               skipTestCases: false,
-               sonnzeFactor:'1',
-               testCase: '',
-               testSuite :'''\\plagiarism-detector\\suite'''
-           ])
-
-       }
-
+       
        stage('SonarQube') {
             steps {
                 withSonarQubeEnv('SonarQube') {
