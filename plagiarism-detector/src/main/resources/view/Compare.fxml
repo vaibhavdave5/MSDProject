@@ -15,8 +15,8 @@
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="reportButton" layoutX="283.0" layoutY="553.0" mnemonicParsing="false" onAction="#generateReport" text="Generate Report" />
-            <Label fx:id="studentAName" layoutX="163.0" layoutY="37.0" />
-            <Label fx:id="studentBName" layoutX="559.0" layoutY="37.0" />
+            <Label fx:id="studentAName" layoutX="163.0" layoutY="23.0" text="Student A" />
+            <Label fx:id="studentBName" layoutX="559.0" layoutY="23.0" text="Student B" />
             <ScrollPane id="scrollPaneA" layoutX="21.0" layoutY="84.0" prefHeight="454.0" prefWidth="368.0">
                <content>
                   <TextFlow fx:id="studentBCode" prefHeight="439.0" prefWidth="358.0" />
@@ -27,7 +27,7 @@
                   <TextFlow fx:id="studentACode" prefHeight="439.0" prefWidth="358.0" />
                </content>
             </ScrollPane>
-            <Button fx:id="reveal" layoutX="345.0" layoutY="24.0" mnemonicParsing="false" onAction="#revealNames" text="Reveal Names" />
+            <Button fx:id="reveal" layoutX="343.0" layoutY="18.0" mnemonicParsing="false" onAction="#revealNames" text="Reveal Names" />
             <Button fx:id="prev" layoutX="248.0" layoutY="553.0" mnemonicParsing="false" onAction="#onPreviousButtonClick" text="&lt;" />
             <Button fx:id="next" layoutX="526.0" layoutY="554.0" mnemonicParsing="false" onAction="#onNextButtonClick" text="&gt;" />
             <Button fx:id="back" layoutX="32.0" layoutY="18.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
