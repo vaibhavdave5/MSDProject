@@ -1,3 +1,4 @@
+
 int main()
 {
 	scanf("%d",&t);
