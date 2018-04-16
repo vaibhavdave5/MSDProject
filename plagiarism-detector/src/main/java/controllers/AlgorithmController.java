@@ -39,12 +39,9 @@ public class AlgorithmController {
 	/**
 	 * Gets the results from the type of algorithm passed in the strategy
 	 * 
-	 * @param strategy
-	 *            the method to use to run the plagiarism detector
-	 * @param nodeList1
-	 *            list of nodes retrieved from file1
-	 * @param nodeList2
-	 *            list of nodes retrieved from file2
+	 * @param strategy the method to use to run the plagiarism detector
+	 * @param nodeList1 list of nodes retrieved from file1
+	 * @param nodeList2 list of nodes retrieved from file2
 	 * @return Result a Result containing the outcome of the algorithm
 	 */
 	public IResult getResult(AlgorithmStrategy strategy, List<Node> nodeList1, List<Node> nodeList2) {
@@ -54,8 +51,7 @@ public class AlgorithmController {
 	/**
 	 * Get a list of Nodes representing a C file
 	 * 
-	 * @param file
-	 *            a C file
+	 * @param file a C file
 	 * @return a list of Nodes that represent the given C file
 	 */
 	public List<Node> getNodeList(File file) {
@@ -77,12 +73,9 @@ public class AlgorithmController {
 	/**
 	 * Gets the result and returns the answer in percentage
 	 * 
-	 * @param strategy
-	 *            the strategy to empty
-	 * @param nodeList1
-	 *            list of nodes retrieved from file1
-	 * @param nodeList2
-	 *            list of nodes retrieved from file2
+	 * @param strategy the strategy to empty
+	 * @param nodeList1 list of nodes retrieved from file1
+	 * @param nodeList2 list of nodes retrieved from file2
 	 * @return the percentage of similarity using the given strategy
 	 */
 	public double getSimilarityPercentage(AlgorithmStrategy strategy, List<Node> nodeList1, List<Node> nodeList2) {
@@ -92,10 +85,8 @@ public class AlgorithmController {
 	/**
 	 * Gets the results from the all types of algorithm
 	 * 
-	 * @param nodeList1
-	 *            list of nodes retrieved from file1
-	 * @param nodeList2
-	 *            list of nodes retrieved from file2
+	 * @param nodeList1 list of nodes retrieved from file1
+	 * @param nodeList2 list of nodes retrieved from file2
 	 * @return Map<Algorithm,IResult> map with key as the Algorithm and value is
 	 *         its corresponding result
 	 */
@@ -111,6 +102,7 @@ public class AlgorithmController {
 	/**
 	 * This function helps in making a temp file without #include in the C files
 	 * as ANTLR does not handle #include properly.
+	 * This temp file must be deleted once processed through the parser
 	 * 
 	 * @param file
 	 * @return a new temporary file created
