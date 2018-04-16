@@ -32,8 +32,8 @@
             <Button fx:id="next" layoutX="526.0" layoutY="554.0" mnemonicParsing="false" onAction="#onNextButtonClick" text="&gt;" />
             <Button fx:id="back" layoutX="32.0" layoutY="18.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
             <Button fx:id="emailButton" layoutX="412.0" layoutY="553.0" mnemonicParsing="false" onAction="#onClickSendMail" text="Email students" />
-            <Label fx:id="filePath1" layoutX="21.0" layoutY="66.0" text="file1" />
-            <Label fx:id="filePath2" layoutX="412.0" layoutY="66.0" text="file2" />
+            <Label fx:id="filePath1" layoutX="21.0" layoutY="61.0" text="file1" />
+            <Label fx:id="filePath2" layoutX="412.0" layoutY="61.0" text="file2" />
          </children></AnchorPane>
    </bottom>
 </BorderPane>
