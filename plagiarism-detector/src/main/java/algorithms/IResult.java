@@ -14,9 +14,16 @@ import java.util.Set;
 public interface IResult {
 
 	/**
-	 * @return the percentage of similarities between two lists of nodes
+	 * @return the percentage of similarities between two files
+	 *         w.r.t file1.
 	 */
-	double getPercentage();
+	public double getPercentagefile1();
+	
+	/**
+	 * @return the percentage of similarities between two files
+	 *         w.r.t file2. 
+	 */
+	public double getPercentagefile2();
 
 
 	/**
@@ -25,5 +32,5 @@ public interface IResult {
 	 * 
 	 * @return a set of similarity snippets.
 	 */
-	Set<SimilaritySnippet> generateSnippet();
+	public Set<SimilaritySnippet> generateSnippet();
 }

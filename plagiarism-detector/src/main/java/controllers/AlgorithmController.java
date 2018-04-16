@@ -5,6 +5,7 @@ import algorithms.AlgorithmContext;
 import algorithms.AlgorithmFactory;
 import algorithms.AlgorithmStrategy;
 import algorithms.IResult;
+
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
@@ -31,7 +32,12 @@ import java.util.Map;
 public class AlgorithmController {
 	private static Logger logger = Logger.getLogger(AlgorithmController.class);
 	
-	
+	/**
+	 * Constructor for making a new AlgorithmController
+	 * @param f1 the first file
+	 * @param f2 the secocnd file
+	 */
+	public AlgorithmController() {}
 
 	/**
 	 * Gets the results from the type of algorithm passed in the strategy
@@ -66,10 +72,14 @@ public class AlgorithmController {
 	 * @param strategy the strategy to empty
 	 * @param nodeList1 list of nodes retrieved from file1
 	 * @param nodeList2 list of nodes retrieved from file2
-	 * @return the percentage of similarity using the given strategy
+	 * @return the array of percentages of similarity using the given strategy
 	 */
-	public double getSimilarityPercentage(AlgorithmStrategy strategy,List<Node> nodeList1,List<Node> nodeList2){
-		return getResult(strategy,nodeList1,nodeList2).getPercentage();
+	public double[] getSimilarityPercentage(AlgorithmStrategy strategy,List<Node> nodeList1,List<Node> nodeList2){
+		double[] arr = new double[2];
+		IResult result = getResult(strategy,nodeList1,nodeList2);
+		arr[0] = result.getPercentagefile1();
+		arr[1] = result.getPercentagefile2(); 
+		return arr;
 	}
 	
 
