@@ -3,6 +3,7 @@
 	array, and places all smaller (smaller than pivot)
    to left of pivot and all greater elements to right
    of pivot */
+#include<stdio.h>
 int partition (int arr[], int low, int high)
 {
 	int pivot = arr[high];    // pivot

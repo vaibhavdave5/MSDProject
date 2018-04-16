@@ -5,6 +5,7 @@
 // Merges two subarrays of arr[].
 // First subarray is arr[l..m]
 // Second subarray is arr[m+1..r]
+#include<stdio.h>
 void merge(int arr[], int l, int m, int r)
 {
     int i, j, k;
