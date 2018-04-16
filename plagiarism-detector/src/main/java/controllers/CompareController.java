@@ -3,7 +3,6 @@ package controllers;
 import algorithms.IResult;
 import algorithms.SimilaritySnippet;
 import algorithms.SnippetPair;
-import constants.AlgorithmAndDriverStrings;
 import constants.MailStrings;
 import driver.Driver;
 import driver.ICodeSnippets;
@@ -47,8 +46,8 @@ public class CompareController {
 	@FXML private Button reveal;
 	@FXML private Button back;
 	@FXML private Button emailButton;
-	@FXML private Label LCSScore;
-	@FXML private Label NWScore;
+	@FXML private Label filePath1;
+	@FXML private Label filePath2;
 	
 	private ICodeSnippets codeSnippets;
 	private int currentSnippet = 0;
@@ -71,7 +70,9 @@ public class CompareController {
 		snippetPairs = getSnippetPairs();
 		reveal.setDisable(false);
 		initializeSnippet();
-		initializeLabels();
+		studentAName.setText("Student-" + codeSnippets.getStudent1Id());
+		studentBName.setText("Student-" + codeSnippets.getStudent2Id());
+		initializeFileNameLabels();
 	}
 	
 	/**
@@ -89,14 +90,15 @@ public class CompareController {
 	/**
 	 * This method initializes the Student names and labels the snippet
 	 */
-	private void initializeLabels() {
-		studentAName.setText("Student-" + codeSnippets.getStudent1Id());
-		studentBName.setText("Student-" + codeSnippets.getStudent2Id());
+	private void initializeFileNameLabels() {
+		DecimalFormat formatter = new DecimalFormat("#.##");
+		String percentage1 = formatter.format(snippetPairs.get(currentSnippet).getPercentage1() * 100);
+		String percentage2 = formatter.format(snippetPairs.get(currentSnippet).getPercentage2() * 100);
 
-		LCSScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_LCS + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
-		NWScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_NW+ new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
+		filePath1.setText(snippetPairs.get(currentSnippet).getFileName1() + ": " + percentage1 + "% match");
+		filePath2.setText(snippetPairs.get(currentSnippet).getFileName2() + ": " + percentage2 + "% match");
 	}
-	
+
 	/**
 	 * This method applies the CSS properties to the controls.
 	 */
@@ -121,9 +123,7 @@ public class CompareController {
 			return;
 		currentSnippet--;
 		initializeSnippet();
-
-		LCSScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_LCS + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
-		NWScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_NW+ new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
+		initializeFileNameLabels();
 	}
 
 	/**
@@ -134,9 +134,7 @@ public class CompareController {
 			return;
 		currentSnippet++;
 		initializeSnippet();
-
-		LCSScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_LCS + new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage1()));
-		NWScore.setText(AlgorithmAndDriverStrings.SCORE_TEXT_NW+ new DecimalFormat("#.##").format(snippetPairs.get(currentSnippet).getPercentage2()));
+		initializeFileNameLabels();
 	}
 	
 	/**
