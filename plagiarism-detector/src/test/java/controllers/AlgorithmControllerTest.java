@@ -58,6 +58,23 @@ public class AlgorithmControllerTest {
 	}
 
 	/**
+	 * Testing empty files
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void checkEmptyFiles(){
+		String path1 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "resources" + File.separator + "empty.c";
+		String path2 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "resources" + File.separator + "sample4.c";
+		File file1 = new File(path1);
+		File file2 = new File(path2);
+
+		AlgorithmController ac = new AlgorithmController();
+		double ans = ac.getSimilarityPercentage(new NeedlemanWunschAlgorithm(), ac.getNodeList(file1), ac.getNodeList(file2));
+		assertTrue(ans >= 0 && ans <= 1);
+	}
+	
+	/**
 	 * Checking if the equals method works correctly
 	 */
 	@Test
