@@ -10,10 +10,18 @@ import view.Main;
 
 public class MainControllerTest  extends FxRobot {
 
+	
+	
 	@Before public void setup() throws Exception {
         FxToolkit.registerPrimaryStage();
         FxToolkit.setupApplication(Main.class);
+	System.setProperty("testfx.robot", "glass");
+	System.setProperty("testfx.headless", "true");
+	System.setProperty("prism.order", "sw");
+	System.setProperty("prism.text", "t2k");
     }
+	
+	
 
     @After public void cleanup() {}
 
