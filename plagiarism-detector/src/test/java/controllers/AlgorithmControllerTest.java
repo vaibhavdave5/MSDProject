@@ -1,5 +1,6 @@
 package controllers;
 
+import algorithms.EditDistance;
 import algorithms.LCSAlgorithm;
 import algorithms.NeedlemanWunschAlgorithm;
 import org.junit.Test;
@@ -55,6 +56,24 @@ public class AlgorithmControllerTest {
 
 		AlgorithmController ac = new AlgorithmController();
 		double[] ans = ac.getSimilarityPercentage(new NeedlemanWunschAlgorithm(), ac.getNodeList(file1), ac.getNodeList(file2));
+		assertTrue(ans[0] >= 0 && ans[0] <= 1);
+		assertTrue(ans[1] >= 0 && ans[1] <= 1);
+	}
+
+	/**
+	 * Compute LCS percentage
+	 */
+	@Test
+	public void test3() {
+		String path1 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "resources" + File.separator + "sample3.c";
+		String path2 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "resources" + File.separator + "sample4.c";
+		File file1 = new File(path1);
+		File file2 = new File(path2);
+
+		AlgorithmController ac = new AlgorithmController();
+		double[] ans = ac.getSimilarityPercentage(new EditDistance(), ac.getNodeList(file1), ac.getNodeList(file2));
 		assertTrue(ans[0] >= 0 && ans[0] <= 1);
 		assertTrue(ans[1] >= 0 && ans[1] <= 1);
 	}

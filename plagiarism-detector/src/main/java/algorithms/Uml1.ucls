@@ -1,0 +1,1755 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="parser.CParser.StructOrUnionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="156" width="337" x="-35653" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="parser.CParser.AndExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="357" x="-35276" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="parser.CParser.CastExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="236" width="351" x="-34879" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="constants.AlgorithmAndDriverStrings" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/constants/AlgorithmAndDriverStrings.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="136" width="261" x="-45916" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="parser.CParser.CompilationUnitContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="351" x="-34488" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="parser.CParser.EnumeratorContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="391" x="-34097" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="parser.CParser.ShiftExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="361" x="-33666" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="parser.CParser.EnumeratorListContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="346" x="-33265" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="driver.StudentPair" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/driver/StudentPair.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="296" width="246" x="-36231" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="10" language="java" name="database" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/database" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="62" width="146" x="-45615" y="-9124"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="11" language="java" name="parser.CASTNodeListener" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CASTNodeListener.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="3736" width="511" x="-41415" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="parser.CParser.ParameterDeclarationContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="236" width="410" x="-32879" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="driver.Driver" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/driver/Driver.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="536" width="554" x="-39207" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="14" language="java" name="driver.IDriver" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/driver/IDriver.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="376" width="554" x="-39207" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="15" language="java" name="parser.CParser.DeclaratorContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="236" width="471" x="-32429" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="parser.CParser.BlockItemContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="308" x="-31918" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="constants.AlertStrings" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/constants/AlertStrings.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="776" x="-45429" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="parser.CParser.InitializerContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="411" x="-31570" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="driver.ExcelReader" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/driver/ExcelReader.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="116" width="327" x="-42905" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="controllers.CompareController" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/controllers/CompareController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="616" width="279" x="-40256" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="parser.CParser.UnaryOperatorContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="156" width="342" x="-31119" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="parser.CParser.TypedefNameContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="337" x="-30737" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="parser.CParser.TranslationUnitContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="363" x="-30360" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="parser.CParser.AlignmentSpecifierContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="372" x="-29957" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="parser.CParser.ExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="411" x="-29545" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="parser.CParser.StaticAssertDeclarationContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="405" x="-29094" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="parser.CParser.MultiplicativeExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="427" x="-28649" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="parser.CParser.EnumerationConstantContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="390" x="-28182" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="parser.CParser.SelectionStatementContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="376" x="-27752" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="parser.CParser.StructDeclarationContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="420" x="-27336" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="31" language="java" name="driver.IStudent" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/driver/IStudent.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="173" x="-39420" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="32" language="java" name="parser.CParser.AtomicTypeSpecifierContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="385" x="-26876" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="parser.CParser.GenericSelectionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="411" x="-26451" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="controllers.ScreenController" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/controllers/ScreenController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="236" width="279" x="-40060" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="parser.CParser.FunctionDefinitionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="236" width="392" x="-26000" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="parser.CParser.GenericAssocListContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="364" x="-25568" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="parser.CParser.EqualityExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="381" x="-25164" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="parser.CParser.AssignmentExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="256" width="411" x="-24743" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="view.Main" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/view/Main.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="156" width="152" x="-44613" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="parser.CParser.InclusiveOrExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="411" x="-24292" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="parser.CParser.DeclarationSpecifiersContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="419" x="-23841" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="parser.CParser.LabeledStatementContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="369" x="-23382" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="algorithms.LCSAlgorithm" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/algorithms/LCSAlgorithm.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="156" width="376" x="-35945" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="parser.CParser.PrimaryExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="336" width="385" x="-22973" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="parser.CParser.ParameterTypeListContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="372" x="-22548" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="parser.CParser.PointerContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="321" x="-22136" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="47" language="java" name="parser.CParser.InitializerListContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="325" x="-21775" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="48" language="java" name="view" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/view" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="62" width="146" x="-44421" y="-9124"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="49" language="java" name="parser.CParser.StructDeclaratorListContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="378" x="-21410" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="driver.Student" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/driver/Student.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="276" width="195" x="-39442" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="parser.CParser.GenericAssociationContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="411" x="-20992" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="52" language="java" name="parser" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="62" width="146" x="-44235" y="-9124"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="53" language="java" name="parser.CParser.DeclarationContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="420" x="-20541" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="54" language="java" name="controllers.SummaryController" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/controllers/SummaryController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="496" width="455" x="-39937" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="55" language="java" name="parser.CParser.ConditionalExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="403" x="-20081" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="56" language="java" name="parser.CParser.TypeNameContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="382" x="-19638" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="57" language="java" name="parser.CParser.StructDeclarationListContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="385" x="-19216" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="58" language="java" name="parser.CListener" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CListener.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="3556" width="511" x="-41415" y="2088"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="59" language="java" name="parser.CParser.UnaryExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="276" width="358" x="-18791" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="60" language="java" name="parser.CParser.GccAttributeListContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="351" x="-18393" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="61" language="java" name="parser.CParser.TypeQualifierContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="156" width="331" x="-18002" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="62" language="java" name="parser.CParser.ForConditionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="236" width="334" x="-17631" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="63" language="java" name="parser.CParser.DeclarationSpecifierContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="256" width="408" x="-17257" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="64" language="java" name="parser.CParser.ForExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="411" x="-16809" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="65" language="java" name="parser.CParser.FunctionSpecifierContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="388" x="-16358" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="66" language="java" name="parser.CParser.StatementContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="316" width="422" x="-15930" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="67" language="java" name="parser.CParser.ExternalDeclarationContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="376" x="-15468" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="68" language="java" name="parser.CParser.AssignmentOperatorContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="156" width="384" x="-15052" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="69" language="java" name="parser.CParser.InitDeclaratorListContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="357" x="-14628" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="70" language="java" name="driver.FilePair" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/driver/FilePair.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="296" width="188" x="-36776" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="71" language="java" name="algorithms.SimilaritySnippet" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/algorithms/SimilaritySnippet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="236" width="252" x="-35945" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="72" language="java" name="parser.CParser.AdditiveExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="427" x="-14231" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="73" language="java" name="parser.CParser.IdentifierListContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="324" x="-13764" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="74" language="java" name="algorithms.SnippetPair" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/algorithms/SnippetPair.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="336" width="397" x="-40497" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="75" language="java" name="parser.CParser.EnumSpecifierContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="343" x="-13400" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="76" language="java" name="parser.CParser.NestedParenthesesBlockContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="487" x="-13017" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="77" language="java" name="controllers.MainController" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/controllers/MainController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="856" width="508" x="-38292" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="78" language="java" name="parser.CParser.StorageClassSpecifierContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="156" width="399" x="-12490" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="79" language="java" name="parser.CParser.StructDeclaratorContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="369" x="-12051" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="80" language="java" name="parser.CLexer" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CLexer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="2816" width="360" x="-44049" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="81" language="java" name="algorithms.Result" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/algorithms/Result.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="342" x="-35529" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="82" language="java" name="parser.CParser.DirectAbstractDeclaratorContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="296" width="471" x="-11642" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="83" language="java" name="algorithms.NeedlemanWunschAlgorithm" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/algorithms/NeedlemanWunschAlgorithm.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="196" width="524" x="-37340" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="84" language="java" name="parser.CParser.ExclusiveOrExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="411" x="-11131" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="85" language="java" name="parser.CParser.DirectDeclaratorContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="316" width="411" x="-10680" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="86" language="java" name="parser.CParser.DeclarationListContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="345" x="-10229" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="87" language="java" name="parser.CParser.ParameterListContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="399" x="-9844" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="88" language="java" name="parser.CParser.PostfixExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="296" width="431" x="-9405" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="89" language="java" name="parser.CParser.CompoundStatementContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="388" x="-8934" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="90" language="java" name="parser.CParser.DesignatorContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="369" x="-8506" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="91" language="java" name="parser.CParser.GccDeclaratorExtensionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="409" x="-8097" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="92" language="java" name="driver.IExcelReader" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/driver/IExcelReader.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="96" width="327" x="-40864" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <package id="93" language="java" name="algorithms" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/algorithms" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="62" width="146" x="-43649" y="-9124"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="94" language="java" name="parser.CParser.DesignatorListContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="342" x="-7648" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="95" language="java" name="driver" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/driver" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="62" width="146" x="-43463" y="-9124"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="96" language="java" name="utils" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/utils" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="62" width="146" x="-43277" y="-9124"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="97" language="java" name="controllers" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/controllers" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="62" width="146" x="-43091" y="-9124"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="98" language="java" name="parser.CParser.DeclarationSpecifiers2Context" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="419" x="-7266" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="99" language="java" name="driver.CodeSnippets" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/driver/CodeSnippets.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="256" width="271" x="-38603" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="100" language="java" name="algorithms.IAlgorithmContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/algorithms/IAlgorithmContext.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="96" width="361" x="-42538" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="101" language="java" name="parser.CParser.ExpressionStatementContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="389" x="-6807" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="102" language="java" name="driver.Summary" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/driver/Summary.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="256" width="277" x="-36548" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="103" language="java" name="parser.CParser.BlockItemListContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="333" x="-6378" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="104" language="java" name="algorithms.Algorithm" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/algorithms/Algorithm.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="156" width="171" x="-38296" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="105" language="java" name="controllers.MenuController" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/controllers/MenuController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="184" x="-42137" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="106" language="java" name="constants" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/constants" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="62" width="146" x="-41913" y="-9124"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="107" language="java" name="driver.ISummary" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/driver/ISummary.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="277" x="-38613" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="108" language="java" name="parser.CParser.ConstantExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="403" x="-6005" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="109" language="java" name="parser.CParser.StructOrUnionSpecifierContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="400" x="-5562" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="110" language="java" name="driver.ICodeSnippets" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/driver/ICodeSnippets.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="271" x="-39731" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="111" language="java" name="parser.CParser.AbstractDeclaratorContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="236" width="471" x="-5122" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="112" language="java" name="parser.Node" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/Node.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="276" width="187" x="-35945" y="2088"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="113" language="java" name="parser.CParser.SpecifierQualifierListContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="386" x="-4611" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="114" language="java" name="driver.IStudentPair" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/driver/IStudentPair.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="246" x="-36420" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="115" language="java" name="parser.CParser.TypeQualifierListContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="356" x="-4185" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="116" language="java" name="driver.IFilePair" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/driver/IFilePair.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="236" width="188" x="-37690" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="117" language="java" name="constants.MailStrings" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/constants/MailStrings.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="136" width="284" x="-41727" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="118" language="java" name="controllers.AlgorithmController" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/controllers/AlgorithmController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="555" x="-41403" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="119" language="java" name="parser.CParser.InitDeclaratorContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="332" x="-3789" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="120" language="java" name="parser.CParser" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="7396" width="583" x="-17631" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="121" language="java" name="parser.CParser.JumpStatementContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="349" x="-3417" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="122" language="java" name="controllers.popups" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/controllers/popups" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="62" width="188" x="-40808" y="-9124"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="123" language="java" name="parser.CParser.RelationalExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="387" x="-3028" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="124" language="java" name="algorithms.IResult" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/algorithms/IResult.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="136" width="316" x="-36776" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="125" language="java" name="parser.CParser.LogicalAndExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="401" x="-2601" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="126" language="java" name="parser.CParser.TypeSpecifierContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="256" width="410" x="-2160" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="127" language="java" name="parser.CParser.GccAttributeSpecifierContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="389" x="-1710" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="128" language="java" name="parser.CParser.ForDeclarationContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="392" x="-1281" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="129" language="java" name="parser.CParser.IterationStatementContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="276" width="366" x="-849" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="130" language="java" name="algorithms.AlgorithmFactory" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/algorithms/AlgorithmFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="116" width="284" x="-40580" y="-9124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="131" language="java" name="controllers.MainController.DirectoryView" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/controllers/MainController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="156" width="160" x="-38085" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="132" language="java" name="parser.CParser.ArgumentExpressionListContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="431" x="-443" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="133" language="java" name="parser.CParser.DesignationContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="324" x="28" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="134" language="java" name="parser.CParser.GccAttributeContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="431" x="392" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="135" language="java" name="parser.CParser.LogicalOrExpressionContext" project="plagiarism-detector" 
+    file="/plagiarism-detector/src/main/java/parser/CParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="401" x="863" y="-1688"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="136">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="137" name="instance"/>      
+      <multiplicity id="138" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="139">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="65"/>  
+  </nesting>  
+  <nesting id="140">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="33"/>  
+  </nesting>  
+  <nesting id="141">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="42"/>  
+  </nesting>  
+  <nesting id="142">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="57"/>  
+  </nesting>  
+  <nesting id="143">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="98"/>  
+  </nesting>  
+  <nesting id="144">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="2"/>  
+  </nesting>  
+  <nesting id="145">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="61"/>  
+  </nesting>  
+  <realization id="146">    
+    <end type="SOURCE" refId="50"/>    
+    <end type="TARGET" refId="31"/>  
+  </realization>  
+  <nesting id="147">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="128"/>  
+  </nesting>  
+  <realization id="148">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="114"/>  
+  </realization>  
+  <nesting id="149">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="121"/>  
+  </nesting>  
+  <nesting id="150">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="15"/>  
+  </nesting>  
+  <nesting id="151">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="64"/>  
+  </nesting>  
+  <association id="152">    
+    <end type="SOURCE" refId="81" navigable="false">      
+      <attribute id="153" name="snippetList"/>      
+      <multiplicity id="154" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="71" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="155">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="86"/>  
+  </nesting>  
+  <nesting id="156">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="101"/>  
+  </nesting>  
+  <nesting id="157">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="125"/>  
+  </nesting>  
+  <association id="158">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="159" name="studentMap"/>      
+      <multiplicity id="160" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="161">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="87"/>  
+  </nesting>  
+  <nesting id="162">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="32"/>  
+  </nesting>  
+  <association id="163">    
+    <end type="SOURCE" refId="81" navigable="false">      
+      <attribute id="164" name="snippet"/>      
+      <multiplicity id="165" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="71" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="166">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="88"/>  
+  </nesting>  
+  <nesting id="167">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="82"/>  
+  </nesting>  
+  <nesting id="168">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="36"/>  
+  </nesting>  
+  <association id="169">    
+    <end type="SOURCE" refId="70" navigable="false">      
+      <attribute id="170" name="result2"/>      
+      <multiplicity id="171" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="124" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="172">    
+    <end type="SOURCE" refId="70"/>    
+    <end type="TARGET" refId="116"/>  
+  </realization>  
+  <nesting id="173">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="78"/>  
+  </nesting>  
+  <nesting id="174">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="16"/>  
+  </nesting>  
+  <association id="175">    
+    <end type="SOURCE" refId="71" navigable="false">      
+      <attribute id="176" name="node2"/>      
+      <multiplicity id="177" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="112" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="178">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="7"/>  
+  </nesting>  
+  <nesting id="179">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="66"/>  
+  </nesting>  
+  <nesting id="180">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="41"/>  
+  </nesting>  
+  <nesting id="181">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="90"/>  
+  </nesting>  
+  <nesting id="182">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="133"/>  
+  </nesting>  
+  <nesting id="183">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="26"/>  
+  </nesting>  
+  <nesting id="184">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="51"/>  
+  </nesting>  
+  <nesting id="185">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="18"/>  
+  </nesting>  
+  <nesting id="186">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="109"/>  
+  </nesting>  
+  <association id="187">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="188" name="snippetPairs"/>      
+      <multiplicity id="189" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="74" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="190">    
+    <end type="SOURCE" refId="77"/>    
+    <end type="TARGET" refId="131"/>  
+  </nesting>  
+  <nesting id="191">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="85"/>  
+  </nesting>  
+  <nesting id="192">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="91"/>  
+  </nesting>  
+  <nesting id="193">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="135"/>  
+  </nesting>  
+  <nesting id="194">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="8"/>  
+  </nesting>  
+  <nesting id="195">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="6"/>  
+  </nesting>  
+  <association id="196">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="197" name="summary"/>      
+      <multiplicity id="198" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="107" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="199">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="25"/>  
+  </nesting>  
+  <nesting id="200">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="55"/>  
+  </nesting>  
+  <association id="201">    
+    <end type="SOURCE" refId="54" navigable="false">      
+      <attribute id="202" name="summary"/>      
+      <multiplicity id="203" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="107" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="204">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="27"/>  
+  </nesting>  
+  <association id="205">    
+    <end type="SOURCE" refId="54" navigable="false">      
+      <attribute id="206" name="screenController"/>      
+      <multiplicity id="207" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="208">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="115"/>  
+  </nesting>  
+  <nesting id="209">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="12"/>  
+  </nesting>  
+  <nesting id="210">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="94"/>  
+  </nesting>  
+  <nesting id="211">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="127"/>  
+  </nesting>  
+  <association id="212">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="213" name="codeSnippets"/>      
+      <multiplicity id="214" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="110" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="215">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="216" name="list"/>      
+      <multiplicity id="217" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="112" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="218">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="28"/>  
+  </nesting>  
+  <nesting id="219">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="72"/>  
+  </nesting>  
+  <nesting id="220">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="113"/>  
+  </nesting>  
+  <association id="221">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="222" name="instance"/>      
+      <multiplicity id="223" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="224">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="75"/>  
+  </nesting>  
+  <nesting id="225">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="1"/>  
+  </nesting>  
+  <association id="226">    
+    <end type="SOURCE" refId="77" navigable="false">      
+      <attribute id="227" name="algo"/>      
+      <multiplicity id="228" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="104" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="229">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="53"/>  
+  </nesting>  
+  <nesting id="230">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="38"/>  
+  </nesting>  
+  <nesting id="231">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="49"/>  
+  </nesting>  
+  <association id="232">    
+    <end type="SOURCE" refId="70" navigable="false">      
+      <attribute id="233" name="result1"/>      
+      <multiplicity id="234" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="124" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="235">    
+    <end type="SOURCE" refId="99"/>    
+    <end type="TARGET" refId="110"/>  
+  </realization>  
+  <association id="236">    
+    <end type="SOURCE" refId="71" navigable="false">      
+      <attribute id="237" name="node1"/>      
+      <multiplicity id="238" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="112" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="239">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="45"/>  
+  </nesting>  
+  <nesting id="240">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="103"/>  
+  </nesting>  
+  <nesting id="241">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="24"/>  
+  </nesting>  
+  <nesting id="242">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="37"/>  
+  </nesting>  
+  <nesting id="243">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="129"/>  
+  </nesting>  
+  <association id="244">    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="245" name="snippets"/>      
+      <multiplicity id="246" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="71" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="247">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="29"/>  
+  </nesting>  
+  <association id="248">    
+    <end type="SOURCE" refId="102" navigable="false">      
+      <attribute id="249" name="yellowPairs"/>      
+      <multiplicity id="250" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="114" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="251">    
+    <end type="SOURCE" refId="102"/>    
+    <end type="TARGET" refId="107"/>  
+  </realization>  
+  <realization id="252">    
+    <end type="SOURCE" refId="81"/>    
+    <end type="TARGET" refId="124"/>  
+  </realization>  
+  <association id="253">    
+    <end type="SOURCE" refId="99" navigable="false">      
+      <attribute id="254" name="filePairList"/>      
+      <multiplicity id="255" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="116" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="256">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="68"/>  
+  </nesting>  
+  <nesting id="257">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="23"/>  
+  </nesting>  
+  <nesting id="258">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="47"/>  
+  </nesting>  
+  <nesting id="259">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="119"/>  
+  </nesting>  
+  <nesting id="260">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="69"/>  
+  </nesting>  
+  <nesting id="261">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="73"/>  
+  </nesting>  
+  <nesting id="262">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="126"/>  
+  </nesting>  
+  <nesting id="263">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="62"/>  
+  </nesting>  
+  <nesting id="264">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="3"/>  
+  </nesting>  
+  <nesting id="265">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="21"/>  
+  </nesting>  
+  <nesting id="266">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="79"/>  
+  </nesting>  
+  <nesting id="267">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="40"/>  
+  </nesting>  
+  <association id="268">    
+    <end type="SOURCE" refId="102" navigable="false">      
+      <attribute id="269" name="redPairs"/>      
+      <multiplicity id="270" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="114" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="271">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="272" name="screenController"/>      
+      <multiplicity id="273" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="274">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="44"/>  
+  </nesting>  
+  <nesting id="275">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="30"/>  
+  </nesting>  
+  <nesting id="276">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="89"/>  
+  </nesting>  
+  <realization id="277">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="92"/>  
+  </realization>  
+  <nesting id="278">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="46"/>  
+  </nesting>  
+  <nesting id="279">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="132"/>  
+  </nesting>  
+  <realization id="280">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="58"/>  
+  </realization>  
+  <realization id="281">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <nesting id="282">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="5"/>  
+  </nesting>  
+  <nesting id="283">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="63"/>  
+  </nesting>  
+  <nesting id="284">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="134"/>  
+  </nesting>  
+  <nesting id="285">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="35"/>  
+  </nesting>  
+  <nesting id="286">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="111"/>  
+  </nesting>  
+  <nesting id="287">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="59"/>  
+  </nesting>  
+  <nesting id="288">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="67"/>  
+  </nesting>  
+  <nesting id="289">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="84"/>  
+  </nesting>  
+  <association id="290">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="291" name="algo"/>      
+      <multiplicity id="292" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="104" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="293">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="56"/>  
+  </nesting>  
+  <nesting id="294">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="108"/>  
+  </nesting>  
+  <nesting id="295">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="76"/>  
+  </nesting>  
+  <nesting id="296">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="22"/>  
+  </nesting>  
+  <nesting id="297">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="60"/>  
+  </nesting>  
+  <nesting id="298">    
+    <end type="SOURCE" refId="120"/>    
+    <end type="TARGET" refId="123"/>  
+  </nesting>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
