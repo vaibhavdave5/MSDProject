@@ -178,10 +178,9 @@ public class CompareController {
 			File file2 = fp.getFile2();
 			String fileName1 = file1.getName();
 			String fileName2 = file2.getName();
-			double percentage1 = fp.getResult1().getPercentagefile1();
+			double percentage1 = fp.getResult2().getPercentagefile1();
 			double percentage2 = fp.getResult2().getPercentagefile2();
-			IResult result1 = fp.getResult1();
-			Set<SimilaritySnippet> snippets = result1.generateSnippet();
+			Set<SimilaritySnippet> snippets = fp.getResult1().generateSnippet();
 			snippets.forEach(s -> {
 				int start1 = s.getStart1();
 				int end1 = s.getEnd1();
@@ -189,7 +188,6 @@ public class CompareController {
 				int end2 = s.getEnd2();
 				String snippet1 = getFileString(file1, start1, end1);
 				String snippet2 = getFileString(file2, start2, end2);
-
 				snippetPairs.add(new SnippetPair(fileName1, fileName2, snippet1, snippet2, percentage1, percentage2));
 			});
 		});

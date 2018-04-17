@@ -33,7 +33,7 @@ public class LCSAlgorithm implements AlgorithmStrategy {
 		setCommonNodes(list1, list2);
 		
 		return new Result(((1.0 * snippets.size()) / list1.size()),
-		   				 ((1.0 * snippets.size()) / list1.size()),
+		   				 ((1.0 * snippets.size()) / list2.size()),
 			 			  snippets);
 	}
 
