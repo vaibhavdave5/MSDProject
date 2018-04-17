@@ -15,14 +15,26 @@ pipeline {
                sh 'mvn -f ./plagiarism-detector package'
            }
        }
+       
        stage('Test'){
            steps {
                echo "Testing"
                sh 'mvn -f ./plagiarism-detector test'
+               step([
+               $class:'SquishBuilder',
+               abortBuildOnError: false,
+               extraOprions: '--abortOnFail',
+               host:'10.110.134.119',
+               port:'4322',
+               skipTestCases: false,
+               sonnzeFactor:'1',
+               testCase: '',
+               testSuite :'''\\plagiarism-detector\\suite'''
+           ])
            }
        }
        
-       
+
        stage('SonarQube') {
             steps {
                 withSonarQubeEnv('SonarQube') {
