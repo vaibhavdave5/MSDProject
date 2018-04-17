@@ -17,8 +17,10 @@ public class AlgorithmFactory {
 		if(algo.equals(Algorithm.LCS)){
 			return new LCSAlgorithm();
 		}
-		
+		if(algo.equals(Algorithm.NW))
 		return new NeedlemanWunschAlgorithm();
+		
+		return new LevenshteinDistance();
 	}
 	
 }

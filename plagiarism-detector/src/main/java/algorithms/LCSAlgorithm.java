@@ -27,7 +27,7 @@ public class LCSAlgorithm implements AlgorithmStrategy {
 	public IResult computeSimilarity(List<Node> list1, List<Node> list2) {
 		if (list1.isEmpty()) throw new IllegalArgumentException("File 1 is empty");
 		else if (list2.isEmpty()) throw new IllegalArgumentException("File 2 is empty");
-
+		System.out.println("Inside LCS");
 		setCommonNodes(list1, list2);
 		
 		return new Result(((1.0 * snippets.size()) / list1.size()),

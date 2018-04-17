@@ -11,6 +11,6 @@ public enum Algorithm {
 	DEFAULT,
 	NW,
 	LCS,
-	TEXTUAL
+	EDITDISTANCE
 	
 }
