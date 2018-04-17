@@ -12,7 +12,7 @@ import java.util.List;
  * @author Shail Shah
  *
  */
-public class EditDistance implements AlgorithmStrategy {
+public class LevenshteinDistance implements AlgorithmStrategy {
 	private List<SimilaritySnippet> snippets = new ArrayList<>();
  
 	/**
@@ -36,8 +36,10 @@ public class EditDistance implements AlgorithmStrategy {
 	}
 
 	/**
-	 * Backtrack the result of the lcs and find out the actual longest common
-	 * subsequence
+	 * Compute the edit distance between the two lists 
+	 * using LevenshteinDistance
+	 * for more info refer
+	 * https://en.wikipedia.org/wiki/Levenshtein_distance
 	 * 
 	 * @param list1 a list of nodes
 	 * @param list2 another list of nodes
