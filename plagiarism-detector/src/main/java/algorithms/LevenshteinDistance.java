@@ -50,8 +50,7 @@ public class LevenshteinDistance implements AlgorithmStrategy {
         int m = list1.size();
         int n = list2.size();
 		// Create a table to store results of subproblems
-        int dp[][] = new int[m+1][n+1];
-        System.out.println("Inside EDIT");
+        int[][] dp = new int[m+1][n+1];
         // Fill d[][] in bottom up manner
         for (int i=0; i<=m; i++)
         {
