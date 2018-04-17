@@ -1,6 +1,5 @@
 package controllers;
 
-import algorithms.IResult;
 import algorithms.SimilaritySnippet;
 import algorithms.SnippetPair;
 import constants.MailStrings;
@@ -10,6 +9,7 @@ import driver.IDriver;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
@@ -110,6 +110,8 @@ public class CompareController {
 		reveal.getStyleClass().add("success");
 		studentAName.getStyleClass().add("logo");
 		studentBName.getStyleClass().add("logo");
+		filePath1.getStyleClass().add("logo");
+		filePath2.getStyleClass().add("logo");
 		studentACode.setId("supertextflow1");
 		studentBCode.setId("supertextflow2");
 		emailButton.getStyleClass().add("success");
@@ -143,12 +145,13 @@ public class CompareController {
 	@FXML public void revealNames() {
 		reveal.setVisible(false);
 		IDriver driver = Driver.getInstance();
-		Integer studentId1 = codeSnippets.getStudent1Id();
-		Integer studentId2 = codeSnippets.getStudent2Id();
-		String text1 = driver.getNameById(studentId1) + " (" + driver.getEmailById(studentId1) + ")";
-		String text2 = driver.getNameById(studentId2) + " (" + driver.getEmailById(studentId2) + ")";
-		studentAName.setText(text1);
-		studentBName.setText(text2);
+		String studentName1 = driver.getNameById(codeSnippets.getStudent1Id());
+		String studentName2 = driver.getNameById(codeSnippets.getStudent2Id());
+
+		studentAName.setText(studentName1.length()  < 15 ? studentName1 : studentName1.substring(15) + ".");
+		studentBName.setText(studentName2.length()  < 15 ? studentName2 : studentName2.substring(15) + ".");
+		studentAName.setTooltip(new Tooltip(studentName1 + " <" + driver.getEmailById(codeSnippets.getStudent1Id()) + ">"));
+		studentBName.setTooltip(new Tooltip(studentName2 + " <" + driver.getEmailById(codeSnippets.getStudent2Id()) + ">"));
 	}
 	
 	/**
@@ -178,10 +181,9 @@ public class CompareController {
 			File file2 = fp.getFile2();
 			String fileName1 = file1.getName();
 			String fileName2 = file2.getName();
-			double percentage1 = fp.getResult1().getPercentagefile1();
+			double percentage1 = fp.getResult2().getPercentagefile1();
 			double percentage2 = fp.getResult2().getPercentagefile2();
-			IResult result1 = fp.getResult1();
-			Set<SimilaritySnippet> snippets = result1.generateSnippet();
+			Set<SimilaritySnippet> snippets = fp.getResult1().generateSnippet();
 			snippets.forEach(s -> {
 				int start1 = s.getStart1();
 				int end1 = s.getEnd1();
@@ -189,7 +191,6 @@ public class CompareController {
 				int end2 = s.getEnd2();
 				String snippet1 = getFileString(file1, start1, end1);
 				String snippet2 = getFileString(file2, start2, end2);
-
 				snippetPairs.add(new SnippetPair(fileName1, fileName2, snippet1, snippet2, percentage1, percentage2));
 			});
 		});

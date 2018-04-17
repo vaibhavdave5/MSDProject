@@ -133,8 +133,8 @@ public class FileUtils {
 	 * @return a string representing the report of the two files
 	 */
 	private static String getReportResult(IResult result, File file1, File file2) {
-		return "File1 match: " +result.getPercentagefile1()
-				+ "\nFile2 match:" + result.getPercentagefile2() + "\n" +
+		return "File1 match: " +result.getPercentagefile1()*100
+				+ "%\nFile2 match:" + result.getPercentagefile2()*100 + "%\n" +
 				getReportSnippets(result.generateSnippet(), file1, file2);
 	}
 

@@ -18,7 +18,7 @@ public class CASTNodeListener implements CListener {
 
 	@Override
 	public void enterPrimaryExpression(CParser.PrimaryExpressionContext ctx) {
-		// add ctx where required (addWhereRequired(ctx))
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterPostfixExpression(CParser.PostfixExpressionContext ctx) {
-		// add ctx where required (addWhereRequired(ctx))
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterArgumentExpressionList(CParser.ArgumentExpressionListContext ctx) {
-		//add ctx where required (addWhereRequired(ctx))
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterUnaryExpression(CParser.UnaryExpressionContext ctx) {
-		//add ctx where required (addWhereRequired(ctx))
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -546,7 +546,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterExpression(CParser.ExpressionContext ctx) {
-	// add ctx where required (addWhereRequired(ctx))
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -1050,7 +1050,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterAtomicTypeSpecifier(CParser.AtomicTypeSpecifierContext ctx) {
-		addWhereRequired(ctx);
+		//do Nothing
 	}
 
 	/**
@@ -1074,7 +1074,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterTypeQualifier(CParser.TypeQualifierContext ctx) {
-		addWhereRequired(ctx);
+		//do Nothing
 	}
 
 	/**
@@ -1530,7 +1530,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterTypedefName(CParser.TypedefNameContext ctx) {
-		addWhereRequired(ctx);
+		//do Nothing
 	}
 
 	/**
@@ -1722,7 +1722,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterLabeledStatement(CParser.LabeledStatementContext ctx) {
-		////add ctx where required (addWhereRequired(ctx))
+		addWhereRequired(ctx);
 	}
 
 	/**
@@ -1794,7 +1794,7 @@ public class CASTNodeListener implements CListener {
 	 */
 	@Override
 	public void enterBlockItem(CParser.BlockItemContext ctx) {
-		addWhereRequired(ctx);
+		//do Nothing
 	}
 
 	/**
@@ -2146,11 +2146,22 @@ public class CASTNodeListener implements CListener {
 		// doNothing
 	}
 
+	/**
+	 * This function adds the required nodes to the nodelist
+	 * 
+	 * @param ctx
+	 */
 	protected void addWhereRequired(ParserRuleContext ctx) {
 		Node n = new Node(ctx.getStart().getLine(),ctx.getStop().getLine(),calculate(ctx.toStringTree()),ctx.getClass().toString());
 		list.add(n);
 	}
  
+	/**
+	 * This function calculates the hash value 
+	 * for the AST nodes
+	 * @param s
+	 * @return int hash
+	 */
 	protected static int calculate(String s) {
 		String[] s1 = s.split(" ");
 		int sum = 0;
@@ -2162,10 +2173,23 @@ public class CASTNodeListener implements CListener {
 		return sum;
 	}
 
+	/**
+	 * Checks whether the given string is an integer or not
+	 * @param s
+	 * @return boolean
+	 */
 	protected static boolean isInteger(String s) {
 		return isInteger(s, 10);
 	}
 
+	/**
+	 * Helper function to check whether the given function String
+	 * is an integer or not 
+	 *
+	 * @param s
+	 * @param radix
+	 * @return boolean
+	 */
 	protected static boolean isInteger(String s, int radix) {
 		if (s.isEmpty())
 			return false;
