@@ -15,9 +15,7 @@ public class AlgorithmFactory {
 	public AlgorithmStrategy getAlgo(Algorithm algo){
 		if(algo.equals(Algorithm.LCS)){
 			return new LCSAlgorithm();
-		} else if(algo.equals(Algorithm.LD)) {
-			return new LevenshteinDistance();
-		} else  {
+		} else {
 			return new NeedlemanWunschAlgorithm();
 		}
 	}
