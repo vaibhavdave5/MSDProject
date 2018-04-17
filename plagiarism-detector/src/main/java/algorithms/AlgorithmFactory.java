@@ -13,12 +13,12 @@ public class AlgorithmFactory {
 	 * @return one of the Algorithm Strategy
 	 */
 	public AlgorithmStrategy getAlgo(Algorithm algo){
-		
 		if(algo.equals(Algorithm.LCS)){
 			return new LCSAlgorithm();
+		} else if(algo.equals(Algorithm.LD)) {
+			return new LevenshteinDistance();
+		} else  {
+			return new NeedlemanWunschAlgorithm();
 		}
-		
-		return new NeedlemanWunschAlgorithm();
 	}
-	
 }
