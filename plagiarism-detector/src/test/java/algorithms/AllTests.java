@@ -7,6 +7,8 @@ import driver.SummaryTests;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
+
+import controllers.LoadControllerTest;
 import utils.ConfigUtilsTest;
 import utils.FileUtilsTest;
 
@@ -25,7 +27,8 @@ import utils.FileUtilsTest;
 		NodeTests.class,
 		FileUtilsTest.class,
 		SnippetPairTest.class,
-		ConfigUtilsTest.class
+		ConfigUtilsTest.class,
+		LoadControllerTest.class
 })
 public class AllTests {
 
