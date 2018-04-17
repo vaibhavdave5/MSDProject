@@ -6,8 +6,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
+
+
 /**
  * Entry point of application  
  * @author Samanjate Sood
@@ -27,8 +30,10 @@ public class Main extends Application {
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/theme.css").toExternalForm());
 			primaryStage.setResizable(false);
+			primaryStage.getIcons().add(new Image("/images/app-icon.png"));
 			ScreenController.setInstance(scene);
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("Integrity Plagiarism Checker by Team-107");
 			primaryStage.show();
 		} catch(Exception e) {
 	 		PopupMessage.getInstance().showError(null, null);

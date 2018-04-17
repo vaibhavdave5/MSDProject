@@ -935,14 +935,14 @@ VBox > .split-menu-button.last > .arrow-button {
     -fx-text-fill: black;
     -fx-font-weight: bold;
    	-fx-font-size: 16;
-   	-fx-font-family: "Comic Sans MS";
+   	-fx-font-family: "Helvetica";
 }
 .drag-folder
 {
     -fx-text-fill: gray;
     -fx-font-weight: bold;
    	-fx-font-size: 16;
-   	-fx-font-family: "Comic Sans MS";
+   	-fx-font-family: "Helvetica";
 }
 .menu-color 
 {
@@ -952,19 +952,19 @@ VBox > .split-menu-button.last > .arrow-button {
 {
     -fx-background-color: #d9534f;
    	-fx-font-size: 14;
-   	-fx-font-family: "Comic Sans MS";
+   	-fx-font-family: "Helvetica";
 }
 .medium-students
 {
 	-fx-background-color: #f0ad4e;
    	-fx-font-size: 14;
-   	-fx-font-family: "Comic Sans MS";
+   	-fx-font-family: "Helvetica";
 }
 .safe-student
 {
     -fx-background-color: #5cb85c;
    	-fx-font-size: 14;
-   	-fx-font-family: "Comic Sans MS";
+   	-fx-font-family: "Helvetica";
 }
 #danger .list-cell:filled:selected:focused, .ds:filled:selected {
     -fx-background-color: #d9534f;
