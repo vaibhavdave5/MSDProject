@@ -9,15 +9,6 @@ import org.testfx.api.FxToolkit;
 import view.Main;
 
 public class MainControllerTest  extends FxRobot {
-	
-	static {
-	    if (Boolean.getBoolean("headless")) {
-	        System.setProperty("testfx.robot", "glass");
-	        System.setProperty("testfx.headless", "true");
-	        System.setProperty("prism.order", "sw");
-	        System.setProperty("prism.text", "t2k");
-	    }
-	}
 
 	@Before public void setup() throws Exception {
         FxToolkit.registerPrimaryStage();
