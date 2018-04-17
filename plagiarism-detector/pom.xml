@@ -135,6 +135,18 @@
 		    <artifactId>mockito-core</artifactId>
 		    <version>1.10.19</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.testfx</groupId>
+		    <artifactId>openjfx-monocle</artifactId>
+		    <version>8u76-b04</version> <!-- 8u76-b04 for Java 8 -->
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.testfx</groupId>
+		    <artifactId>testfx-junit</artifactId>
+		    <version>4.0.12-alpha</version>
+		    <scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<profiles>
