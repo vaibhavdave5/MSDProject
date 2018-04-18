@@ -21,7 +21,7 @@
 		<sonar.coverage.exclusions>
 		   <!-- These files are UI files and cannot be tested on Jenkins so are excluded -->
 		   <!-- We are using squish to locally test the UI -->
-			**/Main.java, **/MainController.java, **/MenuController.java, **/SummaryController.java, **/ScreenController.java, **/CompareController.java, **/PopupMessage.java, **/MailUtils.java
+			**/AlertStrings.java,**/AlgorithmAndDriverStrings.java,**/MailStrings.java, **/Main.java, **/MainController.java, **/MenuController.java, **/SummaryController.java, **/ScreenController.java, **/CompareController.java, **/PopupMessage.java, **/MailUtils.java
     		</sonar.coverage.exclusions>
 		<sonar.junit.reportPaths>
 			${project.basedir}/target/surefire-reports
@@ -141,6 +141,12 @@
 		    <artifactId>testfx-junit</artifactId>
 		    <version>4.0.12-alpha</version>
 		    <scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-math3</artifactId>
+		    <version>3.6.1</version>
 		</dependency>
 	</dependencies>
 

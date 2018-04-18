@@ -6,6 +6,7 @@ import algorithms.IResult;
 import controllers.AlgorithmController;
 import database.Connect;
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import parser.Node;
 import utils.ConfigUtils;
@@ -17,8 +18,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  * This is the driver of the application. This connects the frontend to the
@@ -153,6 +153,24 @@ public class Driver implements IDriver {
 		if (maxScore >= Double.parseDouble(config.readConfig("yellowThreshold")))
 			sp.setSimilarityScore(maxScore);
 	}
+	
+	/**
+	 * This method fits a regression model over the MOSS, LCS and EditDistance training data.
+	 * It then uses the learned weights to calculate a weighted score for plagiarism.
+	 * @param list1 List<Node>
+	 * @param ac AlgorithmController
+	 * @param file2 File
+	 * @return double[] A weighted score
+	 */
+	public double applyMachineLearning(List<Node> list1, AlgorithmController ac, File file2) {
+		double[] scoresLCS = ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.LCS),
+				list1, ac.getNodeList(file2));
+		double[] scoresED = ac.getSimilarityPercentage(
+				new AlgorithmFactory().getAlgo(Algorithm.EDITDISTANCE), list1, ac.getNodeList(file2));
+		return Double.parseDouble(config.readConfig("algo1Weight")) * Math.max(scoresLCS[0], scoresLCS[1]) 
+				+ Double.parseDouble(config.readConfig("algo2Weight")) * Math.max(scoresED[0], scoresED[1])
+				+ Double.parseDouble(config.readConfig("bias"));
+	}
 
 	/**
 	 * Get the similarity scores for all combinations of files from two
@@ -173,29 +191,16 @@ public class Driver implements IDriver {
 			Connect.increaseByOne();
 			List<Node> list1 = ac.getNodeList(file1);
 			for (File file2 : fileCollection2) {
-				LOGGER.log(Level.INFO, "File1: {0}", file1.getAbsolutePath());
-				LOGGER.log(Level.INFO, "File2: {0}", file2.getAbsolutePath());
 				if (this.algo == Algorithm.LCS) {
 					double[] scoresLCS = ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.LCS),
 							list1, ac.getNodeList(file2));
-					similarityScoreList.add(scoresLCS[0] > scoresLCS[1] ? scoresLCS[0] : scoresLCS[1]);
+					similarityScoreList.add(Math.max(scoresLCS[0], scoresLCS[1]));
 				} else if (this.algo == Algorithm.EDITDISTANCE) {
-					double[] scoresNW = ac.getSimilarityPercentage(
+					double[] scoresED = ac.getSimilarityPercentage(
 							new AlgorithmFactory().getAlgo(Algorithm.EDITDISTANCE), list1, ac.getNodeList(file2));
-					similarityScoreList.add(scoresNW[0] > scoresNW[1] ? scoresNW[0] : scoresNW[1]);
-				}
-				//
-				// This will be replaced by an ML algorithm in the future
-				else {
-					double[] scoresLCS = ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.LCS),
-							list1, ac.getNodeList(file2));
-					double[] scoresNW = ac.getSimilarityPercentage(
-							new AlgorithmFactory().getAlgo(Algorithm.EDITDISTANCE), list1, ac.getNodeList(file2));
-					double weightedAverage = Double.parseDouble(config.readConfig("algo1Weight"))
-							* scoresLCS[0] > scoresLCS[1] ? scoresLCS[0]
-									: scoresLCS[1] + Double.parseDouble(config.readConfig("algo2Weight"))
-											* scoresNW[0] > scoresNW[1] ? scoresNW[0] : scoresNW[1];
-
+					similarityScoreList.add(Math.max(scoresED[0], scoresED[1]));
+				} else {
+					double weightedAverage = this.applyMachineLearning(list1, ac, file2);
 					similarityScoreList.add(weightedAverage);
 				}
 			}
@@ -340,6 +345,22 @@ public class Driver implements IDriver {
 	public String getEmailById(Integer studentId) {
 		return studentMap.get(studentId).getEmail();
 	}
+	
+	/**
+	 * gets the repo paths
+	 * @return repoPaths List<String>
+	 */
+	public List<String> getRepoPaths() {
+		return this.repoPaths;
+	}
+	
+	/**
+	 * gets the hw directories.
+	 * @return hwDir String
+	 */
+	public String getHWDir() {
+		return this.hwDir;
+	}
 
 	/**
 	 * reset the state of the application
@@ -350,4 +371,5 @@ public class Driver implements IDriver {
 		this.studentHWMap = new HashMap<>();
 		this.summary = null;
 	}
+	
 }
