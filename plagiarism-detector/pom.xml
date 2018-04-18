@@ -186,7 +186,7 @@
 		</sonar.jacoco.reportPaths>
 		<sonar.groovy.binaries>
 			${project.basedir}/target/classes
-		</sonar.groovy.binaries>
+		</sonar.groovy.binaries> 
 	</properties>
 
 </project>
