@@ -1,8 +1,6 @@
 package controllers;
 
-import algorithms.Algorithm;
 import algorithms.AlgorithmContext;
-import algorithms.AlgorithmFactory;
 import algorithms.AlgorithmStrategy;
 import algorithms.IResult;
 
@@ -24,9 +22,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * The main controller of the application that can tell if two files are similar

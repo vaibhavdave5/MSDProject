@@ -3,8 +3,6 @@ package machinelearning;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
-
 import org.apache.log4j.Logger;
 import org.apache.commons.math3.stat.regression.OLSMultipleLinearRegression;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;

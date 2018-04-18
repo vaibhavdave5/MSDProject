@@ -6,7 +6,6 @@ import algorithms.IResult;
 import controllers.AlgorithmController;
 import database.Connect;
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import parser.Node;
 import utils.ConfigUtils;
@@ -27,7 +26,7 @@ import java.util.Map;
  * @author Darshan Panse
  */
 public class Driver implements IDriver {
-	private static final Logger LOGGER = Logger.getLogger(Driver.class.getName());
+	
 	private static Driver instance = new Driver();
 	private List<String> repoPaths;
 	private String hwDir;
