@@ -6,6 +6,7 @@ import algorithms.IResult;
 import controllers.AlgorithmController;
 import database.Connect;
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import parser.Node;
 import utils.ConfigUtils;
@@ -18,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  * This is the driver of the application. This connects the frontend to the
