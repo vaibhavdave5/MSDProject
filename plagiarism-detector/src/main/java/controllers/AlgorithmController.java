@@ -94,22 +94,6 @@ public class AlgorithmController {
 	}
 
 	/**
-	 * Gets the results from the all types of algorithm
-	 * 
-	 * @param nodeList1 list of nodes retrieved from file1
-	 * @param nodeList2 list of nodes retrieved from file2
-	 * @return Map<Algorithm,IResult> map with key as the Algorithm and value is
-	 *         its corresponding result
-	 */
-	public Map<Algorithm, IResult> getAllResults(List<Node> nodeList1, List<Node> nodeList2) {
-		Map<Algorithm, IResult> map = new EnumMap<>(Algorithm.class);
-		map.put(Algorithm.LCS, new AlgorithmContext(new AlgorithmFactory().getAlgo(Algorithm.LCS))
-				.executeStrategy(nodeList1, nodeList2));
-		map.put(Algorithm.NW, new AlgorithmContext(new AlgorithmFactory().getAlgo(Algorithm.NW))
-				.executeStrategy(nodeList1, nodeList2));
-		return map;
-	}
-	/**
 	 * This function helps in making a temp file without #include in the C files
 	 * as ANTLR does not handle #include properly.
 	 * This temp file must be deleted once processed through the parser
