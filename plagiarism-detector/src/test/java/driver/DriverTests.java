@@ -11,10 +11,12 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -23,20 +25,6 @@ import static org.junit.Assert.assertTrue;
  * @author Darshan Panse
  */
 public class DriverTests {
-
-	/**
-	 * Test for normal program flow
-	 */
-	@Test
-	public void testDriver() {
-		IDriver driver = Driver.getInstance();
-		List<String> repoPaths = new ArrayList<>();
-		repoPaths.add("C:/test-repos/student-110");
-		repoPaths.add("C:/test-repos/student-111");
-		driver.setRepoPaths(repoPaths);
-		driver.setHWDir("HW3");
-		URL url = this.getClass().getResource("/studentData.xlsx");
-	}
 
 	/**
 	 * Test for checking the returned Ids in getStudentHWMap()
@@ -272,5 +260,46 @@ public class DriverTests {
 		Integer student1Id = 110;
 		Integer student2Id = 111;
 		driver.generateSnippet(student1Id, student2Id);
+	}
+	
+	/**
+	 * Test for getEmailById.
+	 */
+	@Test
+	public void testGetEmailById() {
+		IDriver driver = Driver.getInstance();
+		URL url = this.getClass().getResource("/studentData.xlsx");
+		String xlsxPath = url.getPath();
+		driver.getStudentData(new File(xlsxPath));
+		String expected = "panse.d@husky.neu.edu";
+		String actual = driver.getEmailById(101);
+		assertEquals(expected, actual);
+	}
+	
+	/**
+	 * Test for resetState.
+	 */
+	@Test
+	public void testResetState() {
+		IDriver driver = Driver.getInstance();
+		driver.setHWDir("HW3");
+		
+		List<String> repoPaths = new ArrayList<>();
+
+		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+				+ File.separator + "java" + File.separator + "controllers" + File.separator + "test-repos"
+				+ File.separator;
+
+		repoPaths.add(basePath + "student-110");
+		repoPaths.add(basePath + "student-111");
+		driver.setRepoPaths(repoPaths);
+		
+		URL url = this.getClass().getResource("/studentData.xlsx");
+		String xlsxPath = url.getPath();
+		driver.resetState();
+		assertEquals(null, driver.getRepoPaths());
+		assertEquals(null, driver.getHWDir());
+		assertEquals(new HashMap<>(), driver.getStudentHWMap());
+		
 	}
 }

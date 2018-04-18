@@ -121,4 +121,17 @@ public interface IDriver {
 	 * 
 	 */
 	void resetState();
+
+	/**
+	 * gets the repo paths
+	 * @return repoPaths List<String>
+	 */
+	List<String> getRepoPaths();
+	
+	/**
+	 * gets the hw directories.
+	 * @return hwDir String
+	 */
+	String getHWDir();
+	
 }
