@@ -13,8 +13,8 @@ public class MainControllerTest  extends FxRobot {
 	
 	
 	@Before public void setup() throws Exception {
-        FxToolkit.registerPrimaryStage();
         FxToolkit.setupApplication(Main.class);
+        FxToolkit.registerPrimaryStage();
 		System.setProperty("testfx.robot", "glass");
 		System.setProperty("testfx.headless", "true");
 		System.setProperty("prism.order", "sw");
