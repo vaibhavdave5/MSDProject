@@ -15,8 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -54,6 +52,10 @@ public class DriverTests {
 		assertEquals(expectedKey1, actualKeys[0]);
 		assertEquals(expectedKey2, actualKeys[1]);
 	}
+	
+	/**
+	 * A complete run of Driver with backend to get student pairs
+	 */
 
 	@Test
 	public void testCheckForPlagiarism() {

@@ -9,8 +9,7 @@ import java.util.List;
  * An instance of LCS is able to compute the similarity between two Node Lists
  * 
  * @author Vaibhav Dave
- * @author Shail Shah
- *
+ * 
  */
 public class LevenshteinDistance implements AlgorithmStrategy {
 	
