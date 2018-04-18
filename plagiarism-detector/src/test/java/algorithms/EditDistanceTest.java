@@ -19,8 +19,8 @@ public class EditDistanceTest {
 		List<Node> list1 = new LinkedList<>();
 		List<Node> list2 = new LinkedList<>();
 		
-		AlgorithmStrategy nw = new LevenshteinDistance();
-		System.out.println(nw.computeSimilarity(list1, list2));		
+		AlgorithmStrategy ed = new LevenshteinDistance();
+		ed.computeSimilarity(list1, list2);		
 	}
 
 
