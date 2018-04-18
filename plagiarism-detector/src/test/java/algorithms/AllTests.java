@@ -7,6 +7,8 @@ import driver.SummaryTests;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
+
+import database.ConnectTest;
 import utils.ConfigUtilsTest;
 import utils.FileUtilsTest;
 import machinelearning.MachineLearningTests;
@@ -27,7 +29,9 @@ import machinelearning.MachineLearningTests;
 		FileUtilsTest.class,
 		SnippetPairTest.class,
 		ConfigUtilsTest.class,
-		MachineLearningTests.class
+		MachineLearningTests.class,
+		LevenshteinDistanceTests.class,
+		ConnectTest.class
 })
 public class AllTests {
 
