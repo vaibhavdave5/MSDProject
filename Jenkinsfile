@@ -15,6 +15,7 @@ pipeline {
                sh 'mvn -f ./plagiarism-detector package'
            }
        }
+       
        stage('Test'){
            steps {
                echo "Testing"
@@ -22,7 +23,7 @@ pipeline {
            }
        }
        
-       
+
        stage('SonarQube') {
             steps {
                 withSonarQubeEnv('SonarQube') {

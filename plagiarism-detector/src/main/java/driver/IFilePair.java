@@ -38,23 +38,12 @@ public interface IFilePair {
 	 * Get the snippet result that contains similarities of the two files
 	 * @return the snippet result that contains the similarities of the two files
 	 */
-	IResult getResult1();
+	IResult getResult();
 	
 	/**
 	 * Set the snippet result that contains the similarities of the two files
 	 * @param result the snippet result that contains the similarities of the two files
 	 */
-	void setResult1(IResult result);
+	void setResult(IResult result);
 	
-	/**
-	 * Get the other result that contains similarities of the two files
-	 * @return the other result that contains the similarities of the two files
-	 */
-	IResult getResult2();
-	
-	/**
-	 * Set the other result that contains the similarities of the two files
-	 * @param result the other result that contains the similarities of the two files
-	 */
-	void setResult2(IResult result);
 }

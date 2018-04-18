@@ -119,7 +119,7 @@ public class FileUtils {
 					.append(" and ")
 					.append(file2.getName())
 					.append(" are suspected to be similar. \n")
-					.append(getReportResult(fp.getResult1(), file1, file2));
+					.append(getReportResult(fp.getResult(), file1, file2));
 		});
 
 		return sb.toString();
