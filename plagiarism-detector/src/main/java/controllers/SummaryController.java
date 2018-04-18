@@ -31,6 +31,8 @@ import javafx.scene.input.MouseEvent;
  */
 public class SummaryController {
 
+	// These are injected when the Controller is binded with the FXML view and hence,
+	// they don't need to be instantiated.
 	@FXML private ProgressBar progress;
 	@FXML private Label info;
 	@FXML private ListView<StudentPair> danger;

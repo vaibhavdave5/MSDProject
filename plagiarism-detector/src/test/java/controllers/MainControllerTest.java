@@ -10,8 +10,6 @@ import view.Main;
 
 public class MainControllerTest  extends FxRobot {
 
-	
-	
 	@Before public void setup() throws Exception {
 		FxToolkit.registerPrimaryStage();
         FxToolkit.setupApplication(Main.class);
@@ -21,8 +19,6 @@ public class MainControllerTest  extends FxRobot {
 		System.setProperty("prism.text", "t2k");
     }
 	
-	
-
     @After public void cleanup() {}
 
     @Test public void test_one() {

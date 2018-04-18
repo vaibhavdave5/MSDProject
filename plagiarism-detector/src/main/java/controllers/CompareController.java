@@ -37,7 +37,8 @@ import utils.MailUtils;
  */
 public class CompareController {
 	
-	// Controller injectors
+	// These are injected when the Controller is binded with the FXML view and hence,
+	// they don't need to be instantiated.
 	@FXML private TextFlow studentACode;
 	@FXML private TextFlow studentBCode;
 	@FXML private Label studentAName;
