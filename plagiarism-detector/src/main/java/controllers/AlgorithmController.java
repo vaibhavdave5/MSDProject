@@ -59,7 +59,6 @@ public class AlgorithmController {
 	 * @return a list of Nodes that represent the given C file
 	 */
 	public List<Node> getNodeList(File file) {
-
 		file = handleANTLRBug(file);
 		List<Node> nodeList = new ArrayList<>();
 		try {
@@ -85,7 +84,7 @@ public class AlgorithmController {
 		double[] arr = new double[2];
 		IResult result = getResult(strategy,nodeList1,nodeList2);
 		arr[0] = result.getPercentagefile1();
-		arr[1] = result.getPercentagefile2(); 
+		arr[1] = result.getPercentagefile2();
 		return arr;
 	}
 

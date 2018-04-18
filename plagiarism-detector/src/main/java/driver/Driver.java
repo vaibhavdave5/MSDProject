@@ -137,7 +137,7 @@ public class Driver implements IDriver {
 	 *            students
 	 */
 	public void computeSimilarityScore(Collection<File> fileCollection1, Collection<File> fileCollection2,
-			IStudentPair sp) {
+			IStudentPair sp) throws IllegalArgumentException{
 		Double maxScore = getSimilarityScoreList(fileCollection1, fileCollection2).stream().max(Double::compare)
 				.orElse(null);
 
@@ -158,14 +158,14 @@ public class Driver implements IDriver {
 	 * It then uses the learned weights to calculate a weighted score for plagiarism.
 	 * @param list1 List<Node>
 	 * @param ac AlgorithmController
-	 * @param file2 File
+	 * @param list2 List<Node>
 	 * @return double[] A weighted score
 	 */
-	public double applyMachineLearning(List<Node> list1, AlgorithmController ac, File file2) {
-		double[] scoresLCS = ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.LCS),
-				list1, ac.getNodeList(file2));
+	public double applyMachineLearning(List<Node> list1, AlgorithmController ac, List<Node> list2) {
+		double[] scoresLCS = ac.getSimilarityPercentage(
+				new AlgorithmFactory().getAlgo(Algorithm.LCS), list1, list2);
 		double[] scoresED = ac.getSimilarityPercentage(
-				new AlgorithmFactory().getAlgo(Algorithm.EDITDISTANCE), list1, ac.getNodeList(file2));
+				new AlgorithmFactory().getAlgo(Algorithm.EDITDISTANCE), list1, list2);
 		return Double.parseDouble(config.readConfig("algo1Weight")) * Math.max(scoresLCS[0], scoresLCS[1]) 
 				+ Double.parseDouble(config.readConfig("algo2Weight")) * Math.max(scoresED[0], scoresED[1])
 				+ Double.parseDouble(config.readConfig("bias"));
@@ -184,22 +184,24 @@ public class Driver implements IDriver {
 	 */
 	private List<Double> getSimilarityScoreList(Collection<File> fileCollection1, Collection<File> fileCollection2) {
 		List<Double> similarityScoreList = new ArrayList<>();
-
 		for (File file1 : fileCollection1) {
 			AlgorithmController ac = new AlgorithmController();
 			Connect.increaseByOne();
 			List<Node> list1 = ac.getNodeList(file1);
+			if (list1.isEmpty()) throw new IllegalArgumentException(file1.getName() + " is empty");
 			for (File file2 : fileCollection2) {
+				List<Node> list2 = ac.getNodeList(file2);
+				if (list2.isEmpty()) throw new IllegalArgumentException(file2.getName() + " is empty");
 				if (this.algo == Algorithm.LCS) {
-					double[] scoresLCS = ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.LCS),
-							list1, ac.getNodeList(file2));
+					double[] scoresLCS = ac.getSimilarityPercentage(
+							new AlgorithmFactory().getAlgo(Algorithm.LCS), list1, list2);
 					similarityScoreList.add(Math.max(scoresLCS[0], scoresLCS[1]));
 				} else if (this.algo == Algorithm.EDITDISTANCE) {
 					double[] scoresED = ac.getSimilarityPercentage(
-							new AlgorithmFactory().getAlgo(Algorithm.EDITDISTANCE), list1, ac.getNodeList(file2));
+							new AlgorithmFactory().getAlgo(Algorithm.EDITDISTANCE), list1, list2);
 					similarityScoreList.add(Math.max(scoresED[0], scoresED[1]));
 				} else {
-					double weightedAverage = this.applyMachineLearning(list1, ac, file2);
+					double weightedAverage = this.applyMachineLearning(list1, ac, list2);
 					similarityScoreList.add(weightedAverage);
 				}
 			}
@@ -212,7 +214,7 @@ public class Driver implements IDriver {
 	 * This method runs the algorithm on the homework c files of all the
 	 * selected student-repos and generates the Summary.
 	 */
-	public void generateSummary() {
+	public void generateSummary() throws IllegalArgumentException{
 		this.summary = new Summary();
 
 		for (Map.Entry<Integer, Collection<File>> entry1 : this.studentHWMap.entrySet()) {
@@ -249,7 +251,11 @@ public class Driver implements IDriver {
 			this.setRepoPaths(repoPaths);
 			this.setHWDir(hwDir);
 			String message = this.getCodeFiles();
-			this.generateSummary();
+			try {
+				this.generateSummary();
+			} catch(RuntimeException e) {
+				return e.getMessage();
+			}
 			return message;
 		} else {
 			return "No student repository or homework directory selected";
