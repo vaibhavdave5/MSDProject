@@ -382,7 +382,7 @@ public class FileUtilsTest {
 		snippetList.add(new SimilaritySnippet(node1, node2));
 		Result result =  new Result(0.6, 0.8, snippetList);
 		FilePair filePair = new FilePair(file1, file2);
-		filePair.setResult1(result);
+		filePair.setResult(result);
 		List<IFilePair> filePairList = new ArrayList<>();
 		filePairList.add(filePair);
 		cs.setFilePairList(filePairList);
