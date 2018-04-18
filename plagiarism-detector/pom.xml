@@ -20,8 +20,8 @@
 		</sonar.exclusions>
 		<sonar.coverage.exclusions>
 		   <!-- These files are UI files and cannot be tested on Jenkins so are excluded -->
-		   <!-- We are using squish to locally test the UI -->
-			**/AlertStrings.java,**/AlgorithmAndDriverStrings.java,**/MailStrings.java, **/Main.java, **/MainController.java, **/MenuController.java, **/SummaryController.java, **/ScreenController.java, **/CompareController.java, **/PopupMessage.java, **/MailUtils.java
+		   <!-- We are locally testing controllers and MailUtils -->
+			**/controllers/*, **/constants/*, **/MailUtils.java
     		</sonar.coverage.exclusions>
 		<sonar.junit.reportPaths>
 			${project.basedir}/target/surefire-reports
