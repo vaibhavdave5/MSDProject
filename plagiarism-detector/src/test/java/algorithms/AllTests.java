@@ -9,7 +9,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 import utils.ConfigUtilsTest;
 import utils.FileUtilsTest;
-import machinelearning.MachineLearningTests.java;
+import machinelearning.MachineLearningTests;
 
 /**
  * Test suite containing test classes to be run
