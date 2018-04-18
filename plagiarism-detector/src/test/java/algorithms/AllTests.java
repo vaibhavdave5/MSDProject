@@ -7,8 +7,12 @@ import driver.SummaryTests;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
+
+import controllers.AlgorithmControllerTest;
+import database.ConnectTest;
 import utils.ConfigUtilsTest;
 import utils.FileUtilsTest;
+import utils.MailUtilsTest;
 import machinelearning.MachineLearningTests;
 
 /**
@@ -17,17 +21,21 @@ import machinelearning.MachineLearningTests;
  */
 @RunWith(Suite.class)
 @SuiteClasses({
+		AlgorithmControllerTest.class,
 		StudentPairTests.class,
 		SummaryTests.class,
 		DriverTests.class,
 		StudentTests.class,
 		LCSUnitTest.class,
+		EditDistanceTest.class,
 		NeemanWalshAlgorithmTest.class,
 		NodeTests.class,
 		FileUtilsTest.class,
+		MailUtilsTest.class,
 		SnippetPairTest.class,
 		ConfigUtilsTest.class,
-		MachineLearningTests.class
+		MachineLearningTests.class,
+		ConnectTest.class
 })
 public class AllTests {
 
