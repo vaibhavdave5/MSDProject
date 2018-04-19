@@ -34,6 +34,7 @@
 					<include>**/*.png</include>
 					<include>**/*.xlsx</include>
 					<include>**/*.sqlite</include>
+					<include>**/*.properties</include>
 				</includes>
 			</resource>
 		</resources>
@@ -106,13 +107,24 @@
 			<artifactId>sqlite-jdbc</artifactId>
 			<version>3.21.0.1</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.testfx</groupId>
+		    <artifactId>openjfx-monocle</artifactId>
+		    <version>8u76-b04</version> <!-- 8u76-b04 for Java 8 -->
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.testfx</groupId>
+		    <artifactId>testfx-junit</artifactId>
+		    <version>4.0.12-alpha</version>
+		    <scope>test</scope>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-math3</artifactId>
 			<version>3.6.1</version>
 		</dependency>
-
 	</dependencies>
 
 	<profiles>

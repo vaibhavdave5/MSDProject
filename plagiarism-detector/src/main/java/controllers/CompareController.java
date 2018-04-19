@@ -1,5 +1,17 @@
 package controllers;
 
+import static utils.FileUtils.getFileString;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import org.apache.log4j.Logger;
+
 import algorithms.SimilaritySnippet;
 import algorithms.SnippetPair;
 import constants.MailStrings;
@@ -10,22 +22,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
-import org.apache.log4j.Logger;
 import utils.FileUtils;
 import utils.MailUtils;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import static utils.FileUtils.getFileString;
 
 /**
  * This Controller is responsible to load the Compare page of the application.
@@ -35,7 +37,8 @@ import static utils.FileUtils.getFileString;
  */
 public class CompareController {
 	
-	// Controller injectors
+	// These are injected when the Controller is binded with the FXML view and hence,
+	// they don't need to be instantiated.
 	@FXML private TextFlow studentACode;
 	@FXML private TextFlow studentBCode;
 	@FXML private Label studentAName;
@@ -79,12 +82,18 @@ public class CompareController {
 	 * This method initializes the snippet text
 	 */
 	private void initializeSnippet() {
+		Text snippetAAbove = new Text(snippetPairs.get(currentSnippet).getSnippet1Above());
 		Text snippetA = new Text(snippetPairs.get(currentSnippet).getSnippet1());
+		Text snippetABelow = new Text(snippetPairs.get(currentSnippet).getSnippet1Below());
+		Text snippetBAbove = new Text(snippetPairs.get(currentSnippet).getSnippet2Above());
 		Text snippetB = new Text(snippetPairs.get(currentSnippet).getSnippet2());
+		Text snippetBBelow = new Text(snippetPairs.get(currentSnippet).getSnippet2Below());
+		snippetA.setFill(Color.RED);
+		snippetB.setFill(Color.RED);
 		studentACode.getChildren().clear();
 		studentBCode.getChildren().clear();
-		studentACode.getChildren().addAll(snippetA);
-		studentBCode.getChildren().addAll(snippetB);
+		studentACode.getChildren().addAll(snippetAAbove, snippetA, snippetABelow);
+		studentBCode.getChildren().addAll(snippetBAbove, snippetB, snippetBBelow);
 	}
 	
 	/**
@@ -189,9 +198,22 @@ public class CompareController {
 				int end1 = s.getEnd1();
 				int start2 = s.getStart2();
 				int end2 = s.getEnd2();
+				String snippet1Above = getFileString(file1, start1-10, start1-1);
 				String snippet1 = getFileString(file1, start1, end1);
+				String snippet1Below = getFileString(file1, end1+1, end1+10);
+				String snippet2Above = getFileString(file2, start2-10, start2-1);
 				String snippet2 = getFileString(file2, start2, end2);
-				snippetPairs.add(new SnippetPair(fileName1, fileName2, snippet1, snippet2, percentage1, percentage2));
+				String snippet2Below = getFileString(file2, end2+1, end2+10);
+				snippetPairs.add(new SnippetPair(fileName1, 
+												fileName2, 
+												snippet1Above, 
+												snippet1, 
+												snippet1Below, 
+												snippet2Above, 
+												snippet2, 
+												snippet2Below, 
+												percentage1, 
+												percentage2));
 			});
 		});
 

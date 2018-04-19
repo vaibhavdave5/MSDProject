@@ -1,5 +1,14 @@
 package controllers;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
+import org.apache.log4j.Logger;
+
 import algorithms.Algorithm;
 import constants.AlertStrings;
 import controllers.popups.PopupMessage;
@@ -25,14 +34,7 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import org.apache.log4j.Logger;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
+import utils.ConfigUtils;
 /**
  * This Controller is responsible to load the main page of the application.
  * 
@@ -41,7 +43,8 @@ import java.util.concurrent.ExecutionException;
  */
 public class MainController {
 	
-	// Controller injectors
+	// These are injected when the Controller is binded with the FXML view and hence,
+	// they don't need to be instantiated.
 	@FXML private TreeView<DirectoryView> dirContent;
 	@FXML private Button summary;
 	@FXML private Button excel;
@@ -54,8 +57,20 @@ public class MainController {
 	@FXML private ProgressIndicator progress;
 	@FXML private Button clearButton;
 	
+	// Configuration Variables
+	private String enterHW;
+	private String pathToEmptyFolder;
+	private String pathToFilledFolder;
+	private String pathToLogo;
+	private String greenStyle;
+	private String redStyle;
+	private String blueStyle;
+	private String customLogoStyle;
+	private String customFolderStyle;
+	
 	private Image emptyFolder;
 	private Image filledFolder;
+	private Image logoImg;
 	private File excelFile;
 	private CheckBoxTreeItem<DirectoryView> root;
 	private Algorithm algo = Algorithm.DEFAULT;
@@ -63,43 +78,86 @@ public class MainController {
 	private static Logger logger = Logger.getLogger(MainController.class);
 	
 	public MainController() {
-		emptyFolder = new Image(getClass()
-				.getResource("/images/folder.png")
-				.toExternalForm());
-		filledFolder = new Image(getClass()
-				.getResource("/images/folder-filled.png")
-				.toExternalForm());
+		initConfigVar();
+		initImages();
 		excelFile = null;
 	}
 	
 	/**
-	 * This method runs on page load and initializes all components of the Start.fxml page
+	 * This is a method used to initialize the configuration variables used in 
+	 * the class
+	 */
+	private void initConfigVar() {
+		ConfigUtils configUtils = new ConfigUtils();
+		enterHW = configUtils.readConfig("ENTER_HW");
+		pathToEmptyFolder = configUtils.readConfig("PATH_EMPTY_FOLDER");
+		pathToFilledFolder = configUtils.readConfig("PATH_FILLED_FOLDER");
+		pathToLogo = configUtils.readConfig("PATH_LOGO");
+		greenStyle = configUtils.readConfig("GREEN");
+		redStyle = configUtils.readConfig("RED");
+		blueStyle = configUtils.readConfig("BLUE");
+		customLogoStyle = configUtils.readConfig("CUSTOM_LOGO");
+		customFolderStyle = configUtils.readConfig("CUSTOM_FOLDER");
+		
+	}
+	
+	/**
+	 * This method sets the image files that are used for the Main screen.
+	 * The three images are the empty folder and the filled folder that are displayed on
+	 * the drag/drop/select image area and the logo image shown at the top-left side of the 
+	 * application page
+	 */
+	private void initImages() {
+		emptyFolder = new Image(getClass()
+								.getResource(pathToEmptyFolder)
+								.toExternalForm());
+		filledFolder = new Image(getClass()
+								.getResource(pathToFilledFolder)
+								.toExternalForm());
+		logoImg = new Image(getClass()
+								.getResource(pathToLogo)
+								.toExternalForm());
+	}
+	
+	/**
+	 * This method runs on page load and initializes all components of the Start.fxml page.
+	 * It initialized 
+	 *  ~ the folder image of the screen to an empty folder.
+	 *  ~ the logo on the screen.
+	 *  ~ sets the prompt text of the text box  
+	 *  ~ hides the progress that is shown when the application is processing a user request.
 	 */
 	@FXML protected void initialize() {
 		applyStyle();
 		folder.setImage(emptyFolder);
-		northeastern.setImage(new Image(getClass()
-				.getResource("/images/logo.png")
-				.toExternalForm()));
-		hw.setPromptText("Type in e.g. HW1...");
+		northeastern.setImage(logoImg);
+		hw.setPromptText(enterHW);
 		progress.setVisible(false);
 	}
 	
 	/**
-	 * This method applies the CSS properties to the controls.
+	 * This method applies the CSS properties to the controls of the Start.fxml page.
+	 * It adds style to:
+	 *  ~ the drop down menu to select strategy
+	 *  ~ the run button (summary)
+	 *  ~ the excel upload button
+	 *  ~ the clear directory button
+	 *  ~ the 'Integrity' text with the logo of Northeastern
+	 *  ~ the the choose directory button
 	 */
 	private void applyStyle() {
-		strategy.getStyleClass().add("primary");
-		summary.getStyleClass().add("primary");
-		excel.getStyleClass().add("danger");
-		clearButton.getStyleClass().add("danger");
-		logo.getStyleClass().add("logo");
-		chooseDir.getStyleClass().add("drag-folder");
+		strategy.getStyleClass().add(blueStyle);
+		summary.getStyleClass().add(blueStyle);
+		excel.getStyleClass().add(redStyle);
+		clearButton.getStyleClass().add(redStyle);
+		logo.getStyleClass().add(customLogoStyle);
+		chooseDir.getStyleClass().add(customFolderStyle);
 	}
 	
 	/**
 	 * This method handles the event when the open button is clicked on the Start page.
-	 * It open the browse dialog box where users can choose a valid directory only.
+	 * The open button here means the click-able folder image in the middle of the view.
+	 * It open the browse dialog box where users can choose a valid directory only and not files.
 	 */
 	@FXML public void browseDirectory() {
 		try {
@@ -128,13 +186,14 @@ public class MainController {
 	 */
 	@FXML public void uploadExcel() {
 		FileChooser fileChooser = new FileChooser();
-		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XLST files (*.xlsx)", "*.xlsx");
+		FileChooser.ExtensionFilter extFilter = 
+				  new FileChooser.ExtensionFilter("XLST files (*.xlsx)", "*.xlsx");
 		fileChooser.getExtensionFilters().add(extFilter);
 		File file = fileChooser.showOpenDialog(null);
         if (file != null) {
         		excelFile = file;
-	        	excel.getStyleClass().removeAll("danger");
-	    		excel.getStyleClass().add("success");
+	        	excel.getStyleClass().removeAll(redStyle);
+	    		excel.getStyleClass().add(greenStyle);
         }
 	}
 	
@@ -366,7 +425,7 @@ public class MainController {
 	 * Event that occurs when user selects Textual similarity Strategy
 	 */
 	@FXML private void selectLCS() {
-		strategy.setText("Textual Similarity");
+		strategy.setText("LCS Strategy");
 		algo = Algorithm.LCS;
 	}
 	
@@ -374,7 +433,7 @@ public class MainController {
 	 * Event that occurs when user selects Code similarity Strategy
 	 */
 	@FXML private void selectNW() {
-		strategy.setText("Code Similarity");
+		strategy.setText("Levenshtein Strategy");
 		algo = Algorithm.NW;
 	}
 	

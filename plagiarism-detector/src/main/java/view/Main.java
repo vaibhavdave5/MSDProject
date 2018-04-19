@@ -1,5 +1,8 @@
 package view;
 
+import org.apache.log4j.Logger;
+
+import constants.AlertStrings;
 import controllers.ScreenController;
 import controllers.popups.PopupMessage;
 import javafx.application.Application;
@@ -8,8 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.apache.log4j.Logger;
-import constants.AlertStrings;
 
 /**
  * Entry point of application  
