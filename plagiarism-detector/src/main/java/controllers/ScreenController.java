@@ -17,13 +17,19 @@ public class ScreenController {
     private Scene main;
     private static ScreenController instance;
 
+    /**
+
+     * @param main The start screen of the application
+     */
     private ScreenController(Scene main) { 
     		this.main = main;
     } 
     
     /**
      * This class follows the Singleton pattern and this is the only way to 
-     * get the instance of the class
+     * get the instance of the class. If this object has not been set with the setter
+     * below, this will return null
+     * 
      * @return the instance of the class
      */
     public static ScreenController getInstance() {
@@ -32,7 +38,7 @@ public class ScreenController {
     
     /**
      * Sets the instance of the class with the provided scene. This can only be 
-     * done once in one application run
+     * done once in one application run.
      * 
      * @param main The first scene of the application
      */
@@ -43,7 +49,7 @@ public class ScreenController {
     }
 
     /**
-     * This method adds another Screen and saves it in the application session
+     * This method adds another Screen and saves it in the application session.
      * 
      * @param name the name of the screen
      * @param pane The representation of the screen in form of a Pane
