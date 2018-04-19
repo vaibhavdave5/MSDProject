@@ -81,7 +81,6 @@ public class MainController {
 	private String strategy2;
 	private String strategy3;
 	
-	
 	private Image emptyFolder;
 	private Image filledFolder;
 	private Image logoImg;
