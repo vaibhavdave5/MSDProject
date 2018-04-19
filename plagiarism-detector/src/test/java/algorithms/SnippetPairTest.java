@@ -18,7 +18,10 @@ public class SnippetPairTest {
 	 */
 	@BeforeClass
 	public static void init() {
-		snippetPair = new SnippetPair("a.c", "b.c", "Here's some text", "Here's some text.", 100, 99);
+		snippetPair = new SnippetPair("a.c", "b.c", 
+				"Here's some text.", "Here's some text", 
+				"Here's some text.", "Here's some text.",
+				"Here's some text.", "Here's some text.",100, 99);
 	}
 
 	/**
@@ -58,7 +61,16 @@ public class SnippetPairTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void constructorNullFileName1() {
-		SnippetPair snippetPair = new SnippetPair(null, "b.c", "Here's some text", "Here's some text.", 100, 99);
+		SnippetPair snippetPair = new SnippetPair(null, 
+												 "b.c", 
+												 "Here's some text", 
+												 "Here's some text",
+												 "Here's some text",
+												 "Here's some text",
+												 "Here's some text",
+												 "Here's some text",
+												 100, 
+												 99);
 	}
 
 	/**
@@ -66,7 +78,16 @@ public class SnippetPairTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void constructorNullFileName2() {
-		SnippetPair snippetPair = new SnippetPair("a.c", null, "Here's some text", "Here's some text.", 100, 99);
+		SnippetPair snippetPair = new SnippetPair("a.c", 
+												 null, 
+												 "Here's some text",
+												 "Here's some text",
+												 "Here's some text",
+												 "Here's some text",
+												 "Here's some text", 
+												 "Here's some text.", 
+												 100, 
+												 99);
 	}
 
 	/**
@@ -74,7 +95,16 @@ public class SnippetPairTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void constructorNullSnipet1() {
-		SnippetPair snippetPair = new SnippetPair("a.c", "b.c", null, "Here's some text.", 100, 99);
+		SnippetPair snippetPair = new SnippetPair("a.c", 
+												 "b.c", 
+												 "Here's some text.", 
+												 null,
+												 "Here's some text",
+												 "Here's some text.", 
+												 "Here's some text.",
+												 "Here's some text",
+												 100, 
+												 99);
 	}
 
 	/**
@@ -82,6 +112,15 @@ public class SnippetPairTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void constructorNullSnipet2() {
-		SnippetPair snippetPair = new SnippetPair("a.c", "b.c", "Here's some text", null, 100, 99);
+		SnippetPair snippetPair = new SnippetPair("a.c", 
+				 "b.c", 
+				 "Here's some text.", 
+				 "Here's some text",
+				 "Here's some text",
+				 "Here's some text.", 
+				 null,
+				 "Here's some text",
+				 100, 
+				 99);
 	}
 }

@@ -33,7 +33,7 @@ public class Connect {
 		final SQLiteConfig config = new SQLiteConfig();
 		Connection conn = null;
 		try {
-			conn = DriverManager.getConnection("jdbc:sqlite:" + DB_PATH, config.toProperties());
+			conn = DriverManager.getConnection("jdbc:sqlite::resource:" + DB_PATH, config.toProperties());
 		} catch (SQLException e) {
 			logger.error(e.toString());
 		}
@@ -108,7 +108,7 @@ public class Connect {
 			// update
 			pstmt.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (SQLException |NullPointerException e) {
 			logger.error(e.toString());
 		}
 	}

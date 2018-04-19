@@ -1,0 +1,19 @@
+:Integrity Plagiarism Checker by Team-107.Run_button primary	{caption='Run' id='summary' styletype='button primary' visible='true' window=':Integrity Plagiarism Checker by Team-107_Stage'}
+:Integrity Plagiarism Checker by Team-107.Select a strategy..._ContextMenu	{caption='Select a strategy...' type='javafx.scene.control.ContextMenu' visible='true' window=':Integrity Plagiarism Checker by Team-107_Stage'}
+:Integrity Plagiarism Checker by Team-107.Select a strategy..._menu-button primary	{caption='Select a strategy...' id='strategy' styletype='menu-button primary' visible='true' window=':Integrity Plagiarism Checker by Team-107_Stage'}
+:Integrity Plagiarism Checker by Team-107.Textual Similarity_ContextMenu	{caption='Textual Similarity' type='javafx.scene.control.ContextMenu' visible='true' window=':Integrity Plagiarism Checker by Team-107_Stage'}
+:Integrity Plagiarism Checker by Team-107.Textual Similarity_menu-button primary	{caption='Textual Similarity' id='strategy' styletype='menu-button primary' visible='true' window=':Integrity Plagiarism Checker by Team-107_Stage'}
+:Integrity Plagiarism Checker by Team-107.Upload Excel Validator_button danger	{caption='Upload Excel Validator' id='excel' styletype='button danger' visible='true' window=':Integrity Plagiarism Checker by Team-107_Stage'}
+:Integrity Plagiarism Checker by Team-107.dirContent_tree-view	{id='dirContent' styletype='tree-view' visible='true' window=':Integrity Plagiarism Checker by Team-107_Stage'}
+:Integrity Plagiarism Checker by Team-107.folder_image-view	{id='folder' styletype='image-view' visible='true' window=':Integrity Plagiarism Checker by Team-107_Stage'}
+:Integrity Plagiarism Checker by Team-107.hw_text-input text-field	{id='hw' styletype='text-input text-field' visible='true' window=':Integrity Plagiarism Checker by Team-107_Stage'}
+:Integrity Plagiarism Checker by Team-107_Stage	{caption='Integrity Plagiarism Checker by Team-107' type='javafx.stage.Stage' visible='true'}
+:OK_button	{caption='OK' container=':_button-bar' styletype='button' visible='true'}
+:OK_button_2	{caption='OK' container=':_button-bar_2' styletype='button' visible='true'}
+:SquishJavaFX	SquishJavaFX
+:_Stage	{basetype='javafx.stage.Stage' visible='true'}
+:_Stage_2	{basetype='javafx.stage.Stage' occurrence='1' visible='true'}
+:_button-bar	{styletype='button-bar' visible='true' window=':_Stage'}
+:_button-bar_2	{styletype='button-bar' visible='true' window=':_Stage_2'}
+:dirContent.final-test-repos_cell indexed-cell tree-cell check-box-tree-cell	{caption='final-test-repos' container=':Integrity Plagiarism Checker by Team-107.dirContent_tree-view' styletype='cell indexed-cell tree-cell check-box-tree-cell' visible='true'}
+:final-test-repos_check-box	{caption='' container=':dirContent.final-test-repos_cell indexed-cell tree-cell check-box-tree-cell' styletype='check-box' visible='true'}

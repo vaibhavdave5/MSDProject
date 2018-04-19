@@ -15,8 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -35,8 +33,7 @@ public class DriverTests {
 		List<String> repoPaths = new ArrayList<>();
 
 		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
-				+ File.separator + "java" + File.separator + "controllers" + File.separator + "test-repos"
-				+ File.separator;
+				+ File.separator + "resources" + File.separator + "test-repos" + File.separator;
 
 		repoPaths.add(basePath + "student-110");
 		repoPaths.add(basePath + "student-111");
@@ -55,6 +52,10 @@ public class DriverTests {
 		assertEquals(expectedKey1, actualKeys[0]);
 		assertEquals(expectedKey2, actualKeys[1]);
 	}
+	
+	/**
+	 * A complete run of Driver with backend to get student pairs
+	 */
 
 	@Test
 	public void testCheckForPlagiarism() {
@@ -64,8 +65,7 @@ public class DriverTests {
 		Integer expected2 = 111;
 
 		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
-				+ File.separator + "java" + File.separator + "controllers" + File.separator + "test-repos"
-				+ File.separator;
+				+ File.separator + "resources" + File.separator + "test-repos" + File.separator;
 
 		repoPaths.add(basePath + "student-" + expected1);
 		repoPaths.add(basePath + "student-" + expected2);
@@ -108,8 +108,7 @@ public class DriverTests {
 		List<String> repoPaths = new ArrayList<>();
 
 		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
-				+ File.separator + "java" + File.separator + "controllers" + File.separator + "test-repos"
-				+ File.separator;
+				+ File.separator + "resources" + File.separator + "test-repos" + File.separator;
 
 		repoPaths.add(basePath + "student-110");
 		repoPaths.add(basePath + "student-111");
@@ -128,8 +127,7 @@ public class DriverTests {
 		List<String> repoPaths = new ArrayList<>();
 
 		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
-				+ File.separator + "java" + File.separator + "controllers" + File.separator + "test-repos"
-				+ File.separator;
+				+ File.separator + "resources" + File.separator + "test-repos" + File.separator;
 
 		repoPaths.add(basePath + "student-110");
 		repoPaths.add(basePath + "student-111");
@@ -249,8 +247,7 @@ public class DriverTests {
 		List<String> repoPaths = new ArrayList<>();
 
 		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
-				+ File.separator + "java" + File.separator + "controllers" + File.separator + "test-repos"
-				+ File.separator;
+				+ File.separator + "resources" + File.separator + "test-repos" + File.separator;
 
 		repoPaths.add(basePath + "student-110");
 		repoPaths.add(basePath + "student-111");
@@ -287,8 +284,7 @@ public class DriverTests {
 		List<String> repoPaths = new ArrayList<>();
 
 		String basePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
-				+ File.separator + "java" + File.separator + "controllers" + File.separator + "test-repos"
-				+ File.separator;
+				+ File.separator + "resources" + File.separator + "test-repos" + File.separator;
 
 		repoPaths.add(basePath + "student-110");
 		repoPaths.add(basePath + "student-111");

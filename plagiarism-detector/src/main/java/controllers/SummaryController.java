@@ -1,5 +1,12 @@
 package controllers;
 
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.Optional;
+import java.util.Set;
+
+import org.apache.log4j.Logger;
+
 import controllers.popups.PopupMessage;
 import database.Connect;
 import driver.Driver;
@@ -9,19 +16,12 @@ import driver.StudentPair;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
-import org.apache.log4j.Logger;
-
-import java.io.IOException;
-import java.text.DecimalFormat;
-import java.util.Optional;
-import java.util.Set;
 
 /**
  * This Controller is responsible to load the Summary page of the application.
@@ -31,6 +31,8 @@ import java.util.Set;
  */
 public class SummaryController {
 
+	// These are injected when the Controller is binded with the FXML view and hence,
+	// they don't need to be instantiated.
 	@FXML private ProgressBar progress;
 	@FXML private Label info;
 	@FXML private ListView<StudentPair> danger;
