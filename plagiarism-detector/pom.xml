@@ -58,6 +58,7 @@
 					<include>**/*.png</include>
 					<include>**/*.xlsx</include>
 					<include>**/*.sqlite</include>
+					<include>**/*.properties</include>
 				</includes>
 			</resource>
 		</resources>
