@@ -28,6 +28,7 @@
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#selectLCS" text="LCS Strategy" />
                 <MenuItem mnemonicParsing="false" onAction="#selectNW" text="Levenshtein Strategy" />
+                <MenuItem mnemonicParsing="false" onAction="#selectLCS" text="Run Weighted Average" />
               </items>
             </MenuButton>
             <ImageView fx:id="northeastern" fitHeight="67.0" fitWidth="66.0" layoutX="23.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" />

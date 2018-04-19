@@ -22,6 +22,7 @@
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#selectLCS" text="Textual Similarity" />
                 <MenuItem mnemonicParsing="false" onAction="#selectNW" text="Code Similarity" />
+                <MenuItem mnemonicParsing="false" onAction="#selectWA" text="Weighted Average" />
               </items>
             </MenuButton>
             <ImageView fx:id="northeastern" fitHeight="67.0" fitWidth="66.0" layoutX="23.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" />

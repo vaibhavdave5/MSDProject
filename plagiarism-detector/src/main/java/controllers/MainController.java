@@ -422,7 +422,7 @@ public class MainController {
 	}
 	
 	/**
-	 * Event that occurs when user selects Textual similarity Strategy
+	 * Event that occurs when user selects LCS Strategy
 	 */
 	@FXML private void selectLCS() {
 		strategy.setText("LCS Strategy");
@@ -430,11 +430,19 @@ public class MainController {
 	}
 	
 	/**
-	 * Event that occurs when user selects Code similarity Strategy
+	 * Event that occurs when user selects Levenshtein Distance Strategy
 	 */
 	@FXML private void selectNW() {
 		strategy.setText("Levenshtein Strategy");
 		algo = Algorithm.NW;
+	}
+	
+	/**
+	 * Event that occurs when user selects Weighted Average Strategy
+	 */
+	@FXML private void selectWA() {
+		strategy.setText("Weighted Average");
+		algo = Algorithm.DEFAULT;
 	}
 	
 	/**
