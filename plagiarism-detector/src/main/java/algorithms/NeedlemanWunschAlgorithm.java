@@ -1,7 +1,6 @@
 package algorithms;
 
 import parser.Node;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +15,10 @@ import java.util.List;
 
 public class NeedlemanWunschAlgorithm implements AlgorithmStrategy {
 
+	private int diagonalScore = 1;
+	private int rightScore = 2;
+	private int leftScore = 3;
+	
 	/**
 	 * Compute the similarity between two Node lists
 	 * 
@@ -34,13 +37,6 @@ public class NeedlemanWunschAlgorithm implements AlgorithmStrategy {
 		// check for file2 whether its empty or not
 		if (list2.isEmpty())
 			throw new IllegalArgumentException("The file2 are empty");
-
-		// check if the two files are considerably very short to judge the
-		// similarity
-		// between them
-		else if (list1.size() < 500 || list2.size() < 500) {
-			return new Result(0.0,0.0, new ArrayList<>());
-		}
 
 		List<SimilaritySnippet> snippets = getCommonNodesList(list1, list2);
 
@@ -149,13 +145,9 @@ public class NeedlemanWunschAlgorithm implements AlgorithmStrategy {
 		int scoreDiagonal = c[i - 1][j - 1] + substitutionMatrix[i][j];
 		int scoreup = c[i - 1][j] - 1;
 		int scoreleft = c[i][j - 1] - 1;
-
 		c[i][j] = Math.max(Math.max(scoreDiagonal, scoreup), scoreleft);
-
-		if (c[i][j] == scoreDiagonal) trackMatrix[i][j] = 1;
-		
-		else if (c[i][j] == scoreleft) trackMatrix[i][j] = 2;
-		
-		else trackMatrix[i][j] = 3;
+		if (c[i][j] == scoreDiagonal) trackMatrix[i][j] = diagonalScore;
+		else if (c[i][j] == scoreleft) trackMatrix[i][j] = leftScore;
+		else trackMatrix[i][j] = rightScore;
 	}
 }
