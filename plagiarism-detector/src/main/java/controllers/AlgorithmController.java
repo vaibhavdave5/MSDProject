@@ -1,8 +1,6 @@
 package controllers;
 
-import algorithms.Algorithm;
 import algorithms.AlgorithmContext;
-import algorithms.AlgorithmFactory;
 import algorithms.AlgorithmStrategy;
 import algorithms.IResult;
 
@@ -24,9 +22,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * The main controller of the application that can tell if two files are similar
@@ -63,7 +59,6 @@ public class AlgorithmController {
 	 * @return a list of Nodes that represent the given C file
 	 */
 	public List<Node> getNodeList(File file) {
-
 		file = handleANTLRBug(file);
 		List<Node> nodeList = new ArrayList<>();
 		try {
@@ -89,7 +84,7 @@ public class AlgorithmController {
 		double[] arr = new double[2];
 		IResult result = getResult(strategy,nodeList1,nodeList2);
 		arr[0] = result.getPercentagefile1();
-		arr[1] = result.getPercentagefile2(); 
+		arr[1] = result.getPercentagefile2();
 		return arr;
 	}
 

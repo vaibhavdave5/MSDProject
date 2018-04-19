@@ -108,7 +108,7 @@ public class Connect {
 			// update
 			pstmt.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (SQLException |NullPointerException e) {
 			logger.error(e.toString());
 		}
 	}
