@@ -10,5 +10,6 @@ public class AlertStrings {
 			"HW<number>\nE.g.\nHW2\nHW3\n...\n";
 
 	public static final String NO_EXEL_FILE_MESSAGE = "Please select an excel file which maps student ID to the the student names " +
-			"and their email addresses. ";
+			"and their email addresses.\n" + "The excel file should be in following format.\n"
+			+ "ID | name | email\n" + "101 | John Doe | john@gmail.com\n" + "102 | Alice Rup | alice@yahoo.com\n...";
 }

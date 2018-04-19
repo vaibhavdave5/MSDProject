@@ -1,24 +1,17 @@
 package algorithms;
 
+import static org.junit.Assert.*;
+
+import java.io.*;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.junit.Test;
 
 import controllers.AlgorithmController;
 import parser.Node;
 
-import static org.junit.Assert.assertTrue;
-
-import java.io.File;
-import java.util.LinkedList;
-import java.util.List;
-
-/**
- * Tests for LCS Algorithm
- * @author Shail Shah
- * @author Vaibhav Dave
- */
-public class LCSUnitTest {
-
+public class LevenshteinDistanceTests {
 
 	/**
 	 * If the Node lists are empty, an exception should be thrown
@@ -28,7 +21,7 @@ public class LCSUnitTest {
 		List<Node> list1 = new LinkedList<>();
 		List<Node> list2 = new LinkedList<>();
 		
-		AlgorithmStrategy nw = new LCSAlgorithm();
+		AlgorithmStrategy nw = new LevenshteinDistance();
 		nw.computeSimilarity(list1, list2);		
 	}
 	
@@ -46,7 +39,7 @@ public class LCSUnitTest {
 		File file2 = new File(path2);
 
 		AlgorithmController ac = new AlgorithmController();
-		double[] ans = ac.getSimilarityPercentage(new LCSAlgorithm(), ac.getNodeList(file1), ac.getNodeList(file2));
+		double[] ans = ac.getSimilarityPercentage(new LevenshteinDistance(), ac.getNodeList(file1), ac.getNodeList(file2));
 		assertTrue(ans[0] >= 0 && ans[0] <= 1);
 		assertTrue(ans[1] >= 0 && ans[1] <= 1);
 	}
@@ -64,10 +57,9 @@ public class LCSUnitTest {
 		File file2 = new File(path2);
 
 		AlgorithmController ac = new AlgorithmController();
-		double[] ans = ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.LCS), ac.getNodeList(file1), ac.getNodeList(file2));
+		double[] ans = ac.getSimilarityPercentage(new AlgorithmFactory().getAlgo(Algorithm.EDITDISTANCE), ac.getNodeList(file1), ac.getNodeList(file2));
 		assertTrue(ans[0] >= 0 && ans[0] <= 1);
 		assertTrue(ans[1] >= 0 && ans[1] <= 1);
 	}
 
 }
-
