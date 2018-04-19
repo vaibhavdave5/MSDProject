@@ -1,9 +1,9 @@
 package algorithms;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * Tests for testing SnippetPair getters
@@ -61,6 +61,7 @@ public class SnippetPairTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void constructorNullFileName1() {
+		@SuppressWarnings("unused")
 		SnippetPair snippetPair = new SnippetPair(null, 
 												 "b.c", 
 												 "Here's some text", 
@@ -78,6 +79,7 @@ public class SnippetPairTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void constructorNullFileName2() {
+		@SuppressWarnings("unused")
 		SnippetPair snippetPair = new SnippetPair("a.c", 
 												 null, 
 												 "Here's some text",
@@ -95,6 +97,7 @@ public class SnippetPairTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void constructorNullSnipet1() {
+		@SuppressWarnings("unused")
 		SnippetPair snippetPair = new SnippetPair("a.c", 
 												 "b.c", 
 												 "Here's some text.", 
@@ -112,6 +115,7 @@ public class SnippetPairTest {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void constructorNullSnipet2() {
+		@SuppressWarnings("unused")
 		SnippetPair snippetPair = new SnippetPair("a.c", 
 				 "b.c", 
 				 "Here's some text.", 
