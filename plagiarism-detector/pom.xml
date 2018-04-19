@@ -187,6 +187,7 @@
 		</sonar.exclusions>
 		<sonar.coverage.exclusions>
 			<!-- These files are UI files and cannot be tested on Jenkins so are excluded -->
+			<!-- These are statically checked by SonarQube but code coverage is ignored -->
 			<!-- We are using squish to locally test the UI -->
 			**/controllers/*, **/constants/*, **/MailUtils.java, **/Main.java, **/PopupMessage.java
 		</sonar.coverage.exclusions>
