@@ -26,8 +26,8 @@
             <TextField fx:id="hw" layoutX="312.0" layoutY="447.0" prefHeight="39.0" prefWidth="175.0" />
             <MenuButton fx:id="strategy" layoutX="183.0" layoutY="513.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="175.0" text="Select a strategy...">
               <items>
-                <MenuItem mnemonicParsing="false" onAction="#selectLCS" text="Textual Similarity" />
-                <MenuItem mnemonicParsing="false" onAction="#selectNW" text="Code Similarity" />
+                <MenuItem mnemonicParsing="false" onAction="#selectLCS" text="LCS Strategy" />
+                <MenuItem mnemonicParsing="false" onAction="#selectNW" text="Levenshtein Strategy" />
               </items>
             </MenuButton>
             <ImageView fx:id="northeastern" fitHeight="67.0" fitWidth="66.0" layoutX="23.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" />

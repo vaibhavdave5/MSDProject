@@ -425,7 +425,7 @@ public class MainController {
 	 * Event that occurs when user selects Textual similarity Strategy
 	 */
 	@FXML private void selectLCS() {
-		strategy.setText("Textual Similarity");
+		strategy.setText("LCS Strategy");
 		algo = Algorithm.LCS;
 	}
 	
@@ -433,7 +433,7 @@ public class MainController {
 	 * Event that occurs when user selects Code similarity Strategy
 	 */
 	@FXML private void selectNW() {
-		strategy.setText("Code Similarity");
+		strategy.setText("Levenshtein Strategy");
 		algo = Algorithm.NW;
 	}
 	
