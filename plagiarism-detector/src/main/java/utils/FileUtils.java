@@ -68,7 +68,7 @@ public class FileUtils {
 	}
 
 	/**
-	 * Writes the given message in the given path
+	 * Writes the given message in the given path.
 	 * @param filePath the path of the file to write
 	 * @param message the message to print in the file
 	 * @throws IOException such as FileNotFoundException
