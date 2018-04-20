@@ -26,7 +26,7 @@ public class Connect {
 
 	/**
 	 * This function connects to the database
-	 * @return
+	 * @return a connection that connects to the database
 	 */
 	private static Connection connect() {
 		// SQLite connection string
@@ -43,7 +43,7 @@ public class Connect {
 	/**
 	 * This method runs the provided query.
 	 * 
-	 * @param query
+	 * @param query a query to the database
 	 * @return the number of columns of the result of the query
 	 */
 	public static ResultSet runQuery(String query) {
@@ -116,7 +116,7 @@ public class Connect {
 	/**
 	 * This function increases the number of cases by number of students in 
 	 * the red list
-	 * @param count
+	 * @param count the increment count
 	 */
 	public static void increaseCases(int count) {
 		String sql = "UPDATE Statistics SET PlagiarismCasesFound = ? ";

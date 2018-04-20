@@ -30,8 +30,8 @@ public class LevenshteinDistance implements AlgorithmStrategy {
 
 		int ed = computeEditDistance(list1, list2);
 		
-		return new Result((Math.abs(((1.0 * ed) / list1.size())-1)),
-		   				 (Math.abs(((1.0 * ed) / list2.size())-1)),
+		return new Result((Math.abs(((1.0 * ed) / list1.size()) - 1)),
+		   				 (Math.abs(((1.0 * ed) / list2.size()) - 1)),
 			 			  snippets);
 	}
 
@@ -51,25 +51,25 @@ public class LevenshteinDistance implements AlgorithmStrategy {
 		// Create a table to store results of subproblems
         int[][] dp = new int[m+1][n+1];
         // Fill d[][] in bottom up manner
-        for (int i=0; i<=m; i++)
+        for (int i = 0; i <= m; i++)
         {
-            for (int j=0; j<=n; j++)
+            for (int j = 0; j <= n; j++)
             {
                 // If first string is empty, only option is to
                 // insert all characters of second string
-                if (i==0)
+                if (i == 0)
                     dp[i][j] = j;  // Min. operations = j
       
                 // If second string is empty, only option is to
                 // remove all characters of second string
-                else if (j==0)
+                else if (j == 0)
                     dp[i][j] = i; // Min. operations = i
       
                 // If last characters are same, ignore last char
                 // and recur for remaining string
-                else if (list1.get(i-1).equals(list2.get(j-1))){
-                    snippets.add(new SimilaritySnippet(list1.get(i-1), list2.get(j-1)));
-                	dp[i][j] = dp[i-1][j-1];
+                else if (list1.get(i - 1).equals(list2.get(j - 1))){
+                    snippets.add(new SimilaritySnippet(list1.get(i - 1), list2.get(j - 1)));
+                	dp[i][j] = dp[i - 1][j - 1];
                 }
       
                 // If last character are different, consider all
@@ -88,20 +88,12 @@ public class LevenshteinDistance implements AlgorithmStrategy {
 	/**
 	 * This function compares three variables at a time
 	 * and computes the minimum out of the two variables.
-	 * @param a
-	 * @param b
-	 * @param c
-	 * @return min
+	 * @param a a number
+	 * @param b another number
+	 * @param c yet another number
+	 * @return the minimum of a, b, and c
 	 */
-	private static int min(int a,int b,int c){
-		int min = b;
-		if(a<b){
-			min = a;
-		}
-		if(c<min)
-			return c;
-		
-		return min;
+	private static int min(int a,int b,int c) {
+		return Math.min(a, Math.min(b, c));
 	}
-	
 }

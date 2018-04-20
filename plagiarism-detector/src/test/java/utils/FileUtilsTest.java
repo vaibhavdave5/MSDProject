@@ -331,7 +331,7 @@ public class FileUtilsTest {
 
 	/**
 	 * Test for writing to a file and then deleting it
-	 * @throws IOException
+	 * @throws IOException if reading the file fails
 	 */
 	@Test
 	public void writeToFileNormal() throws IOException {
@@ -343,7 +343,8 @@ public class FileUtilsTest {
 		BufferedReader br = new BufferedReader(new FileReader(filename));
 		String line;
 		while ((line = br.readLine()) != null) {
-			sb.append(line + "\n");
+			sb.append(line)
+					.append("\n");
 		}
 
 		sb.setLength(sb.length()-1);

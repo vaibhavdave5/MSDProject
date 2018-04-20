@@ -28,8 +28,8 @@ public class TrainDataElicitor {
 	 * This method reads the train data from the given xlsx file and returns the 
 	 * Train data in the form of features and labels.
 	 * @return TrainData features and labels
-	 * @throws InvalidFormatException
-	 * @throws IOException
+	 * @throws InvalidFormatException if the format is wrong
+	 * @throws IOException if creating the file fails
 	 */
 	public TrainData getTrainData() throws InvalidFormatException, IOException {
 		double[] y = new double[19];

@@ -101,7 +101,8 @@ public class AlgorithmController {
 			String s = read.readLine();
 			while (s != null) {
 				if (!s.contains("include"))
-					str.append(s + System.lineSeparator());
+					str.append(s)
+						.append(System.lineSeparator());
 				s = read.readLine();
 			}
 		} catch (IOException e) {

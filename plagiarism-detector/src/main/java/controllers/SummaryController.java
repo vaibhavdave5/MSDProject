@@ -115,11 +115,7 @@ public class SummaryController {
 		progress.setProgress(0.0);
 		score.setText("-");
 	}
-	
-	/**
-	 * Sets the message for empty ListViews
-	 * @param <T>
-	 */
+
 	/**
 	 * Sets the message for a ListView
 	 * @param listView a ListView
