@@ -23,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
@@ -56,6 +57,9 @@ public class MainController {
 	@FXML private MenuButton strategy;
 	@FXML private ProgressIndicator progress;
 	@FXML private Button clearButton;
+	@FXML private MenuItem strategyOne;
+	@FXML private MenuItem strategyTwo;
+	@FXML private MenuItem strategyThree;
 	
 	// Configuration Variables
 	private String enterHW;
@@ -67,6 +71,15 @@ public class MainController {
 	private String blueStyle;
 	private String customLogoStyle;
 	private String customFolderStyle;
+	private String excelValidExtn;
+	private String excelValidExtnDisplay;
+	private String weightHeader;
+	private String weightContext;
+	private String summaryPath;
+	private String summaryPage;
+	private String strategy1;
+	private String strategy2;
+	private String strategy3;
 	
 	private Image emptyFolder;
 	private Image filledFolder;
@@ -98,7 +111,15 @@ public class MainController {
 		blueStyle = configUtils.readConfig("BLUE");
 		customLogoStyle = configUtils.readConfig("CUSTOM_LOGO");
 		customFolderStyle = configUtils.readConfig("CUSTOM_FOLDER");
-		
+		excelValidExtn = configUtils.readConfig("EXCEL_EXTN_VALID");
+		excelValidExtnDisplay = configUtils.readConfig("EXCEL_EXTN_VALID_DISPLAY");
+		weightHeader = configUtils.readConfig("WEIGHTED_AVERAGE_INFO_HEADER");
+		weightContext = configUtils.readConfig("WEIGHTED_AVERAGE_INFO_CONTEXT");
+		summaryPath = configUtils.readConfig("SUMMARY_PATH");
+		summaryPage = configUtils.readConfig("SUMMARY_PAGE");
+		strategy1 = configUtils.readConfig("STRATEGY1");
+		strategy2 = configUtils.readConfig("STRATEGY2");
+		strategy3 = configUtils.readConfig("STRATEGY3");
 	}
 	
 	/**
@@ -129,6 +150,9 @@ public class MainController {
 	 */
 	@FXML protected void initialize() {
 		applyStyle();
+		strategyOne.setText(strategy1);
+		strategyTwo.setText(strategy2);
+		strategyThree.setText(strategy3);
 		folder.setImage(emptyFolder);
 		northeastern.setImage(logoImg);
 		hw.setPromptText(enterHW);
@@ -174,6 +198,7 @@ public class MainController {
 	
 	/**
 	 * This method is responsible to open the browse directory dialog box
+	 * 
 	 * @return the directory chooser dialog box
 	 */
 	private File selectDirectory() {
@@ -181,13 +206,13 @@ public class MainController {
 	}
 	
 	/**
-	 * This method uploads the excel sheet provided by the user, used to validate
-	 * repo names and student IDs 
+	 * This method uploads the excel file selected by the user. It also validates 
+	 * the file extension of the file the user chooses.
 	 */
 	@FXML public void uploadExcel() {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilter = 
-				  new FileChooser.ExtensionFilter("XLST files (*.xlsx)", "*.xlsx");
+				  new FileChooser.ExtensionFilter(excelValidExtnDisplay, excelValidExtn);
 		fileChooser.getExtensionFilters().add(extFilter);
 		File file = fileChooser.showOpenDialog(null);
         if (file != null) {
@@ -199,6 +224,7 @@ public class MainController {
 	
 	/**
 	 * Helper method returns an error message when no student directory is set by the user.
+	 * 
 	 * @return a message if no student directory is selected
 	 */
 	private String errNoStudentDir(List<String> allPaths) {
@@ -209,6 +235,7 @@ public class MainController {
 	
 	/**
 	 * Helper method returns an error message when only one student directory is selected.
+	 * 
 	 * @param allPaths a list of all the paths containing student code
 	 * @return a message if only one student directory is selected
 	 */
@@ -220,6 +247,7 @@ public class MainController {
 	
 	/**
 	 * Helper method returns an error message when no HW is selected.
+	 * 
 	 * @return a message if there is a problem getting the homework textbox
 	 */
 	private String errNoHW() {
@@ -230,36 +258,45 @@ public class MainController {
 	
 	/**
 	 * Helper method returns an error message when no excel file is selected.
+	 * 
 	 * @return a message if no excel file is selected
 	 */
 	private String errNoExcel() {
 		return (excelFile == null) ?
 				AlertStrings.NO_EXEL_FILE_MESSAGE :
 				"";
-
 	}
 	
 	/**
-	 * This method runs the algorithm
+	 * This method validates that all the conditions required for the strategies to run
+	 * on the input file are satisfied. It throws an error message back to the user incase
+	 * these requirements are not met. Finally, it validates the user input and runs the 
+	 * selected strategy. If no strategy was selected by the user then it runs the DEFAULT
+	 * Strategy. It also displays error message to the user if there was an error will processing
+	 * the input.
 	 */
 	@FXML public void runAlgorithm() {
 		List<String> allPaths =  new ArrayList<>();
 		getListOfPaths(allPaths, root);
-		String errorMsg = errNoStudentDir(allPaths) + errNoHW() + errNoExcel() + errOnlyOneSelected(allPaths);
+		String errorMsg = errNoStudentDir(allPaths) 
+						+ errNoHW() 
+						+ errNoExcel() 
+						+ errOnlyOneSelected(allPaths);
 		if(!"".equals(errorMsg)) {
 			PopupMessage.getInstance().showError(null, errorMsg);
 		} else {
 			if(algo == null || algo == Algorithm.DEFAULT) {
-				PopupMessage.getInstance().showInfo( 
-						"Running Weighted Average", 
-						"Since no strategy was provided, a weighted average of the two will be reported");
+				PopupMessage.getInstance().showInfo(weightHeader, weightContext);
 				}
 				runAlgorithmAndReturnResults(allPaths, Driver.getInstance());
 		}
 	}
 	
 	/**
-	 * This method runs a new Thread to compute similarity on the files provided
+	 * This method delegates the task of computation to a new Thread. This is done
+	 * to prevent the application from hanging and improve the UX. It also makes sure
+	 * to inform the user that the application is working on the request submitted.
+	 * 
 	 * @param allPaths The path of all the files
 	 * @param drive the instance of the application Driver, used globally
 	 */
@@ -301,18 +338,19 @@ public class MainController {
 	}
 	
 	/**
-	 * This method routes to the summary page passing it the necessary detail
+	 * This method routes to the summary page if the computation is carried out successfully.
+	 * The summary page is passed all object information necessary for initializing itself.
 	 * 
-	 * @param summary the summary of the plagiarism detector run
+	 * @param summary the summary of the selected strategy run
 	 */
 	private void routeToSummary(ISummary summary) {
 		ScreenController screenController = ScreenController.getInstance();
 		if(screenController != null) {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Summary.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(summaryPath));
 			loader.setController(new SummaryController(summary));
 			try {
-				screenController.addScreen("summary", loader.load());
-				screenController.activate("summary");
+				screenController.addScreen(summaryPage, loader.load());
+				screenController.activate(summaryPage);
 			} catch (IOException e) {
 				logger.error(e.toString());
 			}
@@ -322,7 +360,11 @@ public class MainController {
 	}
 
 	/**
-	 * add all the paths of the selected directories
+	 * This method is used to get all the directories selected by the user.
+	 * Only these directories are then considered and passed to the back-end code
+	 * to evaluate and judge cases of plagiarism.
+	 * If root directory is selected, all child student-repos are selected.
+	 *
 	 * @param allPaths a list of all the paths
 	 * @param rootDir all the selected directories
 	 */
@@ -341,7 +383,8 @@ public class MainController {
 	}
 	
 	/**
-	 * This method populates the TreeView of the Start page
+	 * This method populates the TreeView of the Start page displaying the root directory at the
+	 * top. The children of this directory are considered to be valid student-repos
 	 * 
 	 * @param directory a directory as the File object
 	 * @return a tree view of the directory structure
@@ -362,9 +405,10 @@ public class MainController {
     }
 	
 	/**
-	 * This method acknowledges if the dragged file is acceptable in the application
+	 * This method acknowledges if the dragged file is acceptable in the application. This
+	 * "acknowledgement" uses the native OS representation of the user.
 	 * 
-	 * @param event an event containing a Dragboard
+	 * @param event an event containing a Drag-board
 	 */
 	@FXML public void handleDragOver(DragEvent event) {
 		if(event.getDragboard().hasFiles()) {
@@ -390,7 +434,8 @@ public class MainController {
 	}
 	
 	/**
-	 * A method to handle the mouse enter event on the ImageView of the page
+	 * A method to handle the mouse enter event on the ImageView of the page. This changes 
+	 * the the empty folder image to filled folder.
 	 */
 	@FXML public void onMouseEntered() {
 		folder.setCursor(Cursor.HAND);
@@ -398,14 +443,16 @@ public class MainController {
 	}
 	
 	/**
-	 * A method to handle the mouse exit event on the ImageView of the page
+	 * A method to handle the mouse exit event on the ImageView of the page. This changes 
+	 * the the filled folder image to empty folder.
 	 */
 	@FXML public void onMouseExited() {
 		folder.setImage(emptyFolder);
 	}
 	
 	/**
-	 * This method hides the image and label in the Tree View
+	 * This method hides the image and label in the Tree View that is set when no directory is
+	 * selected by the user.
 	 */
 	private void hideImage() {
 		folder.setVisible(false);
@@ -422,30 +469,38 @@ public class MainController {
 	}
 	
 	/**
-	 * Event that occurs when user selects Textual similarity Strategy
+	 * Event that occurs when user selects LCS Strategy
 	 */
-	@FXML private void selectLCS() {
-		strategy.setText("LCS Strategy");
+	@FXML public void selectLCS() {
+		strategy.setText(strategy1);
 		algo = Algorithm.LCS;
 	}
 	
 	/**
-	 * Event that occurs when user selects Code similarity Strategy
+	 * Event that occurs when user selects Levenshtein Distance Strategy
 	 */
-	@FXML private void selectNW() {
-		strategy.setText("Levenshtein Strategy");
+	@FXML public void selectNW() {
+		strategy.setText(strategy2);
 		algo = Algorithm.NW;
 	}
 	
 	/**
-	 * This is the internal representation of a tree item on the TreeView
+	 * Event that occurs when user selects Weighted Average Strategy
+	 */
+	@FXML public void selectWAS() {
+		strategy.setText(strategy3);
+		algo = Algorithm.DEFAULT;
+	}
+	
+	/**
+	 * This class is the internal representation of a tree item on the TreeView. This value
+	 * is different from what the user sees.
 	 * 
 	 * @author Samanjate Sood
 	 */
 	private class DirectoryView {
 
 		/**
-		 * Constructor to create a new DirectoryView
 		 * @param file a file in the DirectoryView
 		 */
 		public DirectoryView(File file) {
@@ -453,7 +508,9 @@ public class MainController {
 		}
 
 		/**
-		 *
+		 * Represents the File object of the user directory selection. This is useful
+		 * for computation.
+		 * 
 		 * @return this object's file
 		 */
 		public File getFile() {
@@ -461,7 +518,8 @@ public class MainController {
 		}
 
 		/**
-		 *
+		 * This is used to display the name of the folder name the user selected.
+		 * 
 		 * @return the name of the file in this object
 		 */
 		@Override

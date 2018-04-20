@@ -15,7 +15,7 @@ public class ConfigUtilsTest {
 
 	@Test
 	public void testReadConfig() {
-		assertEquals("Vaibhav Dave", cu.readConfig("author"));
+		assertEquals("Vaibhav Dave and Samanjate Sood", cu.readConfig("author"));
 	}
 
 }
