@@ -1,5 +1,8 @@
 package view;
 
+import org.apache.log4j.Logger;
+
+import constants.AlertStrings;
 import controllers.ScreenController;
 import controllers.popups.PopupMessage;
 import javafx.application.Application;
@@ -8,8 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.apache.log4j.Logger;
-
 
 /**
  * Entry point of application  
@@ -35,6 +36,10 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Integrity Plagiarism Checker by Team-107");
 			primaryStage.show();
+			PopupMessage.getInstance().showInfo("INSTRUCTIONS", 
+					AlertStrings.NO_DIRECTORY_SELECTED_MESSAGE
+					+ AlertStrings.HOMEWORK_NUMBER_MESSAGE
+					+ AlertStrings.NO_EXEL_FILE_MESSAGE);
 		} catch(Exception e) {
 	 		PopupMessage.getInstance().showError(null, null);
 			logger.error(e);

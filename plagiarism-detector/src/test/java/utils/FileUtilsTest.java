@@ -1,14 +1,6 @@
 package utils;
 
-import algorithms.Result;
-import algorithms.SimilaritySnippet;
-import driver.CodeSnippets;
-import driver.Driver;
-import driver.FilePair;
-import driver.IDriver;
-import driver.IFilePair;
-import org.junit.Test;
-import parser.Node;
+import static org.junit.Assert.assertEquals;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,7 +14,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+import algorithms.Result;
+import algorithms.SimilaritySnippet;
+import driver.CodeSnippets;
+import driver.Driver;
+import driver.FilePair;
+import driver.IDriver;
+import driver.IFilePair;
+import parser.Node;
 
 /**
  * Tests for the Util class
@@ -358,6 +359,7 @@ public class FileUtilsTest {
 	@Test(expected = Exception.class)
 	public void getReportTestNull() {
 		CodeSnippets cs = new CodeSnippets(1, 2);
+		@SuppressWarnings("unused")
 		String report = FileUtils.getReport(cs);
 	}
 

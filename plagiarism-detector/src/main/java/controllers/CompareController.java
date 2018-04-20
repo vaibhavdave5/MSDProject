@@ -1,5 +1,17 @@
 package controllers;
 
+import static utils.FileUtils.getFileString;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import org.apache.log4j.Logger;
+
 import algorithms.SimilaritySnippet;
 import algorithms.SnippetPair;
 import constants.MailStrings;
@@ -10,22 +22,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
-import org.apache.log4j.Logger;
+import utils.ConfigUtils;
 import utils.FileUtils;
 import utils.MailUtils;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import static utils.FileUtils.getFileString;
 
 /**
  * This Controller is responsible to load the Compare page of the application.
@@ -35,7 +38,8 @@ import static utils.FileUtils.getFileString;
  */
 public class CompareController {
 	
-	// Controller injectors
+	// These are injected when the Controller is binded with the FXML view and hence,
+	// they don't need to be instantiated.
 	@FXML private TextFlow studentACode;
 	@FXML private TextFlow studentBCode;
 	@FXML private Label studentAName;
@@ -49,6 +53,16 @@ public class CompareController {
 	@FXML private Label filePath1;
 	@FXML private Label filePath2;
 	
+	// Configuration Variables
+	private String greenStyle;
+	private String redStyle;
+	private String blueStyle;
+	private String customLogoStyle;
+	private String superflow1;
+	private String superflow2;
+	private String reportValidExtn;
+	private String reportValidExtnDisplay;
+	
 	private ICodeSnippets codeSnippets;
 	private int currentSnippet = 0;
 	private List<SnippetPair> snippetPairs;
@@ -56,13 +70,38 @@ public class CompareController {
 	 
 	private static Logger logger = Logger.getLogger(CompareController.class);
 
+	/**
+	 * 
+	 * @param iCodeSnippets object passed by the summary controller, used to populate
+	 * this page's components
+	 */
 	public CompareController(ICodeSnippets iCodeSnippets) {
+		initConfigVar();
 		this.screenController = ScreenController.getInstance();
 		this.codeSnippets = iCodeSnippets;
 	}
 	
 	/**
-	 * This method runs on page load and initializes all components of the Start.fxml page
+	 * This is a method used to initialize the configuration variables used in 
+	 * the class
+	 */
+	private void initConfigVar() {
+		ConfigUtils configUtils = new ConfigUtils();
+		greenStyle = configUtils.readConfig("GREEN");
+		redStyle = configUtils.readConfig("RED");
+		blueStyle = configUtils.readConfig("BLUE");
+		customLogoStyle = configUtils.readConfig("CUSTOM_LOGO");
+		superflow1 = configUtils.readConfig("SUPERFLOW1");
+		superflow2 = configUtils.readConfig("SUPERFLOW2");
+		reportValidExtn = configUtils.readConfig("REPORT_EXTN_VALID");
+		reportValidExtnDisplay = configUtils.readConfig("REPORT_EXTN_VALID_DISPLAY");
+	}
+	
+	/**
+	 * This method runs on page load and initializes all components of the Compare.fxml page
+	 *  ~ Initializes the snippets of the two students.
+	 *  ~ Sets the label for the two students
+	 *  ~ Sets the labels for file name and similarity percentage.
 	 */
 	@FXML
 	protected void initialize() {
@@ -76,19 +115,28 @@ public class CompareController {
 	}
 	
 	/**
-	 * This method initializes the snippet text
+	 * This method initializes the snippet text. It also highlights the plagiarized code,
+	 * and gives the code above and below that in the students' files.
 	 */
 	private void initializeSnippet() {
+		Text snippetAAbove = new Text(snippetPairs.get(currentSnippet).getSnippet1Above());
 		Text snippetA = new Text(snippetPairs.get(currentSnippet).getSnippet1());
+		Text snippetABelow = new Text(snippetPairs.get(currentSnippet).getSnippet1Below());
+		Text snippetBAbove = new Text(snippetPairs.get(currentSnippet).getSnippet2Above());
 		Text snippetB = new Text(snippetPairs.get(currentSnippet).getSnippet2());
+		Text snippetBBelow = new Text(snippetPairs.get(currentSnippet).getSnippet2Below());
+		snippetA.setFill(Color.RED);
+		snippetB.setFill(Color.RED);
 		studentACode.getChildren().clear();
 		studentBCode.getChildren().clear();
-		studentACode.getChildren().addAll(snippetA);
-		studentBCode.getChildren().addAll(snippetB);
+		studentACode.getChildren().addAll(snippetAAbove, snippetA, snippetABelow);
+		studentBCode.getChildren().addAll(snippetBAbove, snippetB, snippetBBelow);
 	}
 	
 	/**
-	 * This method initializes the Student names and labels the snippet
+	 * This method initializes the Student names and labels the snippet.
+	 * The labels initially show the student ID and the percentage match of this file's code
+	 * to the other student's overall submission.
 	 */
 	private void initializeFileNameLabels() {
 		DecimalFormat formatter = new DecimalFormat("#.##");
@@ -103,22 +151,23 @@ public class CompareController {
 	 * This method applies the CSS properties to the controls.
 	 */
 	private void applyStyle() {
-		back.getStyleClass().add("primary");
-		prev.getStyleClass().add("danger");
-		next.getStyleClass().add("danger");
-		reportButton.getStyleClass().add("success");
-		reveal.getStyleClass().add("success");
-		studentAName.getStyleClass().add("logo");
-		studentBName.getStyleClass().add("logo");
-		filePath1.getStyleClass().add("logo");
-		filePath2.getStyleClass().add("logo");
-		studentACode.setId("supertextflow1");
-		studentBCode.setId("supertextflow2");
-		emailButton.getStyleClass().add("success");
+		back.getStyleClass().add(blueStyle);
+		prev.getStyleClass().add(redStyle);
+		next.getStyleClass().add(redStyle);
+		reportButton.getStyleClass().add(greenStyle);
+		reveal.getStyleClass().add(greenStyle);
+		studentAName.getStyleClass().add(customLogoStyle);
+		studentBName.getStyleClass().add(customLogoStyle);
+		filePath1.getStyleClass().add(customLogoStyle);
+		filePath2.getStyleClass().add(customLogoStyle);
+		studentACode.setId(superflow1);
+		studentBCode.setId(superflow2);
+		emailButton.getStyleClass().add(greenStyle);
 	}
 
 	/**
-	 * This method handles the event when the previous button is clicked.
+	 * This method handles the event when the previous button is clicked. It halts if the 
+	 * index is at 0.
 	 */
 	@FXML public void onPreviousButtonClick() {
 		if(currentSnippet == 0)
@@ -129,7 +178,8 @@ public class CompareController {
 	}
 
 	/**
-	 * This method handles the event when the next button is clicked.
+	 * This method handles the event when the next button is clicked. It halts if the index
+	 * is maximum.
 	 */
 	@FXML public void onNextButtonClick() {
 		if(currentSnippet >= (snippetPairs.size()-1))
@@ -140,7 +190,9 @@ public class CompareController {
 	}
 	
 	/**
-	 * This function reveals the name of the students
+	 * This function reveals the name of the students when the user clicks the reveal names
+	 * button. It hides the button and replaces the labels with the student ID's with their names.
+	 * If you hover over the name, you will be able to see the students' email id's
 	 */
 	@FXML public void revealNames() {
 		reveal.setVisible(false);
@@ -155,7 +207,7 @@ public class CompareController {
 	}
 	
 	/**
-	 * This method takes the user back to the Start screen
+	 * This method takes the user back to the Summary screen
 	 */
 	@FXML public void goBack()
 	{
@@ -166,7 +218,8 @@ public class CompareController {
 
 	/**
 	 * This method gets a list of file pairs that contains the file names
-	 * and the code snippets
+	 * and the code snippets. It extracts the information for the computation task
+	 * carried earlier on and stores it locally for easy access.
 	 *
 	 * @return a list of snippet pairs
 	 */
@@ -189,9 +242,22 @@ public class CompareController {
 				int end1 = s.getEnd1();
 				int start2 = s.getStart2();
 				int end2 = s.getEnd2();
+				String snippet1Above = getFileString(file1, start1-10, start1-1);
 				String snippet1 = getFileString(file1, start1, end1);
+				String snippet1Below = getFileString(file1, end1+1, end1+10);
+				String snippet2Above = getFileString(file2, start2-10, start2-1);
 				String snippet2 = getFileString(file2, start2, end2);
-				snippetPairs.add(new SnippetPair(fileName1, fileName2, snippet1, snippet2, percentage1, percentage2));
+				String snippet2Below = getFileString(file2, end2+1, end2+10);
+				snippetPairs.add(new SnippetPair(fileName1, 
+												fileName2, 
+												snippet1Above, 
+												snippet1, 
+												snippet1Below, 
+												snippet2Above, 
+												snippet2, 
+												snippet2Below, 
+												percentage1, 
+												percentage2));
 			});
 		});
 
@@ -199,13 +265,15 @@ public class CompareController {
 	}
 	
 	/**
-	 * This function is used to generate the report
+	 * This function is used to generate the report of the two student pair.
+	 * It saves the file in txt format and the report contains information about the students,
+	 * and their codes.
 	 */
 	@FXML public void generateReport() {
 		final String report = FileUtils.getReport(codeSnippets);
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter 
-         	= new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+         	= new FileChooser.ExtensionFilter(reportValidExtnDisplay, reportValidExtn);
         fileChooser.getExtensionFilters().add(extFilter);
         File file = fileChooser.showSaveDialog(null);
         if(file != null){
@@ -228,7 +296,8 @@ public class CompareController {
     }
 
 	/**
-	 * Send a mail asking to meet the professor
+	 * Send a mail asking to meet the professor. It has a basic template. This opens the default
+	 * email app of the OS.
 	 */
 	public void onClickSendMail() {
 		String recipient = Driver.getInstance().getEmailById(codeSnippets.getStudent1Id())

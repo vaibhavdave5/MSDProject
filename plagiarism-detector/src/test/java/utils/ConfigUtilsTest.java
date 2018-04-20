@@ -12,15 +12,10 @@ import static org.junit.Assert.assertEquals;
 public class ConfigUtilsTest {
 
 	ConfigUtils cu = new ConfigUtils();
-	@Test
-	public void testWriteInConfig() {
-		cu.writeInConfig("test", "testin");
-		assertEquals("testin", cu.readConfig("test"));
-	}
 
 	@Test
 	public void testReadConfig() {
-		assertEquals("Vaibhav Dave", cu.readConfig("author"));
+		assertEquals("Vaibhav Dave and Samanjate Sood", cu.readConfig("author"));
 	}
 
 }

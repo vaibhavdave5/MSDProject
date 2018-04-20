@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.TextFlow?>
+
+<BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <fx:include source="Menu.fxml" />
+    </top>
+   <bottom>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="reportButton" layoutX="271.0" layoutY="553.0" mnemonicParsing="false" onAction="#generateReport" text="Generate Report" />
+            <Label fx:id="studentAName" layoutX="163.0" layoutY="23.0" text="Student A" />
+            <Label fx:id="studentBName" layoutX="559.0" layoutY="23.0" text="Student B" />
+            <ScrollPane id="scrollPaneA" layoutX="21.0" layoutY="84.0" prefHeight="454.0" prefWidth="368.0">
+               <content>
+                  <TextFlow fx:id="studentBCode" prefHeight="439.0" prefWidth="358.0" />
+               </content>
+            </ScrollPane>
+            <ScrollPane fx:id="scrollPaneB" layoutX="411.0" layoutY="84.0" prefHeight="454.0" prefWidth="368.0">
+               <content>
+                  <TextFlow fx:id="studentACode" prefHeight="439.0" prefWidth="358.0" />
+               </content>
+            </ScrollPane>
+            <Button fx:id="reveal" layoutX="343.0" layoutY="18.0" mnemonicParsing="false" onAction="#revealNames" text="Reveal Names" />
+            <Button fx:id="prev" layoutX="236.0" layoutY="553.0" mnemonicParsing="false" onAction="#onPreviousButtonClick" text="&lt;" />
+            <Button fx:id="next" layoutX="514.0" layoutY="554.0" mnemonicParsing="false" onAction="#onNextButtonClick" text="&gt;" />
+            <Button fx:id="back" layoutX="32.0" layoutY="18.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+            <Button fx:id="emailButton" layoutX="400.0" layoutY="553.0" mnemonicParsing="false" onAction="#onClickSendMail" text="Email students" />
+            <Label fx:id="filePath1" layoutX="21.0" layoutY="61.0" text="file1" />
+            <Label fx:id="filePath2" layoutX="412.0" layoutY="61.0" text="file2" />
+         </children></AnchorPane>
+   </bottom>
+</BorderPane>

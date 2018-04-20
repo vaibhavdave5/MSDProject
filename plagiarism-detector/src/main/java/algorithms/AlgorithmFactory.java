@@ -25,5 +25,4 @@ public class AlgorithmFactory {
 		else
 			return new LevenshteinDistance();
 	}
-
 }

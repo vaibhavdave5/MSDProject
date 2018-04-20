@@ -1,11 +1,7 @@
 package driver;
 
-import algorithms.Algorithm;
-import algorithms.IResult;
-import algorithms.LCSAlgorithm;
-import algorithms.SimilaritySnippet;
-import controllers.AlgorithmController;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.net.URL;
@@ -16,9 +12,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+
+import algorithms.Algorithm;
+import algorithms.IResult;
+import algorithms.LCSAlgorithm;
+import algorithms.SimilaritySnippet;
+import controllers.AlgorithmController;
 
 /**
  * Tests for testing the Driver
@@ -54,6 +54,10 @@ public class DriverTests {
 		assertEquals(expectedKey1, actualKeys[0]);
 		assertEquals(expectedKey2, actualKeys[1]);
 	}
+	
+	/**
+	 * A complete run of Driver with backend to get student pairs
+	 */
 
 	@Test
 	public void testCheckForPlagiarism() {
@@ -70,6 +74,7 @@ public class DriverTests {
 		String hwDir = "HW3";
 
 		for(Algorithm algorithm : Algorithm.values()) {
+			@SuppressWarnings("unused")
 			String message = driver.checkForPlagiarism(repoPaths, hwDir, algorithm);
 			ISummary summary = driver.viewSummary();
 			Set<IStudentPair> actual = summary.getRedPairs();
@@ -289,6 +294,7 @@ public class DriverTests {
 		driver.setRepoPaths(repoPaths);
 		
 		URL url = this.getClass().getResource("/studentData.xlsx");
+		@SuppressWarnings("unused")
 		String xlsxPath = url.getPath();
 		driver.resetState();
 		assertEquals(null, driver.getRepoPaths());
