@@ -75,7 +75,7 @@ public class MainController {
 	private String excelValidExtnDisplay;
 	private String weightHeader;
 	private String weightContext;
-	private String startPath;
+	private String summaryPath;
 	private String summaryPage;
 	private String strategy1;
 	private String strategy2;
@@ -115,7 +115,7 @@ public class MainController {
 		excelValidExtnDisplay = configUtils.readConfig("EXCEL_EXTN_VALID_DISPLAY");
 		weightHeader = configUtils.readConfig("WEIGHTED_AVERAGE_INFO_HEADER");
 		weightContext = configUtils.readConfig("WEIGHTED_AVERAGE_INFO_CONTEXT");
-		startPath = configUtils.readConfig("START_PATH");
+		summaryPath = configUtils.readConfig("SUMMARY_PATH");
 		summaryPage = configUtils.readConfig("SUMMARY_PAGE");
 		strategy1 = configUtils.readConfig("STRATEGY1");
 		strategy2 = configUtils.readConfig("STRATEGY2");
@@ -346,7 +346,7 @@ public class MainController {
 	private void routeToSummary(ISummary summary) {
 		ScreenController screenController = ScreenController.getInstance();
 		if(screenController != null) {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(startPath));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(summaryPath));
 			loader.setController(new SummaryController(summary));
 			try {
 				screenController.addScreen(summaryPage, loader.load());
