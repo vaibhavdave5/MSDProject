@@ -124,6 +124,18 @@
 
 \section{The Result}
 %TODO
+We built an application which accepts student repositories containing homework folders and that checks for plagiarism in the specified homework folders. Our application produces similarity scores and generates a summary of all probable plagiarism cases in the submissions. It categorizes student pairs into highly suspicious, moderately suspicious and clean lists.
+We have used multiple algorithms to detect plagiarism (LCS, Levenshtein distance and weighted average). The user can select any algorithm he/she wants. We even used machine learning to learn the weights by fitting a regression model over Moss dataset. \par
+Using our application, a user can view similarity scores between homeworks of two students, view similarity scores of two files within two homework submissions and view similar snippets from the two C files of the two students under scrutiny. 
+We have two different stand-alone versions of the application, one for the professors and the other for the teaching assistants. While the Teaching Assistants can view the summary \& snippets, and generate a textual report which includes similar snippets from multiple code files of the two selected students, the professors can also view the names of the suspected students and email them. \par
+The user can also view the global statistics showing the number of files that have been scanned and the number of plagiarism cases found by the application till date.\par
+We accomplished everything we set out to do which is evident from our Jira board at https://cs5500-jira.ccs.neu.edu/projects/CS107.\par
+\begin{center}
+\includegraphics[scale = 0.5]{jira}
+\end{center}
+
+We took special care of the quality of the software that we built. To this end, we used Test Driven Design (TDD) and used SonarQube quality gate as a build step. We protected master branch and set up a workflow using Jenkins for continuous integration (CI). We made sure to have more than 80\% test coverage so that our application is free of bugs. 
+We were very particular about addressing issues raised by the testers from other teams and managed to close all issues in time. The end product is a beautiful piece of software which we are proud to present.\par
 
 \pagebreak
 \section{The Development Process}
