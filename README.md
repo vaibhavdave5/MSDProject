@@ -20,9 +20,9 @@ You can download the latest verision of the software [here](https://plagiarism-d
 ## Project Videos
 
 Learn more about the application by watching the following videos:
-* [System Demo](https://www.youtube.com/watch?v=u0dAf760Viw&feature=youtu.be)
-* [System Setup]()
-* [Final Presentation](https://www.youtube.com/watch?v=880URnyB5nc&feature=youtu.be)
+* [System Demo](https://youtu.be/u0dAf760Viw)
+* [System Setup](https://youtu.be/i_kNUaVSLKE)
+* [Final Presentation](https://youtu.be/880URnyB5nc)
 
 ## Getting Started
 

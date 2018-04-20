@@ -1,0 +1,360 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
+\usepackage{listings}
+\usepackage[dvipsnames]{xcolor}
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+
+\title{Team-107 Project Use Cases}			
+\author{D.Panse, S. Sood, S. Shah,V. Dave}	
+\date{April 17, 2018}							
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\def\thecourse{CS5500: Managing Software Development}
+\def\theuniversity{Northeastern University}
+\def\thecollege{College of Computer and Information Science}
+\def\thegithuburl{https://github.ccs.neu.edu/cs5500/team-107}
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\theauthor}
+\lhead{\thetitle}
+\cfoot{\thepage}
+
+\usepackage{color}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{huskyred}{HTML}{CC0000}
+\definecolor{lightgray}{gray}{0.9}
+
+\lstset{
+    showstringspaces=false,
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color[grey]{0.6},
+    stringstyle=\color[RGB]{255,150,75}
+}
+
+\newcommand{\inlinecode}[2]{\colorbox{backcolour}{\lstinline[language=#1]$#2$}}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+ 
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+	\centering
+    \includegraphics[scale = 0.20]{seal.png}\\[0.2cm]	
+    \textsc{\LARGE \color{huskyred} \theuniversity\\[0.5mm]}	
+	\textsc{\small \thecollege \\[1.5 cm]}	
+    
+    \textsc{\Large \thecourse }\\[0.5 cm]
+    
+	\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+	{ \huge \bfseries \thetitle}\\
+	\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+	
+	\textsc{\LARGE Darshan Panse, Samanjate Sood}\\[0.5 mm]
+    \textsc{\LARGE Shail Shah, Vaibhav Dave}\\[0.5 mm]
+    \thegithuburl\\[1.5 cm]
+    \textsc{\LARGE \thedate}\\[2.0 cm]  
+    
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \tableofcontents
+% \pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Here are the updated use cases. We have delivered a little more than we promised in Phase A. All of the use cases have been implemented in the system. \\[0.25 cm]
+
+
+\begin{tabular}{ |p{3cm}||p{11.25cm}| }
+ \hline
+ \textbf{Use Case} & \textbf{SpecifyDirectories}\\
+ \hline
+ Goal in context & To be able to specify the homework number and two or more directories that contains homework folders of two or more students for finding out potential case of plagiarism. \\
+ \hline
+ Primary Actor & Professor, Teaching Assistant \\
+ \hline
+ Preconditions& Students have submitted their assignments and their directories are available locally. \\
+ \hline
+ Trigger &The actor decides to select the homework number and directories for detecting plagiarism.\\
+ \hline
+ Scenario    &Professor/TA: Selects multiple directories. \newline
+Professor/TA: Specifies homework number. \newline
+Professor/TA: Clicks the submit button.\\
+\hline
+ Exceptions&  
+1. homework submitted in incorrect folder\newline
+2. homework not submitted at all 
+\\
+\hline
+ Priority& Essential, must be implemented \\
+ \hline
+\end{tabular} \\[2.0 em]
+
+\begin{tabular}{ |p{3cm}||p{11.25cm}| }
+ \hline
+ \textbf{Use Case} & \textbf{SpecifyStudentData}\\
+ \hline
+ Goal in context & To be able to specify the excel file that contains information about the user's id, name and email address. \\
+ \hline
+ Primary Actor & Professor, Teaching Assistant \\
+ \hline
+ Preconditions& An excel file containing student information is ready to use. \\
+ \hline
+ Trigger &The actor decides to upload the excel file containing user information\\
+ \hline
+ Scenario    &Professor/TA: clicks on the upload excel file button \newline
+ Professor/TA: browses for the excel file and clicks 'OK'.\\
+\hline
+ Exceptions&  
+1. The excel file is not properly formatted\newline
+2. The excel file has students with the same id 
+\\
+\hline
+ Priority& Essential, must be implemented \\
+ \hline
+\end{tabular} \\[2.0 em]
+
+
+\begin{tabular}{ |p{3cm}||p{11.25cm}| }
+ \hline
+ \textbf{Use Case} & \textbf{SpecifyAlgorithm}\\
+ \hline
+ Goal in context & To be able to specify the algorithm to be applied to check for plagiarism between two or more students \\
+ \hline
+ Primary Actor & Professor, Teaching Assistant \\
+ \hline
+ Preconditions& None \\
+ \hline
+ Trigger &The actor selects which algorithm to use. \\
+ \hline
+ Scenario    &Professor/TA: clicks on the algorithm drop-down menu \newline
+ Professor/TA: clicks on an algorithm to use.\\
+\hline
+ Exceptions&  None\\
+\hline
+ Priority& Essential, must be implemented \\
+ \hline
+\end{tabular} \\[2.0 em]
+
+
+\begin{tabular}{ |p{3cm}||p{11.25cm}| }
+ \hline
+ \textbf{Use Case} & \textbf{ViewSummary}\\
+ \hline
+ Goal in context & To view the summary of the results generated by the plagiarism detector. The user can see a list of highly suspicious pairs, moderately suspicious pairs, and clean students.\\
+ \hline
+ Primary Actor & Professor, Teaching Assistant \\
+ \hline
+ Preconditions& The actor has specified the directories from which files are to be picked up for comparison. \\
+ \hline
+ Trigger &The actor decides to check the submissions for plagiarism.\\
+ \hline
+ Scenario    &Professor/TA: uploads the directories of source files.\newline
+Professor/TA: observes the view summary button and clicks it.\\
+\hline
+ Exceptions&  
+1. The file submitted is corrupted.\newline
+2. The file format is not recognized 
+\\
+\hline
+ Priority& Essential, must be implemented \\
+ \hline
+\end{tabular} \\[2.0 em]
+
+
+\begin{tabular}{ |p{3cm}||p{11.25cm}| }
+ \hline
+ \textbf{Use Case} & \textbf{ViewSimilarSnippets}\\
+ \hline
+ Goal in context & To view the similar snippets of two different student submissions side-by-side so as to make a final decision of whether or not to report it to OSCCR or the CCIS council.\\
+ \hline
+ Primary Actor & Professor, Teaching Assistant \\
+ \hline
+ Preconditions& The actor has specified which student pair to view similar code.\\
+ \hline
+ Trigger &The actor decides to check the submissions for plagiarism for a particular student pair .\\
+ \hline
+ Scenario    &Professor/TA: uploads the directories of source files.\newline
+Professor/TA: observes the summary.\newline
+Professor/TA: clicks on a student pair\\
+\hline
+ Exceptions&  
+1. The files submitted are blank/corrupted.\newline
+2. Files on the local machine do not correspond to any student
+\\
+\hline
+ Priority& Essential, must be implemented \\
+ \hline
+\end{tabular} \\[2.0 em]
+
+\begin{tabular}{ |p{3cm}||p{11.25cm}| }
+ \hline
+ \textbf{Use Case} & \textbf{SaveReport}\\
+ \hline
+ Goal in context & To save a report containing similar code from two students, along with student information.\\
+ \hline
+ Primary Actor & Professor, Teaching Assistant \\
+ \hline
+ Preconditions& The actor has specified which student pair to view similar code.\\
+ \hline
+ Trigger &The actor decides to check the submissions for plagiarism for a particular student pair .\\
+ \hline
+ Scenario    &Professor/TA: uploads the directories of source files.\newline
+Professor/TA: observes the summary.\newline
+Professor/TA: clicks on a student pair\newline
+Professor/TA: clicks on the 'save report' button \\
+\hline
+ Exceptions&  
+1. The files submitted are blank/corrupted.\newline
+2. Files on the local machine do not correspond to any student
+\\
+\hline
+ Priority& Essential, must be implemented \\
+ \hline
+\end{tabular} \\[2.0 em]
+
+\begin{tabular}{ |p{3cm}||p{11.25cm}| }
+ \hline
+ \textbf{Use Case} & \textbf{RevealStudentNames}\\
+ \hline
+ Goal in context & To reveal the names of the students who are suspected to have plagarized code\\
+ \hline
+ Primary Actor & Professor \\
+ \hline
+ Preconditions& The professor has selected the student pair to check for plagiarism, and has gone through the similarities in code.\\
+ \hline
+ Trigger &The professor decides to find out the names and email addresses of the  .\\
+ \hline
+ Scenario    &Professor/TA: uploads the directories of source files.\newline
+Professor/TA: observes the summary.\newline
+Professor/TA: clicks on a student pair\newline
+Professor/TA: clicks on the 'reveal names' button \\
+\hline
+ Exceptions&  
+1. Student information is not provided/false.\newline
+2. Files on the local machine do not correspond to any student
+\\
+\hline
+ Priority& Essential, must be implemented \\
+ \hline
+\end{tabular} \\[2.0 em]
+
+\begin{tabular}{ |p{3cm}||p{11.25cm}| }
+ \hline
+ \textbf{Use Case} & \textbf{SaveReport}\\
+ \hline
+ Goal in context & To save a report containing similar code from two students, along with student information.\\
+ \hline
+ Primary Actor & Professor, Teaching Assistant \\
+ \hline
+ Preconditions& The actor has specified which student pair to view similar code.\\
+ \hline
+ Trigger &The actor decides to check the submissions for plagiarism for a particular student pair .\\
+ \hline
+ Scenario    &Professor/TA: uploads the directories of source files.\newline
+Professor/TA: observes the summary.\newline
+Professor/TA: clicks on a student pair\newline
+Professor/TA: clicks on the 'save report' button \\
+\hline
+ Exceptions&  
+1. The files submitted are blank/corrupted.\newline
+2. Files on the local machine do not correspond to any student
+\\
+\hline
+ Priority& Essential, must be implemented \\
+ \hline
+\end{tabular} \\[2.0 em]
+
+\begin{tabular}{ |p{3cm}||p{11.25cm}| }
+ \hline
+ \textbf{Use Case} & \textbf{EmailStudents}\\
+ \hline
+ Goal in context & To email students to come meet the professor at a particular time and place to discuss the plagiarism case.\\
+ \hline
+ Primary Actor & Professor \\
+ \hline
+ Preconditions& The professor has viewed the similar snippets and concludes that it is indeed a case of plagiarism. \\
+ \hline
+ Trigger &The professor wants to have a word with the students after viewing similar snippets\\
+ \hline
+ Scenario    &Professor/TA: uploads the directories of source files.\newline
+Professor/TA: observes the summary.\newline
+Professor/TA: clicks on a student pair\newline
+Professor/TA: clicks on the 'email students' button \\
+\hline
+ Exceptions&  
+1. The students' email address are not known.\newline
+2. The system does not have an email client.
+\\
+\hline
+ Priority& Essential, must be implemented \\
+ \hline
+\end{tabular} \\[2.0 em]
+
+\begin{tabular}{ |p{3cm}||p{11.25cm}| }
+ \hline
+ \textbf{Use Case} & \textbf{ViewGlobalStatistics}\\
+ \hline
+ Goal in context & To view statistics such as how many times the detector was run, number of files scanned, and number of cases detected\\
+ \hline
+ Primary Actor & Professor \\
+ \hline
+ Preconditions& The Actors have run the plagiarism detector at least once before.\\
+ \hline
+ Trigger &The professor wants to see statistics of the the application\\
+ \hline
+ Scenario    &Professor/TA: Runs the plagiarism detector\newline
+ Professor: Clicks on Statistics - Global Statistics\\
+\hline
+ Exceptions&  
+1. The application has never been run before
+\\
+\hline
+ Priority& Low, can be implemented \\
+ \hline
+\end{tabular} \\[2.0 em]
+
+
+\end{document}
