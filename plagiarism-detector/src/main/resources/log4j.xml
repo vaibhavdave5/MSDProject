@@ -46,7 +46,7 @@
 		<level value="INFO" />
 		<appender-ref ref="consoleAppender" />
 
-		<level value="DEBUG" />
+		<level value="INFO" />
 		<appender-ref ref="fileAppender" />
 
 		<level value="ERROR" />

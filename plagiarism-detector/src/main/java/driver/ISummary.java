@@ -47,8 +47,8 @@ public interface ISummary {
 	/**
 	 * This method returns false if the given studentId is present in redPairs or yellowPairs lists,
 	 * else returns true.
-	 * @param studentId
-	 * @return boolean
+	 * @param studentId the id of the student
+	 * @return boolean true if the student is not suspected of plagiarism
 	 */
 	boolean isSafe(Integer studentId);
 }

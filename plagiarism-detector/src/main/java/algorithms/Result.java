@@ -21,7 +21,8 @@ public class Result implements IResult {
 	/**
 	 * Constructor for making a new Result object
 	 * 
-	 * @param percentage the percentage of similarity
+	 * @param percentage1 the percentage of similarity for the first submission
+	 * @param percentage2 the percentage of similarity for the second submission
 	 * @param snippetList the list of snippets
 	 */
 	public Result(double percentage1, double percentage2, List<SimilaritySnippet> snippetList) {
@@ -64,7 +65,6 @@ public class Result implements IResult {
 	/**
 	 * @return the percentage of similarities between two files w.r.t file2.
 	 */
-
 	@Override
 	public double getPercentagefile2() {
 		return this.percentage2;

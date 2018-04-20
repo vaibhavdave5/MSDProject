@@ -24,6 +24,10 @@ public class Main extends Application {
 
 	private static Logger logger = Logger.getLogger(Main.class);
 
+	/**
+	 * Starts the application
+	 * @param primaryStage the Stage where the rendering takes place
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -46,8 +50,11 @@ public class Main extends Application {
 		}
 	}
 
+	/**
+	 * Main method, just calls launch()
+	 * @param args a list of command line arguments
+	 */
 	public static void main(String[] args) {
 		launch(args);
-
 	}
 }

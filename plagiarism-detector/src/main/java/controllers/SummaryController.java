@@ -2,6 +2,8 @@ package controllers;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -113,11 +115,7 @@ public class SummaryController {
 		progress.setProgress(0.0);
 		score.setText("-");
 	}
-	
-	/**
-	 * Sets the message for empty ListViews
-	 * @param <T>
-	 */
+
 	/**
 	 * Sets the message for a ListView
 	 * @param listView a ListView
@@ -160,7 +158,9 @@ public class SummaryController {
 	 * @param set the pair of students that go into the list view.
 	 */
 	private void populateView(ListView<StudentPair> view, Set<IStudentPair> set) {
-		for(IStudentPair pair : set) {
+		List<IStudentPair> studentPairs = new ArrayList<>(set);
+		studentPairs.sort((sp1, sp2) -> sp2.getSimilarityScore().compareTo(sp1.getSimilarityScore()));
+		for(IStudentPair pair : studentPairs) {
 			view.getItems().add((StudentPair) pair);
 		}
 	}

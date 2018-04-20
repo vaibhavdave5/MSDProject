@@ -23,8 +23,8 @@ public class ConfigUtils {
 	 * This function helps the user to read a particular value from the
 	 * config.properties file
 	 * 
-	 * @param String title
-	 * @param String value
+	 * @param title the name of a property
+	 * @return the value of the given property
 	 */
 	public String readConfig(String title) {
 		try {

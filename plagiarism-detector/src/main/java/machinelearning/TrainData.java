@@ -15,9 +15,7 @@ public class TrainData {
 		this.y = y;
 	}
 	
-	public TrainData() {
-		
-	}
+	public TrainData() {}
 
 	/**
 	 * This method returns the features.

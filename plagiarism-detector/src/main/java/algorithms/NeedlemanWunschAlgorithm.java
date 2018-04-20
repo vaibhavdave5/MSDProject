@@ -24,7 +24,7 @@ public class NeedlemanWunschAlgorithm implements AlgorithmStrategy {
 	 * 
 	 * @param list1 a list of Nodes
 	 * @param list2 another list of Nodes
-	 * @throws IllegalArgumentException
+	 * @throws IllegalArgumentException if either lists are empty
 	 * @return a number representing the similarity between two nodes
 	 */
 	@Override
@@ -48,9 +48,9 @@ public class NeedlemanWunschAlgorithm implements AlgorithmStrategy {
 	/**
 	 * Gets the nodes that are part of the optical alignment
 	 * 
-	 * @param list1
-	 * @param list2
-	 * @return List<SimilaritySnippet> commonNodes
+	 * @param list1 a list
+	 * @param list2 another list
+	 * @return a list of snippets that are common for both lists
 	 */
 	private List<SimilaritySnippet> getCommonNodesList(List<Node> list1, List<Node> list2) {
 		List<SimilaritySnippet> snippets = new ArrayList<>();
@@ -90,9 +90,9 @@ public class NeedlemanWunschAlgorithm implements AlgorithmStrategy {
 	 * The trace back step determines the actual alignment(s) that result in the
 	 * maximum score.
 	 * 
-	 * @param list1
-	 * @param list2
-	 * @return int[][] trackmatrix
+	 * @param list1 a list
+	 * @param list2 another list
+	 * @return an intermediate matrix
 	 */
 	private int[][] getTrackMatrix(List<Node> list1, List<Node> list2) {
 		int size1 = list1.size();
@@ -112,9 +112,9 @@ public class NeedlemanWunschAlgorithm implements AlgorithmStrategy {
 	 * Creating the substitution matrix put 1 if characters at i and j match put
 	 * -1 otherwise in the substitutionMatrix[i][j] Substitution Matrix S
 	 * 
-	 * @param list1
-	 * @param list2
-	 * @return int[][] new initializedMatrix
+	 * @param list1 a list
+	 * @param list2 another list
+	 * @return a substitution matrix that has been initialized
 	 */
 	private int[][] initializeSubstitutionMatrix(List<Node> list1, List<Node> list2) {
 		int size1 = list1.size();
@@ -134,11 +134,11 @@ public class NeedlemanWunschAlgorithm implements AlgorithmStrategy {
 	 * + S(i, j) scoreup = c(i-1, j) + g scoreleft = c(i, j-1) + g where S(i,j)
 	 * is the substitution score for letters i and j, and g is the gap penalty
 	 * 
-	 * @param int[][] substitutionMatrix
-	 * @param int[][] c
-	 * @param int[][] trackMatrix
-	 * @param int i
-	 * @param int j
+	 * @param substitutionMatrix the substitution matix
+	 * @param c the result matrix
+	 * @param trackMatrix the track matrix
+	 * @param i the x coordinate
+	 * @param j the y coordinate
 	 */
 	private void setTrackMatrix(int[][] substitutionMatrix, int[][] c, int[][] trackMatrix, int i, int j) {
 
