@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
+import utils.ConfigUtils;
 
 /**
  * This Controller is responsible to load the Summary page of the application.
@@ -41,14 +42,56 @@ public class SummaryController {
 	@FXML private Button back;
 	@FXML private Label score;
 	
+	// Configuration Variables
+	private String startPath;
+	private String startPage;
+	private String compatePage;
+	private String compatePath;
+	private String blueStyle;
+	private String customLogoStyle;
+	private String dangerListStyle;
+	private String mediumListStyle;
+	private String safeListStyle;
+	private String backWarning;
+	private String noPlagiarism;
+	private String noMedium;
+	private String noSafe;
+	
 	private ISummary summary;
 	private ScreenController screenController;
 	
 	private static Logger logger = Logger.getLogger(SummaryController.class);
 	
+	/**
+	 * 
+	 * @param iSummary a summary object passed by the main controller, used to populate
+	 * this page's components
+	 */
 	public SummaryController(ISummary iSummary) {
+		initConfigVar();
 		this.screenController = ScreenController.getInstance();
 		this.summary = iSummary;
+	}
+	
+	/**
+	 * This is a method used to initialize the configuration variables used in 
+	 * the class
+	 */
+	private void initConfigVar() {
+		ConfigUtils configUtils = new ConfigUtils();
+		startPath = configUtils.readConfig("START_PATH");
+		startPage = configUtils.readConfig("START_PAGE");
+		compatePage = configUtils.readConfig("COMPARE_PAGE");
+		compatePath = configUtils.readConfig("COMPARE_PAGE");
+		blueStyle = configUtils.readConfig("BLUE");
+		customLogoStyle = configUtils.readConfig("CUSTOM_LOGO");
+		dangerListStyle = configUtils.readConfig("DANGER_LIST");
+		mediumListStyle = configUtils.readConfig("MEDIUM_LIST");
+		safeListStyle = configUtils.readConfig("SAFE_LIST");
+		backWarning = configUtils.readConfig("BACK_WARNING");
+		noPlagiarism = configUtils.readConfig("NO_PLAGIARISM");
+		noMedium = configUtils.readConfig("NO_MEDIUM");
+		noSafe = configUtils.readConfig("NO_CLEAN");
 	}
 	 
 	/**
@@ -56,9 +99,9 @@ public class SummaryController {
 	 */
 	@FXML protected void initialize() {
 		applyStyle();
-		setDefaultText(danger, "No Plagiarism Detected");
-		setDefaultText(medium, "No Warnings Detected");
-		setDefaultText(safe, "No Clean Assignments");
+		setDefaultText(danger, noPlagiarism);
+		setDefaultText(medium, noMedium);
+		setDefaultText(safe, noSafe);
 		safe.setMouseTransparent(true);
 		safe.setFocusTraversable(false);
 		populateView(danger, summary.getRedPairs());
@@ -85,6 +128,14 @@ public class SummaryController {
 		listView.setPlaceholder(new Label(message));
 	}
 	
+	/**
+	 * This method is used to update the progress bar indicator to correspond to the 
+	 * user selection of a student pair in the list passed. This then adds a listner to 
+	 * the view and when a user selects any student pair in the list, the progress bar at 
+	 * the bottom of the page reflects the change in selection.
+	 * 
+	 * @param listView The list view where a student pair is selected.
+	 */
 	private void addListener(ListView<StudentPair> listView) {
 		listView
 			.getSelectionModel()
@@ -103,7 +154,10 @@ public class SummaryController {
 	}
 	
 	/**
-	 * This method populates the list view with the pairs of student
+	 * This method populates the List View provided with the student pairs provided.
+	 * 
+	 * @param view The list view that needs to be populate
+	 * @param set the pair of students that go into the list view.
 	 */
 	private void populateView(ListView<StudentPair> view, Set<IStudentPair> set) {
 		for(IStudentPair pair : set) {
@@ -113,6 +167,7 @@ public class SummaryController {
 	
 	/**
 	 * This method populates the list view with students who didn't plagiarize
+	 * on their submission.
 	 */
 	private void populateSafeStudents() {
 		for(Integer i : summary.getGreenIds()) {
@@ -121,20 +176,20 @@ public class SummaryController {
 	}
 	
 	/**
-	 * This method takes the user back to the Start screen
+	 * This method takes the user back to the Start screen. It also throws a warning 
+	 * to the user about losing all their changes if the choose to go back.
 	 */
 	@FXML public void goBack()
 	{
 		Optional<ButtonType> type 
-		    = PopupMessage.getInstance().showConfirm(null,
-				"You will lose all your changes.");
+		    = PopupMessage.getInstance().showConfirm(null, backWarning);
 		if(type.isPresent() && type.get() == ButtonType.CANCEL) return;
 		if(screenController != null) {
 			Driver.getInstance().resetState();
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Start.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(startPath));
 			try {
-				screenController.addScreen("main", loader.load());
-				screenController.activate("main");
+				screenController.addScreen(startPage, loader.load());
+				screenController.activate(startPage);
 			} catch (IOException e) {
 				logger.error(e.toString());
 			}
@@ -145,17 +200,20 @@ public class SummaryController {
 	 * This method applies the CSS properties to the controls.
 	 */
 	private void applyStyle() {
-		info.getStyleClass().add("logo");
-		score.getStyleClass().add("logo");
-		danger.getStyleClass().add("danger-students");
-		medium.getStyleClass().add("medium-students");
-		safe.getStyleClass().add("safe-student");
-		back.getStyleClass().add("primary");
+		info.getStyleClass().add(customLogoStyle);
+		score.getStyleClass().add(customLogoStyle);
+		danger.getStyleClass().add(dangerListStyle);
+		medium.getStyleClass().add(mediumListStyle);
+		safe.getStyleClass().add(safeListStyle);
+		back.getStyleClass().add(blueStyle);
 	}
 
 	/**
-	 * unselects selected highly suspicious and safe students
-	 * @param event the mouse event that occured
+	 * When the user selects a student pair on the other list view, 
+	 * this method then unselects selected highly suspicious and safe students.
+	 * It also routes you to the compare page if the user double clicks on a student pair
+	 * 
+	 * @param event the mouse event that occurred
 	 */
 	@FXML public void unselectDangerAndSafe(MouseEvent event) {
 		unselectItems(danger, safe);
@@ -169,8 +227,11 @@ public class SummaryController {
 	}
 
 	/**
-	 * unselects selected mildly suspicious and safe students
-	 * @param event the mouse event that occured
+	 * When the user selects a student pair on the other list view, 
+	 * this method then unselects selected mildly suspicious and safe students.
+	 *  It also routes you to the compare page if the user double clicks on a student pair
+	 * 
+	 * @param event the mouse event that occurred
 	 */
 	@FXML public void unselectMediumAndSafe(MouseEvent event) {
 		unselectItems(medium, safe);
@@ -184,7 +245,8 @@ public class SummaryController {
 	}
 
 	/**
-	 * unselects selected highly suspicious and mildly suspicious students
+	 * When the user selects a student pair on the other list view, 
+	 * this method then unselects selected highly suspicious and mildly suspicious students
 	 */
 	@FXML public void unselectMediumAndDanger() {
 		unselectItems(medium, danger);
@@ -192,6 +254,7 @@ public class SummaryController {
 
 	/**
 	 * Removes selected items in two listViews
+	 * 
 	 * @param listView1 the first ListView
 	 * @param listView2 the second ListView
 	 * @param <T> the type of first ListView
@@ -203,12 +266,14 @@ public class SummaryController {
 	}
 
 	/**
-	 * routes to the compare page
+	 * This method takes the user to the compare page sending the object information
+	 * necessary to initialize the Compare Controller.
+	 * 
 	 * @param studentPair an object containing information about a pair of students
 	 */
 	public void routeToCompare(StudentPair studentPair) {
 		if(screenController != null) {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Compare.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(compatePath));
 			loader
 				.setController(new CompareController(Driver
 														.getInstance()
@@ -216,8 +281,8 @@ public class SummaryController {
 																studentPair.getStudent1Id(),
 																studentPair.getStudent2Id())));
 			try {
-				screenController.addScreen("compare", loader.load());
-				screenController.activate("compare");
+				screenController.addScreen(compatePage, loader.load());
+				screenController.activate(compatePage);
 			} catch (IOException e) {
 				logger.error(e);
 			}
