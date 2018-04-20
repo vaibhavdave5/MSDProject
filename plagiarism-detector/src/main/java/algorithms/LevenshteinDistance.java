@@ -20,7 +20,7 @@ public class LevenshteinDistance implements AlgorithmStrategy {
 	 * 
 	 * @param list1 a list of Nodes
 	 * @param list2 another list of Nodes
-	 * @throws IllegalArgumentException
+	 * @throws IllegalArgumentException if either lists are empty
 	 * @return a number representing the similarity between two nodes
 	 */
 	@Override

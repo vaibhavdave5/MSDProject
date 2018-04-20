@@ -18,7 +18,7 @@ import java.io.IOException;
  *
  */
 public class TrainDataElicitor {
-	File xlsxFile;
+	private File xlsxFile;
 	
 	public TrainDataElicitor(File xlsxFile) {
 		this.xlsxFile = xlsxFile;

@@ -35,8 +35,6 @@ public class AlgorithmController {
   
 	/**
 	 * Constructor for making a new AlgorithmController
-	 * @param f1 the first file
-	 * @param f2 the secocnd file
 	 */
 	public AlgorithmController() {}
 
@@ -93,8 +91,8 @@ public class AlgorithmController {
 	 * as ANTLR does not handle #include properly.
 	 * This temp file must be deleted once processed through the parser
 	 * 
-	 * @param file
-	 * @return a new temporary file created
+	 * @param file a C file
+	 * @return the file without the #include lines
 	 */
 	private File handleANTLRBug(File file) {
 		StringBuilder str = new StringBuilder();

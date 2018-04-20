@@ -128,12 +128,9 @@ public class Driver implements IDriver {
 	 * This method compares the similarity between the homework c files of two
 	 * students and generates the summary.
 	 * 
-	 * @param fileCollection
-	 *            a collection of files by the first student
-	 * @param fileCollection2
-	 *            a collection of files by the second student
-	 * @param sp
-	 *            StudentPair a StudentPair containing information about the two
+	 * @param fileCollection1 a collection of files by the first student
+	 * @param fileCollection2 a collection of files by the second student
+	 * @param sp StudentPair a StudentPair containing information about the two
 	 *            students
 	 */
 	public void computeSimilarityScore(Collection<File> fileCollection1, Collection<File> fileCollection2,
@@ -156,10 +153,10 @@ public class Driver implements IDriver {
 	/**
 	 * This method fits a regression model over the MOSS, LCS and EditDistance training data.
 	 * It then uses the learned weights to calculate a weighted score for plagiarism.
-	 * @param list1 List<Node>
-	 * @param ac AlgorithmController
-	 * @param list2 List<Node>
-	 * @return double[] A weighted score
+	 * @param list1 a list of nodes
+	 * @param ac the AlgorithmController
+	 * @param list2 another list of nodes
+	 * @return A weighted score after applying  machine learning
 	 */
 	public double applyMachineLearning(List<Node> list1, AlgorithmController ac, List<Node> list2) {
 		double[] scoresLCS = ac.getSimilarityPercentage(
@@ -175,10 +172,8 @@ public class Driver implements IDriver {
 	 * Get the similarity scores for all combinations of files from two
 	 * different collections
 	 * 
-	 * @param fileCollection1
-	 *            a collection of files
-	 * @param fileCollection2
-	 *            another collection of files
+	 * @param fileCollection1  a collection of files
+	 * @param fileCollection2 another collection of files
 	 * @return a list similarity scores of all combination of files from the two
 	 *         collections
 	 */
@@ -238,10 +233,8 @@ public class Driver implements IDriver {
 	/**
 	 * Employs a comparison strategy and compares all files of all students.
 	 * 
-	 * @param repoPaths
-	 *            a list of repository paths
-	 * @param hwDir
-	 *            the name of the homework directory that's supposed to be in
+	 * @param repoPaths a list of repository paths
+	 * @param hwDir the name of the homework directory that's supposed to be in
 	 *            each repository
 	 * @return errorMessage an error message, if applicable
 	 */
@@ -276,10 +269,8 @@ public class Driver implements IDriver {
 	 * This method compares all the HW files of two students and returns the
 	 * result of the plagiarism algorithm along with the snippets data.
 	 * 
-	 * @param fileCollection1
-	 *            a collection of files
-	 * @param fileCollection2
-	 *            another collection of files
+	 * @param fileCollection1 a collection of files
+	 * @param fileCollection2 another collection of files
 	 * @return a list of FilePairs, with each entry containing the result of the
 	 *         algorithm for two files from the two collections
 	 */
@@ -332,8 +323,7 @@ public class Driver implements IDriver {
 	/**
 	 * Get the name of the student by his/her Id
 	 * 
-	 * @param studentId
-	 *            the Id of the student
+	 * @param studentId the Id of the student
 	 * @return the name of the student
 	 */
 	public String getNameById(Integer studentId) {
@@ -343,8 +333,7 @@ public class Driver implements IDriver {
 	/**
 	 * Get the email of the student by his/her Id
 	 * 
-	 * @param studentId
-	 *            the Id of the student
+	 * @param studentId the Id of the student
 	 * @return the email of the student
 	 */
 	public String getEmailById(Integer studentId) {
@@ -353,7 +342,7 @@ public class Driver implements IDriver {
 	
 	/**
 	 * gets the repo paths
-	 * @return repoPaths List<String>
+	 * @return repoPaths a list of the repository paths
 	 */
 	public List<String> getRepoPaths() {
 		return this.repoPaths;

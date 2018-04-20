@@ -15,7 +15,7 @@ import java.util.Map;
 public interface IDriver {
 	/**
 	 * Setter for repoPaths.
-	 * @param repoPaths List<String>
+	 * @param repoPaths a list of repository paths
 	 */
 	void setRepoPaths(List<String> repoPaths);
 	
@@ -50,9 +50,9 @@ public interface IDriver {
 	 * This method compares the similarity between the homework c files of two students
 	 * and generates the summary. Also it returns false if the two students get paired
 	 * for plagiarism (both high and medium probability).
-	 * @param fileList1 Collection<File>
-	 * @param fileList2 Collection<File>
-	 * @param sp StudentPair
+	 * @param fileList1 a collection of files
+	 * @param fileList2 another collection of files
+	 * @param sp StudentPair a pair of students
 	 */
 	void computeSimilarityScore(Collection<File> fileList1, Collection<File> fileList2, IStudentPair sp);
 	
@@ -64,9 +64,9 @@ public interface IDriver {
 	
 	/**
 	 * Employs a comparison strategy and compares all files of all students.
-	 * @param repoPaths List<String>
-	 * @param hwDir String
-	 * @return errorMessage String
+	 * @param repoPaths a list of repositories
+	 * @param hwDir the homework directory to check
+	 * @return errorMessage an error message if something goes wrong
 	 */
 	String checkForPlagiarism(List<String> repoPaths, String hwDir, Algorithm algo);
 	
@@ -79,9 +79,9 @@ public interface IDriver {
 	/**
 	 * This method compares all the HW files of two students and returns the result
 	 * of the plagiarism algorithm along with the snippets data.
-	 * @param fileList1 List<File>
-	 * @param fileList2 List<File>
-	 * @return List<SnippetPair>
+	 * @param fileList1 a list of files
+	 * @param fileList2 another list of files
+	 * @return a FilePair that contains the result of the comparision
 	 */
 	List<IFilePair> compareFilesForResult(Collection<File> fileList1, Collection<File> fileList2);
 	
@@ -102,10 +102,8 @@ public interface IDriver {
 	
 	/**
 	 * This method returns the name of the student given the id of the student.
-	 * @param studentId Integer
-	 * @return String
-	 * @param studentId
-	 * @return String
+	 * @param studentId the student's id
+	 * @return the name of the student
 	 */
 	String getNameById(Integer studentId);
 
@@ -124,7 +122,7 @@ public interface IDriver {
 
 	/**
 	 * gets the repo paths
-	 * @return repoPaths List<String>
+	 * @return repoPaths a list of repository paths
 	 */
 	List<String> getRepoPaths();
 	
