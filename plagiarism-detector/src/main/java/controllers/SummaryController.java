@@ -45,8 +45,8 @@ public class SummaryController {
 	// Configuration Variables
 	private String startPath;
 	private String startPage;
-	private String compatePage;
-	private String compatePath;
+	private String comparePage;
+	private String comparePath;
 	private String blueStyle;
 	private String customLogoStyle;
 	private String dangerListStyle;
@@ -81,8 +81,8 @@ public class SummaryController {
 		ConfigUtils configUtils = new ConfigUtils();
 		startPath = configUtils.readConfig("START_PATH");
 		startPage = configUtils.readConfig("START_PAGE");
-		compatePage = configUtils.readConfig("COMPARE_PAGE");
-		compatePath = configUtils.readConfig("COMPARE_PAGE");
+		comparePage = configUtils.readConfig("COMPARE_PAGE");
+		comparePath = configUtils.readConfig("COMPARE_PATH");
 		blueStyle = configUtils.readConfig("BLUE");
 		customLogoStyle = configUtils.readConfig("CUSTOM_LOGO");
 		dangerListStyle = configUtils.readConfig("DANGER_LIST");
@@ -273,7 +273,7 @@ public class SummaryController {
 	 */
 	public void routeToCompare(StudentPair studentPair) {
 		if(screenController != null) {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(compatePath));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(comparePath));
 			loader
 				.setController(new CompareController(Driver
 														.getInstance()
@@ -281,8 +281,8 @@ public class SummaryController {
 																studentPair.getStudent1Id(),
 																studentPair.getStudent2Id())));
 			try {
-				screenController.addScreen(compatePage, loader.load());
-				screenController.activate(compatePage);
+				screenController.addScreen(comparePage, loader.load());
+				screenController.activate(comparePage);
 			} catch (IOException e) {
 				logger.error(e);
 			}
